@@ -40,10 +40,14 @@ export default function AmepTestimonials() {
             <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6">
                 
                 {/* Header */}
-                <div className="flex flex-col items-center text-center space-y-3 mb-12">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary dark:text-primary text-xs font-semibold tracking-wide">
-                        <Quote className="size-3.5" />
-                        <span>Depoimentos do Plano Amep Saúde</span>
+                <div className="flex flex-col items-center text-center space-y-4 mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-3 bg-background border border-border/60 px-5 py-2 rounded-full shadow-2xs">
+                        <div className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider">
+                            <Quote className="size-4" />
+                            <span>Avaliações Reais</span>
+                        </div>
+                        <span className="text-muted-foreground font-bold text-xs">•</span>
+                        <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={140} height={42} className="h-8 sm:h-9 w-auto object-contain drop-shadow-xs" />
                     </div>
 
                     <SplitText
@@ -58,11 +62,11 @@ export default function AmepTestimonials() {
                         to={{ opacity: 1, y: 0 }}
                         threshold={0.1}
                     >
-                        O que Nossos Clientes Dizem Sobre o Plano Amep Saúde
+                        Depoimentos Reais de Clientes AMEP Saúde
                     </SplitText>
 
                     <p className="text-muted-foreground text-base sm:text-lg max-w-xl font-light leading-relaxed">
-                        Famílias e empresas na Baixada Fluminense que já garantiram o plano Amep Saúde.
+                        Famílias e empresas na Baixada Fluminense que contam com a proteção da <strong className="text-primary font-bold">AMEP Saúde</strong>.
                     </p>
                 </div>
 

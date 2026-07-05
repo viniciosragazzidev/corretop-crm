@@ -27,19 +27,20 @@ export default function AmepPricing() {
             <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6">
                 
                 {/* Header */}
-                <div className="flex flex-col items-center text-center space-y-3 mb-10">
-                    <div className="flex items-center gap-3">
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary dark:text-primary text-xs font-semibold tracking-wide">
-                            <FileText className="size-3.5" />
-                            <span>Tabela de Referência Amep</span>
+                <div className="flex flex-col items-center text-center space-y-4 mb-10">
+                    <div className="flex flex-wrap items-center justify-center gap-3 bg-background border border-border/60 px-5 py-2 rounded-full shadow-2xs">
+                        <div className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider">
+                            <FileText className="size-4" />
+                            <span>Tabela Oficial 2026</span>
                         </div>
-                        <Image src="/amep_saude_logo.png" alt="Amep Saúde Logo" width={110} height={32} className="h-6 sm:h-7 w-auto object-contain" />
+                        <span className="text-muted-foreground font-bold text-xs">•</span>
+                        <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={150} height={45} className="h-8 sm:h-9.5 w-auto object-contain drop-shadow-xs" />
                     </div>
 
                     <SplitText
                         tag="h2"
                         textAlign="center"
-                        className="text-3xl sm:text-4xl lg:text-[48px] font-semibold tracking-tighter text-foreground leading-[1.1] max-w-2xl"
+                        className="text-3xl sm:text-4xl lg:text-[48px] font-semibold tracking-tighter text-foreground leading-[1.1] max-w-3xl"
                         delay={15}
                         duration={0.9}
                         ease="power3.out"
@@ -48,11 +49,11 @@ export default function AmepPricing() {
                         to={{ opacity: 1, y: 0 }}
                         threshold={0.1}
                     >
-                        Tabela de Preços do Plano Amep Saúde
+                        Tabela de Preços Oficial AMEP Saúde
                     </SplitText>
 
                     <p className="text-muted-foreground text-base sm:text-lg max-w-xl font-light leading-relaxed">
-                        Valores divididos por faixa etária. Sem taxas escondidas.
+                        Valores divididos por faixa etária para os planos da <strong className="text-foreground font-semibold">AMEP Saúde</strong>. Transparência total e sem taxas escondidas.
                     </p>
                 </div>
 

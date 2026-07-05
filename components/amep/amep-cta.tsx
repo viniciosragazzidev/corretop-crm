@@ -32,21 +32,21 @@ export default function AmepCta() {
                     <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-primary/60 via-primary/60 to-primary/60" />
 
                     {/* Co-Branding Header Pill with Inverted Dark Logos */}
-                    <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-neutral-800/90 border border-neutral-700/80 text-xs font-semibold shadow-inner">
+                    <div className="inline-flex items-center gap-3.5 px-6 py-3 rounded-full bg-neutral-800/90 border border-neutral-700/80 text-xs font-semibold shadow-inner">
                         <Image 
                             src="/logo.webp" 
-                            alt="Venacor Saúde" 
-                            width={90} 
-                            height={26} 
-                            className="h-5.5 w-auto object-contain brightness-0 invert drop-shadow-[0_1px_4px_rgba(255,255,255,0.2)]" 
+                            alt="Venacor Corretora" 
+                            width={100} 
+                            height={30} 
+                            className="h-6.5 w-auto object-contain brightness-0 invert drop-shadow-[0_1px_4px_rgba(255,255,255,0.2)]" 
                         />
-                        <span className="text-neutral-500 font-bold">×</span>
+                        <span className="text-neutral-500 font-extrabold text-sm">×</span>
                         <Image 
                             src="/amep_saude_logo.png" 
-                            alt="Amep Saúde" 
-                            width={110} 
-                            height={32} 
-                            className="h-6.5 w-auto object-contain brightness-0 invert drop-shadow-[0_1px_8px_rgba(255,255,255,0.3)]" 
+                            alt="AMEP Saúde" 
+                            width={150} 
+                            height={45} 
+                            className="h-8.5 sm:h-10 w-auto object-contain brightness-0 invert drop-shadow-[0_1px_8px_rgba(255,255,255,0.4)]" 
                         />
                     </div>
 
@@ -63,7 +63,7 @@ export default function AmepCta() {
                         to={{ opacity: 1, y: 0 }}
                         threshold={0.1}
                     >
-                        Fale com a Venacor Saúde e garanta as condições do Plano Amep Saúde de Junho.
+                        Garanta as Condições Especiais do Plano AMEP Saúde Hoje Mesmo!
                     </SplitText>
 
                     {/* Subheadline */}

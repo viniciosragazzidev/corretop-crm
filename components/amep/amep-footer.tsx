@@ -15,24 +15,24 @@ export default function AmepFooter() {
                     
                     {/* Column 1: Branding (4 cols) */}
                     <div className="md:col-span-4 flex flex-col space-y-5">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3.5">
                             <Link href="/" className="inline-block">
                                 <Image 
                                     src="/logo.webp" 
-                                    alt="Venacor Saúde" 
+                                    alt="Venacor Corretora" 
                                     width={140} 
                                     height={40} 
                                     className="h-8.5 w-auto object-contain brightness-0 invert" 
                                     priority
                                 />
                             </Link>
-                            <span className="text-neutral-600 font-bold text-sm">×</span>
+                            <span className="text-neutral-600 font-extrabold text-base">×</span>
                             <Image 
                                 src="/amep_saude_logo.png" 
-                                alt="Amep Saúde" 
-                                width={120} 
-                                height={36} 
-                                className="h-8 w-auto object-contain brightness-0 invert drop-shadow-[0_1px_8px_rgba(255,255,255,0.3)]" 
+                                alt="AMEP Saúde" 
+                                width={150} 
+                                height={45} 
+                                className="h-9.5 sm:h-11 w-auto object-contain brightness-0 invert drop-shadow-[0_1px_10px_rgba(255,255,255,0.4)]" 
                                 priority
                             />
                         </div>

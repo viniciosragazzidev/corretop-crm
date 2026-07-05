@@ -14,10 +14,14 @@ export default function AmepVideoDemo() {
             <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6">
                 
                 {/* Section Header */}
-                <div className="flex flex-col items-center text-center space-y-3 mb-10">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary dark:text-primary text-xs font-semibold tracking-wide">
-                        <Hospital className="size-3.5" />
-                        <span>Conheça as Instalações do Plano Amep</span>
+                <div className="flex flex-col items-center text-center space-y-4 mb-10">
+                    <div className="flex flex-wrap items-center justify-center gap-3 bg-background border border-border/60 px-5 py-2 rounded-full shadow-2xs">
+                        <div className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider">
+                            <Hospital className="size-4" />
+                            <span>Estrutura Médica</span>
+                        </div>
+                        <span className="text-muted-foreground font-bold text-xs">•</span>
+                        <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={140} height={42} className="h-8 sm:h-9 w-auto object-contain drop-shadow-xs" />
                     </div>
 
                     <SplitText
@@ -32,11 +36,11 @@ export default function AmepVideoDemo() {
                         to={{ opacity: 1, y: 0 }}
                         threshold={0.1}
                     >
-                        Hospital Prontonil & Atendimento Amep Saúde em Nova Iguaçu
+                        Hospital Prontonil & Rede Própria AMEP Saúde
                     </SplitText>
 
                     <p className="text-muted-foreground text-base sm:text-lg max-w-xl font-light leading-relaxed">
-                        Veja na prática a estrutura de atendimento médico de urgência e consultas do plano Amep Saúde.
+                        Veja na prática a estrutura completa de urgência, internação e consultas do plano <strong className="text-primary font-bold">AMEP Saúde</strong>.
                     </p>
                 </div>
 

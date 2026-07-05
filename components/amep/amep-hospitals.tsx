@@ -46,21 +46,22 @@ export default function AmepHospitals() {
             <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6">
                 
                 {/* Section Header */}
-                <div className="flex flex-col items-center text-center space-y-3 mb-12">
-                    <div className="flex items-center gap-2">
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider">
-                            <Building2 className="size-3.5" />
-                            <span>Rede Própria & Credenciada AMEP</span>
+                <div className="flex flex-col items-center text-center space-y-4 mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-3 bg-background border border-border/60 px-5 py-2 rounded-full shadow-2xs">
+                        <div className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider">
+                            <Building2 className="size-4" />
+                            <span>Rede de Atendimento</span>
                         </div>
-                        <Image src="/amep_saude_logo.png" alt="Amep Saúde Logo" width={75} height={22} className="h-5 w-auto object-contain" />
+                        <span className="text-muted-foreground font-bold text-xs">•</span>
+                        <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={140} height={42} className="h-8 sm:h-9 w-auto object-contain drop-shadow-xs" />
                     </div>
 
                     <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight max-w-3xl">
-                        Principais Hospitais de Urgência AMEP Próximos de Você
+                        Hospitais Credenciados e Rede Própria AMEP Saúde
                     </h2>
 
-                    <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
-                        Atendimento com o destaque do <strong className="text-foreground font-semibold">Hospital Prontonil no Centro de Nova Iguaçu</strong> e cobertura regional.
+                    <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-light">
+                        Atendimento médico de excelência no <strong className="text-foreground font-semibold">Hospital Prontonil no Centro de Nova Iguaçu</strong> e hospitais parceiros em todo o RJ.
                     </p>
                 </div>
 

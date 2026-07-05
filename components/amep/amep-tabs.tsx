@@ -69,10 +69,14 @@ export default function AmepTabs() {
             <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6">
                 
                 {/* Header */}
-                <div className="flex flex-col items-center text-center space-y-3 mb-10">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary dark:text-primary text-xs font-semibold tracking-wide">
-                        <Zap className="size-3.5" />
-                        <span>Por que escolher o Plano Amep Saúde?</span>
+                <div className="flex flex-col items-center text-center space-y-4 mb-10">
+                    <div className="flex flex-wrap items-center justify-center gap-3 bg-background border border-border/60 px-5 py-2 rounded-full shadow-2xs">
+                        <div className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider">
+                            <Zap className="size-4" />
+                            <span>Vantagens Exclusivas</span>
+                        </div>
+                        <span className="text-muted-foreground font-bold text-xs">•</span>
+                        <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={140} height={42} className="h-8 sm:h-9 w-auto object-contain drop-shadow-xs" />
                     </div>
 
                     <SplitText
@@ -87,11 +91,11 @@ export default function AmepTabs() {
                         to={{ opacity: 1, y: 0 }}
                         threshold={0.1}
                     >
-                        Diferenciais Práticos do Plano Amep Saúde
+                        Diferenciais do Plano AMEP Saúde
                     </SplitText>
 
                     <p className="text-muted-foreground text-base sm:text-lg max-w-xl font-light leading-relaxed">
-                        Clique nas abas abaixo para explorar os benefícios, rede de hospitais e regras do plano Amep.
+                        Navegue pelas abas para conhecer a carência zero, rede credenciada e flexibilidade da <strong className="text-primary font-bold">AMEP Saúde</strong>.
                     </p>
                 </div>
 

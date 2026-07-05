@@ -93,14 +93,17 @@ export default function AmepHero() {
                             animate="visible"
                             variants={fadeLeft}
                             custom={0.1}
-                            className="flex flex-wrap items-center gap-3 p-2 pr-4 rounded-full bg-muted/60 border border-border/60 backdrop-blur-md shadow-xs"
+                            className="flex flex-wrap items-center gap-3.5 p-2.5 pr-5 rounded-full bg-primary/10 border border-primary/25 backdrop-blur-md shadow-xs"
                         >
-                            <div className="flex items-center gap-2.5 bg-background px-4 py-1.5 rounded-full border border-border/40 shadow-2xs">
-                                <Image src="/logo.webp" alt="Venacor Saúde" width={85} height={26} className="h-5 sm:h-6 w-auto object-contain dark:brightness-0 dark:invert" priority />
-                                <span className="text-xs font-bold text-muted-foreground">×</span>
-                                <Image src="/amep_saude_logo.png" alt="Amep Saúde" width={110} height={32} className="h-6 sm:h-7 w-auto object-contain" priority />
+                            <div className="flex items-center gap-3 bg-background px-4 py-2 rounded-full border border-border/50 shadow-2xs">
+                                <Image src="/logo.webp" alt="Venacor Corretora" width={95} height={30} className="h-6 sm:h-7 w-auto object-contain dark:brightness-0 dark:invert" priority />
+                                <span className="text-sm font-extrabold text-primary">×</span>
+                                <Image src="/amep_saude_logo.png" alt="AMEP Saúde" width={150} height={45} className="h-8 sm:h-9.5 w-auto object-contain drop-shadow-xs" priority />
                             </div>
-                            <span className="text-xs font-semibold text-muted-foreground">Parceria Oficial Autorizada</span>
+                            <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                                <ShieldCheck className="size-4 text-primary shrink-0" />
+                                Operadora Oficial AMEP Saúde
+                            </span>
                         </motion.div>
 
                         {/* SplitText Headline (Exact Home Page Font Weights & Styles) */}
@@ -116,7 +119,7 @@ export default function AmepHero() {
                             to={{ opacity: 1, y: 0 }}
                             threshold={0.1}
                         >
-                            O Plano de Saúde Certo para o Seu Bolso e Sem Surpresas na Mensalidade.
+                            Plano AMEP Saúde: Atendimento Médico Completo e a Tabela Mais Barata do RJ.
                         </SplitText>
 
                         {/* Subheadline (Exact Home Page Font Styles) */}
@@ -127,7 +130,7 @@ export default function AmepHero() {
                             custom={0.3}
                             className="text-muted-foreground text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed font-light"
                         >
-                            Atendimento médico e de urgência em Nova Iguaçu e todo o RJ com parcelas que realmente cabem no seu orçamento familiar ou empresarial.
+                            Garanta consultas, exames e internação no <strong className="text-foreground font-semibold">Hospital Prontonil</strong> em Nova Iguaçu com os planos da <strong className="text-primary font-bold">AMEP Saúde</strong>. Cotação imediata com a Venacor Corretora!
                         </motion.p>
 
                         {/* Cards Horizontais de Preço Sutil (Staggered Entrance) */}
@@ -227,20 +230,22 @@ export default function AmepHero() {
                             {/* Subtle internal gradient bar */}
                             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary/60 via-primary/60 to-primary/60" />
 
-                            <div className="flex items-center justify-between gap-2 mb-4">
-                                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary dark:text-primary">
-                                    <Sparkles className="size-4" />
-                                    <span>Tabela Amep Saúde</span>
+                            <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-border/40">
+                                <div className="flex flex-col text-left">
+                                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-primary flex items-center gap-1">
+                                        <Sparkles className="size-3" />
+                                        Cotação Oficial 2026
+                                    </span>
+                                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+                                        Tabela AMEP Saúde
+                                    </h3>
                                 </div>
-                                <Image src="/amep_saude_logo.png" alt="Amep Saúde Logo" width={110} height={32} className="h-7 w-auto object-contain" />
+                                <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={140} height={42} className="h-9 sm:h-10 w-auto object-contain drop-shadow-xs" />
                             </div>
 
                             <div className="flex flex-col items-start text-left space-y-1 mb-6">
-                                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-                                    Ver Tabela de Preços
-                                </h3>
                                 <p className="text-xs sm:text-sm text-muted-foreground font-light">
-                                    Informe seus dados abaixo para receber o estudo de valores no seu WhatsApp.
+                                    Informe seus dados abaixo para receber os valores oficiais do <strong className="text-foreground font-semibold">Plano AMEP Saúde</strong> no seu WhatsApp.
                                 </p>
                             </div>
 
