@@ -178,7 +178,7 @@ const SectionTwo: React.FC = () => {
             heroInput.focus();
             heroInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(`Olá! Gostaria de receber a tabela de preços do plano ${productName}.`)}`, '_blank');
+            window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(`Olá! Gostaria de receber a tabela de preços do plano ${productName}.`)}`, '_blank');
         }
     };
 

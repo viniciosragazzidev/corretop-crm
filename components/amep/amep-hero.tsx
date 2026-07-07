@@ -51,7 +51,7 @@ export default function AmepHero() {
                 setIsSubmitting(false);
                 const modalidadeText = tipo === 'pme' ? 'CNPJ / MEI (a partir de R$ 82,94)' : 'Individual (a partir de R$ 138,74)';
                 const msg = `Olá! Me chamo ${nome} e gostaria de consultar a tabela de preços do plano Amep Saúde (${modalidadeText}).`;
-                window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(msg)}`, '_blank');
+                window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
             }, 600);
         }
     };
@@ -106,7 +106,6 @@ export default function AmepHero() {
                             </span>
                         </motion.div>
 
-                        {/* SplitText Headline (Exact Home Page Font Weights & Styles) */}
                         <SplitText
                             tag="h1"
                             textAlign="left"
@@ -119,7 +118,7 @@ export default function AmepHero() {
                             to={{ opacity: 1, y: 0 }}
                             threshold={0.1}
                         >
-                            Plano AMEP Saúde: Atendimento Médico Completo e a Tabela Mais Barata do RJ.
+                            Plano AMEP Saúde: Excelência e Custo-Benefício no RJ. Adquira agora!
                         </SplitText>
 
                         {/* Subheadline (Exact Home Page Font Styles) */}
@@ -130,7 +129,7 @@ export default function AmepHero() {
                             custom={0.3}
                             className="text-muted-foreground text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed font-light"
                         >
-                            Garanta consultas, exames e internação no <strong className="text-foreground font-semibold">Hospital Prontonil</strong> em Nova Iguaçu com os planos da <strong className="text-primary font-bold">AMEP Saúde</strong>. Cotação imediata com a Venacor Corretora!
+                            Garanta consultas e exames de qualidade com os planos da <strong className="text-primary font-bold">AMEP Saúde</strong> em todo o estado do Rio de Janeiro. Cotação imediata com a Venacor Corretora!
                         </motion.p>
 
                         {/* Cards Horizontais de Preço Sutil (Staggered Entrance) */}
@@ -211,7 +210,7 @@ export default function AmepHero() {
                                     Mais de 15.000 vidas protegidas pelo AMEP SAÚDE
                                 </p>
                                 <p className="text-[11px] text-muted-foreground mt-0.5 font-light">
-                                    Suporte direto do Hospital Prontonil e consultoria Venacor Saúde no Centro de Nova Iguaçu.
+                                    Suporte completo da operadora e consultoria especializada da Venacor Saúde no Rio de Janeiro.
                                 </p>
                             </div>
                         </motion.div>

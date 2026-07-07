@@ -9,7 +9,7 @@ import SplitText from '@/components/split-text';
 
 export default function AmepCta() {
     const handleCtaClick = () => {
-        window.open('https://wa.me/5521974450263?text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor%20para%20garantir%20as%20condições%20especiais%20do%20plano%20Amep%20Saúde.', '_blank');
+        window.open('https://wa.me/5521964469750?text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor%20para%20garantir%20as%20condições%20especiais%20do%20plano%20Amep%20Saúde.', '_blank');
     };
 
     return (
@@ -91,7 +91,7 @@ export default function AmepCta() {
                         </div>
                         <div className="flex items-center gap-2">
                             <PhoneCall className="size-4 text-primary" />
-                            <span>(21) 97445-0263</span>
+                            <span>(21) 96446-9750</span>
                         </div>
                     </div>
 

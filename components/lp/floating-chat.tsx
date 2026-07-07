@@ -54,7 +54,7 @@ const FloatingChat: React.FC = () => {
                 setIsSubmitting(false);
                 setIsOpen(false);
                 const msg = `Olá Vanessa! Me chamo ${nome} e gostaria de aproveitar o desconto exclusivo via ${tipo.toUpperCase()}.`;
-                window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(msg)}`, '_blank');
+                window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
             }, 600);
         }
     };

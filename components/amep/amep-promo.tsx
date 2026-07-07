@@ -13,7 +13,7 @@ export default function AmepPromo() {
             input.focus();
             input.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            window.open('https://wa.me/5521974450263?text=Olá!%20Quero%20aproveitar%20a%20promoção%20Carência%20Zero%20para%20consultas%20na%20AMEP%20Saúde.', '_blank');
+            window.open('https://wa.me/5521964469750?text=Olá!%20Quero%20aproveitar%20a%20promoção%20Carência%20Zero%20para%20consultas%20na%20AMEP%20Saúde.', '_blank');
         }
     };
 
@@ -75,18 +75,18 @@ export default function AmepPromo() {
                             </div>
 
                             <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight leading-tight">
-                                Contrate AMEP Saúde Hoje e Tenha <span className="text-primary dark:text-primary">Carência ZERO para Consultas</span>.
+                                Contrate AMEP Saúde Hoje e Tenha <span className="text-primary dark:text-primary">Carência ZERO para Atendimento AMBULATORIAL, Consultas e Exames</span>.
                             </h2>
 
                             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-normal">
-                                Durante a vigência desta campanha especial, os novos beneficiários do plano <strong className="text-foreground font-semibold">AMEP Saúde</strong> contam com liberação imediata (Carência Zero) para consultas nas especialidades médicas da Rede Própria AMEP. Sem burocracia, sem fila e sem coparticipação.
+                                Durante a vigência desta campanha especial, os novos beneficiários do <strong className="text-foreground font-semibold">Plano AMEP Saúde (Produto Ambulatorial)</strong> contam com liberação imediata (Carência Zero) para Atendimento AMBULATORIAL, Consultas e Exames na Rede Própria AMEP. Sem burocracia, sem fila e sem coparticipação.
                             </p>
 
                             {/* Benefit Bullets */}
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full pt-1">
                                 <div className="p-3 rounded-xl bg-muted/40 border border-border/50 flex items-center gap-2.5">
                                     <Stethoscope className="size-4 text-primary shrink-0" />
-                                    <span className="text-xs font-semibold text-foreground">Consultas Sem Espera</span>
+                                    <span className="text-xs font-semibold text-foreground">Atendimento Ambulatorial</span>
                                 </div>
                                 <div className="p-3 rounded-xl bg-muted/40 border border-border/50 flex items-center gap-2.5">
                                     <Clock className="size-4 text-primary shrink-0" />

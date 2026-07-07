@@ -259,8 +259,8 @@ Isso depende da abrangência que você escolher. A Unimed Nova Iguaçu oferece t
 - Duque de Caxias: Av. Nilo Peçanha, 120 - Centro
 
 ### Fale Conosco
-- contato@venacorsaude.com.br
-- (21) 99999-9999
+- venacorseguros@gmail.com
+- (21) 96446-9750
 
 ### Rodapé
 - © 2026 Venacor Saúde. CNPJ: 00.000.000/0001-00. Registro ANS nº 000000. Todos os direitos reservados.

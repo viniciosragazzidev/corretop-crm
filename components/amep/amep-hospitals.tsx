@@ -9,10 +9,10 @@ const hospitals = [
     {
         name: "Hospital Prontonil",
         city: "Nova Iguaçu - Centro",
-        region: "Baixada Fluminense (Destaque)",
-        description: "Referência em atendimento Adulto e Pediátrico no coração da Baixada Fluminense. Estrutura completa de urgência, emergência e repouso até 12h AMEP.",
-        badges: ["Adulto & Pediátrico", "Urgência 24h AMEP", "Baixada Fluminense"],
-        featured: true
+        region: "Baixada Fluminense",
+        description: "Estrutura completa de urgência, emergência e repouso até 12h AMEP na Baixada Fluminense.",
+        badges: ["Adulto & Pediátrico", "Urgência 24h AMEP"],
+        featured: false
     },
     {
         name: "Hospital Santa Branca",
@@ -37,6 +37,14 @@ const hospitals = [
         description: "Cobertura de urgência estrategicamente localizada para socorro rápido AMEP na Zona Sul e Zona Norte da capital.",
         badges: ["Zona Sul & Zona Norte", "Urgência Adulto"],
         featured: false
+    },
+    {
+        name: "Unidades Região dos Lagos",
+        city: "Cabo Frio, São Pedro da Aldeia e Arraial do Cabo",
+        region: "Região dos Lagos",
+        description: "Todas essas cidades contam com unidades de atendimento da AMEP Saúde, garantindo cobertura ágil e de excelência.",
+        badges: ["Unidades AMEP", "Atendimento Amplo"],
+        featured: true
     }
 ];
 
@@ -55,13 +63,13 @@ export default function AmepHospitals() {
                         <span className="text-muted-foreground font-bold text-xs">•</span>
                         <Image src="/amep_saude_logo.png" alt="AMEP Saúde Logo" width={140} height={42} className="h-8 sm:h-9 w-auto object-contain drop-shadow-xs" />
                     </div>
-
+ 
                     <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight max-w-3xl">
                         Hospitais Credenciados e Rede Própria AMEP Saúde
                     </h2>
-
+ 
                     <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-light">
-                        Atendimento médico de excelência no <strong className="text-foreground font-semibold">Hospital Prontonil no Centro de Nova Iguaçu</strong> e hospitais parceiros em todo o RJ.
+                        Atendimento médico de excelência na rede própria e credenciada AMEP Saúde em todo o estado do Rio de Janeiro.
                     </p>
                 </div>
 

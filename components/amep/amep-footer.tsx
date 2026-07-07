@@ -68,7 +68,7 @@ export default function AmepFooter() {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/5521974450263" target="_blank" rel="noreferrer" className="hover:text-white transition-colors duration-200">
+                                <a href="https://wa.me/5521964469750" target="_blank" rel="noreferrer" className="hover:text-white transition-colors duration-200">
                                     Tabela Promocional
                                 </a>
                             </li>
@@ -100,22 +100,22 @@ export default function AmepFooter() {
                         <ul className="space-y-3 text-xs sm:text-sm font-light">
                             <li>
                                 <a 
-                                    href="https://wa.me/5521974450263" 
+                                    href="https://wa.me/5521964469750" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2.5 hover:text-white transition-colors duration-200 text-primary font-semibold"
                                 >
                                     <Phone className="size-4 text-primary shrink-0" />
-                                    <span>(21) 97445-0263</span>
+                                    <span>(21) 96446-9750</span>
                                 </a>
                             </li>
                             <li>
                                 <a 
-                                    href="mailto:contato@Venacorsaude.com.br"
+                                    href="mailto:venacorseguros@gmail.com"
                                     className="flex items-center gap-2.5 hover:text-white transition-colors duration-200"
                                 >
                                     <Mail className="size-4 text-primary shrink-0" />
-                                    <span className="truncate">contato@Venacorsaude.com.br</span>
+                                    <span className="truncate">venacorseguros@gmail.com</span>
                                 </a>
                             </li>
                         </ul>

@@ -85,7 +85,7 @@ const NavbarLp: React.FC = () => {
             input.focus();
             input.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            window.open('https://wa.me/5521974450263?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20r%C3%A1pida.', '_blank');
+            window.open('https://wa.me/5521964469750?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20r%C3%A1pida.', '_blank');
         }
         if (isMobileMenuOpen) {
             setIsMobileMenuOpen(false);

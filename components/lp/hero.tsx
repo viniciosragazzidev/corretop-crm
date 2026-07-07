@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
             setIsSubmitting(true);
             setTimeout(() => {
                 setIsSubmitting(false);
-                window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(`Olá! Me chamo ${nome} e gostaria de uma cotação rápida via ${tipo.toUpperCase()}.`)}`, '_blank');
+                window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(`Olá! Me chamo ${nome} e gostaria de uma cotação rápida via ${tipo.toUpperCase()}.`)}`, '_blank');
             }, 600);
         }
     };

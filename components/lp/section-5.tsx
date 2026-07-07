@@ -130,7 +130,7 @@ const SectionFive: React.FC<Props> = () => {
                 : `Individual/Família - Titular: ${idadeTitular} anos${dependants.length > 0 ? `, Dependentes: ${dependants.map(d => d.age).join(', ')} anos` : ''}`;
 
             const msg = `Olá! Me chamo ${nome}. Gostaria de receber a cotação do plano ${categoria?.toUpperCase()}.\nPerfil: ${detailText}`;
-            window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
         }, 1500);
     };
 

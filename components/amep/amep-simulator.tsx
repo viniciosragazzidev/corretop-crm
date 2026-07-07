@@ -64,7 +64,7 @@ export default function AmepSimulator() {
             const estimativa = getEstimativa();
             const modStr = modalidade === 'pme' ? `Empresarial/MEI (${qtdVidas} vidas, média ${mediaIdade} anos)` : `Individual (${faixaEtaria})`;
             const msg = `Olá! Realizei uma simulação no site da AMEP Saúde:\n- Nome: ${nome}\n- Modalidade: ${modStr}\n- Estimativa Mensal: R$ ${estimativa.total}\nGostaria de finalizar a contratação!`;
-            window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
         }
     };
 

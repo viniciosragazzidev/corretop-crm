@@ -13,26 +13,26 @@ const tabsData = {
     beneficio: {
         id: 'beneficio',
         badge: 'Benefício Promocional',
-        title: 'Aproveite a carência zero para consultas.',
-        text: 'Durante todo o mês de junho, os novos beneficiários contarão com Carência Zero para consultas nas especialidades médicas da Rede Própria AMEP Saúde.',
+        title: 'Atendimento AMBULATORIAL, Consultas e Exames com Carência Zero.',
+        text: 'Nesta campanha especial de vendas, os novos beneficiários contarão com Carência Zero para Atendimento Ambulatorial, Consultas e Exames na Rede de Atendimento AMEP Saúde.',
         ctaText: 'Falar com Consultor no WhatsApp',
         ctaAction: 'whatsapp',
         imageSrc: '/image5.png',
         imageAlt: 'Atendimento e consultas Amep Saúde',
         imagePosition: 'object-center',
-        highlights: ['Campanha válida apenas em Junho/2026', 'Carência Zero imediata', 'Rede Própria AMEP']
+        highlights: ['Campanha Promocional Ativa', 'Carência Zero Imediata', 'Ampla cobertura de exames e consultas']
     },
     hospitais: {
         id: 'hospitais',
         badge: 'Rede de Atendimento',
         title: 'Atendimento rápido perto de você.',
-        text: 'Cobertura de urgência e emergência nos principais hospitais do Rio. Destaque total na Baixada para o Hospital Geral Prontonil (Nova Iguaçu) com suporte Adulto e Pediátrico completo.',
+        text: 'Cobertura em diversos hospitais, clínicas e laboratórios parceiros no Rio de Janeiro. Além da rede metropolitana credenciada, contamos com unidades de atendimento e parcerias em Cabo Frio, São Pedro da Aldeia e Arraial do Cabo!',
         ctaText: 'Ver Lista de Hospitais Completa',
         ctaAction: 'scrollSimulador',
         imageSrc: '/image4.png',
-        imageAlt: 'Hospital Geral Prontonil Nova Iguaçu AMEP',
+        imageAlt: 'Hospitais credenciados AMEP',
         imagePosition: 'object-top',
-        highlights: ['Hospital Prontonil Nova Iguaçu', 'Suporte Adulto & Pediátrico', 'Hospitais Caxias, Bangu, RJ']
+        highlights: ['Unidades na Região dos Lagos (Cabo Frio, São Pedro e Arraial)', 'Atendimento no Rio de Janeiro e Região Metropolitana', 'Estrutura Completa de Consultas e Exames']
     },
     regras: {
         id: 'regras',
@@ -53,7 +53,7 @@ export default function AmepTabs() {
 
     const handleCtaClick = (action: string) => {
         if (action === 'whatsapp') {
-            window.open('https://wa.me/5521974450263?text=Olá!%20Gostaria%20de%20aproveitar%20a%20Carência%20Zero%20para%20consultas%20na%20Amep%20Saúde.', '_blank');
+            window.open('https://wa.me/5521964469750?text=Olá!%20Gostaria%20de%20aproveitar%20a%20Carência%20Zero%20para%20consultas%20na%20Amep%20Saúde.', '_blank');
         } else {
             const el = document.getElementById('simulador');
             if (el) {

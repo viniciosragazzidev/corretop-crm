@@ -136,7 +136,7 @@ export default function AmepTestimonials() {
 
                     <Button
                         onClick={() => {
-                            window.open('https://wa.me/5521974450263?text=Olá!%20Quero%20aproveitar%20o%20bônus%20exclusivo%20de%20Carência%20Zero%20na%20Amep%20Saúde.', '_blank');
+                            window.open('https://wa.me/5521964469750?text=Olá!%20Quero%20aproveitar%20o%20bônus%20exclusivo%20de%20Carência%20Zero%20na%20Amep%20Saúde.', '_blank');
                         }}
                         size="lg"
                         className="h-13 px-6 rounded-2xl bg-white text-primary hover:bg-primary/10 font-extrabold text-sm shadow-lg shrink-0 cursor-pointer flex items-center gap-2 transition-all active:scale-[0.98]"

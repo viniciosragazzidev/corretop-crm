@@ -19,7 +19,7 @@ export default function AmepPricing() {
     const handleTableQuote = (faixa: string, tipo: 'individual' | 'pme', valor: string) => {
         const modalidade = tipo === 'pme' ? 'Empresa (MEI/PME)' : 'Individual (Adesão)';
         const msg = `Olá! Vi a tabela de preços do plano Amep Saúde para a faixa etária (${faixa}) no valor de R$ ${valor}/mês na modalidade ${modalidade} e gostaria de contratar!`;
-        window.open(`https://wa.me/5521974450263?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
     };
 
     return (
