@@ -138,7 +138,7 @@ export default function SectionSimulador() {
                 <div className="lg:col-span-7 flex justify-center lg:justify-end w-full">
                     <div className="w-full max-w-[560px] bg-slate-50/50 border border-slate-100 rounded-[2.5rem] p-1.5 shadow-[0_20px_50px_-25px_rgba(59,45,255,0.06)] relative overflow-hidden">
                         
-                        <div className="bg-white border border-slate-200/50 rounded-[2.2rem] p-8 sm:p-10 relative">
+                        <div className="bg-white border border-slate-200/50 rounded-[2.2rem] p-8 sm:p-10 relative min-h-[350px] flex flex-col justify-between">
                             
                             {/* Top Step Counter & Progress bar */}
                             {!isSubmitted && (
