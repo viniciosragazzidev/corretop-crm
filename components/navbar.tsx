@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '@/components/logo';
 import Link from 'next/link';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Search01Icon, WandSparkles } from '@hugeicons/core-free-icons';
+import { Search01Icon, WandSparkles, ZapIcon } from '@hugeicons/core-free-icons';
 import { Button } from './ui/button';
 
 interface Props {
@@ -34,9 +34,9 @@ const Navbar: React.FC<Props> = ({ }) => {
             <div className="flex gap-8 items-center">
                 <ul className='flex items-center gap-8 text-gray-600 text-sm'>
                     <li>
-                        <Button variant="default" size="lg" className='text-[13.5px] '>
+                        <Button variant="default" size="lg" className='text-[13.5px] px-4'>
                             Cotação Rápida <span className=''>
-                                <HugeiconsIcon icon={WandSparkles} />
+                                <HugeiconsIcon icon={ZapIcon} />
                             </span>
                         </Button>
                     </li>

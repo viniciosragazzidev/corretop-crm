@@ -9,7 +9,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 const amilFont = localFont({
-  src: "../public/fonts/Amil Typeface Regular.ttf",
+  src: "../public/fonts/Amil Typeface Bold.ttf",
   variable: "--font-logo",
 });
 

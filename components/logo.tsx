@@ -10,10 +10,9 @@ const Logo: React.FC<Props> = ({ className = '' }) => {
     return (
         <Link
             href="/"
-            className={`font-logo text-3xl font-extrabold tracking-wide flex items-center gap-1 text-[#1a68db] transition-opacity hover:opacity-90 ${className}`}
-            style={{ fontFamily: "var(--font-logo), 'Amil Typeface', sans-serif" }}
+            className={`flex items-center transition-opacity hover:opacity-90 ${className}`}
         >
-            <Image src="/icon-logo.png" alt="Logo" width={30} height={30} /> venacor
+            <Image src="/logo.svg" alt="Venacor Saúde" width={150} height={40} priority />
         </Link>
     );
 };
