@@ -81,7 +81,14 @@ export default function SectionSimulador() {
     };
 
     return (
-        <section id="simulador" className="w-full bg-white py-16 md:py-20 font-sans select-none overflow-hidden border-t border-slate-100">
+        <motion.section 
+            id="simulador" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+            className="w-full bg-white py-16 md:py-20 font-sans select-none overflow-hidden border-t border-slate-100 will-change-transform"
+        >
             <div className="w-full max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                 {/* COLUNA ESQUERDA: Textos + Recursos */}
@@ -527,6 +534,6 @@ export default function SectionSimulador() {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 }

@@ -129,7 +129,7 @@ export default function SectionHero() {
               scale: { duration: 0.6, ease: 'easeOut' },
               y: { repeat: Infinity, repeatType: 'reverse', duration: 4, ease: 'easeInOut' }
             }}
-            className="relative"
+            className="relative z-30"
           >
             {/* Badge de Folha Flutuante */}
             <div className="absolute -left-5 top-1/4 z-20 flex size-11 items-center justify-center rounded-2xl bg-white text-[#3b2dff] shadow-md border border-slate-100">

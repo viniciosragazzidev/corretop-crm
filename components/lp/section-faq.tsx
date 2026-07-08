@@ -36,7 +36,14 @@ export default function SectionFaq() {
   };
 
   return (
-    <section className="w-full py-20 md:py-32 font-sans bg-white relative">
+    <motion.section 
+      id="faq"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+      className="w-full py-20 md:py-32 font-sans bg-white relative will-change-transform"
+    >
       <div className="w-full max-w-[800px] mx-auto px-6 relative z-10 flex flex-col items-center">
         {/* Tag Superior */}
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">
@@ -112,6 +119,6 @@ export default function SectionFaq() {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -113,7 +113,14 @@ export default function SectionDiferenciais() {
     const currentTab = tabData[activeIndex] || tabData[0];
 
     return (
-        <section className="w-full bg-white py-16 md:py-20 font-sans select-none overflow-hidden">
+        <motion.section 
+            id="diferenciais"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+            className="w-full bg-white py-16 md:py-20 font-sans select-none overflow-hidden will-change-transform"
+        >
             <div className="w-full max-w-[1280px] mx-auto px-6 flex flex-col gap-8 md:gap-10">
 
                 {/* 1. Cabeçalho */}
@@ -307,6 +314,6 @@ export default function SectionDiferenciais() {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 }

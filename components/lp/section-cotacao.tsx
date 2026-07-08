@@ -10,6 +10,7 @@ import {
     ArrowRight01Icon,
     Tick02Icon
 } from '@hugeicons/core-free-icons';
+import { motion } from 'framer-motion';
 import { AutoHeight } from '@/components/animate-ui/primitives/effects/auto-height';
 
 export default function SectionCotacao() {
@@ -45,7 +46,14 @@ export default function SectionCotacao() {
     };
 
     return (
-        <section id="cotacao" className="relative w-full rounded-t-4xl bg-[#3b2dff] text-white pt-10 pb-8 md:pt-14 md:pb-12 mt-24 md:mt-32 font-sans">
+        <motion.section 
+            id="cotacao" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+            className="relative w-full rounded-t-4xl bg-[#3b2dff] text-white pt-10 pb-8 md:pt-14 md:pb-12 mt-24 md:mt-32 font-sans"
+        >
 
             {/* Ambient Background Circles */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
@@ -253,6 +261,6 @@ export default function SectionCotacao() {
                 </div>
             </div>
 
-        </section>
+        </motion.section>
     );
 }
