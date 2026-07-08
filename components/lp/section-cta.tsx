@@ -89,7 +89,7 @@ export default function SectionCta({ variant = 'middle', title, description }: S
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
           className={`relative rounded-[2.2rem] p-8 md:p-12 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 ${
             isBottom
-              ? 'bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-white shadow-[0_25px_50px_-20px_rgba(0,0,0,0.25)]'
+              ? 'bg-[#3b2dff] border border-[#3b2dff]/20 text-white shadow-[0_25px_50px_-20px_rgba(59,45,255,0.2)]'
               : 'bg-slate-50/60 border border-slate-100 text-slate-900 shadow-[0_15px_40px_-20px_rgba(59,45,255,0.04)]'
           }`}
         >
@@ -97,8 +97,8 @@ export default function SectionCta({ variant = 'middle', title, description }: S
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             {isBottom ? (
               <>
-                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#3b2dff]/15 blur-[100px]" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-slate-800/20 blur-[100px]" />
+                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10 blur-[100px]" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-white/5 blur-[100px]" />
               </>
             ) : (
               <>
@@ -114,11 +114,11 @@ export default function SectionCta({ variant = 'middle', title, description }: S
             <div
               className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
                 isBottom
-                  ? 'bg-white/5 text-slate-300 border-white/10'
+                  ? 'bg-white/10 text-white border-white/20'
                   : 'bg-[#3b2dff]/5 text-[#3b2dff] border-[#3b2dff]/10'
               }`}
             >
-              <span className={`size-1.5 rounded-full ${isBottom ? 'bg-slate-300' : 'bg-[#3b2dff]'}`} />
+              <span className={`size-1.5 rounded-full ${isBottom ? 'bg-white' : 'bg-[#3b2dff]'}`} />
               <span>{isBottom ? 'Atendimento Exclusivo' : 'Cotação Imediata'}</span>
             </div>
 
@@ -132,7 +132,7 @@ export default function SectionCta({ variant = 'middle', title, description }: S
 
             <p
               className={`text-xs md:text-sm font-light leading-relaxed max-w-[48ch] ${
-                isBottom ? 'text-slate-400' : 'text-slate-500'
+                isBottom ? 'text-white/85' : 'text-slate-500'
               }`}
             >
               {displayDesc}
@@ -149,7 +149,7 @@ export default function SectionCta({ variant = 'middle', title, description }: S
               onClick={handleScrollToQuote}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-shadow duration-200 w-full sm:w-auto ${
                 isBottom
-                  ? 'bg-white text-slate-950 hover:bg-slate-50 shadow-md shadow-white/5'
+                  ? 'bg-white text-[#3b2dff] hover:bg-slate-50 shadow-md shadow-white/5'
                   : 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-md shadow-[#3b2dff]/20'
               }`}
             >
@@ -165,11 +165,11 @@ export default function SectionCta({ variant = 'middle', title, description }: S
               onClick={() => window.open(whatsappUrl, '_blank')}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-all duration-200 w-full sm:w-auto border ${
                 isBottom
-                  ? 'border-slate-800 bg-slate-900/50 text-white hover:bg-slate-950'
+                  ? 'border-white/20 bg-white/10 text-white hover:bg-white/20'
                   : 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50 shadow-sm'
               }`}
             >
-              <HugeiconsIcon icon={WhatsappIcon} className="size-3.5 shrink-0 text-emerald-500" />
+              <HugeiconsIcon icon={WhatsappIcon} className="size-3.5 shrink-0 text-emerald-300" />
               <span>Falar com Consultores</span>
               <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5 shrink-0 opacity-40" />
             </motion.button>
