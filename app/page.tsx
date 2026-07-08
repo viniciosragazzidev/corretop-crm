@@ -4,6 +4,7 @@ import SectionPlanos from '@/components/lp/section-planos';
 import SectionDiferenciais from '@/components/lp/section-diferenciais';
 import SectionSimulador from '@/components/lp/section-simulador';
 import SectionFaq from '@/components/lp/section-faq';
+import SectionCta from '@/components/lp/section-cta';
 import Navbar from '@/components/navbar';
 import React from 'react';
 
@@ -15,9 +16,11 @@ export default function Home() {
         <SectionHero />
         <SectionCotacao />
         <SectionPlanos />
+        <SectionCta variant="middle" />
         <SectionDiferenciais />
         <SectionSimulador />
         <SectionFaq />
+        <SectionCta variant="bottom" />
       </div>
     </main>
   );

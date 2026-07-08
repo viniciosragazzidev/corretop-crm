@@ -45,7 +45,7 @@ export default function SectionCotacao() {
     };
 
     return (
-        <section className="relative w-full rounded-t-4xl bg-[#3b2dff] text-white pt-10 pb-8 md:pt-14 md:pb-12 mt-24 md:mt-32 font-sans">
+        <section id="cotacao" className="relative w-full rounded-t-4xl bg-[#3b2dff] text-white pt-10 pb-8 md:pt-14 md:pb-12 mt-24 md:mt-32 font-sans">
 
             {/* Ambient Background Circles */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">

@@ -81,7 +81,7 @@ export default function SectionSimulador() {
     };
 
     return (
-        <section className="w-full bg-white py-16 md:py-20 font-sans select-none overflow-hidden border-t border-slate-100">
+        <section id="simulador" className="w-full bg-white py-16 md:py-20 font-sans select-none overflow-hidden border-t border-slate-100">
             <div className="w-full max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 {/* COLUNA ESQUERDA: Textos + Recursos */}
