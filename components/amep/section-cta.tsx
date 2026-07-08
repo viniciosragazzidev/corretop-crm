@@ -15,7 +15,7 @@ export default function SectionCta({ variant }: Props) {
 
   const displayTitle = isBottom
     ? 'Fale com nossos consultores oficiais Amep Saúde'
-    : 'Consulte os preços comerciais e tabelas vigentes';
+    : 'Consulte os preços e tabelas vigentes Amep Saúde';
 
   const displayDesc = isBottom
     ? 'Tire suas dúvidas sobre rede de atendimento, carência zero e documentos necessários diretamente pelo WhatsApp.'

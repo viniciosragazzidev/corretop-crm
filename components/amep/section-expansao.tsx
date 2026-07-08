@@ -77,7 +77,7 @@ export default function SectionExpansao() {
                 transition={{ type: 'spring', stiffness: 150, damping: 20 }}
                 className="inline-block"
               >
-                Projeto de Expansão: Presente em 21 Cidades.
+                Amep Saúde: Expansão em 21 Cidades no Rio
               </motion.span>
             </div>
           </h2>
@@ -89,7 +89,7 @@ export default function SectionExpansao() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-2xl"
           >
-            Sua rotina tem vista pro paraíso? Sua saúde também precisa estar à altura. Na Região dos Lagos ou no Grande Rio, viver bem também é se cuidar.
+            Sua rotina tem vista pro paraíso? Sua saúde também precisa estar à altura com o plano Amep Saúde. Na Região dos Lagos ou no Grande Rio, viver bem também é se cuidar.
           </motion.p>
         </div>
 

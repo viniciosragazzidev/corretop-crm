@@ -83,7 +83,7 @@ export default function SectionCoberturas() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl text-center select-text"
           >
-            Confira detalhadamente as coberturas ambulatoriais e o cronograma oficial de carências da Amep.
+            Confira detalhadamente as coberturas ambulatoriais e o cronograma oficial de carências do plano Amep Saúde.
           </motion.p>
         </div>
 

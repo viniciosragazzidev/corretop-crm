@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Hospital02Icon, LicenseIcon, HeartIcon, Tick02Icon } from '@hugeicons/core-free-icons';
+import { Hospital02Icon, LicenseIcon, HeartIcon, Tick02Icon, Location01Icon } from '@hugeicons/core-free-icons';
 
 interface TabItem {
   id: string;
@@ -18,58 +18,169 @@ export default function SectionDiferenciais() {
   const tabData: TabItem[] = [
     {
       id: 'unidades',
-      tag: '🏥 Unidades Próprias',
-      support: 'Estrutura planejada para oferecer conforto, tecnologia e atendimento humanizado.',
+      tag: 'Unidades Próprias',
+      support: 'Estrutura planejada pela Amep Saúde para oferecer conforto, tecnologia e atendimento humanizado.',
       content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full text-left">
-          {/* Card 1 */}
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#3b2dff]/20 hover:bg-slate-50/50 transition-all duration-300 flex flex-col items-start gap-3">
-            <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff]">
-              <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full text-left pt-6">
+          {/* Card 1: Highlighted - Hospital CHAJ Jacarepaguá */}
+          <div className="p-6 rounded-3xl bg-[#3b2dff]/5 border border-[#3b2dff]/30 shadow-md shadow-[#3b2dff]/5 flex flex-col items-start gap-4 relative mt-3 cursor-default">
+            {/* Top Overlapping Badge */}
+            <div className="absolute top-0 left-6 -translate-y-1/2 bg-[#3b2dff] text-white text-[8px] sm:text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              Unidade Principal AMEP
             </div>
-            <h4 className="font-extrabold text-slate-800 text-base">Unidade Freguesia</h4>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Atendimento ambulatorial e exames especializados com agendamento ágil.</p>
+            
+            <div className="flex items-center justify-between w-full">
+              <div className="size-10 rounded-xl bg-[#3b2dff]/15 flex items-center justify-center text-[#3b2dff] shadow-sm">
+                <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/10 px-2 py-0.5 rounded-md">
+                Zona Oeste RJ
+              </span>
+            </div>
+
+            <div className="space-y-1">
+              <h4 className="font-extrabold text-slate-900 text-base">Hospital CHAJ Jacarepaguá</h4>
+              <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                <HugeiconsIcon icon={Location01Icon} className="size-3.5 shrink-0 text-slate-400" />
+                <span>Jacarepaguá</span>
+              </div>
+            </div>
+
+            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed select-text">
+              Unidade própria com urgência 24h, atendimento ambulatorial, exames e cirurgias.
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 pt-2">
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Urgência 24h</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Ambulatorial</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Exames</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Cirurgias</span>
+            </div>
           </div>
-          {/* Card 2 */}
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#3b2dff]/20 hover:bg-slate-50/50 transition-all duration-300 flex flex-col items-start gap-3">
-            <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff]">
-              <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+
+          {/* Card 2: Unidade Freguesia */}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col items-start gap-4 mt-3 cursor-default">
+            <div className="flex items-center justify-between w-full">
+              <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff] shadow-sm">
+                <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/5 px-2 py-0.5 rounded-md">
+                Zona Oeste RJ
+              </span>
             </div>
-            <h4 className="font-extrabold text-slate-800 text-base">Unidade Madureira</h4>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Atendimento ambulatorial, exames diagnósticos e terapias integradas.</p>
+
+            <div className="space-y-1">
+              <h4 className="font-extrabold text-slate-900 text-base">Unidade Freguesia</h4>
+              <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                <HugeiconsIcon icon={Location01Icon} className="size-3.5 shrink-0 text-slate-400" />
+                <span>Freguesia</span>
+              </div>
+            </div>
+
+            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed select-text">
+              Unidade própria com atendimento ambulatorial e exames especializados.
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Ambulatorial</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Exames</span>
+            </div>
           </div>
-          {/* Card 3 */}
-          <div className="p-6 rounded-2xl bg-white border border-[#3b2dff]/20 shadow-md shadow-[#3b2dff]/5 flex flex-col items-start gap-3 relative overflow-hidden">
-            <div className="absolute top-0 right-0 px-2.5 py-1 bg-[#3b2dff] text-white text-[8px] font-black uppercase tracking-wider rounded-bl-lg">Hospital Geral</div>
-            <div className="size-10 rounded-xl bg-[#3b2dff]/10 flex items-center justify-center text-[#3b2dff]">
-              <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+
+          {/* Card 3: Unidade Madureira */}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col items-start gap-4 mt-3 cursor-default">
+            <div className="flex items-center justify-between w-full">
+              <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff] shadow-sm">
+                <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/5 px-2 py-0.5 rounded-md">
+                Zona Norte RJ
+              </span>
             </div>
-            <h4 className="font-extrabold text-slate-900 text-base">Hospital CHAJ Jacarepaguá</h4>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Urgência 24h, suporte completo ambulatorial, exames de alta complexidade e cirurgias eletivas.</p>
+
+            <div className="space-y-1">
+              <h4 className="font-extrabold text-slate-900 text-base">Unidade Madureira</h4>
+              <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                <HugeiconsIcon icon={Location01Icon} className="size-3.5 shrink-0 text-slate-400" />
+                <span>Madureira</span>
+              </div>
+            </div>
+
+            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed select-text">
+              Unidade própria com atendimento ambulatorial, exames e terapias integradas.
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Ambulatorial</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Exames</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Terapias</span>
+            </div>
           </div>
-          {/* Card 4 */}
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#3b2dff]/20 hover:bg-slate-50/50 transition-all duration-300 flex flex-col items-start gap-3">
-            <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff]">
-              <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+
+          {/* Card 4: Unidade Taquara */}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col items-start gap-4 mt-3 cursor-default">
+            <div className="flex items-center justify-between w-full">
+              <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff] shadow-sm">
+                <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/5 px-2 py-0.5 rounded-md">
+                Zona Oeste RJ
+              </span>
             </div>
-            <h4 className="font-extrabold text-slate-800 text-base">Unidade Taquara</h4>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Atendimento ambulatorial focado no acompanhamento médico e exames básicos.</p>
+
+            <div className="space-y-1">
+              <h4 className="font-extrabold text-slate-900 text-base">Unidade Taquara</h4>
+              <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                <HugeiconsIcon icon={Location01Icon} className="size-3.5 shrink-0 text-slate-400" />
+                <span>Taquara</span>
+              </div>
+            </div>
+
+            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed select-text">
+              Unidade própria com atendimento ambulatorial e exames de rotina rápida.
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Ambulatorial</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Exames</span>
+            </div>
           </div>
-          {/* Card 5 */}
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#3b2dff]/20 hover:bg-slate-50/50 transition-all duration-300 flex flex-col items-start gap-3">
-            <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff]">
-              <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+
+          {/* Card 5: CIM */}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col items-start gap-4 mt-3 cursor-default">
+            <div className="flex items-center justify-between w-full">
+              <div className="size-10 rounded-xl bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff] shadow-sm">
+                <HugeiconsIcon icon={Hospital02Icon} className="size-5" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/5 px-2 py-0.5 rounded-md">
+                Zona Oeste RJ
+              </span>
             </div>
-            <h4 className="font-extrabold text-slate-800 text-base">CIM (Centro Infantil)</h4>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Centro Infantil Multiterapêutico com fonoaudiologia, psicomotricidade e terapias especializadas.</p>
+
+            <div className="space-y-1">
+              <h4 className="font-extrabold text-slate-900 text-base">CIM - Centro Infantil</h4>
+              <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                <HugeiconsIcon icon={Location01Icon} className="size-3.5 shrink-0 text-slate-400" />
+                <span>Jacarepaguá</span>
+              </div>
+            </div>
+
+            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed select-text">
+              Centro Infantil Multiterapêutico Amep Saúde com fonoaudiologia e terapias especializadas.
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 pt-2 mt-auto">
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Terapias</span>
+              <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md">Pediátrico</span>
+            </div>
           </div>
         </div>
       )
     },
     {
       id: 'empresarial',
-      tag: '💼 Plano Empresarial',
-      support: 'Benefício bom é aquele que o colaborador realmente valoriza e pode usar!',
+      tag: 'Plano Empresarial',
+      support: 'Benefício bom é aquele que o colaborador realmente valoriza e pode usar com a Amep Saúde!',
       content: (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full text-left">
           <div className="lg:col-span-6 space-y-5">
@@ -110,7 +221,7 @@ export default function SectionDiferenciais() {
     },
     {
       id: 'viver-mais',
-      tag: '👵 Viver Mais e Melhor',
+      tag: 'Viver Mais e Melhor',
       support: 'Investir em você não tem idade!',
       content: (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full text-left">

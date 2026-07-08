@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Medicine01Icon, ShoppingBag02Icon, SmartPhone01Icon } from '@hugeicons/core-free-icons';
 
@@ -31,35 +32,41 @@ export default function SectionPrecos() {
       <div className="w-full max-w-[1280px] mx-auto px-6 flex flex-col gap-12">
         
         {/* Header */}
-        <div className="w-full text-left space-y-4 max-w-3xl">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-            <span className="size-2 rounded-full bg-[#3b2dff]" />
-            <span>Tabelas de Preços</span>
-          </div>
-
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
-            <div className="overflow-hidden py-0.5">
-              <motion.span
-                initial={{ y: '100%' }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 150, damping: 20 }}
-                className="inline-block"
-              >
-                Vitrine de Preços Amep Saúde
-              </motion.span>
+        <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-100 pb-6 text-left">
+          <div className="space-y-3 max-w-xl">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+              <span className="size-2 rounded-full bg-[#3b2dff]" />
+              <span>Tabelas de Preços</span>
             </div>
-          </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl"
-          >
-            Valores regulamentares organizados por faixa etária e perfil de contratação.
-          </motion.p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
+              <div className="overflow-hidden py-0.5">
+                <motion.span
+                  initial={{ y: '100%' }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                  className="inline-block"
+                >
+                  Vitrine de Preços Amep Saúde
+                </motion.span>
+              </div>
+            </h2>
+
+            <p className="text-slate-500 text-sm font-light leading-relaxed">
+              Valores regulamentares do plano Amep Saúde organizados por faixa etária e perfil de contratação (Adesão ou PME/MEI).
+            </p>
+          </div>
+          
+          <div className="h-10 w-auto bg-slate-50 px-3.5 py-1.5 rounded-xl border border-slate-100 flex items-center justify-center self-start md:self-end">
+            <Image
+              src="/amep_saude_logo.png"
+              alt="Amep Saúde"
+              width={85}
+              height={26}
+              className="object-contain max-h-7"
+            />
+          </div>
         </div>
 
         {/* Tabela de Preços */}
@@ -71,7 +78,10 @@ export default function SectionPrecos() {
                 <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Ideal Adesão</th>
                 <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Smart MEI/PME I (2-29)</th>
                 <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/3">
-                  Smart PME II (30-99) ★
+                  <div className="flex items-center gap-1.5 justify-start">
+                    <span>Smart PME II (30-99)</span>
+                    <span className="bg-[#3b2dff] text-white text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider shadow-sm">Recomendado</span>
+                  </div>
                 </th>
                 <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Premium MEI/PME I</th>
               </tr>
@@ -83,10 +93,10 @@ export default function SectionPrecos() {
                   className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors"
                 >
                   <td className="py-4 px-6 text-xs sm:text-sm font-bold text-slate-800">{row.faixa}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-semibold text-slate-600">{row.adesao}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-semibold text-slate-600">{row.mei1}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-black text-[#3b2dff] bg-[#3b2dff]/3">{row.pme2}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-semibold text-slate-600">{row.premium}</td>
+                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.adesao}</td>
+                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.mei1}</td>
+                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight font-black text-[#3b2dff] bg-[#3b2dff]/3">{row.pme2}</td>
+                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.premium}</td>
                 </tr>
               ))}
             </tbody>

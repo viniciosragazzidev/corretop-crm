@@ -113,7 +113,7 @@ export default function SectionSimulador() {
                   transition={{ type: 'spring', stiffness: 150, damping: 20 }}
                   className="inline-block"
                 >
-                  Descubra os Preços Ambulatoriais Amep
+                  Simulador de Preços Amep Saúde
                 </motion.span>
               </div>
             </h2>
@@ -125,7 +125,7 @@ export default function SectionSimulador() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl"
             >
-              Insira o perfil de vidas para ver imediatamente quais tabelas e carências se aplicam à sua família ou empresa.
+              Insira a quantidade de vidas para ver imediatamente quais tabelas e carências da Amep Saúde se aplicam à sua família ou empresa.
             </motion.p>
           </div>
 

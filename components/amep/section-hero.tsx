@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowRight01Icon, LicenseIcon, UserIcon, WhatsappIcon } from '@hugeicons/core-free-icons';
 
@@ -78,16 +79,24 @@ export default function SectionHero() {
           animate="visible"
           className="lg:col-span-7 flex flex-col items-start text-left space-y-6 md:space-y-8"
         >
-          {/* Active Campaign Badge */}
-          <motion.div
-            variants={childVariants}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm"
-          >
-            <span className="relative flex size-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500"></span>
-            </span>
-            <span>Campanha Comercial Ativa — Por Tempo Limitado</span>
+          {/* Logo & Campaign Badge Row */}
+          <motion.div variants={childVariants} className="flex items-center gap-4 flex-wrap">
+            <div className="h-9 w-auto bg-white px-3 py-1.5 rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex items-center justify-center">
+              <Image
+                src="/amep_saude_logo.png"
+                alt="Amep Saúde"
+                width={80}
+                height={24}
+                className="object-contain max-h-6"
+              />
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">
+              <span className="relative flex size-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500"></span>
+              </span>
+              <span>Campanha Comercial Ativa</span>
+            </div>
           </motion.div>
 
           {/* Heading */}
@@ -96,10 +105,9 @@ export default function SectionHero() {
               variants={childVariants}
               className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-[#111827] tracking-tight leading-[1.1] select-text"
             >
-              O Plano Ambulatorial Ideal{' '}
-              <br />
+              O Plano Ambulatorial{' '}
               <span className="relative inline-block text-[#3b2dff] mt-1.5">
-                com o Valor Ideal
+                Amep Saúde
                 <svg
                   className="absolute -bottom-2 left-0 w-full h-2.5 text-[#3b2dff]"
                   viewBox="0 0 100 10"
@@ -114,7 +122,7 @@ export default function SectionHero() {
                   />
                 </svg>
               </span>{' '}
-              para Você.
+              com o Valor Ideal para Você.
             </motion.h1>
           </div>
 
@@ -126,7 +134,7 @@ export default function SectionHero() {
             }}
             className="text-slate-500 text-base sm:text-lg md:text-lg font-normal leading-relaxed max-w-xl select-text"
           >
-            Consultas, exames e acompanhamento médico no dia a dia. Funcional. Acessível. Presente.
+            Consultas, exames e acompanhamento médico no dia a dia com a qualidade da operadora Amep Saúde. Funcional. Acessível. Presente.
           </motion.p>
 
           {/* Floating Anchor Cards */}

@@ -4,9 +4,11 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import SectionHero from '@/components/amep/section-hero';
 import SectionDiferenciais from '@/components/amep/section-diferenciais';
+import SectionVideo from '@/components/amep/section-video';
 import SectionExpansao from '@/components/amep/section-expansao';
 import SectionRede from '@/components/amep/section-rede';
 import SectionPrecos from '@/components/amep/section-precos';
+import SectionDepoimentos from '@/components/amep/section-depoimentos';
 import SectionCta from '@/components/amep/section-cta';
 import SectionSimulador from '@/components/amep/section-simulador';
 import SectionCoberturas from '@/components/amep/section-coberturas';
@@ -23,9 +25,11 @@ export default function AmepPage() {
         <Navbar />
         <SectionHero />
         <SectionDiferenciais />
+        <SectionVideo />
         <SectionExpansao />
         <SectionRede />
         <SectionPrecos />
+        <SectionDepoimentos />
         <SectionCta variant="middle" />
         <SectionSimulador />
         <SectionCoberturas />
