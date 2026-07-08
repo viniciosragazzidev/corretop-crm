@@ -43,38 +43,38 @@ export default function SectionFaq() {
         </div>
 
         {/* Headlines */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15] mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter leading-none mb-5">
             Tudo o que você precisa saber.
           </h2>
-          <p className="text-sm md:text-base font-light text-slate-500 leading-relaxed max-w-xl mx-auto">
+          <p className="text-base md:text-lg font-normal text-slate-500 leading-relaxed max-w-2xl mx-auto">
             Respostas diretas e transparentes sobre coberturas, carências e modelos de contratação.
           </p>
         </div>
 
         {/* Accordions */}
-        <div className="w-full flex flex-col gap-3">
+        <div className="w-full flex flex-col">
           {faqData.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className={`w-full border rounded-2xl overflow-hidden transition-colors duration-300 ${
-                  isOpen ? 'border-[#3b2dff] bg-white shadow-md shadow-[#3b2dff]/5' : 'border-slate-200 bg-slate-50 hover:bg-slate-100/50'
+                className={`w-full border-b border-slate-200/60 transition-all duration-500 overflow-hidden ${
+                  isOpen ? 'bg-slate-50/50' : 'bg-transparent hover:bg-slate-50/30'
                 }`}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer focus:outline-none"
+                  className="w-full flex items-center justify-between py-6 px-4 md:px-6 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
                 >
-                  <span className={`text-base md:text-lg font-bold pr-4 transition-colors duration-300 ${isOpen ? 'text-[#3b2dff]' : 'text-[#111827]'}`}>
+                  <span className={`text-lg md:text-xl font-bold pr-6 transition-colors duration-300 ${isOpen ? 'text-[#3b2dff]' : 'text-slate-900 group-hover:text-slate-700'}`}>
                     {item.question}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className={`flex-shrink-0 size-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                      isOpen ? 'bg-[#3b2dff]/10 text-[#3b2dff]' : 'bg-slate-200 text-slate-400'
+                    transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                    className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      isOpen ? 'bg-[#3b2dff] text-white shadow-md shadow-[#3b2dff]/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'
                     }`}
                   >
                     <svg
@@ -98,10 +98,10 @@ export default function SectionFaq() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                       className="overflow-hidden"
                     >
-                      <div className="p-5 md:p-6 pt-0 text-sm md:text-base font-light text-slate-600 leading-relaxed border-t border-slate-100/50 mt-2">
+                      <div className="px-4 md:px-6 pb-6 pt-2 text-base font-normal text-slate-600 leading-relaxed">
                         {item.answer}
                       </div>
                     </motion.div>
