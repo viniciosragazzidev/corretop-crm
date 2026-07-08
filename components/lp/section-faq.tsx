@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { BubbleChatQuestionIcon } from '@hugeicons/core-free-icons';
 
 const faqData = [
   {
@@ -36,10 +38,10 @@ export default function SectionFaq() {
   return (
     <section className="w-full py-20 md:py-32 font-sans bg-white relative">
       <div className="w-full max-w-[800px] mx-auto px-6 relative z-10 flex flex-col items-center">
-        {/* Pílula / Tag Superior */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#3b2dff]/5 border border-[#3b2dff]/10 text-[#3b2dff] mb-6">
-          <span className="text-sm">💬</span>
-          <span className="text-xs font-bold uppercase tracking-widest">Dúvidas Frequentes</span>
+        {/* Tag Superior */}
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 mb-6">
+          <HugeiconsIcon icon={BubbleChatQuestionIcon} className="size-4 text-[#3b2dff]" />
+          <span>Dúvidas Frequentes</span>
         </div>
 
         {/* Headlines */}
