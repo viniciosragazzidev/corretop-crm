@@ -133,18 +133,27 @@ export default function SectionDiferenciais() {
                 {/* 2. Menu de Abas / Tabs Switcher */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 border-b border-slate-100 pb-4 w-full">
                     <div className="flex flex-wrap gap-2">
-                        {tabData.map((tab) => (
-                            <button
-                                key={tab.id}
-                                onClick={() => setActiveTab(tab.id)}
-                                className={`px-5 py-2.5 rounded-sm text-xs sm:text-sm font-bold tracking-tight transition-all duration-200 cursor-pointer ${activeTab === tab.id
-                                        ? 'bg-[#3b2dff] text-white shadow-sm'
-                                        : 'text-slate-500 hover:text-slate-800 bg-transparent'
+                        {tabData.map((tab) => {
+                            const isActive = activeTab === tab.id;
+                            return (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`relative px-5 py-2.5 rounded-sm text-xs sm:text-sm font-bold tracking-tight transition-colors duration-200 cursor-pointer ${
+                                        isActive ? 'text-white' : 'text-slate-500 hover:text-slate-800'
                                     }`}
-                            >
-                                {tab.tag}
-                            </button>
-                        ))}
+                                >
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="activeTabIndicator"
+                                            className="absolute inset-0 bg-[#3b2dff] rounded-sm z-0"
+                                            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{tab.tag}</span>
+                                </button>
+                            );
+                        })}
                     </div>
 
                     {/* Progress Slider */}
@@ -164,10 +173,10 @@ export default function SectionDiferenciais() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full"
                         >
 

@@ -12,7 +12,7 @@ const faqData = [
   },
   {
     question: 'Como funciona o processo de contratação? Preciso ir até uma agência física?',
-    answer: 'Não há necessidade. Todo o processo de análise de documentos, preenchimento de propostas e assinatura do contrato é feito de forma 100% digital e segura para poupar o seu tempo. No entanto, como a Venancor é uma corretora consolidada com sede física estruturada no Centro de Nova Iguaçu, você tem a segurança extra de contar com suporte humano e presencial sempre que precisar no pós-venda, sem ficar preso a robôs de atendimento.'
+    answer: 'Não há necessidade. Todo o processo de análise de documentos, preenchimento de propostas e assinatura do contrato é feito de forma 100% digital e segura para poupar o seu tempo. No entanto, como a Venacor é uma corretora consolidada com sede física estruturada no Centro de Nova Iguaçu, você tem a segurança extra de contar com suporte humano e presencial sempre que precisar no pós-venda, sem ficar preso a robôs de atendimento.'
   },
   {
     question: 'O plano cobre consultas e tratamentos fora da minha região?',
@@ -61,9 +61,8 @@ export default function SectionFaq() {
             return (
               <div
                 key={index}
-                className={`w-full border-b border-slate-200/60 transition-all duration-500 overflow-hidden ${
-                  isOpen ? 'bg-slate-50/50' : 'bg-transparent hover:bg-slate-50/30'
-                }`}
+                className={`w-full border-b border-slate-200/60 transition-all duration-500 overflow-hidden ${isOpen ? 'bg-slate-50/50' : 'bg-transparent hover:bg-slate-50/30'
+                  }`}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
@@ -75,9 +74,8 @@ export default function SectionFaq() {
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                    className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                      isOpen ? 'bg-[#3b2dff] text-white shadow-md shadow-[#3b2dff]/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'
-                    }`}
+                    className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#3b2dff] text-white shadow-md shadow-[#3b2dff]/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'
+                      }`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -145,9 +145,9 @@ export default function SectionCta({ variant = 'middle', title, description }: S
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               onClick={handleScrollToQuote}
-              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-shadow duration-200 w-full sm:w-auto ${
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-shadow duration-200 w-full sm:w-auto will-change-transform ${
                 isBottom
                   ? 'bg-white text-[#3b2dff] hover:bg-slate-50 shadow-md shadow-white/5'
                   : 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-md shadow-[#3b2dff]/20'
@@ -161,9 +161,9 @@ export default function SectionCta({ variant = 'middle', title, description }: S
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               onClick={() => window.open(whatsappUrl, '_blank')}
-              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-all duration-200 w-full sm:w-auto border ${
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-all duration-200 w-full sm:w-auto border will-change-transform ${
                 isBottom
                   ? 'border-white/20 bg-white/10 text-white hover:bg-white/20'
                   : 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50 shadow-sm'
