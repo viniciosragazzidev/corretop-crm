@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { 
-    CustomerSupportIcon, 
-    Video01Icon, 
-    Search01Icon, 
+import {
+    CustomerSupportIcon,
+    Video01Icon,
+    Search01Icon,
     LicenseIcon,
     ArrowRight01Icon,
     Tick02Icon
@@ -44,8 +44,8 @@ export default function SectionCotacao() {
     };
 
     return (
-        <section className="relative w-full bg-[#3b2dff] text-white pt-24 pb-20 md:pt-32 md:pb-28 mt-24 md:mt-32 font-sans">
-            
+        <section className="relative w-full rounded-t-4xl bg-[#3b2dff] text-white pt-10 pb-8 md:pt-14 md:pb-12 mt-24 md:mt-32 font-sans">
+
             {/* Ambient Background Circles */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border-[32px] border-white" />
@@ -54,7 +54,7 @@ export default function SectionCotacao() {
 
             <div className="w-full max-w-[1280px] mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
+
                     {/* COLUNA ESQUERDA: Atendimento 24/7 & Videoconferência */}
                     <div className="lg:col-span-4 flex flex-col gap-10 md:gap-12 text-left">
                         {/* Bloco 1 */}
@@ -89,19 +89,19 @@ export default function SectionCotacao() {
                     </div>
 
                     {/* COLUNA CENTRAL: Celular saindo para fora (Overflow) com Formulário */}
-                    <div className="lg:col-span-4 flex justify-center relative -mt-32 lg:-mt-48 mb-[-60px] lg:mb-[-120px] z-20">
+                    <div className="lg:col-span-4 flex justify-center relative -mt-40 lg:-mt-56 mb-8 lg:mb-12 z-20">
                         {/* Smartphone Mockup */}
-                        <div className="relative w-[290px] sm:w-[325px] aspect-[9/19.5] bg-white rounded-[3.25rem] p-3.5 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] border-[5px] border-slate-100/90 flex flex-col justify-start select-none">
-                            
+                        <div className="relative w-[290px] sm:w-[325px] aspect-[9/18.2] bg-white rounded-[3.25rem] p-3 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] border-[3px] border-slate-100 flex flex-col justify-start select-none">
+
                             {/* Notch do Celular */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-slate-100 rounded-b-2xl z-30 flex items-center justify-center">
-                                <div className="size-2 rounded-full bg-slate-400 mr-2" />
-                                <div className="w-10 h-1 bg-slate-300 rounded-full" />
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 h-5 w-28 bg-slate-100 rounded-b-2xl z-30 flex items-center justify-center">
+                                <div className="size-1.5 rounded-full bg-slate-400 mr-2" />
+                                <div className="w-8 h-0.5 bg-slate-300 rounded-full" />
                             </div>
 
                             {/* Conteúdo da Tela do Celular */}
                             <div className="w-full h-full bg-slate-50 rounded-[2.5rem] p-5 sm:p-6 pt-10 flex flex-col justify-between overflow-hidden relative">
-                                
+
                                 {isSubmitted ? (
                                     <div className="flex-1 flex flex-col items-center justify-center text-center gap-4 animate-fade-in">
                                         <div className="size-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shadow-sm">
@@ -130,8 +130,8 @@ export default function SectionCotacao() {
                                             {/* Nome */}
                                             <div className="space-y-1 text-left">
                                                 <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Nome Completo</label>
-                                                <input 
-                                                    type="text" 
+                                                <input
+                                                    type="text"
                                                     required
                                                     value={nome}
                                                     onChange={(e) => setNome(e.target.value)}
@@ -143,8 +143,8 @@ export default function SectionCotacao() {
                                             {/* WhatsApp */}
                                             <div className="space-y-1 text-left">
                                                 <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">WhatsApp</label>
-                                                <input 
-                                                    type="tel" 
+                                                <input
+                                                    type="tel"
                                                     required
                                                     value={whatsapp}
                                                     onChange={handlePhoneChange}
@@ -159,7 +159,7 @@ export default function SectionCotacao() {
                                             <div className="space-y-1 text-left">
                                                 <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Tipo de Plano</label>
                                                 <div className="relative">
-                                                    <select 
+                                                    <select
                                                         value={tipo}
                                                         onChange={(e) => setTipo(e.target.value)}
                                                         className="w-full pl-3.5 pr-8 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 outline-none text-xs font-semibold appearance-none cursor-pointer"
@@ -175,7 +175,7 @@ export default function SectionCotacao() {
                                             </div>
 
                                             {/* CTA Button */}
-                                            <button 
+                                            <button
                                                 type="submit"
                                                 disabled={!nome || whatsapp.length < 14}
                                                 className="w-full py-3 mt-2 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-slate-200 disabled:text-slate-400 text-white font-extrabold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
