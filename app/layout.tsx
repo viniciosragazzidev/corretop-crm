@@ -17,11 +17,10 @@ export const metadata: Metadata = {
   description: "Cotação rápida de planos de saúde e odontológicos multimarcas. Compare Amil, Bradesco, SulAmérica, Unimed, Assim, Cemeru e Porto Saúde.",
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
       { url: "/icon.png", type: "image/png" }
     ],
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
