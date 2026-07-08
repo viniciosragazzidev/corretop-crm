@@ -10,6 +10,7 @@ import {
     ArrowRight01Icon,
     Tick02Icon
 } from '@hugeicons/core-free-icons';
+import { AutoHeight } from '@/components/animate-ui/primitives/effects/auto-height';
 
 export default function SectionCotacao() {
     const [nome, setNome] = useState('');
@@ -98,114 +99,120 @@ export default function SectionCotacao() {
                                 <div className="w-8 h-0.5 bg-slate-300 rounded-full" />
                             </div>
 
-                            {/* Conteúdo da Tela do Celular */}
-                            <div className="w-full h-full bg-slate-50 rounded-[2.5rem] p-5 sm:p-6 pt-8 flex flex-col justify-start gap-4 overflow-hidden relative">
-
-                                {isSubmitted ? (
-                                    <div className="flex-1 flex flex-col items-center justify-center text-center gap-4 animate-fade-in">
-                                        <div className="size-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shadow-sm">
-                                            <HugeiconsIcon icon={Tick02Icon} className="size-8" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-slate-900 font-extrabold text-lg">Simulação Enviada!</h4>
-                                            <p className="text-slate-500 text-xs mt-1">Conectando ao WhatsApp do consultor...</p>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <>
-                                        {/* Cabeçalho do App */}
-                                        <div className="text-left">
-                                            <span className="text-[9px] font-black uppercase tracking-widest text-[#3b2dff]">SIMULADOR VENACOR</span>
-                                            <h4 className="text-xl font-black tracking-tight text-slate-900 mt-0.5">
-                                                Cotação Inteligente
-                                            </h4>
-                                            <p className="text-[10px] text-slate-400 font-medium  mt-1">
-                                                Preencha abaixo e receba o estudo comparativo de preços no WhatsApp em poucos minutos.
-                                            </p>
-                                        </div>
-
-                                        {/* Elemento de Progresso entre Título e Campos */}
-                                        <div className="w-full flex items-center justify-between gap-2 select-none">
-                                            <div className="flex-1 flex items-center gap-1.5 py-1 px-2.5 rounded-md bg-[#3b2dff]/5 border border-[#3b2dff]/10 text-[#3b2dff]">
-                                                <span className="size-1.5 rounded-full bg-[#3b2dff] animate-pulse" />
-                                                <span className="text-[9px] font-extrabold uppercase tracking-wider">Identificação</span>
-                                            </div>
-                                            <div className="w-12 h-1 bg-slate-200 rounded-full overflow-hidden">
-                                                <div className="w-1/2 h-full bg-[#3b2dff] rounded-full" />
-                                            </div>
-                                        </div>
-
-                                        {/* Formulário */}
-                                        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                                            {/* Nome */}
-                                            <div className="space-y-1 text-left">
-                                                <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Nome Completo</label>
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    value={nome}
-                                                    onChange={(e) => setNome(e.target.value)}
-                                                    placeholder="Ex: Carlos Silva"
-                                                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs"
-                                                />
-                                            </div>
-
-                                            {/* WhatsApp */}
-                                            <div className="space-y-1 text-left">
-                                                <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">WhatsApp</label>
-                                                <input
-                                                    type="tel"
-                                                    required
-                                                    value={whatsapp}
-                                                    onChange={handlePhoneChange}
-                                                    onFocus={() => setIsFocused(true)}
-                                                    onBlur={() => setIsFocused(false)}
-                                                    placeholder="(21) 99999-9999"
-                                                    className={`w-full px-3.5 py-2.5 rounded-xl border outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs ${isFocused ? 'bg-white border-[#3b2dff] ring-4 ring-[#3b2dff]/5' : 'bg-white border-slate-200'}`}
-                                                />
-                                            </div>
-
-                                            {/* Tipo de Plano */}
-                                            <div className="space-y-1 text-left">
-                                                <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Tipo de Plano</label>
-                                                <div className="relative">
-                                                    <select
-                                                        value={tipo}
-                                                        onChange={(e) => setTipo(e.target.value)}
-                                                        className="w-full pl-3.5 pr-8 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 outline-none text-xs font-semibold appearance-none cursor-pointer transition-all duration-200 shadow-2xs focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5"
-                                                    >
-                                                        <option value="pme">Empresa (PME / CNPJ)</option>
-                                                        <option value="individual">Individual (CPF)</option>
-                                                        <option value="familiar">Familiar (CPF)</option>
-                                                    </select>
-                                                    <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                                                    </div>
+                            {/* Conteúdo da Tela do Celular — AutoHeight anima a transição */}
+                            <div className="w-full bg-slate-50 rounded-[2.5rem] overflow-hidden">
+                                <AutoHeight
+                                    deps={[isSubmitted]}
+                                    transition={{ type: 'spring', stiffness: 260, damping: 28, bounce: 0 }}
+                                    className="w-full"
+                                >
+                                    <div className="p-5 sm:p-6 pt-8 flex flex-col gap-4">
+                                        {isSubmitted ? (
+                                            <div className="flex flex-col items-center justify-center text-center gap-4 py-8">
+                                                <div className="size-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shadow-sm">
+                                                    <HugeiconsIcon icon={Tick02Icon} className="size-8" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="text-slate-900 font-extrabold text-lg">Simulação Enviada!</h4>
+                                                    <p className="text-slate-500 text-xs mt-1">Conectando ao WhatsApp do consultor...</p>
                                                 </div>
                                             </div>
+                                        ) : (
+                                            <>
+                                                {/* Cabeçalho do App */}
+                                                <div className="text-left">
+                                                    <span className="text-[9px] font-black uppercase tracking-widest text-[#3b2dff]">SIMULADOR VENACOR</span>
+                                                    <h4 className="text-xl font-black tracking-tight text-slate-900 mt-0.5">
+                                                        Cotação Inteligente
+                                                    </h4>
+                                                    <p className="text-[10px] text-slate-400 font-medium mt-1">
+                                                        Preencha abaixo e receba o estudo comparativo de preços no WhatsApp em poucos minutos.
+                                                    </p>
+                                                </div>
 
-                                            {/* CTA Button */}
-                                            <button
-                                                type="submit"
-                                                disabled={!nome || whatsapp.length < 14}
-                                                className="w-full py-3 mt-1.5 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-slate-200 disabled:text-slate-400 text-white font-extrabold text-xs shadow-sm hover:shadow-md hover:shadow-[#3b2dff]/10 hover:scale-[1.01] transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
-                                            >
-                                                <span>Simular Agora</span>
-                                                <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5" />
-                                            </button>
-                                        </form>
+                                                {/* Elemento de Progresso entre Título e Campos */}
+                                                <div className="w-full flex items-center justify-between gap-2 select-none">
+                                                    <div className="flex-1 flex items-center gap-1.5 py-1 px-2.5 rounded-md bg-[#3b2dff]/5 border border-[#3b2dff]/10 text-[#3b2dff]">
+                                                        <span className="size-1.5 rounded-full bg-[#3b2dff] animate-pulse" />
+                                                        <span className="text-[9px] font-extrabold uppercase tracking-wider">Identificação</span>
+                                                    </div>
+                                                    <div className="w-12 h-1 bg-slate-200 rounded-full overflow-hidden">
+                                                        <div className="w-1/2 h-full bg-[#3b2dff] rounded-full" />
+                                                    </div>
+                                                </div>
 
-                                        {/* Status Bar / Safe Badge */}
-                                        <div className="text-center pt-2 select-none border-t border-slate-100 flex items-center justify-center gap-1">
-                                            <span className="relative flex size-1.5">
-                                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                                                <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500"></span>
-                                            </span>
-                                            <span className="text-[9px] font-bold text-slate-400">Consultores online</span>
-                                        </div>
-                                    </>
-                                )}
+                                                {/* Formulário */}
+                                                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                                                    {/* Nome */}
+                                                    <div className="space-y-1 text-left">
+                                                        <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Nome Completo</label>
+                                                        <input
+                                                            type="text"
+                                                            required
+                                                            value={nome}
+                                                            onChange={(e) => setNome(e.target.value)}
+                                                            placeholder="Ex: Carlos Silva"
+                                                            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs"
+                                                        />
+                                                    </div>
 
+                                                    {/* WhatsApp */}
+                                                    <div className="space-y-1 text-left">
+                                                        <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">WhatsApp</label>
+                                                        <input
+                                                            type="tel"
+                                                            required
+                                                            value={whatsapp}
+                                                            onChange={handlePhoneChange}
+                                                            onFocus={() => setIsFocused(true)}
+                                                            onBlur={() => setIsFocused(false)}
+                                                            placeholder="(21) 99999-9999"
+                                                            className={`w-full px-3.5 py-2.5 rounded-xl border outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs ${isFocused ? 'bg-white border-[#3b2dff] ring-4 ring-[#3b2dff]/5' : 'bg-white border-slate-200'}`}
+                                                        />
+                                                    </div>
+
+                                                    {/* Tipo de Plano */}
+                                                    <div className="space-y-1 text-left">
+                                                        <label className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Tipo de Plano</label>
+                                                        <div className="relative">
+                                                            <select
+                                                                value={tipo}
+                                                                onChange={(e) => setTipo(e.target.value)}
+                                                                className="w-full pl-3.5 pr-8 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 outline-none text-xs font-semibold appearance-none cursor-pointer transition-all duration-200 shadow-2xs focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5"
+                                                            >
+                                                                <option value="pme">Empresa (PME / CNPJ)</option>
+                                                                <option value="individual">Individual (CPF)</option>
+                                                                <option value="familiar">Familiar (CPF)</option>
+                                                            </select>
+                                                            <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* CTA Button */}
+                                                    <button
+                                                        type="submit"
+                                                        disabled={!nome || whatsapp.length < 14}
+                                                        className="w-full py-3 mt-1.5 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-slate-200 disabled:text-slate-400 text-white font-extrabold text-xs shadow-sm hover:shadow-md hover:shadow-[#3b2dff]/10 hover:scale-[1.01] transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
+                                                    >
+                                                        <span>Simular Agora</span>
+                                                        <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5" />
+                                                    </button>
+                                                </form>
+
+                                                {/* Status Bar / Safe Badge */}
+                                                <div className="text-center pt-2 select-none border-t border-slate-100 flex items-center justify-center gap-1">
+                                                    <span className="relative flex size-1.5">
+                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                                                        <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500"></span>
+                                                    </span>
+                                                    <span className="text-[9px] font-bold text-slate-400">Consultores online</span>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                </AutoHeight>
                             </div>
                         </div>
                     </div>
