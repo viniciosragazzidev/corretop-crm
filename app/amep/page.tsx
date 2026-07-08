@@ -2,7 +2,10 @@ import { Metadata } from 'next';
 import NavbarLp from "@/components/lp/navbar";
 import AmepHero from "@/components/amep/amep-hero";
 import AmepTabs from "@/components/amep/amep-tabs";
+import AmepOwnUnits from "@/components/amep/amep-own-units";
+import AmepExpansion from "@/components/amep/amep-expansion";
 import AmepHospitals from "@/components/amep/amep-hospitals";
+import AmepAccreditedNetwork from "@/components/amep/amep-accredited-network";
 import AmepVideoDemo from "@/components/amep/amep-video-demo";
 import AmepSimulator from "@/components/amep/amep-simulator";
 import AmepPricing from "@/components/amep/amep-pricing";
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
     description: "Consulte a tabela oficial do plano Amep Saúde. Planos a partir de R$ 82,94 (CNPJ/MEI) e R$ 138,74 (Individual). Excelente custo-benefício e atendimento de qualidade no Rio de Janeiro.",
     openGraph: {
         title: "Plano Amep Saúde - Tabela Promocional Atualizada",
-        description: "Planos de saúde acessíveis no Rio de Janeiro com carência zero para consultas e exames na rede própria e credenciada Amep.",
+        description: "Planos de saúde acessíveis no Rio de Janeiro com carência zero para consultas e exames na rede própria Amep.",
         url: "https://Venacorsaude.com.br/amep",
         siteName: "Venacor Saúde",
         images: [
@@ -80,7 +83,10 @@ export default function AmepPage() {
             <NavbarLp />
             <AmepHero />
             <AmepTabs />
+            <AmepOwnUnits />
+            <AmepExpansion />
             <AmepHospitals />
+            <AmepAccreditedNetwork />
             <AmepVideoDemo />
             <AmepSimulator />
             <AmepPricing />

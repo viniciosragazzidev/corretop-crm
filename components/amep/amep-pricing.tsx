@@ -140,7 +140,33 @@ export default function AmepPricing() {
                             <ArrowRight className="size-3.5" />
                         </Button>
                     </div>
+                </div>
 
+                {/* Benefícios Extras / Badges */}
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-border/60 hover:border-primary/40 hover:shadow-sm transition-all">
+                        <div className="size-10 rounded-full bg-green-500/10 flex items-center justify-center shrink-0">
+                            <span className="text-xl font-bold text-green-600">%</span>
+                        </div>
+                        <div>
+                            <h4 className="text-sm font-bold text-foreground mb-1">Clube de Vantagens e Descontos</h4>
+                            <p className="text-xs text-muted-foreground leading-relaxed">
+                                Até <strong>30% OFF</strong> nas Drogarias Pacheco e <strong>15% OFF</strong> na Farmácia de Manipulação FARMEP.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-border/60 hover:border-primary/40 hover:shadow-sm transition-all">
+                        <div className="size-10 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                        </div>
+                        <div>
+                            <h4 className="text-sm font-bold text-foreground mb-1">Tecnologia na Palma da Mão</h4>
+                            <p className="text-xs text-muted-foreground leading-relaxed">
+                                Super App completo com carteira virtual e acesso rápido a laudos de exames diretamente pelo celular.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>

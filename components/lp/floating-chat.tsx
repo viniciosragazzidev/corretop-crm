@@ -202,7 +202,7 @@ const FloatingChat: React.FC = () => {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                             onClick={() => setIsOpen(true)}
-                            className="mb-3 max-w-[280px] sm:max-w-[320px] bg-background/95 dark:bg-background/95 backdrop-blur-xl border border-border/60 rounded-2xl p-3.5 shadow-xl cursor-pointer hover:border-primary/40 transition-all flex items-start gap-3 group relative overflow-hidden"
+                            className="hidden sm:flex mb-3 max-w-[280px] sm:max-w-[320px] bg-background/95 dark:bg-background/95 backdrop-blur-xl border border-border/60 rounded-2xl p-3.5 shadow-xl cursor-pointer hover:border-primary/40 transition-[border-color] duration-200 items-start gap-3 group relative overflow-hidden"
                         >
                             <div className="size-8 rounded-full bg-primary/10 text-base flex items-center justify-center shrink-0 border border-primary/20">
                                 👩‍⚕️

@@ -3,53 +3,58 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Hospital, ClipboardCheck, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Zap, Hospital, ClipboardCheck, ArrowRight, CheckCircle2, ShieldCheck, Building, Briefcase, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SplitText from '@/components/split-text';
 
-type TabKey = 'beneficio' | 'hospitais' | 'regras';
+type TabKey = 'unidades' | 'empresarial' | 'idade';
 
 const tabsData = {
-    beneficio: {
-        id: 'beneficio',
-        badge: 'Benefício Promocional',
-        title: 'Atendimento AMBULATORIAL, Consultas e Exames com Carência Zero.',
-        text: 'Nesta campanha especial de vendas, os novos beneficiários contarão com Carência Zero para Atendimento Ambulatorial, Consultas e Exames na Rede de Atendimento AMEP Saúde.',
-        ctaText: 'Falar com Consultor no WhatsApp',
-        ctaAction: 'whatsapp',
+    unidades: {
+        id: 'unidades',
+        badge: 'Rede Própria',
+        title: 'Estrutura planejada para oferecer conforto e tecnologia.',
+        text: 'A Amep Saúde conta com centros médicos modernos e atendimento humanizado espalhados estrategicamente:',
+        ctaText: 'Consultar Unidade Próxima',
+        ctaAction: 'scrollUnidades',
         imageSrc: '/image5.png',
-        imageAlt: 'Atendimento e consultas Amep Saúde',
+        imageAlt: 'Unidades Próprias Amep Saúde',
         imagePosition: 'object-center',
-        highlights: ['Campanha Promocional Ativa', 'Carência Zero Imediata', 'Ampla cobertura de exames e consultas']
+        highlights: [
+            'Unidade Freguesia: Ambulatório e exames',
+            'Unidade Madureira: Ambulatório, exames e terapias',
+            'Hospital CHAJ Jacarepaguá: Urgência 24h e cirurgias',
+            'Unidade Taquara e CIM: Terapias e consultas'
+        ]
     },
-    hospitais: {
-        id: 'hospitais',
-        badge: 'Rede de Atendimento',
-        title: 'Atendimento rápido perto de você.',
-        text: 'Cobertura em diversos hospitais, clínicas e laboratórios parceiros no Rio de Janeiro. Além da rede metropolitana credenciada, contamos com unidades de atendimento e parcerias em Cabo Frio, São Pedro da Aldeia e Arraial do Cabo!',
-        ctaText: 'Ver Lista de Hospitais Completa',
+    empresarial: {
+        id: 'empresarial',
+        badge: 'Plano Empresarial',
+        title: 'Benefício bom é aquele que o colaborador realmente valoriza e pode usar!',
+        text: 'Proteja sua equipe com um plano empresarial com atendimento humanizado, rede própria, credenciada e benefícios reais para a rotina do dia a dia.',
+        ctaText: 'Cotar para Minha Empresa',
         ctaAction: 'scrollSimulador',
         imageSrc: '/image4.png',
-        imageAlt: 'Hospitais credenciados AMEP',
+        imageAlt: 'Plano de Saúde Empresarial AMEP',
         imagePosition: 'object-top',
-        highlights: ['Unidades na Região dos Lagos (Cabo Frio, São Pedro e Arraial)', 'Atendimento no Rio de Janeiro e Região Metropolitana', 'Estrutura Completa de Consultas e Exames']
+        highlights: ['Rede própria e credenciada completa', 'Excelente custo-benefício para RH', 'Atendimento humanizado']
     },
-    regras: {
-        id: 'regras',
-        badge: 'Condições Flexíveis',
-        title: 'Regras simples para você ou sua empresa.',
-        text: 'Disponível a partir de 12 anos de idade (sem precisar de responsável atrelado ao contrato). Se você tem MEI ou CNPJ, pode incluir dependentes, familiares ou colaboradores sem complicação.',
-        ctaText: 'Consultar Minha Idade / Perfil',
-        ctaAction: 'scrollSimulador',
+    idade: {
+        id: 'idade',
+        badge: 'Melhor Idade',
+        title: 'Investir em você não tem idade!',
+        text: 'Aqui na Amep tem saúde de verdade para quem deseja viver mais e melhor, oferecendo a segurança necessária em todas as fases da vida.',
+        ctaText: 'Solicitar Atendimento Especializado',
+        ctaAction: 'whatsapp',
         imageSrc: '/image2.png',
-        imageAlt: 'Contratação Amep Saúde para famílias e PME',
+        imageAlt: 'Saúde na Melhor Idade Amep',
         imagePosition: 'object-center',
-        highlights: ['Vendas a partir de 12 anos completos', 'Desconto MEI / CNPJ até 35%', 'Sem exigência de vínculo']
+        highlights: ['Acompanhamento contínuo', 'Programas de prevenção e bem-estar', 'Segurança em todas as fases da vida']
     }
 };
 
 export default function AmepTabs() {
-    const [activeTab, setActiveTab] = useState<TabKey>('beneficio');
+    const [activeTab, setActiveTab] = useState<TabKey>('unidades');
 
     const handleCtaClick = (action: string) => {
         if (action === 'whatsapp') {
@@ -103,12 +108,12 @@ export default function AmepTabs() {
                 <div className="flex justify-center mb-10">
                     <div className="inline-flex p-1.5 rounded-2xl bg-muted/60 border border-border/60 backdrop-blur-md shadow-inner gap-1">
                         <button
-                            onClick={() => setActiveTab('beneficio')}
-                            className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
-                                activeTab === 'beneficio' ? 'text-white' : 'text-muted-foreground hover:text-foreground'
+                            onClick={() => setActiveTab('unidades')}
+                            className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 ${
+                                activeTab === 'unidades' ? 'text-white' : 'text-muted-foreground hover:text-foreground'
                             }`}
                         >
-                            {activeTab === 'beneficio' && (
+                            {activeTab === 'unidades' && (
                                 <motion.div
                                     layoutId="activeTabBadge"
                                     className="absolute inset-0 bg-primary rounded-xl shadow-md"
@@ -116,18 +121,18 @@ export default function AmepTabs() {
                                 />
                             )}
                             <span className="relative z-10 flex items-center gap-2">
-                                <Zap className="size-4" />
-                                <span>Benefício do Mês</span>
+                                <Building className="size-4" />
+                                <span>Unidades Próprias</span>
                             </span>
                         </button>
 
                         <button
-                            onClick={() => setActiveTab('hospitais')}
-                            className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
-                                activeTab === 'hospitais' ? 'text-white' : 'text-muted-foreground hover:text-foreground'
+                            onClick={() => setActiveTab('empresarial')}
+                            className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 ${
+                                activeTab === 'empresarial' ? 'text-white' : 'text-muted-foreground hover:text-foreground'
                             }`}
                         >
-                            {activeTab === 'hospitais' && (
+                            {activeTab === 'empresarial' && (
                                 <motion.div
                                     layoutId="activeTabBadge"
                                     className="absolute inset-0 bg-primary rounded-xl shadow-md"
@@ -135,18 +140,18 @@ export default function AmepTabs() {
                                 />
                             )}
                             <span className="relative z-10 flex items-center gap-2">
-                                <Hospital className="size-4" />
-                                <span>Hospitais e Rede</span>
+                                <Briefcase className="size-4" />
+                                <span>Plano Empresarial</span>
                             </span>
                         </button>
 
                         <button
-                            onClick={() => setActiveTab('regras')}
-                            className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
-                                activeTab === 'regras' ? 'text-white' : 'text-muted-foreground hover:text-foreground'
+                            onClick={() => setActiveTab('idade')}
+                            className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 ${
+                                activeTab === 'idade' ? 'text-white' : 'text-muted-foreground hover:text-foreground'
                             }`}
                         >
-                            {activeTab === 'regras' && (
+                            {activeTab === 'idade' && (
                                 <motion.div
                                     layoutId="activeTabBadge"
                                     className="absolute inset-0 bg-primary rounded-xl shadow-md"
@@ -154,8 +159,8 @@ export default function AmepTabs() {
                                 />
                             )}
                             <span className="relative z-10 flex items-center gap-2">
-                                <ClipboardCheck className="size-4" />
-                                <span>Quem Pode Contratar</span>
+                                <Heart className="size-4" />
+                                <span>Viver Mais e Melhor</span>
                             </span>
                         </button>
                     </div>
@@ -168,10 +173,10 @@ export default function AmepTabs() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -15 }}
-                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                            initial={{ opacity: 0, scale: 0.98, y: 8 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.98, y: -8 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
                             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
                         >
                             {/* Text & Micro CTA (7 Cols) */}
@@ -205,7 +210,7 @@ export default function AmepTabs() {
                                 <div className="pt-3">
                                     <Button
                                         onClick={() => handleCtaClick(currentTab.ctaAction)}
-                                        className="h-12 px-6 rounded-xl bg-primary hover:bg-primary text-white font-bold text-sm shadow-md cursor-pointer flex items-center gap-2 transition-all active:scale-[0.98]"
+                                        className="h-12 px-6 rounded-xl bg-primary hover:bg-primary text-white font-bold text-sm shadow-md cursor-pointer flex items-center gap-2 transition-[transform,background-color] duration-200 ease-out active:scale-[0.98]"
                                     >
                                         <span>{currentTab.ctaText}</span>
                                         <ArrowRight className="size-4" />

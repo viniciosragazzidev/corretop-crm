@@ -75,7 +75,7 @@ export default function AmepPromo() {
                             </div>
 
                             <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight leading-tight">
-                                Contrate AMEP Saúde Hoje e Tenha <span className="text-primary dark:text-primary">Carência ZERO para Atendimento AMBULATORIAL, Consultas e Exames</span>.
+                                Contrate AMEP Saúde Hoje e Tenha <span className="text-primary dark:text-primary">Carência ZERO na Rede Própria para Atendimento AMBULATORIAL, Consultas e Exames</span>.
                             </h2>
 
                             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-normal">
@@ -90,7 +90,7 @@ export default function AmepPromo() {
                                 </div>
                                 <div className="p-3 rounded-xl bg-muted/40 border border-border/50 flex items-center gap-2.5">
                                     <Clock className="size-4 text-primary shrink-0" />
-                                    <span className="text-xs font-semibold text-foreground">Carência Zero Imediata</span>
+                                    <span className="text-xs font-semibold text-foreground">Carência Zero na Rede Própria</span>
                                 </div>
                                 <div className="p-3 rounded-xl bg-muted/40 border border-border/50 flex items-center gap-2.5">
                                     <ShieldCheck className="size-4 text-primary shrink-0" />
@@ -105,7 +105,7 @@ export default function AmepPromo() {
                                     size="lg"
                                     className="h-12 px-6 rounded-xl bg-primary hover:bg-primary text-white font-bold text-sm shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
                                 >
-                                    <span>Garantir Carência Zero na AMEP</span>
+                                    <span>Garantir Carência Zero na Rede Própria</span>
                                     <ArrowRight className="size-4" />
                                 </Button>
                                 <div className="flex items-center gap-2 text-xs text-muted-foreground">

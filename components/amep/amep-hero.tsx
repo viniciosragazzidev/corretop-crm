@@ -87,22 +87,24 @@ export default function AmepHero() {
                             <span>Tabela Promocional Disponível</span>
                         </motion.div>
 
-                        {/* Co-Branding Header Badge (Amep Logo Larger) */}
                         <motion.div 
                             initial="hidden"
                             animate="visible"
                             variants={fadeLeft}
                             custom={0.1}
-                            className="flex flex-wrap items-center gap-3.5 p-2.5 pr-5 rounded-full bg-primary/10 border border-primary/25 backdrop-blur-md shadow-xs"
+                            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-2.5 pr-4 sm:pr-5 rounded-2xl sm:rounded-full bg-primary/10 border border-primary/25 backdrop-blur-md shadow-xs w-fit"
                         >
-                            <div className="flex items-center gap-3 bg-background px-4 py-2 rounded-full border border-border/50 shadow-2xs">
-                                <Image src="/logo.webp" alt="Venacor Corretora" width={95} height={30} className="h-6 sm:h-7 w-auto object-contain dark:brightness-0 dark:invert" priority />
-                                <span className="text-sm font-extrabold text-primary">×</span>
-                                <Image src="/amep_saude_logo.png" alt="AMEP Saúde" width={150} height={45} className="h-8 sm:h-9.5 w-auto object-contain drop-shadow-xs" priority />
+                            <div className="flex items-center gap-2 bg-background px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border/50 shadow-2xs shrink-0">
+                                <Image src="/logo.webp" alt="Venacor Corretora" width={90} height={28} className="h-5 sm:h-7 w-auto object-contain dark:brightness-0 dark:invert" priority />
+                                <span className="text-xs sm:text-sm font-extrabold text-primary">×</span>
+                                <Image src="/amep_saude_logo.png" alt="AMEP Saúde" width={130} height={40} className="h-7 sm:h-9.5 w-auto object-contain drop-shadow-xs" priority />
                             </div>
-                            <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                                <ShieldCheck className="size-4 text-primary shrink-0" />
-                                Operadora Oficial AMEP Saúde
+                            <span className="text-xs font-bold text-foreground flex items-center gap-1.5 pl-1 sm:pl-0">
+                                <span className="relative flex h-2 w-2 mr-1">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                Campanha Comercial Ativa — Por Tempo Limitado
                             </span>
                         </motion.div>
 
@@ -118,7 +120,7 @@ export default function AmepHero() {
                             to={{ opacity: 1, y: 0 }}
                             threshold={0.1}
                         >
-                            Plano AMEP Saúde: Excelência e Custo-Benefício no RJ. Adquira agora!
+                            O Plano Ambulatorial Ideal com o Valor Ideal para Você.
                         </SplitText>
 
                         {/* Subheadline (Exact Home Page Font Styles) */}
@@ -129,7 +131,7 @@ export default function AmepHero() {
                             custom={0.3}
                             className="text-muted-foreground text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed font-light"
                         >
-                            Garanta consultas e exames de qualidade com os planos da <strong className="text-primary font-bold">AMEP Saúde</strong> em todo o estado do Rio de Janeiro. Cotação imediata com a Venacor Corretora!
+                            Consultas, exames e acompanhamento médico no dia a dia. <strong className="text-primary font-bold">Funcional. Acessível. Presente.</strong>
                         </motion.p>
 
                         {/* Cards Horizontais de Preço Sutil (Staggered Entrance) */}
@@ -251,45 +253,48 @@ export default function AmepHero() {
                             <form onSubmit={handleSubmit} className="space-y-4 text-left">
                                 {/* Nome */}
                                 <div className="space-y-1.5">
-                                    <label className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Seu Nome Completo</label>
+                                    <label htmlFor="nome-input" className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Seu Nome Completo</label>
                                     <div className="relative">
                                         <User className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                                         <input
+                                            id="nome-input"
                                             type="text"
                                             required
                                             value={nome}
                                             onChange={(e) => setNome(e.target.value)}
                                             placeholder="Ex: Carlos Oliveira"
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/70 bg-muted/20 focus:bg-background focus:border-primary outline-none transition-all text-sm font-medium text-foreground placeholder:font-normal placeholder:text-muted-foreground/60 shadow-2xs"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/70 bg-muted/20 focus:bg-background focus:border-primary outline-none transition-[border-color,background-color] duration-200 text-sm font-medium text-foreground placeholder:font-normal placeholder:text-muted-foreground/60 shadow-2xs"
                                         />
                                     </div>
                                 </div>
 
                                 {/* WhatsApp */}
                                 <div className="space-y-1.5">
-                                    <label className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Seu WhatsApp com DDD</label>
+                                    <label htmlFor="phone-input" className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Seu WhatsApp com DDD</label>
                                     <div className="relative">
                                         <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                                         <input
+                                            id="phone-input"
                                             type="tel"
                                             required
                                             value={whatsapp}
                                             onChange={handlePhoneChange}
                                             placeholder="(21) 99999-9999"
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/70 bg-muted/20 focus:bg-background focus:border-primary outline-none transition-all text-sm font-medium text-foreground placeholder:font-normal placeholder:text-muted-foreground/60 shadow-2xs"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/70 bg-muted/20 focus:bg-background focus:border-primary outline-none transition-[border-color,background-color] duration-200 text-sm font-medium text-foreground placeholder:font-normal placeholder:text-muted-foreground/60 shadow-2xs"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Seletor de Perfil */}
                                 <div className="space-y-1.5">
-                                    <label className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Perfil de Contratação</label>
+                                    <label htmlFor="perfil-select" className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Perfil de Contratação</label>
                                     <div className="relative">
                                         <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                                         <select
+                                            id="perfil-select"
                                             value={tipo}
                                             onChange={(e) => setTipo(e.target.value)}
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/70 bg-muted/20 focus:bg-background focus:border-primary outline-none transition-all text-sm font-medium text-foreground appearance-none cursor-pointer shadow-2xs"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-border/70 bg-muted/20 focus:bg-background focus:border-primary outline-none transition-[border-color,background-color] duration-200 text-sm font-medium text-foreground appearance-none cursor-pointer shadow-2xs"
                                         >
                                             <option value="pme" className="bg-background text-foreground dark:bg-slate-900 dark:text-slate-100">
                                                 Tenho CNPJ / MEI (a partir de R$ 82,94)
@@ -305,7 +310,7 @@ export default function AmepHero() {
                                 <Button
                                     type="submit"
                                     disabled={!nome || whatsapp.length < 14 || isSubmitting}
-                                    className="w-full h-14 rounded-xl bg-primary hover:bg-primary text-white font-bold text-base shadow-xl shadow-primary/20 transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 mt-4"
+                                    className="w-full h-14 rounded-xl bg-primary hover:bg-primary text-white font-bold text-base shadow-xl shadow-primary/20 transition-[transform,background-color] duration-200 ease-out active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 mt-4"
                                 >
                                     {isSubmitting ? (
                                         <span>Consultando Tabela...</span>

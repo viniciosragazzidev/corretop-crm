@@ -124,10 +124,22 @@
 
   body {
     @apply bg-background text-foreground;
+    font-optical-sizing: auto;
+    font-kerning: normal;
+    line-height: 1.5;
   }
 
   html {
     @apply font-sans;
     font-size: 90%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold;
+    line-height: 1.15;
+  }
+
+  .uppercase, [class*="uppercase"] {
+    letter-spacing: 0.08em;
   }
 }

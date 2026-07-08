@@ -3,9 +3,49 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Building2, MapPin, HeartPulse } from 'lucide-react';
+import { Building2, MapPin, HeartPulse, Stethoscope, PlusCircle } from 'lucide-react';
 
 const hospitals = [
+    {
+        name: "Hospital CHAJ Jacarepaguá",
+        city: "Jacarepaguá",
+        region: "Zona Oeste RJ",
+        description: "Unidade própria com urgência 24h, atendimento ambulatorial, exames e cirurgias.",
+        badges: ["Urgência 24h", "Ambulatorial", "Exames", "Cirurgias"],
+        featured: true
+    },
+    {
+        name: "Unidade Freguesia",
+        city: "Freguesia",
+        region: "Zona Oeste RJ",
+        description: "Unidade própria com atendimento ambulatorial e exames.",
+        badges: ["Ambulatorial", "Exames"],
+        featured: false
+    },
+    {
+        name: "Unidade Madureira",
+        city: "Madureira",
+        region: "Zona Norte RJ",
+        description: "Unidade própria com atendimento ambulatorial, exames e terapias.",
+        badges: ["Ambulatorial", "Exames", "Terapias"],
+        featured: false
+    },
+    {
+        name: "Unidade Taquara",
+        city: "Taquara",
+        region: "Zona Oeste RJ",
+        description: "Unidade própria com atendimento ambulatorial e exames.",
+        badges: ["Ambulatorial", "Exames"],
+        featured: false
+    },
+    {
+        name: "CIM Centro Infantil Multiterapêutico",
+        city: "Centro",
+        region: "Centro",
+        description: "Centro multiterapêutico infantil com terapias especializadas.",
+        badges: ["Terapias"],
+        featured: false
+    },
     {
         name: "Hospital Prontonil",
         city: "Nova Iguaçu - Centro",
@@ -44,9 +84,23 @@ const hospitals = [
         region: "Região dos Lagos",
         description: "Todas essas cidades contam com unidades de atendimento da AMEP Saúde, garantindo cobertura ágil e de excelência.",
         badges: ["Unidades AMEP", "Atendimento Amplo"],
-        featured: true
+        featured: false
     }
 ];
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    Hospital: Building2,
+    Unidade: Stethoscope,
+    CIM: PlusCircle,
+    Default: HeartPulse,
+};
+
+function getIcon(name: string) {
+    if (name.startsWith("Hospital")) return iconMap.Hospital;
+    if (name.startsWith("Unidade")) return iconMap.Unidade;
+    if (name.startsWith("CIM")) return iconMap.CIM;
+    return iconMap.Default;
+}
 
 export default function AmepHospitals() {
     return (
@@ -65,17 +119,19 @@ export default function AmepHospitals() {
                     </div>
  
                     <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight max-w-3xl">
-                        Hospitais Credenciados e Rede Própria AMEP Saúde
+                        Hospitais, Unidades Próprias e Rede Credenciada AMEP Saúde
                     </h2>
  
                     <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-light">
-                        Atendimento médico de excelência na rede própria e credenciada AMEP Saúde em todo o estado do Rio de Janeiro.
+                        Atendimento médico de excelência nas unidades próprias e credenciadas AMEP Saúde em todo o estado do Rio de Janeiro.
                     </p>
                 </div>
 
                 {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {hospitals.map((hospital, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {hospitals.map((hospital, index) => {
+                        const Icon = getIcon(hospital.name);
+                        return (
                         <motion.div
                             key={hospital.name}
                             initial={{ opacity: 0, y: 20 }}
@@ -90,14 +146,14 @@ export default function AmepHospitals() {
                         >
                             {hospital.featured && (
                                 <div className="absolute -top-3 left-6 bg-primary text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-                                    Hospital Principal AMEP
+                                    Unidade Principal AMEP
                                 </div>
                             )}
 
                             <div className="space-y-4">
                                 <div className="flex items-start justify-between gap-2">
                                     <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary dark:text-primary shrink-0">
-                                        <HeartPulse className="size-5" />
+                                        <Icon className="size-5" />
                                     </div>
                                     <span className="text-[11px] font-semibold text-primary dark:text-primary bg-primary/10 px-2 py-0.5 rounded-md">
                                         {hospital.region}
@@ -127,7 +183,8 @@ export default function AmepHospitals() {
                                 ))}
                             </div>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </div>
 
             </div>
