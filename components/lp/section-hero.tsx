@@ -72,32 +72,37 @@ export default function SectionHero() {
           animate="visible"
           className="lg:col-span-6 flex flex-col items-start text-left space-y-6 md:space-y-8"
         >
-          <motion.h1
-            variants={childVariants}
-            className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-[#111827] tracking-tight leading-[1.1] select-text"
-          >
-            <span className="relative inline-block">
-              Planos de Saúde
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-2.5 text-[#3b2dff]"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 7 C 20 2, 80 2, 98 7"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </svg>
-            </span>
-            <br />
-            <span className="mt-2 block">líderes na região com o menor preço do mercado.</span>
-          </motion.h1>
+          <div className="overflow-hidden w-full py-1">
+            <motion.h1
+              variants={childVariants}
+              className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-[#111827] tracking-tight leading-[1.1] select-text"
+            >
+              <span className="relative inline-block">
+                Planos de Saúde
+                <svg
+                  className="absolute -bottom-2 left-0 w-full h-2.5 text-[#3b2dff]"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 7 C 20 2, 80 2, 98 7"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              <br />
+              <span className="mt-2 block">líderes na região com o menor preço do mercado.</span>
+            </motion.h1>
+          </div>
 
           <motion.p
-            variants={childVariants}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+            }}
             className="text-slate-500 text-base sm:text-lg md:text-lg font-normal leading-relaxed max-w-xl select-text"
           >
             Compare tabelas exclusivas para você, sua família ou empresa em minutos. Economize até 35% utilizando seu CNPJ ou MEI com consultoria isenta na Baixada.

@@ -101,12 +101,28 @@ export default function SectionSimulador() {
                         </div>
 
                         <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15] max-w-xl">
-                            Receba sua cotação na hora
+                            <div className="overflow-hidden py-0.5">
+                                <motion.span
+                                    initial={{ y: "100%" }}
+                                    whileInView={{ y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                                    className="inline-block"
+                                >
+                                    Receba sua cotação na hora
+                                </motion.span>
+                            </div>
                         </h2>
 
-                        <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl">
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.15 }}
+                            className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl"
+                        >
                             Simule preços e carências em poucos cliques. Nosso sistema analisa as melhores operadoras para o seu perfil.
-                        </p>
+                        </motion.p>
                     </div>
 
                     {/* Lista de Diferenciais / Recursos */}

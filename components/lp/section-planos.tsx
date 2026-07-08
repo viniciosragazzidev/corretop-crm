@@ -103,29 +103,54 @@ export default function SectionPlanos() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="flex flex-col items-start text-left space-y-4 max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
-              As{' '}
-              <span className="relative inline-block text-[#3b2dff]">
-                Melhores opções
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-2 text-[#3b2dff]"
-                  viewBox="0 0 100 10"
-                  preserveAspectRatio="none"
+              <div className="overflow-hidden py-0.5">
+                <motion.span 
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                  className="inline-block"
                 >
-                  <path
-                    d="M2 7 C 20 2, 80 2, 98 7"
-                    stroke="currentColor"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-              </span>
-              <br />
-              <span className="mt-1 text-slate-900">de Saúde e Odonto em um só lugar.</span>
+                  As{' '}
+                  <span className="relative inline-block text-[#3b2dff]">
+                    Melhores opções
+                    <svg
+                      className="absolute -bottom-2 left-0 w-full h-2 text-[#3b2dff]"
+                      viewBox="0 0 100 10"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        d="M2 7 C 20 2, 80 2, 98 7"
+                        stroke="currentColor"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
+                  </span>
+                </motion.span>
+              </div>
+              <div className="overflow-hidden py-0.5 mt-1">
+                <motion.span 
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 150, damping: 20, delay: 0.05 }}
+                  className="inline-block text-slate-900"
+                >
+                  de Saúde e Odonto em um só lugar.
+                </motion.span>
+              </div>
             </h2>
-            <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl"
+            >
               Cotação instantânea com tabela oficial de coparticipação e carências.
-            </p>
+            </motion.p>
           </div>
 
           {/* Tab Switcher */}

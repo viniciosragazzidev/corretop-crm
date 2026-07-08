@@ -71,12 +71,26 @@ export default function SectionCotacao() {
                                 <HugeiconsIcon icon={LicenseIcon} className="size-6" />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-lg md:text-xl font-bold tracking-tight text-white select-text">
-                                    Economia via CNPJ
-                                </h3>
-                                <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text">
+                                <div className="overflow-hidden py-0.5">
+                                    <motion.h3
+                                        initial={{ y: "100%" }}
+                                        whileInView={{ y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                                        className="text-lg md:text-xl font-bold tracking-tight text-white select-text"
+                                    >
+                                        Economia via CNPJ
+                                    </motion.h3>
+                                </div>
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.1 }}
+                                    className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text"
+                                >
                                     Tem MEI ou empresa ativa? Garanta até 35% de redução no valor das mensalidades automaticamente em relação ao plano físico tradicional.
-                                </p>
+                                </motion.p>
                             </div>
                         </div>
 
@@ -86,12 +100,26 @@ export default function SectionCotacao() {
                                 <HugeiconsIcon icon={CustomerSupportIcon} className="size-6" />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-lg md:text-xl font-bold tracking-tight text-white select-text">
-                                    Aproveite seu Plano Antigo
-                                </h3>
-                                <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text">
+                                <div className="overflow-hidden py-0.5">
+                                    <motion.h3
+                                        initial={{ y: "100%" }}
+                                        whileInView={{ y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                                        className="text-lg md:text-xl font-bold tracking-tight text-white select-text"
+                                    >
+                                        Aproveite seu Plano Antigo
+                                    </motion.h3>
+                                </div>
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.1 }}
+                                    className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text"
+                                >
                                     Nossa equipe avalia o tempo de permanência no seu convênio atual para reduzir ou zerar os prazos de espera na nova operadora.
-                                </p>
+                                </motion.p>
                             </div>
                         </div>
                     </div>
@@ -233,12 +261,26 @@ export default function SectionCotacao() {
                                 <HugeiconsIcon icon={Search01Icon} className="size-6" />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-lg md:text-xl font-bold tracking-tight text-white select-text">
-                                    Todas as Marcas Clínicas
-                                </h3>
-                                <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text">
+                                <div className="overflow-hidden py-0.5">
+                                    <motion.h3
+                                        initial={{ y: "100%" }}
+                                        whileInView={{ y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                                        className="text-lg md:text-xl font-bold tracking-tight text-white select-text"
+                                    >
+                                        Todas as Marcas Clínicas
+                                    </motion.h3>
+                                </div>
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.1 }}
+                                    className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text"
+                                >
                                     Cote Amil, Bradesco, SulAmérica, Unimed e operadoras regionais de uma só vez com total independência e sem taxas ocultas.
-                                </p>
+                                </motion.p>
                             </div>
                         </div>
 
@@ -248,12 +290,26 @@ export default function SectionCotacao() {
                                 <HugeiconsIcon icon={Video01Icon} className="size-6" />
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-lg md:text-xl font-bold tracking-tight text-white select-text">
-                                    Praticidade Digital
-                                </h3>
-                                <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text">
+                                <div className="overflow-hidden py-0.5">
+                                    <motion.h3
+                                        initial={{ y: "100%" }}
+                                        whileInView={{ y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                                        className="text-lg md:text-xl font-bold tracking-tight text-white select-text"
+                                    >
+                                        Praticidade Digital
+                                    </motion.h3>
+                                </div>
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.1 }}
+                                    className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-sm select-text"
+                                >
                                     Esqueça a burocracia ou ligações chatas. Você recebe as tabelas comerciais vigentes organizadas diretamente no seu WhatsApp de forma rápida.
-                                </p>
+                                </motion.p>
                             </div>
                         </div>
                     </div>

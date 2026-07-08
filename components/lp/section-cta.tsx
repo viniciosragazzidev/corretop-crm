@@ -127,16 +127,30 @@ export default function SectionCta({ variant = 'middle', title, description }: S
                 isBottom ? 'text-white' : 'text-slate-900'
               }`}
             >
-              {displayTitle}
+              <div className="overflow-hidden py-0.5">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                  className="inline-block"
+                >
+                  {displayTitle}
+                </motion.span>
+              </div>
             </h3>
 
-            <p
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
               className={`text-xs md:text-sm font-light leading-relaxed max-w-[48ch] ${
                 isBottom ? 'text-white/85' : 'text-slate-500'
               }`}
             >
               {displayDesc}
-            </p>
+            </motion.p>
           </div>
 
           {/* Right Column: CTA Buttons */}

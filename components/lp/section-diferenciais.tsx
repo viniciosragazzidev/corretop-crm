@@ -130,11 +130,27 @@ export default function SectionDiferenciais() {
                         <span>Diferenciais Exclusivos</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15] max-w-2xl">
-                        O que você ganha ao contratar com a Venacor Saúde.
+                        <div className="overflow-hidden py-0.5">
+                            <motion.span
+                                initial={{ y: "100%" }}
+                                whileInView={{ y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                                className="inline-block"
+                            >
+                                O que você ganha ao contratar com a Venacor Saúde.
+                            </motion.span>
+                        </div>
                     </h2>
-                    <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl">
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                        className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl"
+                    >
                         Soluções sob medida para o seu momento com suporte dedicado do início ao fim.
-                    </p>
+                    </motion.p>
                 </div>
 
                 {/* 2. Menu de Abas / Tabs Switcher */}
@@ -166,9 +182,11 @@ export default function SectionDiferenciais() {
                     {/* Progress Slider */}
                     <div className="flex items-center gap-3 text-xs text-slate-400 font-bold shrink-0">
                         <div className="w-20 h-1 bg-slate-100 rounded-full overflow-hidden">
-                            <div
-                                className="h-full bg-[#3b2dff] transition-all duration-300"
-                                style={{ width: `${progressPercent}%` }}
+                            <motion.div
+                                className="h-full bg-[#3b2dff]"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${progressPercent}%` }}
+                                transition={{ type: 'spring', stiffness: 100, damping: 20 }}
                             />
                         </div>
                         <span>{activeIndex + 1}/{tabData.length}</span>
