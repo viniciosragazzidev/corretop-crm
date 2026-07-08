@@ -90,7 +90,7 @@ export default function SectionCotacao() {
                     {/* COLUNA CENTRAL: Celular saindo para fora (Overflow) com Formulário */}
                     <div className="lg:col-span-4 flex justify-center relative -mt-40 lg:-mt-56 mb-8 lg:mb-12 z-20">
                         {/* Smartphone Mockup */}
-                        <div className="relative w-[290px] sm:w-[325px] aspect-[9/18.2] bg-white rounded-[3.25rem] p-3 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] border-[3px] border-slate-100 flex flex-col justify-start select-none">
+                        <div className="relative w-[290px] sm:w-[325px] aspect-[9/16.5] bg-white rounded-[3.25rem] p-3 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] border-[3px] border-slate-100 flex flex-col justify-start select-none">
 
                             {/* Notch do Celular */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-5 w-28 bg-slate-100 rounded-b-2xl z-30 flex items-center justify-center">
@@ -119,7 +119,7 @@ export default function SectionCotacao() {
                                             <h4 className="text-xl font-black tracking-tight text-slate-900 mt-0.5">
                                                 Cotação Inteligente
                                             </h4>
-                                            <p className="text-[10px] text-slate-400 font-medium leading-none mt-1">
+                                            <p className="text-[10px] text-slate-400 font-medium  mt-1">
                                                 Preencha abaixo e receba o estudo comparativo de preços no WhatsApp em poucos minutos.
                                             </p>
                                         </div>
@@ -193,17 +193,17 @@ export default function SectionCotacao() {
                                                 <span>Simular Agora</span>
                                                 <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5" />
                                             </button>
-                                         </form>
+                                        </form>
 
-                                         {/* Status Bar / Safe Badge */}
-                                         <div className="text-center pt-2 select-none border-t border-slate-100 flex items-center justify-center gap-1">
-                                             <span className="relative flex size-1.5">
-                                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                                                 <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500"></span>
-                                             </span>
-                                             <span className="text-[9px] font-bold text-slate-400">Consultores online</span>
-                                         </div>
-                                     </>
+                                        {/* Status Bar / Safe Badge */}
+                                        <div className="text-center pt-2 select-none border-t border-slate-100 flex items-center justify-center gap-1">
+                                            <span className="relative flex size-1.5">
+                                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                                                <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500"></span>
+                                            </span>
+                                            <span className="text-[9px] font-bold text-slate-400">Consultores online</span>
+                                        </div>
+                                    </>
                                 )}
 
                             </div>
