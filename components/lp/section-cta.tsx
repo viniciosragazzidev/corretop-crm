@@ -7,7 +7,7 @@ import { WhatsappIcon, ArrowRight01Icon, ZapIcon } from '@hugeicons/core-free-ic
 
 interface SectionCtaProps {
   variant?: 'middle' | 'bottom';
-  title?: string;
+  title?: React.ReactNode;
   description?: string;
 }
 
@@ -29,66 +29,109 @@ export default function SectionCta({ variant = 'middle', title, description }: S
   )}`;
 
   // Default content based on variant
-  const defaultTitle = isBottom
-    ? 'Tome a melhor decisão para sua saúde e bolso.'
-    : 'Pronto para simular seu plano em segundos?';
+  const defaultTitle = isBottom ? (
+    <>
+      Tome a melhor decisão para sua{' '}
+      <span className="relative inline-block">
+        saúde
+        <svg
+          className="absolute -bottom-1.5 left-0 w-full h-1.5 text-white/80"
+          viewBox="0 0 100 10"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M2 7 C 20 2, 80 2, 98 7"
+            stroke="currentColor"
+            strokeWidth="4"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
+      </span>{' '}
+      e bolso.
+    </>
+  ) : (
+    <>
+      Simule seu plano em{' '}
+      <span className="relative inline-block text-[#3b2dff]">
+        segundos
+        <svg
+          className="absolute -bottom-1.5 left-0 w-full h-1.5 text-[#3b2dff]/80"
+          viewBox="0 0 100 10"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M2 7 C 20 2, 80 2, 98 7"
+            stroke="currentColor"
+            strokeWidth="4"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
+      </span>
+    </>
+  );
 
   const defaultDesc = isBottom
-    ? 'Nossa equipe de consultores especializados está pronta para analisar seu perfil e propor a melhor combinação de preço e cobertura.'
-    : 'Compare preços de forma 100% online ou receba suporte personalizado de quem realmente entende do assunto.';
+    ? 'Nossos consultores analisam seu perfil para propor o melhor custo-benefício de forma personalizada.'
+    : 'Compare preços online e receba suporte dedicado de quem é especialista na Baixada.';
 
   const displayTitle = title || defaultTitle;
   const displayDesc = description || defaultDesc;
 
   return (
-    <section className="w-full py-16 md:py-20 font-sans select-none overflow-hidden bg-white">
+    <section className="w-full py-10 md:py-14 font-sans select-none overflow-hidden bg-white">
       <div className="w-full max-w-[1280px] mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-          className={`relative rounded-[2.5rem] p-10 md:p-16 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 ${
+          className={`relative rounded-[2.2rem] p-8 md:p-12 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 ${
             isBottom
-              ? 'bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.25)]'
-              : 'bg-slate-50/50 border border-slate-100/80 text-slate-900 shadow-[0_20px_50px_-25px_rgba(59,45,255,0.05)]'
+              ? 'bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-white shadow-[0_25px_50px_-20px_rgba(0,0,0,0.25)]'
+              : 'bg-slate-50/60 border border-slate-100 text-slate-900 shadow-[0_15px_40px_-20px_rgba(59,45,255,0.04)]'
           }`}
         >
           {/* Background decorative glows */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             {isBottom ? (
               <>
-                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#3b2dff]/20 blur-[100px]" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-slate-800/30 blur-[100px]" />
+                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#3b2dff]/15 blur-[100px]" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-slate-800/20 blur-[100px]" />
               </>
             ) : (
               <>
-                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#3b2dff]/5 blur-[80px]" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-slate-100 blur-[80px]" />
+                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#3b2dff]/3 blur-[80px]" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-slate-100/50 blur-[80px]" />
               </>
             )}
           </div>
 
           {/* Left Column: Text */}
-          <div className="relative z-10 flex flex-col items-start text-left max-w-2xl space-y-4">
+          <div className="relative z-10 flex flex-col items-start text-left max-w-xl space-y-3.5">
             {/* Standard tag badge */}
-            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider">
-              <span className={`size-2 rounded-full ${isBottom ? 'bg-white' : 'bg-[#3b2dff]'}`} />
-              <span className={isBottom ? 'text-slate-400' : 'text-slate-500'}>
-                {isBottom ? 'Atendimento Exclusivo' : 'Cotação Imediata'}
-              </span>
+            <div
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
+                isBottom
+                  ? 'bg-white/5 text-slate-300 border-white/10'
+                  : 'bg-[#3b2dff]/5 text-[#3b2dff] border-[#3b2dff]/10'
+              }`}
+            >
+              <span className={`size-1.5 rounded-full ${isBottom ? 'bg-slate-300' : 'bg-[#3b2dff]'}`} />
+              <span>{isBottom ? 'Atendimento Exclusivo' : 'Cotação Imediata'}</span>
             </div>
 
             <h3
-              className={`text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.15] ${
-                isBottom ? 'text-white' : 'text-[#111827]'
+              className={`text-2xl md:text-3xl font-bold tracking-tight leading-[1.2] ${
+                isBottom ? 'text-white' : 'text-slate-900'
               }`}
             >
               {displayTitle}
             </h3>
 
             <p
-              className={`text-sm md:text-base font-light leading-relaxed ${
+              className={`text-xs md:text-sm font-light leading-relaxed max-w-[48ch] ${
                 isBottom ? 'text-slate-400' : 'text-slate-500'
               }`}
             >
@@ -97,21 +140,21 @@ export default function SectionCta({ variant = 'middle', title, description }: S
           </div>
 
           {/* Right Column: CTA Buttons */}
-          <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full lg:w-auto shrink-0">
+          <div className="relative z-10 flex flex-col sm:flex-row gap-3 w-full lg:w-auto shrink-0">
             {/* Button 1: Quotation */}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 15 }}
               onClick={handleScrollToQuote}
-              className={`inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl font-bold text-sm cursor-pointer transition-shadow duration-200 w-full sm:w-auto ${
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-shadow duration-200 w-full sm:w-auto ${
                 isBottom
-                  ? 'bg-white text-slate-950 hover:bg-slate-50 shadow-lg shadow-white/5'
-                  : 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-lg shadow-[#3b2dff]/25'
+                  ? 'bg-white text-slate-950 hover:bg-slate-50 shadow-md shadow-white/5'
+                  : 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-md shadow-[#3b2dff]/20'
               }`}
             >
               <span>Fazer Cotação Rápida</span>
-              <HugeiconsIcon icon={ZapIcon} className="size-4 shrink-0" />
+              <HugeiconsIcon icon={ZapIcon} className="size-3.5 shrink-0" />
             </motion.button>
 
             {/* Button 2: Consultant */}
@@ -120,15 +163,15 @@ export default function SectionCta({ variant = 'middle', title, description }: S
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 15 }}
               onClick={() => window.open(whatsappUrl, '_blank')}
-              className={`inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl font-bold text-sm cursor-pointer transition-all duration-200 w-full sm:w-auto border ${
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-all duration-200 w-full sm:w-auto border ${
                 isBottom
                   ? 'border-slate-800 bg-slate-900/50 text-white hover:bg-slate-950'
                   : 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50 shadow-sm'
               }`}
             >
-              <HugeiconsIcon icon={WhatsappIcon} className="size-4 shrink-0 text-emerald-500" />
+              <HugeiconsIcon icon={WhatsappIcon} className="size-3.5 shrink-0 text-emerald-500" />
               <span>Falar com Consultores</span>
-              <HugeiconsIcon icon={ArrowRight01Icon} className="size-4 shrink-0 opacity-40" />
+              <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5 shrink-0 opacity-40" />
             </motion.button>
           </div>
         </motion.div>
