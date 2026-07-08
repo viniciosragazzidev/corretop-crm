@@ -14,17 +14,11 @@ interface SectionCtaProps {
 export default function SectionCta({ variant = 'middle', title, description }: SectionCtaProps) {
   const isBottom = variant === 'bottom';
 
-  // Smooth scroll helper
-  const handleScrollToQuote = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('cotacao') || document.getElementById('simulador');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const whatsappCotacaoUrl = `https://wa.me/5521964469750?text=${encodeURIComponent(
+    'Olá! Gostaria de fazer uma cotação rápida de plano de saúde pela Venacor.'
+  )}`;
 
-  // WhatsApp link
-  const whatsappUrl = `https://wa.me/5521964469750?text=${encodeURIComponent(
+  const whatsappConsultorUrl = `https://wa.me/5521964469750?text=${encodeURIComponent(
     'Olá! Estava navegando no site da Venacor e gostaria de falar com um consultor sobre os planos de saúde.'
   )}`;
 
@@ -87,7 +81,7 @@ export default function SectionCta({ variant = 'middle', title, description }: S
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-          className={`relative rounded-[2.2rem] p-8 md:p-12 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 ${
+          className={`relative rounded-[2.2rem] p-6 md:p-12 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 ${
             isBottom
               ? 'bg-[#3b2dff] border border-[#3b2dff]/20 text-white shadow-[0_25px_50px_-20px_rgba(59,45,255,0.2)]'
               : 'bg-slate-50/60 border border-slate-100 text-slate-900 shadow-[0_15px_40px_-20px_rgba(59,45,255,0.04)]'
@@ -160,7 +154,7 @@ export default function SectionCta({ variant = 'middle', title, description }: S
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              onClick={handleScrollToQuote}
+              onClick={() => window.open(whatsappCotacaoUrl, '_blank')}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-shadow duration-200 w-full sm:w-auto will-change-transform ${
                 isBottom
                   ? 'bg-white text-[#3b2dff] hover:bg-slate-50 shadow-md shadow-white/5'
@@ -176,7 +170,7 @@ export default function SectionCta({ variant = 'middle', title, description }: S
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              onClick={() => window.open(whatsappUrl, '_blank')}
+              onClick={() => window.open(whatsappConsultorUrl, '_blank')}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-all duration-200 w-full sm:w-auto border will-change-transform ${
                 isBottom
                   ? 'border-white/20 bg-white/10 text-white hover:bg-white/20'

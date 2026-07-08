@@ -92,21 +92,21 @@ export default function SectionFaq() {
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between py-5 px-4 md:px-6 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
+                  className="w-full flex items-center justify-between py-4 px-4 md:px-5 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
                 >
-                  <span className={`text-base md:text-lg font-semibold pr-6 transition-colors duration-300 ${isOpen ? 'text-[#3b2dff]' : 'text-slate-900 group-hover:text-slate-700'}`}>
+                  <span className={`text-sm md:text-base font-semibold pr-6 transition-colors duration-300 ${isOpen ? 'text-[#3b2dff]' : 'text-slate-900 group-hover:text-slate-700'}`}>
                     {item.question}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                    className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#3b2dff] text-white shadow-md shadow-[#3b2dff]/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'
+                    className={`flex-shrink-0 size-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#3b2dff] text-white shadow-md shadow-[#3b2dff]/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'
                       }`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="16"
+                      height="16"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -127,7 +127,7 @@ export default function SectionFaq() {
                       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 md:px-6 pb-5 pt-1 text-sm md:text-base font-light text-slate-600 leading-relaxed">
+                      <div className="px-4 md:px-5 pb-4 pt-1 text-xs md:text-sm font-light text-slate-500 leading-relaxed">
                         {item.answer}
                       </div>
                     </motion.div>

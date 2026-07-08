@@ -30,12 +30,11 @@ function AnimatedCounter({ from, to }: { from: number; to: number }) {
 }
 
 export default function SectionHero() {
-  const handleScrollToQuote = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('cotacao') || document.getElementById('simulador');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  const handleWhatsAppRedirect = () => {
+    window.open(
+      `https://wa.me/5521964469750?text=${encodeURIComponent('Olá! Vi o site da Venacor e gostaria de fazer uma cotação de plano de saúde.')}`,
+      '_blank'
+    );
   };
 
   const containerVariants = {
@@ -113,7 +112,7 @@ export default function SectionHero() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              onClick={handleScrollToQuote}
+              onClick={handleWhatsAppRedirect}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-bold text-base shadow-lg shadow-[#3b2dff]/25 hover:shadow-xl hover:shadow-[#3b2dff]/35 transition-all duration-200 cursor-pointer"
             >
               <span>Faça uma cotação já!</span>

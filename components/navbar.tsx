@@ -18,9 +18,9 @@ const Navbar: React.FC<Props> = ({}) => {
       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
       className="flex w-full h-20 items-center justify-between font-sans select-none relative z-50"
     >
-      <div className="flex gap-18 items-center">
+      <div className="flex gap-4 md:gap-18 items-center">
         <Logo />
-        <ul className="flex items-center gap-8 text-gray-600 text-sm">
+        <ul className="hidden md:flex items-center gap-8 text-gray-600 text-sm">
           <li>
             <Link className="transition-all duration-300 hover:underline hover:text-[#3b2dff]" href="/">
               Nossos Planos
@@ -55,8 +55,10 @@ const Navbar: React.FC<Props> = ({}) => {
                 variant="default"
                 size="lg"
                 onClick={() => {
-                  const element = document.getElementById('cotacao') || document.getElementById('simulador');
-                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  window.open(
+                    `https://wa.me/5521964469750?text=${encodeURIComponent('Olá! Vim pelo site da Venacor e gostaria de uma cotação rápida de plano de saúde.')}`,
+                    '_blank'
+                  );
                 }}
                 className="text-[13.5px] px-4 cursor-pointer will-change-transform"
               >

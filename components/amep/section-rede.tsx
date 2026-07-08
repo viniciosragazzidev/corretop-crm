@@ -129,8 +129,8 @@ export default function SectionRede() {
         </div>
 
         {/* Header */}
-        <div className="w-full text-center space-y-3 max-w-2xl mx-auto mb-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
+        <div className="w-full text-center space-y-3 max-w-2xl mx-auto mb-4">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
             <div className="overflow-hidden py-0.5 inline-block">
               <motion.span
                 initial={{ y: '100%' }}
@@ -143,7 +143,7 @@ export default function SectionRede() {
               </motion.span>
             </div>
           </h2>
-          <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed">
+          <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-lg mx-auto">
             Hospitais, clínicas e laboratórios de excelência. Selecione a sua região para conferir algumas de nossas unidades e parceiros estratégicos do plano Amep Saúde.
           </p>
         </div>
@@ -152,23 +152,23 @@ export default function SectionRede() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full mt-2">
           
           {/* Sidebar Menu (30% width / 4 cols) */}
-          <div className="lg:col-span-4 flex flex-col gap-3.5 w-full text-left">
+          <div className="lg:col-span-4 flex flex-col gap-2.5 w-full text-left">
             {regions.map((region) => {
               const isActive = activeRegion === region.id;
               return (
                 <button
                   key={region.id}
                   onClick={() => setActiveRegion(region.id)}
-                  className={`p-5 rounded-2xl border text-left flex flex-col gap-1 transition-all duration-300 relative cursor-pointer overflow-hidden ${
+                  className={`py-3 px-4 rounded-xl border text-left flex flex-col gap-0.5 transition-all duration-300 relative cursor-pointer overflow-hidden ${
                     isActive
-                      ? 'bg-white border-l-[3.5px] border-l-[#3b2dff] border-y-slate-200/70 border-r-slate-200/70 shadow-sm shadow-[#3b2dff]/3'
-                      : 'bg-slate-50/50 border-slate-200/50 hover:bg-slate-50 hover:border-slate-300'
+                      ? 'bg-white border-l-[3px] border-l-[#3b2dff] border-y-slate-200/50 border-r-slate-200/50 shadow-[0_4px_12px_rgba(0,0,0,0.02)]'
+                      : 'bg-slate-50/50 border-slate-200/30 hover:bg-slate-50 hover:border-slate-300'
                   }`}
                 >
-                  <span className={`text-sm sm:text-base font-black ${isActive ? 'text-[#3b2dff]' : 'text-slate-700'}`}>
+                  <span className={`text-xs sm:text-sm font-extrabold ${isActive ? 'text-[#3b2dff]' : 'text-slate-700'}`}>
                     {region.name}
                   </span>
-                  <span className="text-[10px] sm:text-xs text-slate-400 font-normal leading-relaxed truncate max-w-full">
+                  <span className="text-[9px] sm:text-[10px] text-slate-400 font-light truncate max-w-full">
                     {region.sub}
                   </span>
                 </button>
@@ -178,19 +178,19 @@ export default function SectionRede() {
 
           {/* List Panel (70% width / 8 cols) */}
           <div className="lg:col-span-8 w-full">
-            <div className="w-full bg-white border border-slate-200/70 rounded-3xl p-6 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.02)] flex flex-col gap-6 text-left relative min-h-[420px]">
+            <div className="w-full bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-7 shadow-[0_15px_40px_rgba(0,0,0,0.01)] flex flex-col gap-5 text-left relative min-h-[420px]">
               
               {/* Header inside Panel */}
-              <div className="flex flex-col border-b border-slate-100 pb-4">
+              <div className="flex flex-col border-b border-slate-100 pb-3.5">
                 <div className="flex items-center gap-2">
-                  <div className="size-8 rounded-lg bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff]">
-                    <HugeiconsIcon icon={Hospital02Icon} className="size-4.5" />
+                  <div className="size-7 rounded-lg bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff]">
+                    <HugeiconsIcon icon={Hospital02Icon} className="size-4" />
                   </div>
-                  <h3 className="text-lg font-black text-slate-800 tracking-tight">
+                  <h3 className="text-base font-extrabold text-slate-800 tracking-tight">
                     Unidades em destaque: {currentRegion.name}
                   </h3>
                 </div>
-                <p className="text-slate-400 text-xs mt-1 leading-relaxed">
+                <p className="text-slate-400 text-[10px] sm:text-xs font-light mt-1 leading-relaxed">
                   {currentRegion.preview}
                 </p>
               </div>
@@ -203,19 +203,19 @@ export default function SectionRede() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 w-full"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 w-full"
                 >
                   {currentRegion.clinics.map((clinic, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-2.5 py-1 select-text hover:bg-slate-50/50 rounded-lg px-2 -mx-2 transition-colors duration-200"
+                      className="flex items-start gap-2 py-0.5 select-text hover:bg-slate-50/50 rounded-lg px-2 -mx-2 transition-colors duration-200"
                     >
-                      <div className="size-5 rounded-full bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff] shrink-0 mt-0.5">
-                        <svg className="size-3 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <div className="size-4 rounded-full bg-[#3b2dff]/5 flex items-center justify-center text-[#3b2dff] shrink-0 mt-0.5">
+                        <svg className="size-2.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.5">
                           <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                      <span className="text-[11px] sm:text-xs font-extrabold text-slate-700 tracking-wide leading-relaxed">
+                      <span className="text-[10px] sm:text-[11px] font-semibold text-slate-600 tracking-wide leading-relaxed">
                         {clinic}
                       </span>
                     </div>

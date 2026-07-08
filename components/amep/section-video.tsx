@@ -26,10 +26,10 @@ export default function SectionVideo() {
             <span className="size-2 rounded-full bg-[#3b2dff]" />
             <span>Vídeo de Apresentação</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
             Apresentação do Plano Amep Saúde
           </h2>
-          <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed">
+          <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-lg mx-auto">
             Descubra em menos de 2 minutos como a Amep Saúde reorganizou o acesso a consultas, exames e cirurgias com alto padrão e economia.
           </p>
         </div>
@@ -125,10 +125,10 @@ export default function SectionVideo() {
                     <button
                       onClick={() => {
                         setIsOpen(false);
-                        const element = document.getElementById('contato-simulador');
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
+                        window.open(
+                          `https://wa.me/5521964469750?text=${encodeURIComponent('Olá! Assisti ao vídeo de apresentação e gostaria de falar com um consultor sobre o plano Amep Saúde.')}`,
+                          '_blank'
+                        );
                       }}
                       className="bg-[#3b2dff] hover:bg-[#3b2dff]/90 text-white font-bold text-xs px-6 py-3 rounded-xl shadow-lg shadow-[#3b2dff]/15 transition-all select-none cursor-pointer"
                     >

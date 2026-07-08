@@ -39,7 +39,7 @@ export default function SectionPrecos() {
               <span>Tabelas de Preços</span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
               <div className="overflow-hidden py-0.5">
                 <motion.span
                   initial={{ y: '100%' }}
@@ -53,7 +53,7 @@ export default function SectionPrecos() {
               </div>
             </h2>
 
-            <p className="text-slate-500 text-sm font-light leading-relaxed">
+            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-md">
               Valores regulamentares do plano Amep Saúde organizados por faixa etária e perfil de contratação (Adesão ou PME/MEI).
             </p>
           </div>
@@ -70,20 +70,27 @@ export default function SectionPrecos() {
         </div>
 
         {/* Tabela de Preços */}
+        <div className="flex md:hidden items-center justify-center gap-1.5 text-[10px] text-slate-400 font-bold uppercase tracking-wider select-none">
+          <span>Deslize para ver todos os planos</span>
+          <svg className="size-3 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+
         <div className="w-full overflow-x-auto border border-slate-100 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.02)] bg-white">
           <table className="w-full border-collapse text-left min-w-[700px]">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-100">
-                <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Faixa Etária</th>
-                <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Ideal Adesão</th>
-                <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Smart MEI/PME I (2-29)</th>
-                <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/3">
+                <th className="py-3 px-5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-500">Faixa Etária</th>
+                <th className="py-3 px-5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-500">Ideal Adesão</th>
+                <th className="py-3 px-5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-500">Smart MEI/PME I (2-29)</th>
+                <th className="py-3 px-5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-[#3b2dff] bg-[#3b2dff]/3">
                   <div className="flex items-center gap-1.5 justify-start">
                     <span>Smart PME II (30-99)</span>
                     <span className="bg-[#3b2dff] text-white text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider shadow-sm">Recomendado</span>
                   </div>
                 </th>
-                <th className="py-4.5 px-6 text-xs font-black uppercase tracking-wider text-slate-500">Premium MEI/PME I</th>
+                <th className="py-3 px-5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-500">Premium MEI/PME I</th>
               </tr>
             </thead>
             <tbody>
@@ -92,11 +99,11 @@ export default function SectionPrecos() {
                   key={idx}
                   className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors"
                 >
-                  <td className="py-4 px-6 text-xs sm:text-sm font-bold text-slate-800">{row.faixa}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.adesao}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.mei1}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight font-black text-[#3b2dff] bg-[#3b2dff]/3">{row.pme2}</td>
-                  <td className="py-4 px-6 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.premium}</td>
+                  <td className="py-3 px-5 text-xs sm:text-sm font-bold text-slate-800">{row.faixa}</td>
+                  <td className="py-3 px-5 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.adesao}</td>
+                  <td className="py-3 px-5 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.mei1}</td>
+                  <td className="py-3 px-5 text-xs sm:text-sm font-mono tracking-tight font-black text-[#3b2dff] bg-[#3b2dff]/3">{row.pme2}</td>
+                  <td className="py-3 px-5 text-xs sm:text-sm font-mono tracking-tight text-slate-600">{row.premium}</td>
                 </tr>
               ))}
             </tbody>

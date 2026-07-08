@@ -125,9 +125,9 @@ export default function SectionCotacao() {
                     </div>
 
                     {/* COLUNA CENTRAL: Celular saindo para fora (Overflow) com Formulário */}
-                    <div className="lg:col-span-4 flex justify-center relative -mt-40 lg:-mt-56 mb-8 lg:mb-12 z-20">
+                    <div className="lg:col-span-4 flex justify-center relative mt-6 lg:-mt-56 mb-8 lg:mb-12 z-20">
                         {/* Smartphone Mockup */}
-                        <div className="relative w-[290px] sm:w-[325px] aspect-[9/16.5] bg-white rounded-[3.25rem] p-3 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] border-[3px] border-slate-100 flex flex-col justify-start select-none">
+                        <div className="relative w-[315px] sm:w-[340px] aspect-[9/16.5] bg-white rounded-[3.25rem] p-3 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.35)] border-[3px] border-slate-100 flex flex-col justify-start select-none">
 
                             {/* Notch do Celular */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-5 w-28 bg-slate-100 rounded-b-2xl z-30 flex items-center justify-center">

@@ -15,7 +15,7 @@ import {
 
 export default function Footer() {
   const mapUrl = 'https://maps.google.com/?q=Rua+Athaide+Pimenta+de+Morais,+381+-+Centro,+Nova+Iguaçu+-+RJ,+26210-190';
-  const whatsappUrl = 'https://wa.me/5521974450263';
+  const whatsappUrl = 'https://wa.me/5521964469750';
 
   // Smooth scroll to sections for menu links
   const handleScrollToSection = (e: React.MouseEvent, id: string) => {
@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <motion.footer 
+    <motion.footer
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -37,7 +37,7 @@ export default function Footer() {
       {/* Upper Footer: Info Grid */}
       <div className="w-full max-w-[1280px] mx-auto px-6 py-16 md:py-24 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
-          
+
           {/* Column 1: Branding and Identity */}
           <div className="lg:col-span-4 flex flex-col items-start gap-5">
             <div className="opacity-75 contrast-75 brightness-75 hover:opacity-100 hover:contrast-100 hover:brightness-100 transition-all duration-300">
@@ -115,7 +115,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-none">Telefone / WhatsApp</span>
-                  <span className="font-bold text-slate-700 group-hover:text-slate-900 transition-colors mt-0.5">(21) 97445-0263</span>
+                  <span className="font-bold text-slate-700 group-hover:text-slate-900 transition-colors mt-0.5">(21) 96446-9750</span>
                 </div>
               </a>
 
@@ -165,10 +165,7 @@ export default function Footer() {
               <div className="flex flex-col leading-relaxed">
                 <span className="text-[9px] uppercase tracking-wider text-slate-400 font-semibold leading-none mb-1">Matriz Baixada</span>
                 <span className="text-xs font-bold text-slate-700 group-hover:text-[#3b2dff] transition-colors">Nova Iguaçu — RJ</span>
-                <p className="text-xs text-slate-500 font-light group-hover:text-slate-700 transition-colors mt-0.5 max-w-[20ch]">
-                  Rua Athaide Pimenta de Morais, 381<br />
-                  Centro — CEP 26210-190
-                </p>
+
               </div>
             </a>
           </div>

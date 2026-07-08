@@ -57,10 +57,9 @@ export default function SectionHero() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const element = document.getElementById('precos');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const tipoLabel = tipo === 'adesao' ? 'Individual / Adesão (Ideal Lagos)' : 'Empresa / MEI (Smart PME)';
+    const msg = `Olá! Gostaria de uma cotação do plano Amep Saúde.\n\nNome: ${nome}\nTipo: ${tipoLabel}`;
+    window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
@@ -103,7 +102,7 @@ export default function SectionHero() {
           <div className="overflow-hidden w-full py-1">
             <motion.h1
               variants={childVariants}
-              className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-[#111827] tracking-tight leading-[1.1] select-text"
+              className="text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight leading-[1.15] select-text"
             >
               O Plano Ambulatorial{' '}
               <span className="relative inline-block text-[#3b2dff] mt-1.5">
@@ -132,36 +131,36 @@ export default function SectionHero() {
               hidden: { opacity: 0 },
               visible: { opacity: 1, transition: { duration: 0.8, ease: 'easeOut' } }
             }}
-            className="text-slate-500 text-base sm:text-lg md:text-lg font-normal leading-relaxed max-w-xl select-text"
+            className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-md select-text"
           >
             Consultas, exames e acompanhamento médico no dia a dia com a qualidade da operadora Amep Saúde. Funcional. Acessível. Presente.
           </motion.p>
 
           {/* Floating Anchor Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg pt-2">
             {/* Card 1: Individual */}
             <motion.div
               variants={childVariants}
-              whileHover={{ y: -4, scale: 1.01 }}
+              whileHover={{ y: -3, scale: 1.01 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="p-5 rounded-2xl bg-white border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col items-start gap-1 cursor-default"
+              className="p-4 rounded-2xl bg-white border border-slate-200/60 shadow-[0_8px_20px_rgba(0,0,0,0.01)] flex flex-col items-start gap-0.5 cursor-default"
             >
-              <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">Ideal Adesão (Individual)</span>
-              <span className="text-2xl font-black text-[#111827] mt-1">R$ 138,74</span>
-              <span className="text-[10px] font-bold text-slate-500 mt-0.5">Mensalidade inicial sugerida</span>
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">Ideal Adesão (Individual)</span>
+              <span className="text-xl font-bold font-mono tracking-tight text-slate-900 mt-0.5">R$ 138,74</span>
+              <span className="text-[9px] font-medium text-slate-500 mt-0.5">Mensalidade inicial sugerida</span>
             </motion.div>
 
             {/* Card 2: Corporate */}
             <motion.div
               variants={childVariants}
-              whileHover={{ y: -4, scale: 1.01 }}
+              whileHover={{ y: -3, scale: 1.01 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="p-5 rounded-2xl bg-[#3b2dff] text-white flex flex-col items-start gap-1 cursor-default shadow-lg shadow-[#3b2dff]/15 relative overflow-hidden"
+              className="p-4 rounded-2xl bg-[#3b2dff] text-white flex flex-col items-start gap-0.5 cursor-default shadow-md shadow-[#3b2dff]/10 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 -mr-6 -mt-6 w-20 h-20 bg-white/5 rounded-full blur-md" />
-              <span className="text-[10px] font-black uppercase tracking-wider text-white/70">Smart PME II (CNPJ / MEI)</span>
-              <span className="text-2xl font-black text-white mt-1">R$ 82,94</span>
-              <span className="text-[10px] font-bold text-white/80 mt-0.5">Para grupos a partir de 30 vidas</span>
+              <span className="text-[9px] font-black uppercase tracking-wider text-white/70">Smart PME II (CNPJ / MEI)</span>
+              <span className="text-xl font-bold font-mono tracking-tight text-white mt-0.5">R$ 82,94</span>
+              <span className="text-[9px] font-medium text-white/80 mt-0.5">Para grupos a partir de 30 vidas</span>
             </motion.div>
           </div>
         </motion.div>

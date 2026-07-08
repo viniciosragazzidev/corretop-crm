@@ -226,7 +226,15 @@ export default function SectionPlanos() {
                     </p>
 
                     {/* Link Button CTA */}
-                    <button className="inline-flex items-center gap-1 text-xs font-bold text-[#3b2dff] hover:text-[#2d20e0] mt-3 transition-colors cursor-pointer group-hover:underline self-start">
+                    <button
+                      onClick={() => {
+                        window.open(
+                          `https://wa.me/5521964469750?text=${encodeURIComponent(`Olá! Vi o plano ${item.name} no site e gostaria de ver as tabelas de preços.`)}`,
+                          '_blank'
+                        );
+                      }}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#3b2dff] hover:text-[#2d20e0] mt-3 transition-colors cursor-pointer group-hover:underline self-start"
+                    >
                       <span>Ver Tabelas</span>
                       <HugeiconsIcon
                         icon={ArrowRight01Icon}

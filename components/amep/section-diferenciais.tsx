@@ -278,7 +278,7 @@ export default function SectionDiferenciais() {
             <span className="size-2 rounded-full bg-[#3b2dff]" />
             <span>Estrutura e Diferenciais</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15] max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.2] max-w-2xl">
             <div className="overflow-hidden py-0.5">
               <motion.span
                 initial={{ y: '100%' }}
@@ -296,7 +296,7 @@ export default function SectionDiferenciais() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl"
+            className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-lg"
           >
             A Amep Saúde oferece soluções integradas para você, sua família ou empresa.
           </motion.p>

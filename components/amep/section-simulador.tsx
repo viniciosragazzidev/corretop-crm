@@ -25,7 +25,7 @@ export default function SectionSimulador() {
   const [isPhoneValid, setIsPhoneValid] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const whatsappUrl = 'https://wa.me/5521974450263';
+  const whatsappUrl = 'https://wa.me/5521964469750';
 
   // Floating Labels Validation
   const isStep1Valid = !!perfil;
@@ -35,12 +35,12 @@ export default function SectionSimulador() {
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length > 11) value = value.slice(0, 11);
-    
+
     let formatted = '';
     if (value.length > 0) formatted += `(${value.slice(0, 2)}`;
     if (value.length > 2) formatted += `) ${value.slice(2, 7)}`;
     if (value.length > 7) formatted += `-${value.slice(7, 11)}`;
-    
+
     setWhatsapp(formatted);
     setIsPhoneValid(value.length >= 10);
   };
@@ -95,7 +95,7 @@ export default function SectionSimulador() {
       className="w-full bg-slate-50/30 py-16 md:py-20 font-sans select-none overflow-hidden border-t border-b border-slate-100 will-change-transform"
     >
       <div className="w-full max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
+
         {/* COLUNA ESQUERDA: Informações de Contexto */}
         <div className="lg:col-span-5 flex flex-col items-start gap-8 text-left w-full">
           <div className="space-y-4 w-full">
@@ -103,7 +103,7 @@ export default function SectionSimulador() {
               <span className="size-2 rounded-full bg-[#3b2dff]" />
               <span>Simulador Inteligente</span>
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15] max-w-xl">
               <div className="overflow-hidden py-0.5">
                 <motion.span
@@ -212,15 +212,13 @@ export default function SectionSimulador() {
                         {/* Option 1: Adesao */}
                         <button
                           onClick={() => setPerfil('adesao')}
-                          className={`p-5 rounded-2xl border text-left flex flex-col gap-3 cursor-pointer transition-all duration-300 relative overflow-hidden ${
-                            perfil === 'adesao'
+                          className={`p-5 rounded-2xl border text-left flex flex-col gap-3 cursor-pointer transition-all duration-300 relative overflow-hidden ${perfil === 'adesao'
                               ? 'border-[#3b2dff] bg-[#3b2dff]/5 shadow-sm'
                               : 'border-slate-200 hover:border-slate-300 bg-white'
-                          }`}
+                            }`}
                         >
-                          <div className={`size-10 rounded-xl flex items-center justify-center transition-colors ${
-                            perfil === 'adesao' ? 'bg-[#3b2dff] text-white' : 'bg-slate-100 text-slate-500'
-                          }`}>
+                          <div className={`size-10 rounded-xl flex items-center justify-center transition-colors ${perfil === 'adesao' ? 'bg-[#3b2dff] text-white' : 'bg-slate-100 text-slate-500'
+                            }`}>
                             <HugeiconsIcon icon={UserGroupIcon} className="size-5" />
                           </div>
                           <div>
@@ -232,15 +230,13 @@ export default function SectionSimulador() {
                         {/* Option 2: Empresarial */}
                         <button
                           onClick={() => setPerfil('empresarial')}
-                          className={`p-5 rounded-2xl border text-left flex flex-col gap-3 cursor-pointer transition-all duration-300 relative overflow-hidden ${
-                            perfil === 'empresarial'
+                          className={`p-5 rounded-2xl border text-left flex flex-col gap-3 cursor-pointer transition-all duration-300 relative overflow-hidden ${perfil === 'empresarial'
                               ? 'border-[#3b2dff] bg-[#3b2dff]/5 shadow-sm'
                               : 'border-slate-200 hover:border-slate-300 bg-white'
-                          }`}
+                            }`}
                         >
-                          <div className={`size-10 rounded-xl flex items-center justify-center transition-colors ${
-                            perfil === 'empresarial' ? 'bg-[#3b2dff] text-white' : 'bg-slate-100 text-slate-500'
-                          }`}>
+                          <div className={`size-10 rounded-xl flex items-center justify-center transition-colors ${perfil === 'empresarial' ? 'bg-[#3b2dff] text-white' : 'bg-slate-100 text-slate-500'
+                            }`}>
                             <HugeiconsIcon icon={BriefcaseIcon} className="size-5" />
                           </div>
                           <div>
@@ -416,16 +412,14 @@ export default function SectionSimulador() {
                             value={whatsapp}
                             onChange={handlePhoneChange}
                             placeholder="(00) 00000-0000"
-                            className={`peer w-full pl-10 pr-4 py-3.5 pt-6 pb-2 rounded-xl border text-slate-800 font-extrabold text-sm outline-none transition-all placeholder-transparent ${
-                              isPhoneValid
+                            className={`peer w-full pl-10 pr-4 py-3.5 pt-6 pb-2 rounded-xl border text-slate-800 font-extrabold text-sm outline-none transition-all placeholder-transparent ${isPhoneValid
                                 ? 'border-emerald-500/50 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500'
                                 : 'border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff]'
-                            }`}
+                              }`}
                           />
                           <label
-                            className={`absolute left-10 top-1.5 text-[9px] font-black uppercase tracking-wider transition-all pointer-events-none peer-placeholder-shown:text-xs peer-placeholder-shown:top-4 peer-placeholder-shown:font-bold peer-focus:top-1.5 peer-focus:text-[9px] peer-focus:font-black ${
-                              isPhoneValid ? 'text-emerald-500 peer-focus:text-emerald-600' : 'text-slate-400 peer-focus:text-[#3b2dff]'
-                            }`}
+                            className={`absolute left-10 top-1.5 text-[9px] font-black uppercase tracking-wider transition-all pointer-events-none peer-placeholder-shown:text-xs peer-placeholder-shown:top-4 peer-placeholder-shown:font-bold peer-focus:top-1.5 peer-focus:text-[9px] peer-focus:font-black ${isPhoneValid ? 'text-emerald-500 peer-focus:text-emerald-600' : 'text-slate-400 peer-focus:text-[#3b2dff]'
+                              }`}
                           >
                             WhatsApp com DDD
                           </label>

@@ -2,116 +2,149 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Location01Icon } from '@hugeicons/core-free-icons';
 
 export default function SectionExpansao() {
-  const cidades = [
-    'Nova Iguaçu',
-    'Duque de Caxias',
-    'Rio de Janeiro',
-    'Cabo Frio',
-    'Arraial do Cabo',
-    'São Pedro da Aldeia',
-    'Armação de Búzios',
-    'Niterói',
-    'São Gonçalo',
-    'Belford Roxo',
-    'Nilópolis',
-    'São João de Meriti',
-    'Itaboraí',
-    'Maricá',
-    'Rio das Ostras',
-    'Casimiro de Abreu',
-    'Campos dos Goytacazes',
-    'Petrópolis',
-    'Saquarema',
-    'Rio Bonito',
-    'Iguaba Grande'
+  const col1 = [
+    { name: 'Rio de Janeiro', highlight: true },
+    { name: 'Cabo Frio', highlight: true },
+    { name: 'Armação de Búzios', highlight: false },
+    { name: 'Belford Roxo', highlight: false },
+    { name: 'Itaboraí', highlight: false },
+    { name: 'Casimiro de Abreu', highlight: false },
+    { name: 'Saquarema', highlight: false }
+  ];
+
+  const col2 = [
+    { name: 'Nova Iguaçu', highlight: true },
+    { name: 'Arraial do Cabo', highlight: false },
+    { name: 'Niterói', highlight: false },
+    { name: 'Nilópolis', highlight: false },
+    { name: 'Maricá', highlight: false },
+    { name: 'Campos dos Goytaca...', highlight: false },
+    { name: 'Rio Bonito', highlight: false }
+  ];
+
+  const col3 = [
+    { name: 'Duque de Caxias', highlight: true },
+    { name: 'São Pedro da Aldeia', highlight: false },
+    { name: 'São Gonçalo', highlight: false },
+    { name: 'São João de Meriti', highlight: false },
+    { name: 'Rio das Ostras', highlight: false },
+    { name: 'Petrópolis', highlight: false },
+    { name: 'Iguaba Grande', highlight: false }
   ];
 
   const containerVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.03
+        staggerChildren: 0.02
       }
     }
   };
 
-  const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 10 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 150,
-        damping: 18
-      }
-    }
+  const itemVariants = {
+    hidden: { opacity: 0, x: 10 },
+    show: { opacity: 1, x: 0, transition: { type: 'spring' as const, stiffness: 200, damping: 20 } }
   };
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-      className="w-full py-16 md:py-24 bg-slate-50/50 border-t border-b border-slate-100 font-sans select-none overflow-hidden will-change-transform"
+      className="w-full py-16 md:py-20 bg-white font-sans select-none overflow-hidden will-change-transform"
     >
-      <div className="w-full max-w-[1280px] mx-auto px-6 flex flex-col gap-10">
+      <div className="w-full max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Header */}
-        <div className="w-full text-left space-y-4 max-w-3xl">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-            <span className="size-2 rounded-full bg-[#3b2dff]" />
-            <span>Cobertura Completa</span>
+        {/* Left Side: Text Description (5 cols) */}
+        <div className="lg:col-span-5 flex flex-col items-start text-left space-y-4 md:space-y-5">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10">
+            <HugeiconsIcon icon={Location01Icon} className="size-3" />
+            <span>A Força Fluminense</span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
-            <div className="overflow-hidden py-0.5">
-              <motion.span
-                initial={{ y: '100%' }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 150, damping: 20 }}
-                className="inline-block"
-              >
-                Amep Saúde: Expansão em 21 Cidades no Rio
-              </motion.span>
-            </div>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#111827] tracking-tight leading-[1.2]">
+            Projeto de Expansão:<br />
+            Presente em <span className="text-[#3b2dff]">21 Cidades</span>.
           </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-2xl"
-          >
-            Sua rotina tem vista pro paraíso? Sua saúde também precisa estar à altura com o plano Amep Saúde. Na Região dos Lagos ou no Grande Rio, viver bem também é se cuidar.
-          </motion.p>
+          <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-md select-text">
+            Sua rotina tem vista para o paraíso? Sua saúde também precisa estar à altura. Seja na <strong className="font-semibold text-slate-700">Região dos Lagos</strong> ou no <strong className="font-semibold text-slate-700">Grande Rio</strong>, viver bem também é se cuidar com a excelência da Amep Saúde.
+          </p>
         </div>
 
-        {/* Grid de Cidades */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-50px' }}
-          className="flex flex-wrap gap-2.5 w-full justify-start max-w-5xl"
-        >
-          {cidades.map((cidade, index) => (
-            <motion.span
-              key={index}
-              variants={badgeVariants}
-              whileHover={{ scale: 1.03 }}
-              className="px-4 py-2 bg-white border border-slate-200/60 rounded-xl text-xs sm:text-sm font-bold text-slate-700 hover:text-[#3b2dff] hover:border-[#3b2dff]/30 shadow-sm cursor-default transition-colors duration-200"
-            >
-              {cidade}
-            </motion.span>
-          ))}
-        </motion.div>
+        {/* Right Side: 3-Column List Card (7 cols) */}
+        <div className="lg:col-span-7 w-full flex justify-center lg:justify-end">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-50px' }}
+            className="w-full max-w-xl bg-slate-50/50 border border-slate-200/50 rounded-3xl p-6 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.02)] grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-x-4 sm:gap-y-3 relative overflow-hidden"
+          >
+            {/* Background design elements */}
+            <div className="absolute -bottom-10 -right-10 size-32 rounded-full bg-[#3b2dff]/5 blur-3xl pointer-events-none" />
+
+            {/* Column 1 */}
+            <div className="flex flex-col gap-3">
+              {col1.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={itemVariants}
+                  className={`flex items-center gap-1.5 py-1 px-2.5 rounded-lg text-xs transition-all duration-200 ${
+                    item.highlight
+                      ? 'bg-[#3b2dff] text-white font-extrabold shadow-sm shadow-[#3b2dff]/10'
+                      : 'text-slate-600 font-medium hover:text-[#3b2dff] hover:bg-slate-100/50'
+                  }`}
+                >
+                  <HugeiconsIcon icon={Location01Icon} className={`size-3.5 shrink-0 ${item.highlight ? 'text-white' : 'text-slate-400'}`} />
+                  <span className="truncate">{item.name}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Column 2 */}
+            <div className="flex flex-col gap-3">
+              {col2.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={itemVariants}
+                  className={`flex items-center gap-1.5 py-1 px-2.5 rounded-lg text-xs transition-all duration-200 ${
+                    item.highlight
+                      ? 'bg-[#3b2dff] text-white font-extrabold shadow-sm shadow-[#3b2dff]/10'
+                      : 'text-slate-600 font-medium hover:text-[#3b2dff] hover:bg-slate-100/50'
+                  }`}
+                >
+                  <HugeiconsIcon icon={Location01Icon} className={`size-3.5 shrink-0 ${item.highlight ? 'text-white' : 'text-slate-400'}`} />
+                  <span className="truncate">{item.name}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Column 3 */}
+            <div className="flex flex-col gap-3">
+              {col3.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={itemVariants}
+                  className={`flex items-center gap-1.5 py-1 px-2.5 rounded-lg text-xs transition-all duration-200 ${
+                    item.highlight
+                      ? 'bg-[#3b2dff] text-white font-extrabold shadow-sm shadow-[#3b2dff]/10'
+                      : 'text-slate-600 font-medium hover:text-[#3b2dff] hover:bg-slate-100/50'
+                  }`}
+                >
+                  <HugeiconsIcon icon={Location01Icon} className={`size-3.5 shrink-0 ${item.highlight ? 'text-white' : 'text-slate-400'}`} />
+                  <span className="truncate">{item.name}</span>
+                </motion.div>
+              ))}
+            </div>
+
+          </motion.div>
+        </div>
 
       </div>
     </motion.section>

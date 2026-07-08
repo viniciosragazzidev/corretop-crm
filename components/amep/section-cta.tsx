@@ -11,7 +11,13 @@ interface Props {
 
 export default function SectionCta({ variant }: Props) {
   const isBottom = variant === 'bottom';
-  const whatsappUrl = 'https://wa.me/5521974450263';
+  const whatsappCotacaoUrl = `https://wa.me/5521964469750?text=${encodeURIComponent(
+    'Olá! Gostaria de fazer uma cotação rápida do plano Amep Saúde.'
+  )}`;
+
+  const whatsappConsultorUrl = `https://wa.me/5521964469750?text=${encodeURIComponent(
+    'Olá! Estava navegando no site e gostaria de falar com um consultor sobre o plano Amep Saúde.'
+  )}`;
 
   const displayTitle = isBottom
     ? 'Fale com nossos consultores oficiais Amep Saúde'
@@ -22,10 +28,7 @@ export default function SectionCta({ variant }: Props) {
     : 'Compare opções individuais, familiares ou empresariais com suporte completo de corretores isentos.';
 
   const handleScrollToQuote = () => {
-    const element = document.getElementById('simulador') || document.getElementById('precos');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    window.open(whatsappCotacaoUrl, '_blank');
   };
 
   return (
@@ -36,7 +39,7 @@ export default function SectionCta({ variant }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-          className={`relative rounded-3xl p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 overflow-hidden will-change-transform ${
+          className={`relative rounded-3xl p-6 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 overflow-hidden will-change-transform ${
             isBottom
               ? 'bg-[#3b2dff] text-white shadow-xl shadow-[#3b2dff]/15'
               : 'bg-slate-50 border border-slate-100 text-slate-800'
@@ -125,7 +128,7 @@ export default function SectionCta({ variant }: Props) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              onClick={() => window.open(whatsappUrl, '_blank')}
+              onClick={() => window.open(whatsappConsultorUrl, '_blank')}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs cursor-pointer transition-all duration-200 w-full sm:w-auto border will-change-transform ${
                 isBottom
                   ? 'border-white/20 bg-white/10 text-white hover:bg-white/20'

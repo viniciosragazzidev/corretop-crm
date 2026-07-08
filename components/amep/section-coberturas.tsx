@@ -61,8 +61,8 @@ export default function SectionCoberturas() {
         </div>
 
         {/* Headlines */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-[1.15] mb-4 text-center select-text">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-[1.2] mb-3 text-center select-text">
             <div className="overflow-hidden py-0.5 inline-block">
               <motion.span
                 initial={{ y: '100%' }}
@@ -81,7 +81,7 @@ export default function SectionCoberturas() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-slate-500 text-sm md:text-base font-light leading-relaxed max-w-xl text-center select-text"
+            className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed max-w-lg text-center select-text"
           >
             Confira detalhadamente as coberturas ambulatoriais e o cronograma oficial de carências do plano Amep Saúde.
           </motion.p>
@@ -94,15 +94,15 @@ export default function SectionCoberturas() {
             return (
               <div
                 key={index}
-                className={`w-full border-b border-slate-200/60 transition-all duration-500 overflow-hidden ${
-                  isOpen ? 'bg-slate-50/50' : 'bg-transparent hover:bg-slate-50/30'
+                className={`w-full border-b border-slate-200/65 transition-all duration-500 overflow-hidden ${
+                  isOpen ? 'bg-slate-50/50' : 'bg-transparent hover:bg-slate-50/20'
                 }`}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between py-5 px-4 md:px-6 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
+                  className="w-full flex items-center justify-between py-4 px-4 md:px-5 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
                 >
-                  <span className={`text-base md:text-lg font-semibold pr-6 transition-colors duration-300 ${
+                  <span className={`text-sm md:text-base font-semibold pr-6 transition-colors duration-300 ${
                     isOpen ? 'text-[#3b2dff]' : 'text-slate-900 group-hover:text-slate-700'
                   }`}>
                     {item.question}
@@ -110,12 +110,12 @@ export default function SectionCoberturas() {
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                    className={`size-6 rounded-full flex items-center justify-center border shrink-0 transition-colors ${
+                    className={`size-5.5 rounded-full flex items-center justify-center border shrink-0 transition-colors ${
                       isOpen ? 'border-[#3b2dff] bg-[#3b2dff] text-white' : 'border-slate-200 text-slate-400 group-hover:border-slate-300'
                     }`}
                   >
                     <svg
-                      className="size-3.5 fill-none stroke-current"
+                      className="size-3 fill-none stroke-current"
                       viewBox="0 0 24 24"
                       strokeWidth="2.5"
                       strokeLinecap="round"
@@ -135,7 +135,7 @@ export default function SectionCoberturas() {
                       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 md:px-6 pb-5 pt-1 text-sm md:text-base font-light text-slate-600 leading-relaxed">
+                      <div className="px-4 md:px-5 pb-4.5 pt-1 text-xs md:text-sm font-light text-slate-500 leading-relaxed">
                         {item.answer}
                       </div>
                     </motion.div>

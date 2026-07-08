@@ -64,6 +64,10 @@ export default function SectionSimulador() {
     // Form submit
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        const dependentesText = dependents.length > 0 ? ` Dependentes: ${dependents.join(', ')} anos.` : '';
+        const perfilText = profileType === 'individual' ? 'Individual (CPF)' : 'Empresa (CNPJ/MEI)';
+        const msg = `Olá! Gostaria de uma cotação de plano de saúde.\n\nTipo: ${planType === 'ambos' ? 'Saúde + Odonto' : planType === 'saude' ? 'Saúde' : 'Odonto'}\nPerfil: ${perfilText}\nIdade: ${titularAge} anos${dependentesText}\nNome: ${nome}`;
+        window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
         setIsSubmitted(true);
     };
 

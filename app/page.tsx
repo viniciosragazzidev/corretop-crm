@@ -11,8 +11,8 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <main className="flex  flex-col items-center justify-center px-24">
-      <div className="container h-full min-h-screen  ">
+    <main className="flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 lg:px-24 w-full overflow-hidden">
+      <div className="container h-full min-h-screen">
         <Navbar />
         <SectionHero />
         <SectionCotacao />
