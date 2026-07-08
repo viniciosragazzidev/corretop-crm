@@ -182,12 +182,13 @@ export default function SectionPlanos() {
 
                             {/* Info Container (Right side) */}
                             <div className="flex flex-col gap-1">
-                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                    {item.category}
-                                </span>
+
                                 <h3 className="text-lg font-extrabold text-slate-900 leading-tight">
                                     {item.name}
                                 </h3>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                    {item.category}
+                                </span>
                                 <p className="text-slate-500 text-xs sm:text-sm font-normal leading-relaxed mt-1 select-text">
                                     {item.description}
                                 </p>
