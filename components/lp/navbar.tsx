@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare } from 'lucide-react';
+import { Menu, X, MessageSquare, Sparkles, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const NavbarLp: React.FC = () => {
@@ -76,20 +76,30 @@ const NavbarLp: React.FC = () => {
                 }`}
             >
                 {/* Top Alert/Announcement Bar */}
-                <div className="w-full bg-[#0C4BA1] text-white py-2 px-4 text-[11px] sm:text-xs font-semibold select-none border-b border-white/10">
-                    <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4">
-                        <div className="flex items-center gap-2 text-center sm:text-left">
-                            <span className="inline-flex items-center justify-center bg-white/20 px-2 py-0.5 rounded text-[9px] uppercase font-bold tracking-wider shrink-0">Promoção</span>
-                            <span>⚡ Descontos exclusivos de até 35% para planos CNPJ ou MEI.</span>
+                <div className="w-full bg-[#0C4BA1] text-white py-2.5 px-4 text-[11px] sm:text-xs font-semibold select-none border-b border-white/10 shadow-xs">
+                    <div className="max-w-[1440px] mx-auto flex flex-wrap items-center justify-center gap-y-1.5 gap-x-4 sm:gap-x-6 text-center">
+                        <div className="flex items-center gap-2 justify-center">
+                            <span className="inline-flex items-center justify-center bg-white/20 px-2 py-0.5 rounded text-[9px] uppercase font-bold tracking-wider shrink-0 select-none">Promoção</span>
+                            <span className="flex items-center gap-1 text-white/90">
+                                <Sparkles className="size-3.5 text-amber-300 fill-amber-300 shrink-0" />
+                                <span>Descontos exclusivos de até 35% para planos CNPJ ou MEI</span>
+                            </span>
                         </div>
-                        <div className="flex items-center gap-4">
-                            <a href="https://wa.me/5521964469750?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20r%C3%A1pida." target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1 font-bold text-white transition-all">
-                                📞 (21) 96446-9750
+                        <span className="hidden md:inline text-white/30">•</span>
+                        <div className="flex items-center gap-4 justify-center">
+                            <a 
+                                href="https://wa.me/5521964469750?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20r%C3%A1pida." 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="hover:text-amber-200 transition-colors flex items-center gap-1.5 font-bold text-white"
+                            >
+                                <Phone className="size-3.5 shrink-0 text-white/80" />
+                                <span>(21) 96446-9750</span>
                             </a>
-                            <span className="hidden sm:inline text-white/40">|</span>
-                            <span className="hidden sm:inline flex items-center gap-1.5 text-emerald-400 font-bold">
+                            <span className="text-white/30">•</span>
+                            <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                                 <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                                Consultores Online
+                                <span>Consultores Online</span>
                             </span>
                         </div>
                     </div>
@@ -144,18 +154,18 @@ const NavbarLp: React.FC = () => {
 
             {/* 2. Navbar Flutuante no Scroll (Pill Bar - Mobile & Desktop Refinada) */}
             <div
-                className={`fixed top-3 left-1/2 -translate-x-1/2 z-[60] font-sans w-[calc(100%-24px)] max-w-fit transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                className={`fixed top-3 left-1/2 -translate-x-1/2 z-[60] font-sans w-[calc(100%-24px)] md:w-full md:max-w-3xl lg:max-w-4xl transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     showReduced ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-full opacity-0 scale-95 pointer-events-none'
                 }`}
             >
-                <div className="flex items-center justify-between gap-2.5 px-3.5 py-2 bg-background/85 dark:bg-background/90 backdrop-blur-xl border border-border/50 rounded-full shadow-xl shadow-black/10 select-none">
+                <div className="flex items-center justify-between gap-4 px-5 py-2.5 bg-background/85 dark:bg-background/90 backdrop-blur-xl border border-border/50 rounded-full shadow-xl shadow-black/10 select-none w-full">
                     <Link className="flex items-center shrink-0 pl-1" href="/">
                         <Image src="/logo.webp" alt="Venacor Saúde" width={130} height={42} className="h-7 sm:h-8 w-auto object-contain" />
                     </Link>
 
-                    <div className="hidden lg:block w-px h-4 bg-border/60 mx-1" />
+                    <div className="hidden lg:block w-px h-4 bg-border/60 mx-2" />
 
-                    <div className="hidden lg:flex items-center gap-3">
+                    <div className="hidden lg:flex items-center gap-4">
                         <Link href="/" className="px-3 py-1 text-xs sm:text-sm font-medium text-foreground rounded-full hover:bg-muted transition-colors">
                             Início
                         </Link>
@@ -170,7 +180,7 @@ const NavbarLp: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className="hidden lg:block w-px h-4 bg-border/60 mx-1" />
+                    <div className="hidden lg:block w-px h-4 bg-border/60 mx-2" />
 
                     <div className="flex items-center gap-1.5">
                         <Button 
