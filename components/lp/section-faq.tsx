@@ -43,11 +43,11 @@ export default function SectionFaq() {
         </div>
 
         {/* Headlines */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter leading-none mb-5">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-[1.15] mb-4">
             Tudo o que você precisa saber.
           </h2>
-          <p className="text-base md:text-lg font-normal text-slate-500 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm md:text-base font-light text-slate-500 leading-relaxed max-w-xl mx-auto">
             Respostas diretas e transparentes sobre coberturas, carências e modelos de contratação.
           </p>
         </div>
@@ -65,9 +65,9 @@ export default function SectionFaq() {
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between py-6 px-4 md:px-6 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
+                  className="w-full flex items-center justify-between py-5 px-4 md:px-6 text-left cursor-pointer focus:outline-none group active:scale-[0.99] transition-transform duration-200"
                 >
-                  <span className={`text-lg md:text-xl font-bold pr-6 transition-colors duration-300 ${isOpen ? 'text-[#3b2dff]' : 'text-slate-900 group-hover:text-slate-700'}`}>
+                  <span className={`text-base md:text-lg font-semibold pr-6 transition-colors duration-300 ${isOpen ? 'text-[#3b2dff]' : 'text-slate-900 group-hover:text-slate-700'}`}>
                     {item.question}
                   </span>
                   <motion.div
@@ -101,7 +101,7 @@ export default function SectionFaq() {
                       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 md:px-6 pb-6 pt-2 text-base font-normal text-slate-600 leading-relaxed">
+                      <div className="px-4 md:px-6 pb-5 pt-1 text-sm md:text-base font-light text-slate-600 leading-relaxed">
                         {item.answer}
                       </div>
                     </motion.div>
