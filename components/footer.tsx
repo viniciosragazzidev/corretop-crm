@@ -177,8 +177,14 @@ export default function Footer() {
       </div>
 
       {/* Copyright & Regulatory Bar */}
-      <div className="w-full bg-slate-900 border-t border-slate-800 py-8 relative z-10 text-left select-text">
-        <div className="w-full max-w-[1280px] mx-auto px-6 flex flex-col gap-4 text-[10px] sm:text-xs font-light text-slate-400 leading-relaxed">
+      <div className="w-full bg-[#3b2dff] border-t border-[#3b2dff]/20 py-8 relative z-10 text-left select-text overflow-hidden">
+        {/* Background decorative glows */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10 blur-[100px]" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-white/5 blur-[100px]" />
+        </div>
+
+        <div className="w-full max-w-[1280px] mx-auto px-6 flex flex-col gap-4 text-[10px] sm:text-xs font-light text-white/85 leading-relaxed relative z-10">
           <p className="max-w-6xl">
             © 2026 Venancor Corretora de Seguros. Todos os direitos reservados. A Venancor é uma corretora de seguros independente autorizada a comercializar os produtos das operadoras parceiras. As informações de tabelas de preços, carências e redes credenciadas estão sujeitas a alterações sem aviso prévio por parte das operadoras e devem ser validadas junto ao consultor. Registro ANS Operadoras Parceiras sob consulta individual.
           </p>

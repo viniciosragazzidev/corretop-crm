@@ -23,14 +23,14 @@ export default function SectionPlanos() {
       name: 'SulAmérica Saúde',
       category: 'Premium Corporativo',
       description: 'Reembolso ágil, rede premium de hospitais como Copa Star e Samaritano, e coparticipação inteligente.',
-      logo: '/sulamerica_logo.webp'
+      logo: '/sulamerica_logo.png'
     },
     {
-      id: 'bradesco',
-      name: 'Bradesco Saúde',
-      category: 'Líder Empresarial',
-      description: 'Líder nacional em satisfação empresarial. Livre escolha de médicos com excelente reembolso.',
-      logo: '/bradesco_logo.webp'
+      id: 'assim-saude',
+      name: 'Assim Saúde',
+      category: 'Rede Regional Rio',
+      description: 'A maior rede de atendimento médico privado do Rio de Janeiro, com força total na Baixada.',
+      logo: '/assim-saude_logo.png'
     },
     {
       id: 'amil',
@@ -40,25 +40,25 @@ export default function SectionPlanos() {
       logo: '/amil_logo.webp'
     },
     {
-      id: 'goldencross',
-      name: 'Golden Cross',
-      category: 'Rede Referenciada',
-      description: 'Excelente custo para empresas da Baixada, com cobertura regional consolidada há décadas.',
-      logo: '/golden_logo.webp'
+      id: 'leve-saude',
+      name: 'Leve Saúde',
+      category: 'Foco no Rio & 45+',
+      description: 'Preços altamente competitivos com excelente rede referenciada própria e credenciada no Grande Rio.',
+      logo: '/LEVESaude__logo.webp'
     },
     {
       id: 'intermedica',
-      name: 'GNDI Intermédica',
+      name: 'GNDI NotreDame',
       category: 'Mais Vendido PME',
       description: 'Planos altamente competitivos para pequenas empresas e MEI, com foco em medicina preventiva.',
-      logo: '/gndi_logo.webp'
+      logo: '/NotreDame_logo.webp'
     },
     {
       id: 'porto',
       name: 'Porto Saúde',
       category: 'Parceria de Confiança',
       description: 'Atendimento humanizado com ótimos diferenciais de telemedicina e programas de bem-estar.',
-      logo: '/porto_logo.webp'
+      logo: '/PortoSaude_logo.webp'
     }
   ];
 
@@ -75,14 +75,14 @@ export default function SectionPlanos() {
       name: 'SulAmérica Odonto',
       category: 'Premium Estética',
       description: 'Excelente reembolso para próteses e aparelhos ortodônticos com rede referenciada diferenciada.',
-      logo: '/sulamerica_logo.webp'
+      logo: '/sulamerica_logo.png'
     },
     {
-      id: 'bradesco-odonto',
-      name: 'Bradesco Dental',
+      id: 'unimed-odonto',
+      name: 'Unimed Odonto',
       category: 'Foco PME',
       description: 'Planos odonto acessíveis com ampla rede de dentistas credenciados na Baixada.',
-      logo: '/bradesco_logo.webp'
+      logo: '/unimed_logo.webp'
     }
   ];
 
