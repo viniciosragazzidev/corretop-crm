@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Hospital02Icon, LicenseIcon, HeartIcon, Tick02Icon, Location01Icon } from '@hugeicons/core-free-icons';
 
@@ -209,12 +210,35 @@ export default function SectionDiferenciais() {
               </li>
             </ul>
           </div>
-          <div className="lg:col-span-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col gap-4">
-            <div className="size-12 rounded-2xl bg-[#3b2dff] text-white flex items-center justify-center shadow-md">
-              <HugeiconsIcon icon={LicenseIcon} className="size-6" />
+          <div className="lg:col-span-6 flex justify-center w-full relative">
+            <div className="relative w-full max-w-[340px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_15px_30px_-5px_rgba(0,0,0,0.06)]">
+              <Image
+                src="/image4.png"
+                alt="Plano Empresarial Amep Saúde"
+                fill
+                className="object-cover"
+                priority
+              />
+
+              {/* Testimonial Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, type: 'spring', stiffness: 220, damping: 22 }}
+                className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-3xl border border-slate-200/50 flex items-center gap-3 shadow-md"
+              >
+                <div className="size-10 rounded-full bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 font-black text-sm flex items-center justify-center shrink-0">
+                  AC
+                </div>
+                <div className="flex-1 flex flex-col text-left">
+                  <span className="text-xs font-black text-slate-800">Ana Clara</span>
+                  <span className="text-[10px] text-slate-400 font-medium">RH da TecnoSoluções (12 vidas)</span>
+                </div>
+                <div className="size-5 rounded-full bg-[#3b2dff]/5 border border-[#3b2dff]/15 text-[#3b2dff] flex items-center justify-center shrink-0">
+                  <HugeiconsIcon icon={Tick02Icon} className="size-3.5" />
+                </div>
+              </motion.div>
             </div>
-            <h5 className="font-extrabold text-slate-900 text-lg">Retenção de Talentos</h5>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Oferecer plano de saúde aumenta a produtividade da sua equipe, diminui o absenteísmo e é o benefício mais solicitado por profissionais no mercado atual.</p>
           </div>
         </div>
       )
@@ -245,12 +269,35 @@ export default function SectionDiferenciais() {
               </li>
             </ul>
           </div>
-          <div className="lg:col-span-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col gap-4">
-            <div className="size-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-md">
-              <HugeiconsIcon icon={HeartIcon} className="size-6" />
+          <div className="lg:col-span-6 flex justify-center w-full relative">
+            <div className="relative w-full max-w-[340px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_15px_30px_-5px_rgba(0,0,0,0.06)]">
+              <Image
+                src="/image3.png"
+                alt="Viver Mais e Melhor Amep Saúde"
+                fill
+                className="object-cover"
+                priority
+              />
+
+              {/* Testimonial Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, type: 'spring', stiffness: 220, damping: 22 }}
+                className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-3xl border border-slate-200/50 flex items-center gap-3 shadow-md"
+              >
+                <div className="size-10 rounded-full bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 font-black text-sm flex items-center justify-center shrink-0">
+                  RS
+                </div>
+                <div className="flex-1 flex flex-col text-left">
+                  <span className="text-xs font-black text-slate-800">Ricardo Souza</span>
+                  <span className="text-[10px] text-slate-400 font-medium">Plano Viver Mais (Individual)</span>
+                </div>
+                <div className="size-5 rounded-full bg-[#3b2dff]/5 border border-[#3b2dff]/15 text-[#3b2dff] flex items-center justify-center shrink-0">
+                  <HugeiconsIcon icon={Tick02Icon} className="size-3.5" />
+                </div>
+              </motion.div>
             </div>
-            <h5 className="font-extrabold text-slate-900 text-lg">Saúde de Corpo e Mente</h5>
-            <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">Tenha a tranquilidade de contar com médicos de confiança, sem precisar arcar com altos custos de consultas particulares ou esperar em filas intermináveis do SUS.</p>
           </div>
         </div>
       )
