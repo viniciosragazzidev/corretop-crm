@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -69,12 +68,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         {/* Brand & Desktop Links */}
         <div className="flex items-center gap-10">
           <Link href="/" className="hover:opacity-90 transition-opacity flex items-center pt-0.5">
-            <Image 
+            <img 
               src="/logo.svg" 
               alt="Venacor Saúde" 
-              width={110} 
-              height={28} 
-              priority 
               className="h-6.5 w-auto object-contain"
             />
           </Link>
@@ -202,12 +198,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               className="relative w-full bg-white max-h-[60vh] flex flex-col p-6 shadow-2xl z-10 text-left rounded-b-3xl border-b border-neutral-100"
             >
               <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
-                <Image 
+                <img 
                   src="/logo.svg" 
                   alt="Venacor Saúde" 
-                  width={110} 
-                  height={28} 
-                  priority 
                   className="h-6.5 w-auto object-contain"
                 />
                 <button
