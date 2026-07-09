@@ -80,13 +80,14 @@ export default function SectionHero() {
         >
           {/* Logo & Campaign Badge Row */}
           <motion.div variants={childVariants} className="flex items-center gap-4 flex-wrap">
-            <div className="h-9 w-auto bg-white px-3 py-1.5 rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex items-center justify-center">
+            <div className="flex items-center justify-center py-1">
               <Image
                 src="/amep_saude_logo.png"
                 alt="Amep Saúde"
-                width={80}
-                height={24}
-                className="object-contain max-h-6"
+                width={180}
+                height={56}
+                className="object-contain h-12 sm:h-14 md:h-16 w-auto"
+                priority
               />
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">

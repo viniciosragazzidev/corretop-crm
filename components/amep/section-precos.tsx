@@ -58,13 +58,13 @@ export default function SectionPrecos() {
             </p>
           </div>
           
-          <div className="h-10 w-auto bg-slate-50 px-3.5 py-1.5 rounded-xl border border-slate-100 flex items-center justify-center self-start md:self-end">
+          <div className="flex items-center justify-center self-start md:self-end py-1">
             <Image
               src="/amep_saude_logo.png"
               alt="Amep Saúde"
-              width={85}
-              height={26}
-              className="object-contain max-h-7"
+              width={180}
+              height={56}
+              className="object-contain h-12 sm:h-14 md:h-16 w-auto"
             />
           </div>
         </div>
