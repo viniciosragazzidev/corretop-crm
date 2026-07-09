@@ -100,42 +100,20 @@ export default function SectionVideo() {
               {/* Close Button */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 z-10 size-10 rounded-full bg-slate-50 text-slate-500 hover:text-slate-800 flex items-center justify-center border border-slate-100 transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-20 size-10 rounded-full bg-black/50 text-white hover:bg-black/75 flex items-center justify-center border border-white/10 transition-colors cursor-pointer"
               >
                 <HugeiconsIcon icon={Cancel01Icon} className="size-5" />
               </button>
 
-              {/* Video Mock Content */}
-              <div className="w-full aspect-video bg-slate-900 flex flex-col items-center justify-center text-center p-8 relative overflow-hidden">
-                {/* Glowing Orbs */}
-                <div className="absolute -top-10 -left-10 size-40 rounded-full bg-[#3b2dff]/20 blur-[60px]" />
-                <div className="absolute -bottom-10 -right-10 size-40 rounded-full bg-emerald-500/10 blur-[60px]" />
-
-                <div className="z-10 space-y-4 max-w-md">
-                  <div className="size-16 rounded-2xl bg-[#3b2dff]/10 border border-[#3b2dff]/20 text-[#3b2dff] flex items-center justify-center mx-auto shadow-sm">
-                    <HugeiconsIcon icon={PlayIcon} className="size-8" />
-                  </div>
-                  <h3 className="text-white font-extrabold text-xl tracking-tight">
-                    Plano Amep Saúde Ambulatorial
-                  </h3>
-                  <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
-                    Nossa equipe comercial está de plantão para enviar a você o vídeo completo de apresentação de rede, carências e preços direto no seu WhatsApp.
-                  </p>
-                  <div className="pt-2">
-                    <button
-                      onClick={() => {
-                        setIsOpen(false);
-                        window.open(
-                          `https://wa.me/5521964469750?text=${encodeURIComponent('Olá! Assisti ao vídeo de apresentação e gostaria de falar com um consultor sobre o plano Amep Saúde.')}`,
-                          '_blank'
-                        );
-                      }}
-                      className="bg-[#3b2dff] hover:bg-[#3b2dff]/90 text-white font-bold text-xs px-6 py-3 rounded-xl shadow-lg shadow-[#3b2dff]/15 transition-all select-none cursor-pointer"
-                    >
-                      Falar com Consultor e Receber Vídeo
-                    </button>
-                  </div>
-                </div>
+              {/* YouTube Embed Video */}
+              <div className="w-full aspect-video bg-black relative">
+                <iframe
+                  className="w-full h-full border-0 absolute inset-0"
+                  src="https://www.youtube.com/embed/bRB6uliM_b4?autoplay=1"
+                  title="Apresentação Amep Saúde"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
               </div>
             </motion.div>
           </motion.div>
