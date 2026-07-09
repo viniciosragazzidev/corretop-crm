@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Icons for top right matching screenshot
+// Icons matching high-agency design guidelines
 const ChatIcon = () => (
   <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -46,7 +47,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
     { href: '/crm/leeds', label: 'Leeds' },
     { href: '/crm/chat', label: 'Chat' },
     { href: '/crm/corretores', label: 'Corretores' },
-    { href: '/crm/settings', label: 'Settings' },
+    { href: '/crm/settings', label: 'Configurações' },
   ];
 
   const getPageLabel = () => {
@@ -55,25 +56,31 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
       case '/crm/leeds': return 'Leeds';
       case '/crm/chat': return 'Chat';
       case '/crm/corretores': return 'Corretores';
-      case '/crm/settings': return 'Settings';
-      default: return 'Overview';
+      case '/crm/settings': return 'Configurações';
+      default: return 'Geral';
     }
   };
 
   return (
-    <div className="min-h-[100dvh] bg-[#f8fafc] font-sans text-slate-800 flex flex-col overflow-x-hidden select-none">
+    <div className="min-h-[100dvh] bg-[#fafafa] font-sans text-neutral-800 flex flex-col overflow-x-hidden select-none">
       
       {/* 1. Horizontal Navbar on Top */}
-      <nav className="h-16 bg-white border-b border-slate-200/60 px-6 lg:px-10 flex items-center justify-between sticky top-0 z-40 shrink-0 w-full">
+      <nav className="h-16 bg-white border-b border-neutral-200/50 px-6 lg:px-10 flex items-center justify-between sticky top-0 z-40 shrink-0 w-full shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
         {/* Brand & Desktop Links */}
-        <div className="flex items-center gap-8">
-          <Link href="/" className="font-black text-slate-900 tracking-tight hover:scale-[1.01] transition-all flex items-center gap-1">
-            <span className="text-[#3b2dff] font-extrabold text-lg">Venacor</span>
-            <span className="text-[#3b2dff] font-black text-lg">.</span>
+        <div className="flex items-center gap-10">
+          <Link href="/" className="hover:opacity-90 transition-opacity flex items-center pt-0.5">
+            <Image 
+              src="/logo.svg" 
+              alt="Venacor Saúde" 
+              width={110} 
+              height={28} 
+              priority 
+              className="h-6.5 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -81,7 +88,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                   key={item.href}
                   href={item.href}
                   className={`text-xs font-bold transition-all py-1.5 relative ${
-                    isActive ? 'text-slate-900 font-extrabold' : 'text-slate-400 hover:text-slate-600'
+                    isActive ? 'text-neutral-900 font-extrabold' : 'text-neutral-400 hover:text-neutral-600'
                   }`}
                 >
                   {item.label}
@@ -102,10 +109,10 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         <div className="hidden lg:flex items-center w-80 relative">
           <input
             type="text"
-            placeholder="Search"
-            className="w-full pl-8 pr-4 py-1.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#3b2dff] text-xs font-semibold outline-none transition-colors"
+            placeholder="Buscar leads, corretores..."
+            className="w-full pl-8 pr-4 py-1.5 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:border-[#3b2dff] text-xs font-semibold outline-none transition-colors"
           />
-          <svg className="absolute left-2.5 top-2.5 size-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+          <svg className="absolute left-2.5 top-2.5 size-3.5 text-neutral-450" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
         </div>
 
         {/* Right side controls */}
@@ -113,55 +120,55 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(prev => !prev)}
-            className="md:hidden p-2 rounded-xl border border-slate-200 text-slate-500 hover:text-slate-800 cursor-pointer"
+            className="md:hidden p-2 rounded-xl border border-neutral-200 text-neutral-550 hover:text-neutral-800 cursor-pointer"
           >
             <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
           </button>
 
           {/* Action Icons */}
-          <div className="hidden sm:flex items-center gap-3.5 text-slate-400">
-            <button className="p-1 rounded-lg hover:bg-slate-50 hover:text-slate-750 cursor-pointer">
+          <div className="hidden sm:flex items-center gap-3.5 text-neutral-405">
+            <button className="p-1 rounded-lg hover:bg-neutral-50 hover:text-neutral-700 cursor-pointer">
               <ChatIcon />
             </button>
-            <button className="p-1 rounded-lg hover:bg-slate-50 hover:text-slate-750 relative cursor-pointer">
+            <button className="p-1 rounded-lg hover:bg-neutral-50 hover:text-neutral-700 relative cursor-pointer">
               <BellIcon />
-              <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-red-500" />
+              <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[#3b2dff]" />
             </button>
-            <button className="p-1 rounded-lg hover:bg-slate-50 hover:text-slate-750 cursor-pointer">
+            <button className="p-1 rounded-lg hover:bg-neutral-50 hover:text-neutral-700 cursor-pointer">
               <SettingsIcon />
             </button>
           </div>
 
-          {/* Add Widget Button (primary color `#3b2dff`) */}
+          {/* New Lead Button (primary color `#3b2dff`) */}
           <button className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-sm transition-all cursor-pointer select-none active:scale-[0.98]">
-            Add Widget
+            + Novo Lead
           </button>
 
           {/* Avatar bubble */}
-          <div className="size-8 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/20 font-black text-xs flex items-center justify-center shadow-3xs cursor-pointer select-none">
-            V
+          <div className="size-8 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/10 font-black text-xs flex items-center justify-center shadow-3xs cursor-pointer select-none">
+            VR
           </div>
         </div>
       </nav>
 
       {/* 2. Secondary breadcrumbs bar */}
-      <div className="bg-white border-b border-slate-200/50 py-2.5 px-6 lg:px-10 flex items-center justify-between w-full">
-        <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          <span>Home</span>
-          <span className="text-slate-300">/</span>
+      <div className="bg-white border-b border-neutral-200/50 py-2.5 px-6 lg:px-10 flex items-center justify-between w-full shadow-[0_1px_2px_rgba(0,0,0,0.005)]">
+        <div className="flex items-center gap-1.5 text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+          <span>Painel</span>
+          <span className="text-neutral-300">/</span>
           <span>CRM</span>
-          <span className="text-slate-300">/</span>
+          <span className="text-neutral-300">/</span>
           <span className="text-[#3b2dff] font-extrabold">{getPageLabel()}</span>
         </div>
 
-        <div className="flex items-center text-[10px] font-bold text-slate-400">
+        <div className="flex items-center text-[10px] font-bold text-neutral-400">
           <CloudIcon />
-          <span>Updated 2 minutes ago</span>
+          <span>Sincronizado há 2 minutos</span>
         </div>
       </div>
 
       {/* 3. Main content area */}
-      <main className="flex-1 w-full bg-[#f8fafc]">
+      <main className="flex-1 w-full bg-[#fafafa]">
         <AnimatePresence mode="wait">
           <motion.div
             key={pathname}
@@ -185,22 +192,27 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="absolute inset-0 bg-slate-900 cursor-pointer"
+              className="absolute inset-0 bg-neutral-900 cursor-pointer"
             />
             <motion.div
               initial={{ y: '-100%' }}
               animate={{ y: 0 }}
               exit={{ y: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative w-full bg-white max-h-[60vh] flex flex-col p-6 shadow-2xl z-10 text-left rounded-b-3xl border-b border-slate-100"
+              className="relative w-full bg-white max-h-[60vh] flex flex-col p-6 shadow-2xl z-10 text-left rounded-b-3xl border-b border-neutral-100"
             >
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <span className="font-extrabold text-slate-900 flex items-center gap-1.5">
-                  <span className="text-[#3b2dff] font-black text-base">Venacor.</span>
-                </span>
+              <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
+                <Image 
+                  src="/logo.svg" 
+                  alt="Venacor Saúde" 
+                  width={110} 
+                  height={28} 
+                  priority 
+                  className="h-6.5 w-auto object-contain"
+                />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 cursor-pointer"
+                  className="p-1 rounded-lg hover:bg-neutral-100 text-neutral-400 cursor-pointer"
                 >
                   <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
                 </button>
@@ -217,7 +229,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                       className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                         isActive
                           ? 'bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10'
-                          : 'text-slate-500 hover:text-slate-800'
+                          : 'text-neutral-555 hover:text-neutral-800'
                       }`}
                     >
                       {item.label}
@@ -226,10 +238,10 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                 })}
               </nav>
 
-              <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
+              <div className="pt-4 border-t border-neutral-100 flex flex-col gap-2">
                 <Link
                   href="/"
-                  className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-800 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer block"
+                  className="w-full py-2.5 rounded-xl border border-neutral-200 hover:border-neutral-300 text-neutral-500 hover:text-neutral-850 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer block"
                 >
                   Voltar ao Site
                 </Link>
