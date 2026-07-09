@@ -185,7 +185,11 @@ export default function SectionDiferenciais() {
       content: (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end w-full text-left">
           <div className="lg:col-span-6 space-y-5">
-            <h4 className="text-2xl font-black text-slate-900 tracking-tight leading-snug">Proteja sua equipe com facilidade e baixo custo</h4>
+            <div className="space-y-1">
+              <p className="text-slate-500 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#3b2dff]">Benefícios Exclusivos</p>
+              <p className="text-slate-600 text-xs sm:text-sm font-light mt-1">Benefício bom é aquele que o colaborador realmente valoriza e pode usar com a Amep Saúde!</p>
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 tracking-tight leading-snug pt-3">Proteja sua equipe com facilidade e baixo custo</h4>
             <p className="text-slate-500 text-sm sm:text-base font-light leading-relaxed">
               Proteja sua equipe com um plano empresarial com atendimento humanizado, rede própria, credenciada e benefícios reais para a rotina do dia a dia.
             </p>
@@ -250,7 +254,11 @@ export default function SectionDiferenciais() {
       content: (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end w-full text-left">
           <div className="lg:col-span-6 space-y-5">
-            <h4 className="text-2xl font-black text-slate-900 tracking-tight leading-snug">Qualidade de vida e segurança em todas as fases</h4>
+            <div className="space-y-1">
+              <p className="text-slate-500 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#3b2dff]">Benefícios Exclusivos</p>
+              <p className="text-slate-600 text-xs sm:text-sm font-light mt-1">Investir em você não tem idade!</p>
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 tracking-tight leading-snug pt-3">Qualidade de vida e segurança em todas as fases</h4>
             <p className="text-slate-500 text-sm sm:text-base font-light leading-relaxed">
               Aqui na Amep tem saúde de verdade para quem deseja viver mais e melhor, oferecendo a segurança necessária em todas as fases da vida.
             </p>
@@ -400,10 +408,12 @@ export default function SectionDiferenciais() {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="w-full flex flex-col gap-6"
             >
-              <div className="text-left max-w-2xl">
-                <p className="text-slate-500 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#3b2dff]">{activeTab === 'unidades' ? 'Rede Própria de Qualidade' : 'Benefícios Exclusivos'}</p>
-                <p className="text-slate-600 text-sm sm:text-base font-light mt-1">{currentTab.support}</p>
-              </div>
+              {activeTab === 'unidades' && (
+                <div className="text-left max-w-2xl">
+                  <p className="text-slate-500 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#3b2dff]">Rede Própria de Qualidade</p>
+                  <p className="text-slate-600 text-sm sm:text-base font-light mt-1">{currentTab.support}</p>
+                </div>
+              )}
 
               <div className="w-full mt-2">
                 {currentTab.content}
