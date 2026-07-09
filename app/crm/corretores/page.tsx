@@ -1,25 +1,56 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CorretoresPage() {
+  const [activeSubTab, setActiveSubTab] = useState('Visão Geral');
+  const subTabs = ['Visão Geral', 'Desempenho', 'Comissões'];
+
   return (
-    <div className="p-8 lg:p-12 min-h-full flex flex-col items-start gap-4 text-left select-none">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="max-w-xl space-y-3"
-      >
-        <div className="inline-flex items-center gap-1.5 bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10 px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider">
-          Equipe de Vendas
+    <div className="p-6 lg:p-10 space-y-6 select-none text-left flex flex-col h-full bg-[#f8fafc]">
+      
+      {/* Sub-navigation tabs */}
+      <div className="flex border-b border-slate-200/60 pb-1.5 w-full gap-5">
+        {subTabs.map(tab => {
+          const isActive = activeSubTab === tab;
+          return (
+            <button
+              key={tab}
+              onClick={() => setActiveSubTab(tab)}
+              className={`pb-2.5 text-xs font-bold transition-all relative cursor-pointer ${
+                isActive ? 'text-slate-900 font-extrabold' : 'text-slate-400 hover:text-slate-700'
+              }`}
+            >
+              {tab}
+              {isActive && (
+                <motion.div
+                  layoutId="corretoresSubTabUnderline"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-950"
+                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Main clean area with styled card */}
+      <div className="bg-white border border-slate-200/50 rounded-2xl p-8 flex flex-col items-center justify-center text-center max-w-2xl mx-auto shadow-3xs py-16 mt-4">
+        <div className="size-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shadow-3xs">
+          <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
         </div>
-        <h2 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Corretores</h2>
-        <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">
-          Esta é a página de gerenciamento dos corretores da equipe. Em breve você poderá gerenciar a base de consultores nesta seção.
+        <h3 className="font-extrabold text-slate-900 text-base mt-4">Nenhum Corretor Selecionado</h3>
+        <p className="text-slate-400 text-xs font-light leading-relaxed max-w-sm mt-1">
+          A lista e acompanhamento de metas dos corretores ativos aparecerá descrita de acordo com o filtro.
         </p>
-      </motion.div>
+      </div>
+
     </div>
   );
 }
