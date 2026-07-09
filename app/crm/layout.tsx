@@ -4,17 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HugeiconsIcon } from '@hugeicons/react';
-import {
-  UserGroupIcon,
-  WhatsappIcon,
-  Search01Icon,
-  UserIcon
-} from '@hugeicons/core-free-icons';
-import { CRMProvider, useCRM, UserRole } from './crm-context';
 
-// Custom inline SVG icons to ensure visual perfection and zero dependencies
-const OverviewIcon = () => (
+// Clean inline SVG icons matching system taste
+const ResumeIcon = () => (
   <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="7" height="9" rx="1" />
     <rect x="14" y="3" width="7" height="5" rx="1" />
@@ -23,16 +15,38 @@ const OverviewIcon = () => (
   </svg>
 );
 
-const KanbanIcon = () => (
+const LeedsIcon = () => (
   <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 5h16M4 12h10M4 19h16" />
-    <circle cx="17" cy="12" r="2" />
+    <rect x="3" y="4" width="18" height="16" rx="2" />
+    <line x1="9" y1="9" x2="15" y2="9" />
+    <line x1="9" y1="13" x2="13" y2="13" />
   </svg>
 );
 
-function CRMMainLayout({ children }: { children: React.ReactNode }) {
+const ChatIcon = () => (
+  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+  </svg>
+);
+
+const CorretoresIcon = () => (
+  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
+
+const SettingsIcon = () => (
+  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+  </svg>
+);
+
+export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { role, setRole, searchQuery, setSearchQuery } = useCRM();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Close mobile menu on path changes
@@ -41,19 +55,21 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   const navItems = [
-    { href: '/crm', label: 'Overview', icon: <OverviewIcon /> },
-    { href: '/crm/leads', label: 'Pipeline / Kanban', icon: <KanbanIcon /> },
-    { href: '/crm/chat', label: 'Central de Chat', icon: <HugeiconsIcon icon={WhatsappIcon} className="size-5 text-emerald-500" /> },
-    { href: '/crm/corretores', label: 'Corretores', icon: <HugeiconsIcon icon={UserGroupIcon} className="size-5" />, adminOnly: true }
+    { href: '/crm/resume', label: 'Resume', icon: <ResumeIcon /> },
+    { href: '/crm/leeds', label: 'Leeds', icon: <LeedsIcon /> },
+    { href: '/crm/chat', label: 'Chat', icon: <ChatIcon /> },
+    { href: '/crm/corretores', label: 'Corretores', icon: <CorretoresIcon /> },
+    { href: '/crm/settings', label: 'Settings', icon: <SettingsIcon /> },
   ];
 
   const getPageTitle = () => {
     switch (pathname) {
-      case '/crm': return 'Panorama Central';
-      case '/crm/leads': return 'Funil de Vendas';
-      case '/crm/chat': return 'Central de Atendimento (Omnichannel)';
-      case '/crm/corretores': return 'Gerenciamento de Equipe';
-      default: return 'CRM Leads';
+      case '/crm/resume': return 'Resume';
+      case '/crm/leeds': return 'Leeds';
+      case '/crm/chat': return 'Chat';
+      case '/crm/corretores': return 'Corretores';
+      case '/crm/settings': return 'Settings';
+      default: return 'CRM';
     }
   };
 
@@ -63,7 +79,7 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
       {/* 1. Sidebar (Desktop) */}
       <aside className="hidden lg:flex w-64 bg-white border-r border-slate-200/60 flex-col shrink-0 select-none">
         {/* Logo Section */}
-        <div className="h-20 px-6 border-b border-slate-100 flex items-center justify-between">
+        <div className="h-20 px-6 border-b border-slate-100 flex items-center">
           <Link href="/" className="font-extrabold text-[#3b2dff] tracking-tight hover:scale-[1.01] transition-transform flex items-center gap-2">
             <span className="size-6 bg-[#3b2dff] text-white rounded-lg flex items-center justify-center font-bold text-xs select-none">V</span>
             <span className="text-slate-900 font-extrabold text-base">Venacor <span className="text-slate-400 font-light text-xs uppercase tracking-widest ml-0.5">CRM</span></span>
@@ -73,7 +89,6 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
         {/* Navigation links */}
         <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
           {navItems.map((item) => {
-            if (item.adminOnly && role !== 'ADMIN') return null;
             const isActive = pathname === item.href;
             return (
               <Link
@@ -94,24 +109,13 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
           })}
         </nav>
 
-        {/* Sidebar Footer (Role indicator / back to site) */}
-        <div className="p-4 border-t border-slate-100 flex flex-col gap-3">
-          <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 p-2.5 rounded-2xl">
-            <div className="size-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 shrink-0 select-none">
-              <HugeiconsIcon icon={UserIcon} className="size-4" />
-            </div>
-            <div className="flex flex-col text-left overflow-hidden">
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider leading-none">Perfil Ativo</span>
-              <span className="font-extrabold text-slate-800 text-xs truncate mt-0.5">
-                {role === 'ADMIN' ? 'Gerente Geral' : 'Corretor Comercial'}
-              </span>
-            </div>
-          </div>
+        {/* Sidebar Footer */}
+        <div className="p-4 border-t border-slate-100 flex flex-col gap-2">
           <Link
             href="/"
-            className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-800 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer block"
+            className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-550 hover:text-slate-850 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer block"
           >
-            Voltar ao Site Principal
+            Voltar ao Site
           </Link>
         </div>
       </aside>
@@ -121,13 +125,11 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
         
         {/* Top Header bar */}
         <header className="h-20 bg-white border-b border-slate-200/50 px-6 lg:px-10 flex items-center justify-between sticky top-0 z-40 shrink-0">
-          
-          {/* Left info: Route name or Search bar */}
           <div className="flex items-center gap-4">
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(prev => !prev)}
-              className="lg:hidden p-2 rounded-xl border border-slate-200 text-slate-500 hover:text-slate-800 shrink-0 cursor-pointer"
+              className="lg:hidden p-2 rounded-xl border border-slate-200 text-slate-555 hover:text-slate-800 shrink-0 cursor-pointer"
             >
               <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M3 12h18M3 6h18M3 18h18" />
@@ -140,51 +142,10 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
-          {/* Right actions: Role toggler, search, indicators */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            {/* Search Input (Global-like filter) */}
-            <div className="relative hidden md:block">
-              <input
-                type="text"
-                placeholder="Busca rápida..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 pr-4 py-2 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#3b2dff] text-xs font-semibold transition-all outline-none w-48 placeholder:text-slate-400 focus:w-60 shadow-2xs"
-              />
-              <HugeiconsIcon icon={Search01Icon} className="absolute left-3 top-2.5 size-3.5 text-slate-400" />
-            </div>
-
-            {/* Role Switcher Toggler */}
-            <div className="flex items-center gap-2 border border-slate-200 rounded-2xl p-1 bg-slate-50 select-none shadow-3xs">
-              <button
-                onClick={() => setRole('ADMIN')}
-                className={`px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all cursor-pointer ${
-                  role === 'ADMIN'
-                    ? 'bg-white text-[#3b2dff] shadow-xs'
-                    : 'text-slate-400 hover:text-slate-700'
-                }`}
-              >
-                Admin
-              </button>
-              <button
-                onClick={() => setRole('USER')}
-                className={`px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all cursor-pointer ${
-                  role === 'USER'
-                    ? 'bg-white text-[#3b2dff] shadow-xs'
-                    : 'text-slate-400 hover:text-slate-700'
-                }`}
-              >
-                Corretor
-              </button>
-            </div>
-
-            {/* Notification Badge indicator */}
-            <div className="relative size-8 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700 transition-colors select-none shrink-0 cursor-pointer">
-              <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
-              </svg>
-              <span className="absolute top-1.5 right-1.5 size-2 rounded-full bg-[#3b2dff]" />
-            </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 bg-slate-50 border border-slate-150 px-3 py-1.5 rounded-xl">
+              Sistema Ativo
+            </span>
           </div>
         </header>
 
@@ -241,7 +202,6 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
               {/* Mobile Navigation Links */}
               <nav className="flex-1 py-6 space-y-1.5 overflow-y-auto">
                 {navItems.map((item) => {
-                  if (item.adminOnly && role !== 'ADMIN') return null;
                   const isActive = pathname === item.href;
                   return (
                     <Link
@@ -262,20 +222,9 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
 
               {/* Mobile Profile & Back */}
               <div className="pt-6 border-t border-slate-100 flex flex-col gap-3">
-                <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 p-2.5 rounded-2xl">
-                  <div className="size-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 shrink-0">
-                    <HugeiconsIcon icon={UserIcon} className="size-4" />
-                  </div>
-                  <div className="flex flex-col text-left">
-                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider leading-none">Perfil Ativo</span>
-                    <span className="font-extrabold text-slate-800 text-xs mt-0.5">
-                      {role === 'ADMIN' ? 'Gerente Geral' : 'Corretor Comercial'}
-                    </span>
-                  </div>
-                </div>
                 <Link
                   href="/"
-                  className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-800 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer"
+                  className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-550 hover:text-slate-850 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Voltar ao Site
                 </Link>
@@ -286,13 +235,5 @@ function CRMMainLayout({ children }: { children: React.ReactNode }) {
       </AnimatePresence>
 
     </div>
-  );
-}
-
-export default function CRMLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <CRMProvider>
-      <CRMMainLayout>{children}</CRMMainLayout>
-    </CRMProvider>
   );
 }

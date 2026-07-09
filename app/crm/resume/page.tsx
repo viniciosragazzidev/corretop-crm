@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function CorretoresPage() {
+export default function ResumePage() {
   return (
     <div className="p-8 lg:p-12 min-h-full flex flex-col items-start gap-4 text-left select-none">
       <motion.div
@@ -13,11 +13,11 @@ export default function CorretoresPage() {
         className="max-w-xl space-y-3"
       >
         <div className="inline-flex items-center gap-1.5 bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10 px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider">
-          Equipe de Vendas
+          Painel de Controle
         </div>
-        <h2 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Corretores</h2>
+        <h2 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Resume</h2>
         <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">
-          Esta é a página de gerenciamento dos corretores da equipe. Em breve você poderá gerenciar a base de consultores nesta seção.
+          Esta é a página de visão geral do seu CRM. Em breve você poderá visualizar relatórios e resumos analíticos detalhados nesta seção.
         </p>
       </motion.div>
     </div>
