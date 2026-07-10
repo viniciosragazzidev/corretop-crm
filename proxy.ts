@@ -20,6 +20,8 @@ export async function proxy(request: NextRequest) {
   const url = request.nextUrl.clone()
   const { pathname } = url
 
+  console.log(`[Proxy Log] Interceptando rota: ${pathname}`);
+
   // Permite apenas o root (/) e a página de login (/login) como públicos
   if (pathname === '/' || pathname === '/login') {
     return;
@@ -27,6 +29,7 @@ export async function proxy(request: NextRequest) {
 
   // Qualquer outra página exige autenticação
   const sessionData = await getSession(request)
+  console.log(`[Proxy Log] Sessão encontrada para ${pathname}:`, sessionData ? "Sim (User: " + sessionData.user?.email + ")" : "Não");
 
   if (!sessionData?.user) {
     const redirectUrl = request.nextUrl.clone()
