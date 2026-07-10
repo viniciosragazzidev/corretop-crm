@@ -13,7 +13,7 @@ export default function CRMLandingPage() {
       {/* Header */}
       <header className="max-w-7xl w-full mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src="/logo.svg" alt="Corretop" className="h-8" />
+          <img src="/logo.svg" alt="Corretop" className="h-9" />
         </div>
         <Link 
           href="/login" 

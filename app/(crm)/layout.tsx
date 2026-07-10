@@ -114,7 +114,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         {/* Brand & Dropdown */}
         <div className="p-6 border-b border-slate-100/50 flex flex-col gap-4">
           <Link href="/" className="hover:opacity-90 transition-opacity flex items-center gap-2">
-            <img src="/logo.svg" alt="Corretop" className="h-7" />
+            <img src="/logo.svg" alt="Corretop" className="h-8" />
           </Link>
 
           {/* Filial / Context selector */}
@@ -230,7 +230,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           </button>
 
           <Link href="/" className="flex items-center gap-1.5 hover:opacity-90 transition-opacity">
-            <img src="/logo.svg" alt="Corretop" className="h-6" />
+            <img src="/logo.svg" alt="Corretop" className="h-7" />
           </Link>
 
           <div className="size-7.5 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/10 font-bold text-xs flex items-center justify-center shadow-3xs shrink-0">
@@ -322,7 +322,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             >
               <div className="flex items-center justify-between pb-5 border-b border-slate-100">
                 <div className="flex items-center gap-1.5">
-                  <img src="/logo.svg" alt="Corretop" className="h-6" />
+<img src="/logo.svg" alt="Corretop" className="h-7" />
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
