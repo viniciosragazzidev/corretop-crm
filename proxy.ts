@@ -22,8 +22,19 @@ export async function proxy(request: NextRequest) {
 
   console.log(`[Proxy Log] Interceptando rota: ${pathname}`);
 
-  // Permite apenas o root (/) e a página de login (/login) como públicos
-  if (pathname === '/' || pathname === '/login') {
+  // Permite o root (/) como público, e redireciona de /login se já logado
+  if (pathname === '/') {
+    return;
+  }
+
+  if (pathname === '/login') {
+    const sessionData = await getSession(request)
+    console.log(`[Proxy Log] Acesso ao /login. Sessão ativa:`, sessionData ? "Sim" : "Não");
+    if (sessionData?.user) {
+      const redirectUrl = request.nextUrl.clone()
+      redirectUrl.pathname = '/resume'
+      return NextResponse.redirect(redirectUrl)
+    }
     return;
   }
 

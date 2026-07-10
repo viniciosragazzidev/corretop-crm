@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useSession } from '@/lib/auth-client';
+import { useSession, signOut } from '@/lib/auth-client';
 import { useDemoMode } from '@/lib/demo-mode';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -27,6 +27,21 @@ import {
 export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            window.location.href = '/login';
+          }
+        }
+      });
+    } catch (err) {
+      console.error("Error signing out:", err);
+      window.location.href = '/login';
+    }
+  };
 
   // Close mobile menu on path changes
   useEffect(() => {
@@ -192,13 +207,13 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               </div>
             </div>
             {/* Minimal Logout Button */}
-            <Link
-              href="/login"
+            <button
+              onClick={handleLogout}
               className="p-1.5 rounded-lg hover:bg-slate-100 text-neutral-400 hover:text-red-500 cursor-pointer transition-colors"
               title="Sair"
             >
               <HugeiconsIcon icon={Logout01Icon} className="size-4" />
-            </Link>
+            </button>
           </div>
 
           <div className="mt-3 text-[9px] text-neutral-350 text-center font-normal">
@@ -389,12 +404,12 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                 >
                   Voltar ao Site
                 </Link>
-                <Link
-                  href="/login"
+                <button
+                  onClick={handleLogout}
                   className="w-full py-2.5 rounded-xl bg-red-50 text-red-650 hover:bg-red-100 text-center text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block"
                 >
                   Sair
-                </Link>
+                </button>
               </div>
             </motion.div>
           </div>
