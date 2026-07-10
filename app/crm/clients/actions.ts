@@ -159,23 +159,34 @@ export interface CreateLeadInput {
   whatsapp: string;
   perfil: string;
   idades: string;
+  destino?: "Aguardando" | "Em Atendimento";
+  corretorId?: string;
 }
 
 export async function createLeadAction(input: CreateLeadInput) {
   try {
-    const { nome, whatsapp, perfil, idades } = input;
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    if (!session) {
+      return { error: "Não autenticado." };
+    }
+
+    const { nome, whatsapp, perfil, idades, destino = "Aguardando", corretorId } = input;
 
     if (!nome || !whatsapp) {
       return { error: "Nome e WhatsApp são obrigatórios" };
     }
 
-    // Clean whatsapp number to store only digits
     const cleanedWhatsapp = whatsapp.replace(/\D/g, "");
+    const status = destino === "Em Atendimento" ? "Em Atendimento" : "Aguardando";
+    const assignedCorretor = destino === "Em Atendimento" ? corretorId || session.user.id : null;
 
     await query(
-      `INSERT INTO leads (nome, whatsapp, perfil, idades, status)
-       VALUES ($1, $2, $3, $4, 'Aguardando')`,
-      [nome, cleanedWhatsapp, perfil, idades]
+      `INSERT INTO leads (nome, whatsapp, perfil, idades, status, "corretorId")
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [nome, cleanedWhatsapp, perfil, idades, status, assignedCorretor]
     );
 
     revalidatePath("/crm/clients");

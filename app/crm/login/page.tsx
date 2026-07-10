@@ -20,10 +20,14 @@ export default function CRMLogin() {
     const toastId = toast.loading('Validando suas credenciais...');
 
     try {
+      const callbackURL = typeof window !== 'undefined'
+        ? `${window.location.origin}/crm/resume`
+        : '/crm/resume';
+
       const res = await signIn.email({
         email,
         password,
-        callbackURL: '/crm/resume',
+        callbackURL,
       }, {
         onRequest: () => {
           setIsLoading(true);
@@ -35,7 +39,7 @@ export default function CRMLogin() {
             description: 'Você será direcionado ao painel CRM.',
           });
           router.replace('/crm/resume');
-          router.refresh();
+          setTimeout(() => router.refresh(), 500);
         },
         onError: (ctx) => {
           setIsLoading(false);

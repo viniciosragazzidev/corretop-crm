@@ -13,6 +13,7 @@ import {
   updateClientStatusAction,
   ClientLead,
 } from "./actions";
+import { AddClientSheet } from "./add-client-sheet";
 
 // �€�€�€ Constants �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
 const PAGE_SIZE_OPTIONS = [10, 20, 50];
@@ -316,6 +317,9 @@ export default function ClientsPage() {
   const [drawerClient, setDrawerClient] = useState<ClientLead | null>(null);
   const [collectedDocs, setCollectedDocs] = useState<Record<string, boolean>>({});
 
+  // Add Client Sheet
+  const [isAddSheetOpen, setIsAddSheetOpen] = useState(false);
+
   const isUserAdmin = session && (session.user as any).role === "ADMIN";
 
   // �€�€ Fetch �€�€
@@ -376,6 +380,16 @@ export default function ClientsPage() {
         setTimeout(() => setSuccessMsg(null), 2000);
       }
     });
+  };
+
+  const handleClientAdded = (client: ClientLead) => {
+    if (client.status === "Aguardando") {
+      setLeadsList((prev) => [client, ...prev]);
+    } else {
+      setClientsList((prev) => [client, ...prev]);
+    }
+    setSuccessMsg("Cliente registrado com sucesso!");
+    setTimeout(() => setSuccessMsg(null), 2500);
   };
 
   // �€�€ Filtering + Sorting + Pagination �€�€
