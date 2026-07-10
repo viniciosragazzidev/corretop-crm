@@ -238,7 +238,7 @@ export default function DevRoadmapPage() {
             </div>
             <h1 className="text-lg font-bold text-neutral-900 tracking-tight">Dev Roadmap</h1>
           </div>
-          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
+          <p className="text-xs font-normal text-neutral-400 mt-0.5">
             Roadmap e tarefas de desenvolvimento
           </p>
         </div>
@@ -252,7 +252,7 @@ export default function DevRoadmapPage() {
       </div>
 
       <div className="flex items-center gap-2">
-        <span className="text-[9px] font-semibold uppercase tracking-wider text-neutral-400">Ordenar por:</span>
+        <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-400">Ordenar por:</span>
         {(["created_at", "priority", "status"] as const).map(key => (
           <button
             key={key}
@@ -408,9 +408,9 @@ function TaskFormModal({
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-[9px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
-              Título *
-            </label>
+        <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
+          Título *
+        </label>
             <input
               type="text"
               value={title}
@@ -421,9 +421,9 @@ function TaskFormModal({
             />
           </div>
           <div>
-            <label className="block text-[9px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
-              Descrição
-            </label>
+        <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
+          Descrição
+        </label>
             <textarea
               value={description}
               onChange={e => setDescription(e.target.value)}
@@ -433,9 +433,9 @@ function TaskFormModal({
             />
           </div>
           <div>
-            <label className="block text-[9px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
-              Prioridade
-            </label>
+        <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
+          Prioridade
+        </label>
             <div className="flex gap-2">
               {(["low", "medium", "high", "critical"] as const).map(p => (
                 <button

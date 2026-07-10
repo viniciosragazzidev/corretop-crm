@@ -262,7 +262,7 @@ export default function CorretoresPage() {
                 <h1 className="text-lg font-bold text-neutral-900 tracking-tight">
                   Gerenciamento de Equipe
                 </h1>
-                <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
+                <p className="text-xs font-normal text-neutral-400 mt-0.5">
                   Cadastre novos corretores, controle permissões e acompanhe o status de disponibilidade em tempo real.
                 </p>
               </div>
@@ -271,12 +271,12 @@ export default function CorretoresPage() {
               <div className="flex items-center gap-4 shrink-0">
                 <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-2xl py-2.5 px-4 shadow-[0_1px_2px_rgba(0,0,0,0.01)] flex items-center gap-3.5">
                   <div className="flex flex-col">
-                    <span className="text-[8px] font-medium text-neutral-400 uppercase tracking-wider">Ativos</span>
+                    <span className="text-[9px] font-medium text-neutral-400 uppercase tracking-wider">Ativos</span>
                     <span className="text-sm font-semibold text-slate-700">{activeBrokersCount}</span>
                   </div>
                   <div className="w-px h-6 bg-neutral-100" />
                   <div className="flex flex-col">
-                    <span className="text-[8px] font-medium text-neutral-400 uppercase tracking-wider">Online</span>
+                    <span className="text-[9px] font-medium text-neutral-400 uppercase tracking-wider">Online</span>
                     <span className="text-sm font-semibold text-emerald-600">{onlineBrokersCount}</span>
                   </div>
                 </div>
@@ -319,7 +319,7 @@ export default function CorretoresPage() {
               <div className="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-neutral-100 bg-neutral-50/40 text-[9px] font-medium text-neutral-400 uppercase tracking-widest">
+                    <tr className="border-b border-neutral-100 bg-neutral-50/40 text-[10px] font-medium text-neutral-400 uppercase tracking-wider">
                       <th className="py-3.5 px-6">Nome / E-mail</th>
                       <th className="py-3.5 px-4 text-center">Permissão</th>
                       <th className="py-3.5 px-4 text-center">Status</th>
@@ -499,7 +499,7 @@ export default function CorretoresPage() {
 
                 {/* Nome Completo */}
                 <div className="space-y-1 text-left">
-                  <label className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">Nome Completo</label>
+                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Nome Completo</label>
                   <input
                     type="text"
                     required
@@ -512,7 +512,7 @@ export default function CorretoresPage() {
 
                 {/* E-mail Corporativo */}
                 <div className="space-y-1 text-left">
-                  <label className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
+                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
                   <input
                     type="email"
                     required
@@ -525,7 +525,7 @@ export default function CorretoresPage() {
 
                 {/* Senha Inicial */}
                 <div className="space-y-1 text-left">
-                  <label className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">Senha Inicial</label>
+                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Senha Inicial</label>
                   <input
                     type="password"
                     required
@@ -538,7 +538,7 @@ export default function CorretoresPage() {
 
                 {/* Permissão */}
                 <div className="space-y-1 text-left">
-                  <label className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">Nível de Permissão</label>
+                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Nível de Permissão</label>
                   <div className="relative">
                     <select
                       value={newRole}

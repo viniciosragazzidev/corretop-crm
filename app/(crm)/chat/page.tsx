@@ -248,7 +248,7 @@ export default function ChatPage() {
             <div>
               <h2 className="text-lg font-bold text-neutral-900 tracking-tight">Conversas</h2>
               {isAdmin && (
-                <span className="text-[11px] font-semibold text-neutral-400 mt-0.5 block">
+                <span className="text-xs font-normal text-neutral-400 mt-0.5 block">
                   Visão administrador — todos os atendimentos
                 </span>
               )}

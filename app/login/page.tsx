@@ -67,7 +67,7 @@ export default function CRMLogin() {
           <h1 className="text-lg font-bold text-neutral-900 tracking-tight">
             Painel CRM
           </h1>
-          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
+          <p className="text-xs font-normal text-neutral-400 mt-0.5">
             Entre com suas credenciais de acesso
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function CRMLogin() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="email" className="block text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-2">
                 E-mail
               </label>
               <input
@@ -108,7 +108,7 @@ export default function CRMLogin() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="password" className="block text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-2">
                 Senha
               </label>
               <input
@@ -144,7 +144,7 @@ export default function CRMLogin() {
         </motion.div>
 
         <div className="text-center mt-6">
-          <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+          <p className="text-[11px] font-medium text-neutral-400 uppercase tracking-wider">
             Exclusivo para administradores e corretores autorizados.
           </p>
         </div>

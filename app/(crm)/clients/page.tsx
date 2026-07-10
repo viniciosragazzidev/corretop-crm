@@ -97,7 +97,7 @@ function PaginationBar({
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-neutral-100 px-1">
-      <div className="flex items-center gap-2 text-[10px] font-bold text-neutral-400">
+            <div className="flex items-center gap-2 text-[11px] font-medium text-neutral-400">
         <span>Linhas por página:</span>
         {PAGE_SIZE_OPTIONS.map((s) => (
           <Button
@@ -212,11 +212,11 @@ function DocsDrawer({
           </div>
           <div className="grid grid-cols-2 gap-3 pt-1">
             <div>
-              <span className="text-[8px] font-medium text-neutral-400 uppercase tracking-widest block">Perfil</span>
+              <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest block">Perfil</span>
               <span className="text-[10px] font-medium text-neutral-600 mt-0.5 block">{client.perfil}</span>
             </div>
             <div>
-              <span className="text-[8px] font-medium text-neutral-400 uppercase tracking-widest block">Vidas</span>
+              <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest block">Vidas</span>
               <span className="text-[10px] font-medium text-neutral-600 mt-0.5 block">{client.idades}</span>
             </div>
           </div>
@@ -225,7 +225,7 @@ function DocsDrawer({
         {/* Progress bar */}
         <div className="space-y-1.5">
           <div className="flex justify-between items-center">
-            <span className="text-[9px] font-medium text-neutral-400 uppercase tracking-widest">Progresso da Documentação</span>
+            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest">Progresso da Documentação</span>
             <span className="text-[10px] font-medium text-neutral-600">{collected}/{docs.length}</span>
           </div>
           <div className="h-1.5 bg-neutral-100 rounded-full overflow-hidden">
@@ -460,7 +460,7 @@ export default function ClientsPage() {
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div className="space-y-1">
           <h1 className="text-lg font-bold text-neutral-900 tracking-tight">Pipeline Comercial</h1>
-          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
+          <p className="text-xs font-normal text-neutral-400 mt-0.5">
             Gerencie leads inbound e acompanhe negociações em andamento.
           </p>
         </div>
@@ -485,7 +485,7 @@ export default function ClientsPage() {
           ].map(kpi => (
             <div key={kpi.label} className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-xl px-3 py-2 shadow-2xs text-center min-w-[64px]">
               <p className="text-[18px] font-extrabold leading-none" style={{ color: kpi.accent }}>{kpi.value}</p>
-              <p className="text-[8px] font-medium text-neutral-400 uppercase tracking-wider mt-0.5">{kpi.label}</p>
+              <p className="text-[9px] font-medium text-neutral-400 uppercase tracking-wider mt-0.5">{kpi.label}</p>
             </div>
           ))}
         </div>
@@ -557,7 +557,7 @@ export default function ClientsPage() {
               </div>
               {/* Sort */}
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest shrink-0">Ordenar:</span>
+                <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest shrink-0">Ordenar:</span>
                 {[{ val: "id_desc", lbl: "Mais Recente" }, { val: "nome_asc", lbl: "Nome A-Z" }].map(o => (
                   <Button key={o.val} variant={leadsSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setLeadsSort(o.val as any)}
                     className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${leadsSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
@@ -565,7 +565,7 @@ export default function ClientsPage() {
                 ))}
               </div>
               {/* Total */}
-              <span className="text-[10px] font-bold text-neutral-400 ml-auto">{processedLeads.length} resultado{processedLeads.length !== 1 ? "s" : ""}</span>
+              <span className="text-[11px] font-medium text-neutral-400 ml-auto">{processedLeads.length} resultado{processedLeads.length !== 1 ? "s" : ""}</span>
             </div>
 
             {/* Table */}
@@ -574,7 +574,7 @@ export default function ClientsPage() {
                 <thead>
                   <tr className="border-b border-neutral-100">
                     {["Cliente", "WhatsApp", "Perfil", "Vidas / Idades", "Entrada", "Ações"].map(h => (
-                      <th key={h} className="text-left px-5 py-3 text-[9px] font-medium text-neutral-400 uppercase tracking-widest whitespace-nowrap">{h}</th>
+                      <th key={h} className="text-left px-5 py-3 text-[10px] font-medium text-neutral-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -704,13 +704,13 @@ export default function ClientsPage() {
               </div>
               {/* Sort */}
               <div className="flex items-center gap-1.5 ml-auto">
-                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest">Ordem:</span>
+                <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest">Ordem:</span>
                 {[{ val: "id_desc", lbl: "Recente" }, { val: "nome_asc", lbl: "A-Z" }].map(o => (
                   <Button key={o.val} variant={clientSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setClientSort(o.val as any)}
                     className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${clientSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
                       }`}>{o.lbl}</Button>
                 ))}
-                <span className="text-[10px] font-medium text-neutral-400 ml-2">{processedClients.length}</span>
+                <span className="text-[11px] font-medium text-neutral-400 ml-2">{processedClients.length}</span>
               </div>
             </div>
 
@@ -724,7 +724,7 @@ export default function ClientsPage() {
                       ...(isUserAdmin ? ["Corretor"] : []),
                       "Ações"
                     ].map(h => (
-                      <th key={h} className="text-left px-5 py-3 text-[9px] font-medium text-neutral-400 uppercase tracking-widest whitespace-nowrap">{h}</th>
+                      <th key={h} className="text-left px-5 py-3 text-[10px] font-medium text-neutral-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
                     ))}
                   </tr>
                 </thead>
