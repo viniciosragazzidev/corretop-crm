@@ -34,7 +34,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   // Exclude layout for login page
-  if (pathname === '/crm/login' || pathname === '/login') {
+  if (pathname === '/login') {
     return <>{children}</>;
   }
 
@@ -42,53 +42,53 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const { isDemoMode, toggleDemoMode } = useDemoMode();
   const isUserAdmin = session && (session.user as any).role === 'ADMIN';
 
-  // Categorized navigation items matching the visual design
+  // Categorized navigation items matching the visual design (without /crm prefix)
   const navGroups = [
     {
       title: 'Visão Geral',
       items: [
-        { href: '/crm/resume', label: 'Resumo', icon: GridViewIcon }
+        { href: '/resume', label: 'Resumo', icon: GridViewIcon }
       ]
     },
     {
       title: 'Comercial',
       items: [
-        { href: '/crm/clients', label: 'Clientes', icon: UserGroupIcon },
-        ...(isUserAdmin ? [{ href: '/crm/planos', label: 'Planos', icon: Task01Icon }] : [])
+        { href: '/clients', label: 'Clientes', icon: UserGroupIcon },
+        ...(isUserAdmin ? [{ href: '/planos', label: 'Planos', icon: Task01Icon }] : [])
       ]
     },
     {
       title: 'Equipe',
       items: [
-        ...(isUserAdmin ? [{ href: '/crm/corretores', label: 'Corretores', icon: Briefcase01Icon }] : []),
-        { href: '/crm/chat', label: 'Conversas', icon: BubbleChatIcon }
+        ...(isUserAdmin ? [{ href: '/corretores', label: 'Corretores', icon: Briefcase01Icon }] : []),
+        { href: '/chat', label: 'Conversas', icon: BubbleChatIcon }
       ]
     },
     {
       title: 'Gestão',
       items: [
-        ...(isUserAdmin ? [{ href: '/crm/dev-roadmap', label: 'Dev Roadmap', icon: CodeIcon }] : []),
-        { href: '/crm/settings', label: 'Configurações', icon: Settings02Icon }
+        ...(isUserAdmin ? [{ href: '/dev-roadmap', label: 'Dev Roadmap', icon: CodeIcon }] : []),
+        { href: '/settings', label: 'Configurações', icon: Settings02Icon }
       ]
     }
   ];
 
   const getPageLabel = () => {
     switch (pathname) {
-      case '/crm/resume': return 'Resumo';
-      case '/crm/clients': return 'Clientes';
-      case '/crm/chat': return 'Conversas';
-      case '/crm/corretores': return 'Corretores';
-      case '/crm/planos': return 'Planos';
-      case '/crm/dev-roadmap': return 'Dev Roadmap';
-      case '/crm/settings': return 'Configurações';
+      case '/resume': return 'Resumo';
+      case '/clients': return 'Clientes';
+      case '/chat': return 'Conversas';
+      case '/corretores': return 'Corretores';
+      case '/planos': return 'Planos';
+      case '/dev-roadmap': return 'Dev Roadmap';
+      case '/settings': return 'Configurações';
       default: return 'Geral';
     }
   };
 
   const userInitials = session?.user?.name
     ? session.user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
-    : 'VR';
+    : 'CT';
 
   return (
     <div className="min-h-[100dvh] bg-white font-sans text-neutral-800 flex overflow-hidden select-none">
@@ -99,21 +99,19 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         {/* Brand & Dropdown */}
         <div className="p-6 border-b border-slate-100/50 flex flex-col gap-4">
           <Link href="/" className="hover:opacity-90 transition-opacity flex items-center gap-2">
-            <img
-              src="/logo.svg"
-              alt="Venacor Saúde"
-              className="h-8.5 w-auto object-contain"
-            />
+            <span className="text-xl font-extrabold tracking-tight text-neutral-900">
+              Corre<span className="text-[#3b2dff]">top</span>
+            </span>
             <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider select-none">
               CRM
             </span>
           </Link>
 
-          {/* Filial / Context selector styled exactly like Salte */}
+          {/* Filial / Context selector */}
           <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100/50 cursor-pointer transition-colors">
             <div className="flex flex-col text-left">
-              <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Filial</span>
-              <span className="text-xs font-bold text-neutral-850">Venacor Saúde</span>
+              <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Espaço</span>
+              <span className="text-xs font-bold text-neutral-850">Corretop CRM</span>
             </div>
             <HugeiconsIcon icon={ArrowDown01Icon} className="size-4 text-neutral-400" />
           </div>
@@ -195,7 +193,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             </div>
             {/* Minimal Logout Button */}
             <Link
-              href="/crm/login"
+              href="/login"
               className="p-1.5 rounded-lg hover:bg-slate-100 text-neutral-400 hover:text-red-500 cursor-pointer transition-colors"
               title="Sair"
             >
@@ -204,7 +202,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="mt-3 text-[9px] text-neutral-350 text-center font-normal">
-            Venacor Saúde © 2026
+            Corretop © 2026
           </div>
         </div>
       </aside>
@@ -222,11 +220,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           </button>
 
           <Link href="/" className="flex items-center gap-1.5 hover:opacity-90 transition-opacity">
-            <img
-              src="/logo.svg"
-              alt="Venacor Saúde"
-              className="h-7 w-auto object-contain"
-            />
+            <span className="text-lg font-extrabold tracking-tight text-neutral-900">
+              Corre<span className="text-[#3b2dff]">top</span>
+            </span>
             <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-1.5 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-wider select-none">
               CRM
             </span>
@@ -259,7 +255,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             {/* Action Buttons */}
             <div className="flex items-center gap-3 text-neutral-400">
               <Link
-                href="/crm/chat"
+                href="/chat"
                 className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors relative"
               >
                 <HugeiconsIcon icon={BubbleChatIcon} className="size-4.5" />
@@ -273,7 +269,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               </button>
 
               <Link
-                href="/crm/settings"
+                href="/settings"
                 className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors"
               >
                 <HugeiconsIcon icon={Settings02Icon} className="size-4.5" />
@@ -321,11 +317,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             >
               <div className="flex items-center justify-between pb-5 border-b border-slate-100">
                 <div className="flex items-center gap-1.5">
-                  <img
-                    src="/logo.svg"
-                    alt="Venacor Saúde"
-                    className="h-7.5 w-auto object-contain"
-                  />
+                  <span className="text-lg font-extrabold tracking-tight text-neutral-900">
+                    Corre<span className="text-[#3b2dff]">top</span>
+                  </span>
                   <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider select-none">
                     CRM
                   </span>
@@ -342,31 +336,31 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               <ScrollArea className="flex-1 py-6">
                 <nav className="space-y-6">
                   {navGroups.map((group) => (
-                  <div key={group.title} className="space-y-1.5">
-                    <span className="px-3 text-[9px] font-semibold uppercase tracking-wider text-neutral-450">
-                      {group.title}
-                    </span>
-                    <div className="space-y-1">
-                      {group.items.map((item) => {
-                        const isActive = pathname === item.href;
-                        return (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs transition-all ${isActive
-                              ? 'bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10 font-semibold'
-                              : 'text-neutral-700 hover:text-neutral-800 font-normal'
-                              }`}
-                          >
-                            <HugeiconsIcon icon={item.icon} className="size-4.5" />
-                            <span>{item.label}</span>
-                          </Link>
-                        );
-                      })}
+                    <div key={group.title} className="space-y-1.5">
+                      <span className="px-3 text-[9px] font-semibold uppercase tracking-wider text-neutral-450">
+                        {group.title}
+                      </span>
+                      <div className="space-y-1">
+                        {group.items.map((item) => {
+                          const isActive = pathname === item.href;
+                          return (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs transition-all ${isActive
+                                ? 'bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10 font-semibold'
+                                : 'text-neutral-700 hover:text-neutral-800 font-normal'
+                                }`}
+                            >
+                              <HugeiconsIcon icon={item.icon} className="size-4.5" />
+                              <span>{item.label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </nav>
+                  ))}
+                </nav>
               </ScrollArea>
 
               <div className="pt-4 border-t border-slate-100 mb-4">
@@ -391,12 +385,12 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
                 <Link
                   href="/"
-                  className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-neutral-500 hover:text-neutral-850 text-center text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block"
+                  className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-neutral-550 hover:text-neutral-900 text-center text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block"
                 >
                   Voltar ao Site
                 </Link>
                 <Link
-                  href="/crm/login"
+                  href="/login"
                   className="w-full py-2.5 rounded-xl bg-red-50 text-red-650 hover:bg-red-100 text-center text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block"
                 >
                   Sair

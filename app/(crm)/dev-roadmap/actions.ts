@@ -89,7 +89,7 @@ export async function createDevTaskAction(input: CreateDevTaskInput) {
       RETURNING id, title, description, status, priority, created_at, updated_at
     `, [title.trim(), description || '', priority]);
 
-    revalidatePath("/crm/dev-roadmap");
+    revalidatePath("/dev-roadmap");
     return { success: true, data: result[0] };
   } catch (error: any) {
     console.error("Error in createDevTaskAction:", error);
@@ -113,7 +113,7 @@ export async function updateDevTaskStatusAction(
       WHERE id = $2
     `, [status, taskId]);
 
-    revalidatePath("/crm/dev-roadmap");
+    revalidatePath("/dev-roadmap");
     return { success: true };
   } catch (error: any) {
     console.error("Error in updateDevTaskStatusAction:", error);
@@ -143,7 +143,7 @@ export async function updateDevTaskAction(
       WHERE id = $4
     `, [title.trim(), description || '', priority, taskId]);
 
-    revalidatePath("/crm/dev-roadmap");
+    revalidatePath("/dev-roadmap");
     return { success: true };
   } catch (error: any) {
     console.error("Error in updateDevTaskAction:", error);
@@ -162,7 +162,7 @@ export async function deleteDevTaskAction(taskId: number) {
       DELETE FROM dev_tasks WHERE id = $1
     `, [taskId]);
 
-    revalidatePath("/crm/dev-roadmap");
+    revalidatePath("/dev-roadmap");
     return { success: true };
   } catch (error: any) {
     console.error("Error in deleteDevTaskAction:", error);

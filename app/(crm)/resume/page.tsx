@@ -273,7 +273,7 @@ export default function ResumePage() {
   useEffect(() => {
     if (isPending) return;
     if (!session) {
-      router.push('/crm/login');
+      router.push('/login');
       return;
     }
     loadData();

@@ -33,7 +33,7 @@ export default function CRMLogin() {
             id: toastId,
             description: 'Você será direcionado ao painel CRM.',
           });
-          router.replace('/crm/resume');
+          router.replace('/resume');
         },
         onError: (ctx) => {
           setIsLoading(false);
@@ -62,11 +62,9 @@ export default function CRMLogin() {
         {/* Logo and header */}
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <img 
-              src="/logo.svg" 
-              alt="Venacor Saúde" 
-              className="h-9 w-auto object-contain mx-auto"
-            />
+            <span className="text-3xl font-extrabold tracking-tight text-neutral-900">
+              Corre<span className="text-[#3b2dff]">top</span>
+            </span>
           </div>
           <h1 className="text-xl font-extrabold text-neutral-900 tracking-tight">
             Painel CRM

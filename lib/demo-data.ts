@@ -1,4 +1,4 @@
-import type { DashboardData, LeadItem, CorretorRow, OperadoraRow } from "@/app/crm/resume/actions";
+import type { DashboardData, LeadItem, CorretorRow, OperadoraRow } from "@/app/(crm)/resume/actions";
 
 const demoUltimosLeads: LeadItem[] = [
   { id: 1, nome: "Maria Santos", status: "Em Atendimento", perfil: "Amil Saúde", corretorNome: "Vinicios Ragazzi" },

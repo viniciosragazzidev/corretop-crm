@@ -13,14 +13,10 @@ function getTrustedOrigins(): string[] {
   const origins = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "http://crm.localhost:3000",
-    "https://crm.localhost:3000",
-    "https://venacorseguros.com",
-    "https://www.venacorseguros.com",
-    "https://crm.venacorseguros.com",
-    "http://venacorseguros.com",
-    "http://www.venacorseguros.com",
-    "http://crm.venacorseguros.com",
+    "https://meucrm.com.br",
+    "https://api.meucrm.com.br",
+    "http://meucrm.com.br",
+    "http://api.meucrm.com.br",
   ];
   if (process.env.VERCEL_URL) {
     origins.push(`https://${process.env.VERCEL_URL}`);
@@ -45,8 +41,10 @@ export const auth = betterAuth({
   advanced: {
     useSecureCookies: baseURL.startsWith("https"),
     crossSubDomainCookies: {
-      enabled: true,
-      domain: `.${new URL(baseURL).hostname.replace(/^crm\./, '')}`,
+      enabled: !baseURL.includes("localhost"),
+      domain: baseURL.includes("localhost")
+        ? undefined
+        : `.${new URL(baseURL).hostname.replace(/^(api|crm)\./, '')}`,
     },
   },
   user: {

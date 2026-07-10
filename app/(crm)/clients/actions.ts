@@ -102,7 +102,7 @@ export async function startAttendanceAction(clientId: number) {
       WHERE id = $2
     `, [userId, clientId]);
 
-    revalidatePath("/crm/clients");
+    revalidatePath("/clients");
     return { success: true };
   } catch (error: any) {
     console.error("Error in startAttendanceAction:", error);
@@ -146,7 +146,7 @@ export async function updateClientStatusAction(
       WHERE id = $2
     `, [status, clientId]);
 
-    revalidatePath("/crm/clients");
+    revalidatePath("/clients");
     return { success: true };
   } catch (error: any) {
     console.error("Error in updateClientStatusAction:", error);
@@ -189,7 +189,7 @@ export async function createLeadAction(input: CreateLeadInput) {
       [nome, cleanedWhatsapp, perfil, idades, status, assignedCorretor]
     );
 
-    revalidatePath("/crm/clients");
+    revalidatePath("/clients");
     return { success: true };
   } catch (error: any) {
     console.error("Error in createLeadAction:", error);

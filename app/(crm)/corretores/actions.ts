@@ -98,7 +98,7 @@ export async function createCorretorAction(input: CreateCorretorInput) {
       WHERE id = $3
     `, [input.role, "ONLINE", newUserId]);
 
-    revalidatePath("/crm/corretores");
+    revalidatePath("/corretores");
     return { success: true };
   } catch (error: any) {
     console.error("Error in createCorretorAction:", error);
@@ -127,7 +127,7 @@ export async function updateCorretorStatusAction(
       WHERE id = $2
     `, [status, corretorId]);
 
-    revalidatePath("/crm/corretores");
+    revalidatePath("/corretores");
     return { success: true };
   } catch (error: any) {
     console.error("Error in updateCorretorStatusAction:", error);
@@ -154,7 +154,7 @@ export async function desativarCorretorAction(corretorId: string) {
       WHERE id = $1
     `, [corretorId]);
 
-    revalidatePath("/crm/corretores");
+    revalidatePath("/corretores");
     return { success: true };
   } catch (error: any) {
     console.error("Error in desativarCorretorAction:", error);

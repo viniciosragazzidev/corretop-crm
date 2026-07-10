@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const ADMIN_ONLY_ROUTES = ['/crm/planos', '/crm/corretores']
+const PROTECTED_ROUTES = ['/resume', '/clients', '/planos', '/corretores', '/chat', '/dev-roadmap', '/settings']
+const ADMIN_ONLY_ROUTES = ['/planos', '/corretores']
 
 async function getSession(request: NextRequest) {
   const origin = request.nextUrl.origin
@@ -20,42 +21,31 @@ async function getSession(request: NextRequest) {
 
 export async function proxy(request: NextRequest) {
   const url = request.nextUrl.clone()
-  const hostname = request.headers.get('host') || ''
+  const { pathname } = url
 
-  const isCrmSubdomain = hostname.startsWith('crm.');
-  const isCrmPath = url.pathname.startsWith('/crm');
+  const isProtectedRoute = PROTECTED_ROUTES.some(route => pathname.startsWith(route))
 
-  if (isCrmSubdomain && !isCrmPath) {
-    url.pathname = `/crm${url.pathname}`;
-  }
-
-  if (url.pathname.startsWith('/crm') && url.pathname !== '/crm/login' && !url.pathname.startsWith('/crm/api')) {
+  if (isProtectedRoute) {
     const sessionData = await getSession(request)
 
     if (!sessionData?.user) {
       const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = isCrmSubdomain ? '/login' : '/crm/login'
+      redirectUrl.pathname = '/login'
       return NextResponse.redirect(redirectUrl)
     }
 
     const isAdminRoute = ADMIN_ONLY_ROUTES.some((route) =>
-      url.pathname.startsWith(route)
+      pathname.startsWith(route)
     )
 
     if (isAdminRoute && sessionData.user.role !== 'ADMIN') {
       const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = '/crm/resume'
+      redirectUrl.pathname = '/resume'
       return NextResponse.redirect(redirectUrl)
     }
   }
-
-  if (isCrmSubdomain && !isCrmPath) {
-    return NextResponse.rewrite(url);
-  }
 }
 
-// Garante que o Next.js processe o proxy em todas as páginas,
-// ignorando arquivos estáticos, imagens e APIs para não perder desempenho
 export const config = {
   matcher: [
     '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.png$|.*\\.svg$|.*\\.webp$|.*\\.jpg$|.*\\.jpeg$).*)',

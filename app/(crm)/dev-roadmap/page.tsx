@@ -68,7 +68,7 @@ export default function DevRoadmapPage() {
   useEffect(() => {
     if (isPending) return;
     if (!session) {
-      router.push("/crm/login");
+      router.push("/login");
       return;
     }
     const role = (session.user as any).role;
@@ -197,7 +197,7 @@ export default function DevRoadmapPage() {
             Apenas administradores podem visualizar o roadmap de desenvolvimento.
           </p>
           <button
-            onClick={() => router.push("/crm/resume")}
+            onClick={() => router.push("/resume")}
             className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-bold text-[10px] px-5 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.97] select-none"
           >
             Voltar para o Painel

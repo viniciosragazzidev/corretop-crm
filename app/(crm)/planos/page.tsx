@@ -108,7 +108,7 @@ export default function PlanosPage() {
     if (isPending) return;
 
     if (!session) {
-      router.push("/crm/login");
+      router.push("/login");
       return;
     }
 
@@ -429,7 +429,7 @@ export default function PlanosPage() {
             Apenas administradores da Venacor possuem permissão para configurar tabelas de planos e matrizes de preços.
           </p>
           <button
-            onClick={() => router.push("/crm/resume")}
+            onClick={() => router.push("/resume")}
             className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-3xs transition-all cursor-pointer select-none active:scale-[0.98]"
           >
             Voltar para o Painel

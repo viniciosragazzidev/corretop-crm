@@ -16,29 +16,23 @@ const amilFont = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.venacorseguros.com'),
+  metadataBase: new URL('https://meucrm.com.br'),
   title: {
-    default: 'Venancor Corretora | Planos de Saúde e Odontológicos',
-    template: '%s | Venancor Corretora'
+    default: 'Corretop | CRM SaaS para Corretores de Seguros',
+    template: '%s | Corretop'
   },
-  description: 'Compare e contrate os melhores planos de saúde e odontológicos (Amil, SulAmérica, Bradesco, Assim, GNDI, Leve Saúde). Economize até 35% com seu CNPJ ou MEI na Baixada Fluminense. Cotação grátis.',
+  description: 'O CRM definitivo para corretores de seguros. Gerencie clientes, propostas, planos e otimize suas vendas.',
   keywords: [
-    'Planos de saúde',
-    'Planos de saúde Nova Iguaçu',
-    'Venancor Corretora',
-    'Venancor Saúde',
-    'Venacor Seguros',
-    'Planos de saúde Baixada Fluminense',
-    'Tabelas de planos de saúde',
-    'Plano de saúde MEI',
-    'Plano de saúde empresarial',
-    'Amil Saúde',
-    'Amep Saúde',
-    'SulAmérica Saúde'
+    'CRM corretor de seguros',
+    'Corretop CRM',
+    'CRM de planos de saúde',
+    'Gestão de clientes corretores',
+    'Software para corretores',
+    'Plano de saúde PME MEI'
   ],
-  authors: [{ name: 'Venancor Corretora' }],
-  creator: 'Venancor Corretora',
-  publisher: 'Venancor Corretora',
+  authors: [{ name: 'Corretop' }],
+  creator: 'Corretop',
+  publisher: 'Corretop',
   robots: {
     index: true,
     follow: true,
@@ -51,20 +45,20 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.venacorseguros.com',
+    canonical: 'https://meucrm.com.br',
   },
   openGraph: {
-    title: 'Venancor Corretora | Planos de Saúde e Odontológicos',
-    description: 'Compare e contrate os melhores planos de saúde com até 35% de desconto via CNPJ/MEI. Consultoria gratuita.',
-    url: 'https://www.venacorseguros.com',
-    siteName: 'Venancor Corretora',
+    title: 'Corretop | CRM SaaS para Corretores de Seguros',
+    description: 'O CRM definitivo para corretores de seguros. Gerencie clientes, propostas, planos e otimize suas vendas.',
+    url: 'https://meucrm.com.br',
+    siteName: 'Corretop',
     locale: 'pt_BR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Venancor Corretora | Planos de Saúde e Odontológicos',
-    description: 'Compare e contrate os melhores planos de saúde com até 35% de desconto via CNPJ/MEI.',
+    title: 'Corretop | CRM SaaS para Corretores de Seguros',
+    description: 'O CRM definitivo para corretores de seguros. Gerencie clientes, propostas, planos e otimize suas vendas.',
   }
 };
 

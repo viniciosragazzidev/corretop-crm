@@ -43,7 +43,7 @@ export default function CorretoresPage() {
     if (isPending) return;
 
     if (!session) {
-      router.push("/crm/login");
+      router.push("/login");
       return;
     }
 
@@ -204,7 +204,7 @@ export default function CorretoresPage() {
             Apenas administradores da Venacor possuem permissões para visualizar e gerenciar a equipe de corretores.
           </p>
           <Button
-            onClick={() => router.push("/crm/resume")}
+            onClick={() => router.push("/resume")}
             className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-3xs transition-all cursor-pointer select-none active:scale-[0.98] h-10 border-transparent"
           >
             Voltar para o Painel

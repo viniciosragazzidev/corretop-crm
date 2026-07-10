@@ -325,7 +325,7 @@ export default function ClientsPage() {
   // �€�€ Fetch �€�€
   useEffect(() => {
     if (isPending) return;
-    if (!session) { router.push("/crm/login"); return; }
+    if (!session) { router.push("/login"); return; }
 
     async function fetchClients() {
       setIsLoading(true);

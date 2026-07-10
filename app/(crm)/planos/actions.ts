@@ -257,7 +257,7 @@ export async function savePlanoAction(
       );
     }
 
-    revalidatePath("/crm/planos");
+    revalidatePath("/planos");
     return { success: true, planoId };
   } catch (error: any) {
     console.error("Error in savePlanoAction:", error);
@@ -282,7 +282,7 @@ export async function createOperadoraAction(nome: string, logoUrl: string | null
       [nome, logoUrl]
     );
 
-    revalidatePath("/crm/planos");
+    revalidatePath("/planos");
     return { success: true };
   } catch (error: any) {
     console.error("Error in createOperadoraAction:", error);
