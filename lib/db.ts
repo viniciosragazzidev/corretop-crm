@@ -4,8 +4,16 @@ const globalForDb = globalThis as unknown as {
   connPool: Pool | undefined;
 };
 
+function sanitizeConnectionString(url: string | undefined): string | undefined {
+  if (!url) return url;
+  return url
+    .replace(/sslmode=require/g, "sslmode=verify-full")
+    .replace(/sslmode=prefer/g, "sslmode=verify-full")
+    .replace(/sslmode=verify-ca/g, "sslmode=verify-full");
+}
+
 function createPool() {
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString = sanitizeConnectionString(process.env.DATABASE_URL);
   const isNeon = connectionString?.includes("neon.tech");
 
   return new Pool({
