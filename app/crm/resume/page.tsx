@@ -9,7 +9,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import {
   RefreshIcon,
   UserIcon,
-  CircleDotIcon,
+  InformationCircleIcon,
 } from '@hugeicons/core-free-icons';
 import { getDashboardAction, DashboardData } from './actions';
 import { getDemoDashboardData } from '@/lib/demo-data';
@@ -27,6 +27,88 @@ const STATUS_LABELS = {
   'Proposta Enviada': 'Proposta',
   'Venda Concluída': 'Concluído',
 } as Record<string, string>;
+
+function DonutChart({ data: items }: { data: { name: string; value: number; color: string }[] }) {
+  const total = items.reduce((sum, item) => sum + item.value, 0);
+  const circumference = 226.195;
+  let accumulatedPercent = 0;
+
+  if (total === 0) {
+    return (
+      <div className="flex items-center justify-center h-28">
+        <span className="text-xs text-neutral-400 font-medium">Sem dados</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col sm:flex-row items-center justify-around gap-6 p-2">
+      <div className="relative size-28 flex items-center justify-center shrink-0">
+        <svg className="size-full -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="36" className="fill-transparent stroke-slate-100" strokeWidth="8" />
+          {items.map((item, idx) => {
+            const percent = item.value / total;
+            const strokeLength = percent * circumference;
+            const strokeOffset = circumference - (accumulatedPercent * circumference);
+            accumulatedPercent += percent;
+            return (
+              <circle
+                key={idx}
+                cx="50" cy="50" r="36"
+                className="fill-transparent transition-all duration-300 hover:stroke-[9px]"
+                stroke={item.color}
+                strokeWidth="8"
+                strokeDasharray={`${strokeLength} ${circumference}`}
+                strokeDashoffset={strokeOffset}
+                strokeLinecap="round"
+              />
+            );
+          })}
+        </svg>
+        <div className="absolute flex flex-col items-center justify-center text-center">
+          <span className="text-lg font-semibold text-neutral-800 tracking-tight">{total}</span>
+          <span className="text-[8px] font-medium text-neutral-450 uppercase tracking-widest mt-0.5">Leads</span>
+        </div>
+      </div>
+      <div className="flex-1 space-y-1.5 w-full text-left">
+        {items.map((item, idx) => {
+          const pct = total > 0 ? ((item.value / total) * 100).toFixed(0) : '0';
+          return (
+            <div key={idx} className="flex items-center justify-between text-[11px] text-neutral-500">
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
+                <span className="font-normal text-neutral-600">{item.name}</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-right">
+                <span className="text-neutral-400 text-[10px]">{pct}% ({item.value})</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function MiniSparkline({ trend, color }: { trend: 'up' | 'neutral' | 'down'; color: string }) {
+  const paths = {
+    up: 'M0,20 C15,22 25,10 40,15 C55,20 70,5 85,12 L100,2',
+    neutral: 'M0,15 C20,18 40,12 60,16 C80,10 90,14 100,12',
+    down: 'M0,5 C15,8 25,15 40,12 C55,8 70,20 85,18 L100,22',
+  };
+
+  return (
+    <svg viewBox="0 0 100 25" className="w-full h-full" preserveAspectRatio="none">
+      <path
+        d={paths[trend]}
+        fill="none"
+        stroke={color}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export default function ResumePage() {
   const router = useRouter();
@@ -46,7 +128,7 @@ export default function ResumePage() {
       return;
     }
     loadData();
-  }, [session, isPending, router, isDemoMode]);
+  }, [session, isPending, router]);
 
   useEffect(() => {
     if (data) loadData();
@@ -72,13 +154,7 @@ export default function ResumePage() {
     setIsLoading(false);
   }
 
-  function timeAgo(dateStr: string) {
-    const diff = Date.now() - new Date(dateStr).getTime();
-    const mins = Math.floor(diff / 60000);
-    if (mins < 60) return `há ${mins}min`;
-    const hours = Math.floor(mins / 60);
-    return `há ${hours}h`;
-  }
+  const donutColors = ['#3b2dff', '#10b981', '#0070f3', '#f43f5e', '#f59e0b'];
 
   if (isPending || isLoading) {
     return (
@@ -87,12 +163,15 @@ export default function ResumePage() {
           <div className="h-8 w-40 bg-slate-100 rounded-lg" />
           <div className="h-8 w-32 bg-slate-100 rounded-lg" />
         </div>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {[1, 2, 3, 4, 5].map(i => (
             <div key={i} className="h-28 bg-slate-50 rounded-3xl animate-pulse" />
           ))}
         </div>
-        <div className="h-64 bg-slate-50 rounded-3xl animate-pulse" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 h-64 bg-slate-50 rounded-3xl animate-pulse" />
+          <div className="h-64 bg-slate-50 rounded-3xl animate-pulse" />
+        </div>
         <div className="h-64 bg-slate-50 rounded-3xl animate-pulse" />
       </div>
     );
@@ -144,69 +223,82 @@ export default function ResumePage() {
       {data && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {[
-            { label: 'Total de Leads', value: data.totalLeads, color: 'text-neutral-800', bg: 'bg-neutral-50/30' },
-            { label: 'Aguardando', value: data.aguardando, color: 'text-neutral-600', bg: 'bg-neutral-50/30' },
-            { label: 'Em Atendimento', value: data.emAtendimento, color: 'text-blue-700', bg: 'bg-blue-50/30' },
-            { label: 'Propostas', value: data.propostasEnviadas, color: 'text-amber-700', bg: 'bg-amber-50/30' },
-            { label: 'Vendas', value: data.vendasConcluidas, color: 'text-emerald-700', bg: 'bg-emerald-50/30' },
+            { label: 'Total de Leads', value: data.totalLeads, color: '#3b2dff', trend: 'up' as const, bg: 'bg-[#f8f9fa73]/40' },
+            { label: 'Aguardando', value: data.aguardando, color: '#71717a', trend: 'up' as const, bg: 'bg-[#f8f9fa73]/40' },
+            { label: 'Em Atendimento', value: data.emAtendimento, color: '#3b82f6', trend: 'neutral' as const, bg: 'bg-[#f8f9fa73]/40' },
+            { label: 'Propostas', value: data.propostasEnviadas, color: '#f59e0b', trend: 'up' as const, bg: 'bg-[#f8f9fa73]/40' },
+            { label: 'Vendas', value: data.vendasConcluidas, color: '#10b981', trend: 'up' as const, bg: 'bg-[#f8f9fa73]/40' },
           ].map((metric) => (
             <div
               key={metric.label}
-              className={`p-5 rounded-3xl border border-slate-100 ${metric.bg} transition-all duration-300 shadow-[0_1px_2px_rgba(0,0,0,0.005)]`}
+              className={`p-5 rounded-3xl border border-slate-100 ${metric.bg} flex flex-col justify-between h-32 transition-all duration-300 shadow-[0_1px_2px_rgba(0,0,0,0.005)]`}
             >
               <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">{metric.label}</span>
-              <div className={`mt-3 text-3xl font-semibold tracking-tight ${metric.color}`}>
-                {metric.value}
+              <div className="flex items-end justify-between">
+                <div className={`text-3xl font-semibold tracking-tight`}>
+                  {metric.value}
+                </div>
+                <div className="w-16 h-8 shrink-0">
+                  <MiniSparkline trend={metric.trend} color={metric.color} />
+                </div>
               </div>
             </div>
           ))}
         </div>
       )}
 
-      {/* Recent Leads */}
+      {/* Bento Grid: Donut + Recent Leads */}
       {data && (
-        <div className="p-5 rounded-3xl border border-slate-100 bg-[#f8f9fa73]/40">
-          <div className="flex items-center justify-between pb-4 border-b border-slate-100/50">
-            <div className="flex flex-col text-left">
-              <span className="text-[9px] font-medium text-neutral-450 uppercase tracking-wider">Pipeline</span>
-              <span className="text-sm font-semibold text-neutral-700 mt-0.5">Últimos Leads</span>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Donut Chart - 2/3 width */}
+          <div className="lg:col-span-2 p-5 rounded-3xl border border-slate-100 bg-[#f8f9fa73]/40 flex flex-col justify-between min-h-[260px] transition-all duration-300 shadow-[0_1px_2px_rgba(0,0,0,0.005)]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-medium text-neutral-500">Distribuição por Operadora</span>
+              <HugeiconsIcon icon={InformationCircleIcon} className="size-4.5 text-neutral-450 shrink-0" />
             </div>
-            <span className="text-[10px] font-medium text-neutral-400">{data.ultimosLeads.length} registros</span>
+            <DonutChart
+              data={data.leadsPorOperadora.map((op, idx) => ({
+                name: op.perfil,
+                value: op.total,
+                color: donutColors[idx % donutColors.length],
+              }))}
+            />
           </div>
-          <div className="mt-4 space-y-2">
-            {data.ultimosLeads.length === 0 ? (
-              <p className="text-xs text-neutral-400 font-medium py-8 text-center">Nenhum lead registrado.</p>
-            ) : (
-              data.ultimosLeads.map((lead) => (
-                <div
-                  key={lead.id}
-                  className="flex items-center justify-between p-3.5 rounded-2xl border border-slate-100/80 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.003)] transition-all hover:shadow-xs"
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="size-8 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200/50 shrink-0">
-                      <HugeiconsIcon icon={UserIcon} className="size-4 text-neutral-500" />
-                    </div>
-                    <div className="flex flex-col min-w-0 text-left">
-                      <span className="text-sm font-semibold text-neutral-800 truncate">{lead.nome}</span>
-                      <div className="flex items-center gap-2 text-[10px] text-neutral-400 mt-0.5">
-                        <span>{lead.perfil}</span>
-                        <span className="size-1 rounded-full bg-neutral-300" />
-                        <span>{timeAgo(lead.created_at)}</span>
-                        {lead.corretorNome && (
-                          <>
-                            <span className="size-1 rounded-full bg-neutral-300" />
-                            <span>{lead.corretorNome}</span>
-                          </>
-                        )}
+
+          {/* Recent Leads - 1/3 width */}
+          <div className="p-5 rounded-3xl border border-slate-100 bg-[#f8f9fa73]/40 flex flex-col h-full min-h-[260px] transition-all duration-300 shadow-[0_1px_2px_rgba(0,0,0,0.005)]">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100/50">
+              <div className="flex flex-col text-left">
+                <span className="text-[9px] font-medium text-neutral-450 uppercase tracking-wider">Pipeline</span>
+                <span className="text-xs font-semibold text-neutral-700 mt-0.5">Últimos Leads</span>
+              </div>
+              <span className="text-[10px] font-medium text-neutral-400">{data.ultimosLeads.length}</span>
+            </div>
+            <div className="flex-1 overflow-y-auto mt-3 space-y-2 pr-1">
+              {data.ultimosLeads.length === 0 ? (
+                <p className="text-xs text-neutral-400 font-medium py-8 text-center">Nenhum lead registrado.</p>
+              ) : (
+                data.ultimosLeads.slice(0, 6).map((lead) => (
+                  <div
+                    key={lead.id}
+                    className="flex items-center justify-between p-2.5 rounded-2xl border border-slate-100/80 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.003)] transition-all hover:shadow-xs"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="size-7 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200/50 shrink-0">
+                        <HugeiconsIcon icon={UserIcon} className="size-3.5 text-neutral-500" />
+                      </div>
+                      <div className="flex flex-col min-w-0 text-left">
+                        <span className="text-xs font-semibold text-neutral-800 truncate">{lead.nome}</span>
+                        <span className="text-[9px] text-neutral-400 mt-0.5">{lead.perfil}</span>
                       </div>
                     </div>
+                    <span className={`px-2 py-0.5 rounded-lg text-[8px] font-bold border ${STATUS_STYLES[lead.status] || 'bg-neutral-100 text-neutral-600'} border-transparent shrink-0`}>
+                      {STATUS_LABELS[lead.status] || lead.status}
+                    </span>
                   </div>
-                  <span className={`px-2.5 py-1 rounded-lg text-[9px] font-bold border ${STATUS_STYLES[lead.status] || 'bg-neutral-100 text-neutral-600'} border-transparent shrink-0`}>
-                    {STATUS_LABELS[lead.status] || lead.status}
-                  </span>
-                </div>
-              ))
-            )}
+                ))
+              )}
+            </div>
           </div>
         </div>
       )}

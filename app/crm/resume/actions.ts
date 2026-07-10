@@ -20,7 +20,6 @@ export interface LeadItem {
   nome: string;
   status: string;
   perfil: string;
-  created_at: string;
   corretorNome: string | null;
 }
 
@@ -66,10 +65,10 @@ export async function getDashboardAction(): Promise<{ data?: DashboardData; erro
       query<{ count: string }>("SELECT COUNT(*) as count FROM leads WHERE status = 'Proposta Enviada'"),
       query<{ count: string }>("SELECT COUNT(*) as count FROM leads WHERE status = 'Venda Concluída'"),
       query<LeadItem>(`
-        SELECT l.id, l.nome, l.status, l.perfil, l.created_at, u.name as "corretorNome"
+        SELECT l.id, l.nome, l.status, l.perfil, u.name as "corretorNome"
         FROM leads l
         LEFT JOIN "user" u ON l."corretorId" = u.id
-        ORDER BY l.created_at DESC
+        ORDER BY l.id DESC
         LIMIT 8
       `),
       query<CorretorRow>(`

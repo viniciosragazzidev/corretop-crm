@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useSession } from '@/lib/auth-client';
 import { useDemoMode } from '@/lib/demo-mode';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   GridViewIcon,
   UserGroupIcon,
@@ -119,40 +120,42 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Navigation Groups */}
-        <nav className="flex-1 px-4 py-6 space-y-6 text-left">
-          {navGroups.map((group) => (
-            <div key={group.title} className="space-y-1.5">
-              <span className="px-4 text-[9px] font-semibold uppercase tracking-widest text-neutral-400 select-none block">
-                {group.title}
-              </span>
-              <div className="space-y-0.5">
-                {group.items.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`relative flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs transition-all ${isActive
-                        ? 'text-neutral-900 font-semibold bg-slate-50/60'
-                        : 'text-neutral-700 font-normal hover:text-neutral-600 hover:bg-slate-50/20'
-                        }`}
-                    >
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeSideNavIndicator"
-                          className="absolute left-0 top-2.5 bottom-2.5 w-1 bg-[#3b2dff] rounded-r-full"
-                          transition={{ type: 'spring', stiffness: 380, damping: 26 }}
-                        />
-                      )}
-                      <HugeiconsIcon icon={item.icon} className={`size-4.5 transition-colors ${isActive ? 'text-[#3b2dff]' : 'text-neutral-400'}`} />
-                      <span>{item.label}</span>
-                    </Link>
-                  );
-                })}
+        <ScrollArea className="flex-1 px-4 py-6">
+          <nav className="space-y-6 text-left">
+            {navGroups.map((group) => (
+              <div key={group.title} className="space-y-1.5">
+                <span className="px-4 text-[9px] font-semibold uppercase tracking-widest text-neutral-400 select-none block">
+                  {group.title}
+                </span>
+                <div className="space-y-0.5">
+                  {group.items.map((item) => {
+                    const isActive = pathname === item.href;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`relative flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs transition-all ${isActive
+                          ? 'text-neutral-900 font-semibold bg-slate-50/60'
+                          : 'text-neutral-700 font-normal hover:text-neutral-600 hover:bg-slate-50/20'
+                          }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeSideNavIndicator"
+                            className="absolute left-0 top-2.5 bottom-2.5 w-1 bg-[#3b2dff] rounded-r-full"
+                            transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+                          />
+                        )}
+                        <HugeiconsIcon icon={item.icon} className={`size-4.5 transition-colors ${isActive ? 'text-[#3b2dff]' : 'text-neutral-400'}`} />
+                        <span>{item.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
-        </nav>
+            ))}
+          </nav>
+        </ScrollArea>
 
         {/* Demo Mode Toggle */}
         <div className="px-4 pb-4">
@@ -336,8 +339,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               </div>
 
               {/* Mobile scroll nav items */}
-              <nav className="flex-1 py-6 overflow-y-auto space-y-6">
-                {navGroups.map((group) => (
+              <ScrollArea className="flex-1 py-6">
+                <nav className="space-y-6">
+                  {navGroups.map((group) => (
                   <div key={group.title} className="space-y-1.5">
                     <span className="px-3 text-[9px] font-semibold uppercase tracking-wider text-neutral-450">
                       {group.title}
@@ -363,6 +367,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                   </div>
                 ))}
               </nav>
+              </ScrollArea>
 
               <div className="pt-4 border-t border-slate-100 mb-4">
                 <div className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-amber-50/40 border border-amber-200/30">
