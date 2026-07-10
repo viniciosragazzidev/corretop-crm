@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from '@/lib/auth-client';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function CRMLogin() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function CRMLogin() {
     e.preventDefault();
     setError('');
     setIsLoading(true);
+    const toastId = toast.loading('Validando suas credenciais...');
 
     try {
       const res = await signIn.email({
@@ -28,16 +30,30 @@ export default function CRMLogin() {
         },
         onSuccess: () => {
           setIsLoading(false);
-          router.push('/crm/resume');
+          toast.success('Login realizado com sucesso.', {
+            id: toastId,
+            description: 'Você será direcionado ao painel CRM.',
+          });
+          router.replace('/crm/resume');
           router.refresh();
         },
         onError: (ctx) => {
           setIsLoading(false);
+          toast.error('Não foi possível entrar.', {
+            id: toastId,
+            description: ctx.error.status === 403
+              ? 'Sua conta não está autorizada para este acesso.'
+              : 'Verifique seu e-mail e senha e tente novamente.',
+          });
           setError(ctx.error.message || 'Credenciais inválidas. Verifique seu e-mail e senha.');
         }
       });
     } catch (err: any) {
       setIsLoading(false);
+      toast.error('Não foi possível conectar ao serviço de login.', {
+        id: toastId,
+        description: 'Tente novamente em instantes.',
+      });
       setError('Ocorreu um erro ao tentar fazer login. Tente novamente.');
     }
   };

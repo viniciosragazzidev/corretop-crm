@@ -13,7 +13,8 @@ import {
   Alert02Icon,
   CircleDotIcon,
   UserIcon,
-  ArrowRight01Icon
+  ArrowRight01Icon,
+  BankIcon
 } from '@hugeicons/core-free-icons';
 
 // �€�€�€ TYPES & MOCK DATA �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
@@ -53,7 +54,7 @@ const DonutChart = () => {
   ];
 
   const total = data.reduce((sum, item) => sum + item.value, 0);
-  
+
   // Circumference for r=36 is 2 * PI * 36 = 226.195
   const circumference = 226.195;
   let accumulatedPercent = 0;
@@ -92,7 +93,7 @@ const DonutChart = () => {
             );
           })}
         </svg>
-        
+
         {/* Center label */}
         <div className="absolute flex flex-col items-center justify-center text-center">
           <span className="text-lg font-semibold text-neutral-800 tracking-tight">{total}</span>
@@ -224,8 +225,8 @@ export default function ResumePage() {
                 <svg viewBox="0 0 100 30" className="w-full h-full text-[#3b2dff]" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="gradient-receita" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="currentColor" stopOpacity="0.25"/>
-                      <stop offset="100%" stopColor="currentColor" stopOpacity="0.0"/>
+                      <stop offset="0%" stopColor="currentColor" stopOpacity="0.25" />
+                      <stop offset="100%" stopColor="currentColor" stopOpacity="0.0" />
                     </linearGradient>
                   </defs>
                   <path
@@ -246,10 +247,11 @@ export default function ResumePage() {
             <div className="flex items-center justify-between z-10 mt-3">
               <span className="text-xs font-normal text-neutral-400">6 aguardam confirmação</span>
               <Button
-                variant="outline"
+                variant="default"
                 size="sm"
-                className="px-3.5 py-1.5 rounded-xl bg-white border border-slate-100 hover:border-slate-300 text-xs font-medium text-neutral-600 transition-colors shadow-none cursor-pointer"
+                className="px-3.5 py-1.5 rounded-xl  border   text-xs font-medium  transition-colors shadow-none cursor-pointer"
               >
+                <HugeiconsIcon icon={BankIcon} />
                 Ir para financeiro
               </Button>
             </div>
