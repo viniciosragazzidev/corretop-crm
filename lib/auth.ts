@@ -40,6 +40,10 @@ export const auth = betterAuth({
   },
   advanced: {
     useSecureCookies: baseURL.startsWith("https"),
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: `.${new URL(baseURL).hostname.replace(/^crm\./, '')}`,
+    },
   },
   user: {
     additionalFields: {
