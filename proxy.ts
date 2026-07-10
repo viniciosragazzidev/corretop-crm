@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const PROTECTED_ROUTES = ['/resume', '/clients', '/planos', '/corretores', '/chat', '/dev-roadmap', '/settings']
-const ADMIN_ONLY_ROUTES = ['/planos', '/corretores']
-
 async function getSession(request: NextRequest) {
   const origin = request.nextUrl.origin
   const cookies = request.headers.get('cookie') || ''
@@ -23,29 +20,34 @@ export async function proxy(request: NextRequest) {
   const url = request.nextUrl.clone()
   const { pathname } = url
 
-  const isProtectedRoute = PROTECTED_ROUTES.some(route => pathname.startsWith(route))
+  // Permite apenas o root (/) e a página de login (/login) como públicos
+  if (pathname === '/' || pathname === '/login') {
+    return;
+  }
 
-  if (isProtectedRoute) {
-    const sessionData = await getSession(request)
+  // Qualquer outra página exige autenticação
+  const sessionData = await getSession(request)
 
-    if (!sessionData?.user) {
-      const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = '/login'
-      return NextResponse.redirect(redirectUrl)
-    }
+  if (!sessionData?.user) {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = '/login'
+    return NextResponse.redirect(redirectUrl)
+  }
 
-    const isAdminRoute = ADMIN_ONLY_ROUTES.some((route) =>
-      pathname.startsWith(route)
-    )
+  // Rotas restritas para Administradores
+  const ADMIN_ONLY_ROUTES = ['/planos', '/corretores']
+  const isAdminRoute = ADMIN_ONLY_ROUTES.some((route) =>
+    pathname.startsWith(route)
+  )
 
-    if (isAdminRoute && sessionData.user.role !== 'ADMIN') {
-      const redirectUrl = request.nextUrl.clone()
-      redirectUrl.pathname = '/resume'
-      return NextResponse.redirect(redirectUrl)
-    }
+  if (isAdminRoute && sessionData.user.role !== 'ADMIN') {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = '/resume'
+    return NextResponse.redirect(redirectUrl)
   }
 }
 
+// Configuração para processar o proxy em todas as páginas exceto APIs, arquivos estáticos e imagens
 export const config = {
   matcher: [
     '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.png$|.*\\.svg$|.*\\.webp$|.*\\.jpg$|.*\\.jpeg$).*)',
