@@ -114,12 +114,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         {/* Brand & Dropdown */}
         <div className="p-6 border-b border-slate-100/50 flex flex-col gap-4">
           <Link href="/" className="hover:opacity-90 transition-opacity flex items-center gap-2">
-            <span className="text-xl font-extrabold tracking-tight text-neutral-900">
-              Corre<span className="text-[#3b2dff]">top</span>
-            </span>
-            <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider select-none">
-              CRM
-            </span>
+            <img src="/logo.svg" alt="Corretop" className="h-7" />
           </Link>
 
           {/* Filial / Context selector */}
@@ -235,12 +230,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           </button>
 
           <Link href="/" className="flex items-center gap-1.5 hover:opacity-90 transition-opacity">
-            <span className="text-lg font-extrabold tracking-tight text-neutral-900">
-              Corre<span className="text-[#3b2dff]">top</span>
-            </span>
-            <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-1.5 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-wider select-none">
-              CRM
-            </span>
+            <img src="/logo.svg" alt="Corretop" className="h-6" />
           </Link>
 
           <div className="size-7.5 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/10 font-bold text-xs flex items-center justify-center shadow-3xs shrink-0">
@@ -332,12 +322,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             >
               <div className="flex items-center justify-between pb-5 border-b border-slate-100">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-lg font-extrabold tracking-tight text-neutral-900">
-                    Corre<span className="text-[#3b2dff]">top</span>
-                  </span>
-                  <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider select-none">
-                    CRM
-                  </span>
+                  <img src="/logo.svg" alt="Corretop" className="h-6" />
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

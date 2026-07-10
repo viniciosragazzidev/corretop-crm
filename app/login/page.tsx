@@ -62,9 +62,7 @@ export default function CRMLogin() {
         {/* Logo and header */}
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <span className="text-3xl font-bold tracking-tight text-neutral-900">
-              Corre<span className="text-[#3b2dff]">top</span>
-            </span>
+            <img src="/logo.svg" alt="Corretop" className="h-9 mx-auto" />
           </div>
           <h1 className="text-lg font-bold text-neutral-900 tracking-tight">
             Painel CRM

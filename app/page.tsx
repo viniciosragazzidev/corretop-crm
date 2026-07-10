@@ -13,12 +13,7 @@ export default function CRMLandingPage() {
       {/* Header */}
       <header className="max-w-7xl w-full mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-extrabold tracking-tight text-slate-900">
-            Corre<span className="text-[#3b2dff]">top</span>
-          </span>
-          <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider">
-            SaaS
-          </span>
+          <img src="/logo.svg" alt="Corretop" className="h-8" />
         </div>
         <Link 
           href="/login" 
