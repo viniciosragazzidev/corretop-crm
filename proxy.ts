@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+// Rotas restritas apenas para usuários com role === 'ADMIN'
+const ADMIN_ONLY_ROUTES = ['/crm/planos', '/crm/corretores']
+
 // Next.js 16+ proxy router function
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const url = request.nextUrl.clone()
   const hostname = request.headers.get('host') || ''
 
@@ -15,17 +18,57 @@ export function proxy(request: NextRequest) {
     url.pathname = `/crm${url.pathname}`;
   }
 
-  // Verifica proteção da página principal do crm
+  // Verifica proteção da área CRM (qualquer rota /crm/* exceto login e API)
   if (url.pathname.startsWith('/crm') && url.pathname !== '/crm/login' && !url.pathname.startsWith('/crm/api')) {
-    const sessionToken = request.cookies.get('better-auth.session_token') || 
+    const sessionToken = request.cookies.get('better-auth.session_token') ||
                          request.cookies.get('__secure-better-auth.session_token');
 
     if (!sessionToken) {
-      // Se estiver no subdomínio crm, redireciona para a raiz de login (/login que reescreve para /crm/login)
-      // Se não, redireciona para /crm/login
+      // Sem sessão → redireciona para login
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = isCrmSubdomain ? '/login' : '/crm/login';
       return NextResponse.redirect(redirectUrl);
+    }
+
+    // Verifica se a rota atual exige role ADMIN
+    const isAdminRoute = ADMIN_ONLY_ROUTES.some((route) =>
+      url.pathname.startsWith(route)
+    );
+
+    if (isAdminRoute) {
+      // Consulta a API de sessão do better-auth para obter o role do usuário
+      try {
+        const origin = request.nextUrl.origin;
+        const sessionRes = await fetch(`${origin}/api/auth/get-session`, {
+          headers: {
+            cookie: request.headers.get('cookie') || '',
+          },
+          // Evita cache entre requests
+          cache: 'no-store',
+        });
+
+        if (sessionRes.ok) {
+          const sessionData = await sessionRes.json();
+          const role = sessionData?.user?.role;
+
+          if (role !== 'ADMIN') {
+            // Autenticado mas sem permissão → redireciona para o dashboard
+            const redirectUrl = request.nextUrl.clone();
+            redirectUrl.pathname = '/crm/resume';
+            return NextResponse.redirect(redirectUrl);
+          }
+        } else {
+          // Falha na verificação de sessão → redireciona para login por segurança
+          const redirectUrl = request.nextUrl.clone();
+          redirectUrl.pathname = isCrmSubdomain ? '/login' : '/crm/login';
+          return NextResponse.redirect(redirectUrl);
+        }
+      } catch {
+        // Falha silenciosa: em caso de erro de rede no proxy, redireciona para o dashboard
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = '/crm/resume';
+        return NextResponse.redirect(redirectUrl);
+      }
     }
   }
 
@@ -34,7 +77,7 @@ export function proxy(request: NextRequest) {
   }
 }
 
-// Garante que o Next.js processe o proxy em todas as páginas, 
+// Garante que o Next.js processe o proxy em todas as páginas,
 // ignorando arquivos estáticos, imagens e APIs para não perder desempenho
 export const config = {
   matcher: [

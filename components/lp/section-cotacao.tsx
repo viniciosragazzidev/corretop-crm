@@ -12,6 +12,7 @@ import {
 } from '@hugeicons/core-free-icons';
 import { motion } from 'framer-motion';
 import { AutoHeight } from '@/components/animate-ui/primitives/effects/auto-height';
+import { createLeadAction } from '@/app/crm/clients/actions';
 
 export default function SectionCotacao() {
     const [nome, setNome] = useState('');
@@ -35,10 +36,24 @@ export default function SectionCotacao() {
         setWhatsapp(formatted);
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (nome && whatsapp.length >= 14) {
             setIsSubmitted(true);
+            
+            const perfilMap: Record<string, string> = {
+                pme: 'PME (Empresa)',
+                individual: 'Individual',
+                familiar: 'Familiar'
+            };
+
+            await createLeadAction({
+                nome,
+                whatsapp,
+                perfil: perfilMap[tipo] || 'Simulador',
+                idades: 'Landing Page'
+            });
+
             setTimeout(() => {
                 window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(`Olá! Quero simular um plano de saúde Tipo: ${tipo.toUpperCase()}. Nome: ${nome}.`)}`, '_blank');
             }, 800);
@@ -188,7 +203,7 @@ export default function SectionCotacao() {
                                                             value={nome}
                                                             onChange={(e) => setNome(e.target.value)}
                                                             placeholder="Ex: Carlos Silva"
-                                                            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs"
+                                                            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs"
                                                         />
                                                     </div>
 
@@ -203,7 +218,7 @@ export default function SectionCotacao() {
                                                             onFocus={() => setIsFocused(true)}
                                                             onBlur={() => setIsFocused(false)}
                                                             placeholder="(21) 99999-9999"
-                                                            className={`w-full px-3.5 py-2.5 rounded-xl border outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs ${isFocused ? 'bg-white border-[#3b2dff] ring-4 ring-[#3b2dff]/5' : 'bg-white border-slate-200'}`}
+                                                            className={`w-full px-3.5 py-2.5 rounded-xl border outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs bg-white text-slate-900 dark:bg-white dark:text-slate-900 ${isFocused ? 'border-[#3b2dff] ring-4 ring-[#3b2dff]/5' : 'border-slate-200'}`}
                                                         />
                                                     </div>
 
@@ -214,7 +229,7 @@ export default function SectionCotacao() {
                                                             <select
                                                                 value={tipo}
                                                                 onChange={(e) => setTipo(e.target.value)}
-                                                                className="w-full pl-3.5 pr-8 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 outline-none text-xs font-semibold appearance-none cursor-pointer transition-all duration-200 shadow-2xs focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5"
+                                                                className="w-full pl-3.5 pr-8 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 outline-none text-xs font-semibold appearance-none cursor-pointer transition-all duration-200 shadow-2xs focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5"
                                                             >
                                                                 <option value="pme">Empresa (PME / CNPJ)</option>
                                                                 <option value="individual">Individual (CPF)</option>

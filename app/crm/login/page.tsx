@@ -82,7 +82,7 @@ export default function CRMLogin() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-[11px] font-black text-neutral-450 uppercase tracking-wider mb-2">
+              <label htmlFor="email" className="block text-[11px] font-medium text-neutral-450 uppercase tracking-wider mb-2">
                 E-mail
               </label>
               <input
@@ -98,7 +98,7 @@ export default function CRMLogin() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-[11px] font-black text-neutral-450 uppercase tracking-wider mb-2">
+              <label htmlFor="password" className="block text-[11px] font-medium text-neutral-450 uppercase tracking-wider mb-2">
                 Senha
               </label>
               <input
@@ -107,7 +107,7 @@ export default function CRMLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="�¢�¢�¢�¢�¢�¢�¢�¢"
                 className="w-full px-4 py-3 rounded-2xl border border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-sm font-semibold outline-none transition-all placeholder:text-neutral-300"
                 disabled={isLoading}
               />
@@ -142,3 +142,4 @@ export default function CRMLogin() {
     </div>
   );
 }
+

@@ -1,17 +1,22 @@
 import { betterAuth } from "better-auth";
-import { Pool } from "pg";
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false // Required for Neon serverless postgres ssl connections
-  }
-});
+import { pool } from "./db";
 
 export const auth = betterAuth({
   database: pool,
   emailAndPassword: {
     enabled: true,
+  },
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: "CORRETOR",
+      },
+      status: {
+        type: "string",
+        defaultValue: "ONLINE",
+      }
+    }
   },
   // Ensure that the domain is trusted
   trustedOrigins: [
@@ -26,3 +31,4 @@ export const auth = betterAuth({
     "http://crm.venacorseguros.com"
   ],
 });
+

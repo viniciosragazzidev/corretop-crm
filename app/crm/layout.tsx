@@ -4,39 +4,28 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Icons matching high-agency design guidelines
-const ChatIcon = () => (
-  <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-  </svg>
-);
-
-const BellIcon = () => (
-  <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-  </svg>
-);
-
-const SettingsIcon = () => (
-  <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="3" />
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-  </svg>
-);
-
-const CloudIcon = () => (
-  <svg className="size-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 8.58" />
-  </svg>
-);
+import { useSession } from '@/lib/auth-client';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  GridViewIcon,
+  UserGroupIcon,
+  BubbleChatIcon,
+  Briefcase01Icon,
+  Task01Icon,
+  Settings02Icon,
+  Search01Icon,
+  BellIcon,
+  Logout01Icon,
+  ArrowDown01Icon,
+  Menu01Icon,
+  Cancel01Icon
+} from '@hugeicons/core-free-icons';
 
 export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Exclude navbar/breadcrumbs layout for the login page (handles both main domain and CRM subdomain)
+  // Exclude layout for login page
   if (pathname === '/crm/login' || pathname === '/login') {
     return <>{children}</>;
   }
@@ -46,202 +35,322 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  const navItems = [
-    { href: '/crm/resume', label: 'Dashboard' },
-    { href: '/crm/leeds', label: 'Leeds' },
-    { href: '/crm/chat', label: 'Chat' },
-    { href: '/crm/corretores', label: 'Corretores' },
-    { href: '/crm/settings', label: 'Configurações' },
+  const { data: session } = useSession();
+  const isUserAdmin = session && (session.user as any).role === 'ADMIN';
+
+  // Categorized navigation items matching the visual design
+  const navGroups = [
+    {
+      title: 'Visão Geral',
+      items: [
+        { href: '/crm/resume', label: 'Resumo', icon: GridViewIcon }
+      ]
+    },
+    {
+      title: 'Comercial',
+      items: [
+        { href: '/crm/clients', label: 'Clientes', icon: UserGroupIcon },
+        ...(isUserAdmin ? [{ href: '/crm/planos', label: 'Planos', icon: Task01Icon }] : [])
+      ]
+    },
+    {
+      title: 'Equipe',
+      items: [
+        ...(isUserAdmin ? [{ href: '/crm/corretores', label: 'Corretores', icon: Briefcase01Icon }] : []),
+        { href: '/crm/chat', label: 'Conversas', icon: BubbleChatIcon }
+      ]
+    },
+    {
+      title: 'Gestão',
+      items: [
+        { href: '/crm/settings', label: 'Configurações', icon: Settings02Icon }
+      ]
+    }
   ];
 
   const getPageLabel = () => {
     switch (pathname) {
-      case '/crm/resume': return 'Dashboard';
-      case '/crm/leeds': return 'Leeds';
-      case '/crm/chat': return 'Chat';
+      case '/crm/resume': return 'Resumo';
+      case '/crm/clients': return 'Clientes';
+      case '/crm/chat': return 'Conversas';
       case '/crm/corretores': return 'Corretores';
+      case '/crm/planos': return 'Planos';
       case '/crm/settings': return 'Configurações';
       default: return 'Geral';
     }
   };
 
+  const userInitials = session?.user?.name
+    ? session.user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+    : 'VR';
+
   return (
-    <div className="min-h-[100dvh] bg-[#fafafa] font-sans text-neutral-800 flex flex-col overflow-x-hidden select-none">
-      
-      {/* 1. Horizontal Navbar on Top */}
-      <nav className="h-16 bg-white border-b border-neutral-200/50 px-6 lg:px-10 flex items-center justify-between sticky top-0 z-40 shrink-0 w-full shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
-        {/* Brand & Desktop Links */}
-        <div className="flex items-center gap-10">
-          <Link href="/" className="hover:opacity-90 transition-opacity flex items-center pt-0.5">
-            <img 
-              src="/logo.svg" 
-              alt="Venacor Saúde" 
-              className="h-6.5 w-auto object-contain"
+    <div className="min-h-[100dvh] bg-white font-sans text-neutral-800 flex overflow-hidden select-none">
+
+      {/* ─── DESKTOP SIDEBAR ─────────────────────────────────────────────────── */}
+      <aside className="hidden md:flex flex-col w-68 h-screen bg-white border-r border-slate-100 sticky top-0 left-0 overflow-y-auto shrink-0 select-none z-30">
+
+        {/* Brand & Dropdown */}
+        <div className="p-6 border-b border-slate-100/50 flex flex-col gap-4">
+          <Link href="/" className="hover:opacity-90 transition-opacity flex items-center gap-2">
+            <img
+              src="/logo.svg"
+              alt="Venacor Saúde"
+              className="h-8.5 w-auto object-contain"
             />
+            <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider select-none">
+              CRM
+            </span>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-xs font-bold transition-all py-1.5 relative ${
-                    isActive ? 'text-neutral-900 font-extrabold' : 'text-neutral-400 hover:text-neutral-600'
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="topNavUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3b2dff]"
-                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
+          {/* Filial / Context selector styled exactly like Salte */}
+          <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100/50 cursor-pointer transition-colors">
+            <div className="flex flex-col text-left">
+              <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Filial</span>
+              <span className="text-xs font-bold text-neutral-850">Venacor Saúde</span>
+            </div>
+            <HugeiconsIcon icon={ArrowDown01Icon} className="size-4 text-neutral-400" />
           </div>
         </div>
 
-        {/* Center: Search input */}
-        <div className="hidden lg:flex items-center w-80 relative">
-          <input
-            type="text"
-            placeholder="Buscar leads, corretores..."
-            className="w-full pl-8 pr-4 py-1.5 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:border-[#3b2dff] text-xs font-semibold outline-none transition-colors"
-          />
-          <svg className="absolute left-2.5 top-2.5 size-3.5 text-neutral-450" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-        </div>
-
-        {/* Right side controls */}
-        <div className="flex items-center gap-4">
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(prev => !prev)}
-            className="md:hidden p-2 rounded-xl border border-neutral-200 text-neutral-550 hover:text-neutral-800 cursor-pointer"
-          >
-            <svg className="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-          </button>
-
-          {/* Action Icons */}
-          <div className="hidden sm:flex items-center gap-3.5 text-neutral-405">
-            <button className="p-1 rounded-lg hover:bg-neutral-50 hover:text-neutral-700 cursor-pointer">
-              <ChatIcon />
-            </button>
-            <button className="p-1 rounded-lg hover:bg-neutral-50 hover:text-neutral-700 relative cursor-pointer">
-              <BellIcon />
-              <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[#3b2dff]" />
-            </button>
-            <button className="p-1 rounded-lg hover:bg-neutral-50 hover:text-neutral-700 cursor-pointer">
-              <SettingsIcon />
-            </button>
-          </div>
-
-          {/* New Lead Button (primary color `#3b2dff`) */}
-          <button className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-sm transition-all cursor-pointer select-none active:scale-[0.98]">
-            + Novo Lead
-          </button>
-
-          {/* Avatar bubble */}
-          <div className="size-8 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/10 font-black text-xs flex items-center justify-center shadow-3xs cursor-pointer select-none">
-            VR
-          </div>
-        </div>
-      </nav>
-
-      {/* 2. Secondary breadcrumbs bar */}
-      <div className="bg-white border-b border-neutral-200/50 py-2.5 px-6 lg:px-10 flex items-center justify-between w-full shadow-[0_1px_2px_rgba(0,0,0,0.005)]">
-        <div className="flex items-center gap-1.5 text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
-          <span>Painel</span>
-          <span className="text-neutral-300">/</span>
-          <span>CRM</span>
-          <span className="text-neutral-300">/</span>
-          <span className="text-[#3b2dff] font-extrabold">{getPageLabel()}</span>
-        </div>
-
-        <div className="flex items-center text-[10px] font-bold text-neutral-400">
-          <CloudIcon />
-          <span>Sincronizado há 2 minutos</span>
-        </div>
-      </div>
-
-      {/* 3. Main content area */}
-      <main className="flex-1 w-full bg-[#fafafa]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-full"
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
-      </main>
-
-      {/* 4. Mobile Navigation Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 md:hidden flex">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="absolute inset-0 bg-neutral-900 cursor-pointer"
-            />
-            <motion.div
-              initial={{ y: '-100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '-100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative w-full bg-white max-h-[60vh] flex flex-col p-6 shadow-2xl z-10 text-left rounded-b-3xl border-b border-neutral-100"
-            >
-              <div className="flex items-center justify-between pb-4 border-b border-neutral-100">
-                <img 
-                  src="/logo.svg" 
-                  alt="Venacor Saúde" 
-                  className="h-6.5 w-auto object-contain"
-                />
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-1 rounded-lg hover:bg-neutral-100 text-neutral-400 cursor-pointer"
-                >
-                  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
-                </button>
-              </div>
-
-              {/* Mobile links */}
-              <nav className="flex flex-col py-4 gap-3">
-                {navItems.map((item) => {
+        {/* Navigation Groups */}
+        <nav className="flex-1 px-4 py-6 space-y-6 text-left">
+          {navGroups.map((group) => (
+            <div key={group.title} className="space-y-1.5">
+              <span className="px-4 text-[9px] font-semibold uppercase tracking-widest text-neutral-400 select-none block">
+                {group.title}
+              </span>
+              <div className="space-y-0.5">
+                {group.items.map((item) => {
                   const isActive = pathname === item.href;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                        isActive
-                          ? 'bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10'
-                          : 'text-neutral-555 hover:text-neutral-800'
-                      }`}
+                      className={`relative flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs transition-all ${isActive
+                        ? 'text-neutral-900 font-semibold bg-slate-50/60'
+                        : 'text-neutral-700 font-normal hover:text-neutral-600 hover:bg-slate-50/20'
+                        }`}
                     >
-                      {item.label}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeSideNavIndicator"
+                          className="absolute left-0 top-2.5 bottom-2.5 w-1 bg-[#3b2dff] rounded-r-full"
+                          transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+                        />
+                      )}
+                      <HugeiconsIcon icon={item.icon} className={`size-4.5 transition-colors ${isActive ? 'text-[#3b2dff]' : 'text-neutral-400'}`} />
+                      <span>{item.label}</span>
                     </Link>
                   );
                 })}
+              </div>
+            </div>
+          ))}
+        </nav>
+
+        {/* Bottom Profile / Account Panel */}
+        <div className="p-4 border-t border-slate-100/50">
+          <div className="flex items-center justify-between p-3 rounded-2xl border border-slate-100 bg-slate-50/40">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="size-8.5 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/10 font-bold text-xs flex items-center justify-center shadow-3xs shrink-0">
+                {userInitials}
+              </div>
+              <div className="flex flex-col min-w-0 text-left">
+                <span className="text-xs font-semibold text-neutral-850 truncate">
+                  {session?.user?.name || 'Corretor'}
+                </span>
+                <span className="text-[9px] font-normal text-neutral-400 uppercase tracking-wider">
+                  {isUserAdmin ? 'Administrador' : 'Corretor'}
+                </span>
+              </div>
+            </div>
+            {/* Minimal Logout Button */}
+            <Link
+              href="/crm/login"
+              className="p-1.5 rounded-lg hover:bg-slate-100 text-neutral-400 hover:text-red-500 cursor-pointer transition-colors"
+              title="Sair"
+            >
+              <HugeiconsIcon icon={Logout01Icon} className="size-4" />
+            </Link>
+          </div>
+
+          <div className="mt-3 text-[9px] text-neutral-350 text-center font-normal">
+            Venacor Saúde © 2026
+          </div>
+        </div>
+      </aside>
+
+      {/* ─── MAIN CONTENT CONTAINER ─────────────────────────────────────────── */}
+      <div className="flex-1 flex flex-col h-screen overflow-hidden min-w-0">
+
+        {/* MOBILE TOP BAR */}
+        <header className="md:hidden h-14 bg-white border-b border-slate-200/50 px-4 flex items-center justify-between sticky top-0 z-30 shrink-0">
+          <button
+            onClick={() => setMobileMenuOpen(prev => !prev)}
+            className="p-2 rounded-xl border border-slate-200 text-neutral-550 hover:text-neutral-800 cursor-pointer"
+          >
+            <HugeiconsIcon icon={Menu01Icon} className="size-5" />
+          </button>
+
+          <Link href="/" className="flex items-center gap-1.5 hover:opacity-90 transition-opacity">
+            <img
+              src="/logo.svg"
+              alt="Venacor Saúde"
+              className="h-7 w-auto object-contain"
+            />
+            <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-1.5 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-wider select-none">
+              CRM
+            </span>
+          </Link>
+
+          <div className="size-7.5 rounded-full bg-[#3b2dff] text-white border border-[#3b2dff]/10 font-bold text-xs flex items-center justify-center shadow-3xs shrink-0">
+            {userInitials}
+          </div>
+        </header>
+
+        {/* DESKTOP CONTENT TOP BAR (Action Header) */}
+        <header className="hidden md:flex h-16 border-b border-slate-100 bg-white px-8 lg:px-10 items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <h1 className="text-lg font-bold text-neutral-900 tracking-tight">{getPageLabel()}</h1>
+            <div className="h-4 w-px bg-slate-200" />
+            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest">Painel / CRM</span>
+          </div>
+
+          <div className="flex items-center gap-6">
+            {/* Search */}
+            <div className="relative w-64 flex items-center">
+              <input
+                type="text"
+                placeholder="Buscar clientes, propostas..."
+                className="w-full pl-8 pr-4 py-1.5 rounded-xl border border-slate-200/50 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal text-neutral-700 placeholder:text-neutral-400 outline-none transition-all shadow-none h-8.5"
+              />
+              <HugeiconsIcon icon={Search01Icon} className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-neutral-400" />
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex items-center gap-3 text-neutral-400">
+              <Link
+                href="/crm/chat"
+                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors relative"
+              >
+                <HugeiconsIcon icon={BubbleChatIcon} className="size-4.5" />
+              </Link>
+
+              <button
+                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors relative"
+              >
+                <HugeiconsIcon icon={BellIcon} className="size-4.5" />
+                <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[#3b2dff]" />
+              </button>
+
+              <Link
+                href="/crm/settings"
+                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors"
+              >
+                <HugeiconsIcon icon={Settings02Icon} className="size-4.5" />
+              </Link>
+            </div>
+          </div>
+        </header>
+
+        {/* SCROLLABLE MAIN PANEL */}
+        <main className="flex-1 overflow-y-auto w-full bg-white">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={pathname}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full h-full"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </main>
+      </div>
+
+      {/* ─── MOBILE DRAWER MENU ──────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-50 md:hidden flex">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.3 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute inset-0 bg-neutral-900 cursor-pointer"
+            />
+            {/* Slide menu */}
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 220 }}
+              className="relative w-72 max-w-[80vw] h-full bg-white flex flex-col p-6 shadow-2xl z-10 text-left border-r border-slate-100"
+            >
+              <div className="flex items-center justify-between pb-5 border-b border-slate-100">
+                <div className="flex items-center gap-1.5">
+                  <img
+                    src="/logo.svg"
+                    alt="Venacor Saúde"
+                    className="h-7.5 w-auto object-contain"
+                  />
+                  <span className="bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/15 px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider select-none">
+                    CRM
+                  </span>
+                </div>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-1.5 rounded-lg hover:bg-slate-50 text-neutral-400 cursor-pointer"
+                >
+                  <HugeiconsIcon icon={Cancel01Icon} className="size-4.5" />
+                </button>
+              </div>
+
+              {/* Mobile scroll nav items */}
+              <nav className="flex-1 py-6 overflow-y-auto space-y-6">
+                {navGroups.map((group) => (
+                  <div key={group.title} className="space-y-1.5">
+                    <span className="px-3 text-[9px] font-semibold uppercase tracking-wider text-neutral-450">
+                      {group.title}
+                    </span>
+                    <div className="space-y-1">
+                      {group.items.map((item) => {
+                        const isActive = pathname === item.href;
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs transition-all ${isActive
+                              ? 'bg-[#3b2dff]/5 text-[#3b2dff] border border-[#3b2dff]/10 font-semibold'
+                              : 'text-neutral-700 hover:text-neutral-800 font-normal'
+                              }`}
+                          >
+                            <HugeiconsIcon icon={item.icon} className="size-4.5" />
+                            <span>{item.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
               </nav>
 
-              <div className="pt-4 border-t border-neutral-100 flex flex-col gap-2">
+              <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
                 <Link
                   href="/"
-                  className="w-full py-2.5 rounded-xl border border-neutral-200 hover:border-neutral-300 text-neutral-500 hover:text-neutral-850 text-center text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer block"
+                  className="w-full py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-neutral-500 hover:text-neutral-850 text-center text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block"
                 >
                   Voltar ao Site
+                </Link>
+                <Link
+                  href="/crm/login"
+                  className="w-full py-2.5 rounded-xl bg-red-50 text-red-650 hover:bg-red-100 text-center text-[10px] font-semibold uppercase tracking-wider transition-colors cursor-pointer block"
+                >
+                  Sair
                 </Link>
               </div>
             </motion.div>

@@ -9,6 +9,7 @@ import {
     WhatsappIcon,
     UserIcon
 } from '@hugeicons/core-free-icons';
+import { createLeadAction } from '@/app/crm/clients/actions';
 
 type PlanType = 'saude' | 'odonto' | 'ambos' | null;
 type ProfileType = 'individual' | 'corporate' | null;
@@ -62,10 +63,20 @@ export default function SectionSimulador() {
     };
 
     // Form submit
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const dependentesText = dependents.length > 0 ? ` Dependentes: ${dependents.join(', ')} anos.` : '';
         const perfilText = profileType === 'individual' ? 'Individual (CPF)' : 'Empresa (CNPJ/MEI)';
+        const idadesText = `Titular: ${titularAge} anos.${dependents.length > 0 ? ` Dependentes: ${dependents.join(', ')} anos.` : ''}`;
+        
+        // Register lead in CRM database
+        await createLeadAction({
+            nome,
+            whatsapp,
+            perfil: profileType === 'individual' ? 'Individual' : 'PME (Empresa)',
+            idades: idadesText
+        });
+
         const msg = `Olá! Gostaria de uma cotação de plano de saúde.\n\nTipo: ${planType === 'ambos' ? 'Saúde + Odonto' : planType === 'saude' ? 'Saúde' : 'Odonto'}\nPerfil: ${perfilText}\nIdade: ${titularAge} anos${dependentesText}\nNome: ${nome}`;
         window.open(`https://wa.me/5521964469750?text=${encodeURIComponent(msg)}`, '_blank');
         setIsSubmitted(true);
@@ -168,7 +179,9 @@ export default function SectionSimulador() {
                         <motion.div
                             layout
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            className="bg-white border border-slate-200/50 rounded-[2.2rem] p-8 sm:p-10 relative min-h-[350px] flex flex-col justify-between will-change-transform"
+                            className={`bg-white border border-slate-200/50 rounded-[2.2rem] p-8 sm:p-10 relative min-h-[350px] flex flex-col will-change-transform ${
+                                isSubmitted ? 'justify-center' : 'justify-between'
+                            }`}
                         >
 
                             {/* Top Step Counter & Progress bar */}
@@ -355,7 +368,7 @@ export default function SectionSimulador() {
                                                             placeholder=" "
                                                             value={titularAge}
                                                             onChange={(e) => setTitularAge(e.target.value)}
-                                                            className="peer w-full px-4 py-3.5 pt-6 pb-2 rounded-xl border border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff] text-slate-800 font-extrabold text-sm outline-none transition-all placeholder-transparent"
+                                                            className="peer w-full px-4 py-3.5 pt-6 pb-2 rounded-xl border border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff] bg-white text-slate-900 dark:bg-white dark:text-slate-900 font-extrabold text-sm outline-none transition-all placeholder-transparent"
                                                         />
                                                         <label
                                                             htmlFor="titularAge"
@@ -386,7 +399,7 @@ export default function SectionSimulador() {
                                                                             updated[idx] = e.target.value;
                                                                             setDependents(updated);
                                                                         }}
-                                                                        className="peer w-full px-4 py-3.5 pt-6 pb-2 rounded-xl border border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff] text-slate-800 font-extrabold text-sm outline-none transition-all placeholder-transparent"
+                                                                        className="peer w-full px-4 py-3.5 pt-6 pb-2 rounded-xl border border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff] bg-white text-slate-900 dark:bg-white dark:text-slate-900 font-extrabold text-sm outline-none transition-all placeholder-transparent"
                                                                     />
                                                                     <label
                                                                         htmlFor={`dep-${idx}`}
@@ -458,7 +471,7 @@ export default function SectionSimulador() {
                                                             placeholder=" "
                                                             value={nome}
                                                             onChange={(e) => setNome(e.target.value)}
-                                                            className="peer w-full pl-10 pr-4 py-3.5 pt-6 pb-2 rounded-xl border border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff] text-slate-800 font-extrabold text-sm outline-none transition-all placeholder-transparent"
+                                                            className="peer w-full pl-10 pr-4 py-3.5 pt-6 pb-2 rounded-xl border border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff] bg-white text-slate-900 dark:bg-white dark:text-slate-900 font-extrabold text-sm outline-none transition-all placeholder-transparent"
                                                         />
                                                         <label
                                                             htmlFor="nome"
@@ -476,7 +489,7 @@ export default function SectionSimulador() {
                                                             placeholder=" "
                                                             value={whatsapp}
                                                             onChange={handlePhoneChange}
-                                                            className={`peer w-full pl-10 pr-4 py-3.5 pt-6 pb-2 rounded-xl border text-slate-800 font-extrabold text-sm outline-none transition-all placeholder-transparent ${isPhoneValid
+                                                            className={`peer w-full pl-10 pr-4 py-3.5 pt-6 pb-2 rounded-xl border bg-white text-slate-900 dark:bg-white dark:text-slate-900 font-extrabold text-sm outline-none transition-all placeholder-transparent ${isPhoneValid
                                                                     ? 'border-emerald-500/50 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500'
                                                                     : 'border-slate-200 focus:border-[#3b2dff] focus:ring-1 focus:ring-[#3b2dff]'
                                                                 }`}
