@@ -199,8 +199,8 @@ export default function CorretoresPage() {
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
           </div>
-          <h3 className="font-semibold text-neutral-800 text-lg">Acesso Restrito</h3>
-          <p className="text-neutral-400 text-xs font-semibold leading-relaxed max-w-xs mt-2">
+          <h3 className="text-sm font-semibold text-neutral-800">Acesso Restrito</h3>
+          <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-xs mt-2">
             Apenas administradores da Venacor possuem permissões para visualizar e gerenciar a equipe de corretores.
           </p>
           <Button
@@ -259,10 +259,10 @@ export default function CorretoresPage() {
             {/* Header / Meta overview */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="space-y-1">
-                <h2 className="text-base lg:text-lg font-bold text-neutral-800 tracking-tight">
+                <h1 className="text-lg font-bold text-neutral-900 tracking-tight">
                   Gerenciamento de Equipe
-                </h2>
-                <p className="text-neutral-400 text-[11px] lg:text-xs font-normal leading-relaxed">
+                </h1>
+                <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
                   Cadastre novos corretores, controle permissões e acompanhe o status de disponibilidade em tempo real.
                 </p>
               </div>
@@ -430,8 +430,8 @@ export default function CorretoresPage() {
                 <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 shadow-3xs mb-4">
                   <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
                 </div>
-                <h3 className="font-semibold text-neutral-800 text-base">Nenhum Corretor Cadastrado</h3>
-                <p className="text-neutral-400 text-xs font-light leading-relaxed max-w-xs mt-1">
+                <h3 className="text-sm font-semibold text-neutral-800">Nenhum Corretor Cadastrado</h3>
+                <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-xs mt-1">
                   Nenhum registro corresponde aos filtros ou à pesquisa no momento.
                 </p>
               </div>
@@ -449,8 +449,8 @@ export default function CorretoresPage() {
             <div className="size-12 rounded-2xl bg-[#3b2dff]/5 border border-[#3b2dff]/10 flex items-center justify-center text-[#3b2dff] shadow-3xs">
               <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
             </div>
-            <h3 className="font-semibold text-neutral-800 text-base mt-4">Módulo em Desenvolvimento</h3>
-            <p className="text-neutral-400 text-xs font-light leading-relaxed max-w-sm mt-1">
+            <h3 className="text-sm font-semibold text-neutral-800 mt-4">Módulo em Desenvolvimento</h3>
+            <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-sm mt-1">
               As seções de Desempenho e Comissões estão sendo preparadas para integração. Fique atento às próximas atualizações.
             </p>
           </motion.div>
@@ -479,10 +479,10 @@ export default function CorretoresPage() {
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-base font-semibold text-neutral-800 tracking-tight">
+                  <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">
                     Cadastrar Novo Corretor
                   </h3>
-                  <p className="text-[10px] text-neutral-400 font-normal mt-1">
+                  <p className="text-xs font-normal text-neutral-400 mt-1">
                     Insira as credenciais básicas para habilitar o acesso ao CRM.
                   </p>
                 </div>

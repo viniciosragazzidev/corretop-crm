@@ -62,7 +62,7 @@ const ALL_CHATS: Chat[] = [
     brokerInitials: 'VR',
     product: 'Amil PME Fácil S80',
     messages: [
-      { id: 'm1', text: 'Olá Diogo, tudo bem? Sou o Vinicios da Venacor Saúde.', sender: 'user', time: '09:45', status: 'read' },
+      { id: 'm1', text: 'Olá Diogo, tudo bem? Sou o Vinicios da Corretop.', sender: 'user', time: '09:45', status: 'read' },
       { id: 'm2', text: 'Oi! Tudo bem sim, pode falar.', sender: 'client', time: '09:47' },
       { id: 'm3', text: 'Ótimo! Queria apresentar o plano Amil PME Fácil S80 que ficou dentro do orçamento que você informou.', sender: 'user', time: '09:48', status: 'read' },
       { id: 'm4', text: 'Pode me mandar os detalhes e o valor mensal?', sender: 'client', time: '09:52' },
@@ -83,7 +83,7 @@ const ALL_CHATS: Chat[] = [
     brokerInitials: 'AL',
     product: 'Bradesco Saúde Ideal',
     messages: [
-      { id: 'm1', text: 'Boa tarde Beatriz, aqui é a Andressa da Venacor Saúde!', sender: 'user', time: '10:00', status: 'read' },
+      { id: 'm1', text: 'Boa tarde Beatriz, aqui é a Andressa da Corretop!', sender: 'user', time: '10:00', status: 'read' },
       { id: 'm2', text: 'Boa tarde!', sender: 'client', time: '10:02' },
       { id: 'm3', text: 'Gostaria de apresentar o Bradesco Saúde Ideal. Para sua família de 4 pessoas o valor seria R$ 3.240,00/mês com cobertura completa.', sender: 'user', time: '10:05', status: 'read' },
       { id: 'm4', text: 'Obrigada, vou analisar com meu marido.', sender: 'client', time: '11:15' },
@@ -102,7 +102,7 @@ const ALL_CHATS: Chat[] = [
     brokerInitials: 'LP',
     product: 'Unimed Adesão Premium',
     messages: [
-      { id: 'm1', text: 'Marcelo, bom dia! Lucas Pinheiro aqui, da Venacor Saúde.', sender: 'user', time: '14:00', status: 'read' },
+      { id: 'm1', text: 'Marcelo, bom dia! Lucas Pinheiro aqui, da Corretop.', sender: 'user', time: '14:00', status: 'read' },
       { id: 'm2', text: 'Oi Lucas! Esperava seu contato.', sender: 'client', time: '14:05' },
       { id: 'm3', text: 'Ótimo! Tenho uma proposta incrível da Unimed Adesão Premium para você. Posso detalhar?', sender: 'user', time: '14:08', status: 'read' },
     ]
@@ -138,7 +138,7 @@ const ALL_CHATS: Chat[] = [
     brokerInitials: 'MC',
     product: 'Amil Individual Flex',
     messages: [
-      { id: 'm1', text: 'Roberto, bom dia! Sou a Mariana da Venacor.', sender: 'user', time: '09:00', status: 'read' },
+      { id: 'm1', text: 'Roberto, bom dia! Sou a Mariana da Corretop.', sender: 'user', time: '09:00', status: 'read' },
       { id: 'm2', text: 'Bom dia Mariana!', sender: 'client', time: '09:03' },
       { id: 'm3', text: 'Qual o prazo de carência?', sender: 'client', time: '09:10' },
     ]
@@ -246,9 +246,9 @@ export default function ChatPage() {
         <div className="px-5 pt-6 pb-4 border-b border-slate-100/70">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-sm font-bold text-neutral-900">Conversas</h2>
+              <h2 className="text-lg font-bold text-neutral-900 tracking-tight">Conversas</h2>
               {isAdmin && (
-                <span className="text-[10px] font-normal text-neutral-400 mt-0.5 block">
+                <span className="text-[11px] font-semibold text-neutral-400 mt-0.5 block">
                   Visão administrador — todos os atendimentos
                 </span>
               )}
@@ -300,7 +300,7 @@ export default function ChatPage() {
                 <div className="size-10 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-3">
                   <HugeiconsIcon icon={BubbleChatIcon} className="size-5 text-neutral-300" />
                 </div>
-                <p className="text-xs font-normal text-neutral-400">Nenhuma conversa encontrada</p>
+                <p className="text-sm font-semibold text-neutral-800">Nenhuma conversa encontrada</p>
               </div>
             ) : (
               filteredChats.map((chat, idx) => (

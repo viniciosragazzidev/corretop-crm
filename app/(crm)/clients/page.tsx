@@ -191,8 +191,8 @@ function DocsDrawer({
         {/* Header */}
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="text-base font-extrabold text-neutral-900 tracking-tight">Checklist de Documentação</h3>
-            <p className="text-[10px] text-neutral-450 font-bold mt-1">Marque os documentos recebidos do cliente.</p>
+            <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">Checklist de Documentação</h3>
+            <p className="text-[10px] text-neutral-400 font-normal mt-1">Marque os documentos recebidos do cliente.</p>
           </div>
           <Button variant="ghost" size="icon-xs" onClick={onClose} className="p-1.5 rounded-xl border border-neutral-200 text-neutral-400 hover:text-neutral-700 cursor-pointer">
             <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -459,8 +459,8 @@ export default function ClientsPage() {
       {/* �€�€ Header �€�€ */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div className="space-y-1">
-          <h2 className="text-base lg:text-lg font-bold text-neutral-800 tracking-tight">Pipeline Comercial</h2>
-          <p className="text-neutral-400 text-[11px] lg:text-xs font-normal">
+          <h1 className="text-lg font-bold text-neutral-900 tracking-tight">Pipeline Comercial</h1>
+          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
             Gerencie leads inbound e acompanhe negociações em andamento.
           </p>
         </div>
@@ -586,8 +586,8 @@ export default function ClientsPage() {
                           <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-300">
                             <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                           </div>
-                          <p className="text-xs font-bold text-neutral-500">Nenhum lead encontrado</p>
-                          <p className="text-[10px] text-neutral-400">{leadsSearch ? "Tente ajustar os filtros de busca." : "Aguardando chegada de novos leads pelo simulador."}</p>
+                          <p className="text-sm font-semibold text-neutral-800">Nenhum lead encontrado</p>
+                          <p className="text-xs font-normal text-neutral-400">{leadsSearch ? "Tente ajustar os filtros de busca." : "Aguardando chegada de novos leads pelo simulador."}</p>
                         </div>
                       </td>
                     </tr>
@@ -736,8 +736,8 @@ export default function ClientsPage() {
                           <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-300">
                             <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
                           </div>
-                          <p className="text-xs font-bold text-neutral-500">Nenhum cliente encontrado</p>
-                          <p className="text-[10px] text-neutral-400">{clientSearch || clientStatusF !== "todos" ? "Ajuste os filtros acima." : "Assume leads na aba ao lado para iniciar negociações."}</p>
+                          <p className="text-sm font-semibold text-neutral-800">Nenhum cliente encontrado</p>
+                          <p className="text-xs font-normal text-neutral-400">{clientSearch || clientStatusF !== "todos" ? "Ajuste os filtros acima." : "Assume leads na aba ao lado para iniciar negociações."}</p>
                         </div>
                       </td>
                     </tr>

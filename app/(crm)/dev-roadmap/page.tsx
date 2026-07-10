@@ -192,8 +192,8 @@ export default function DevRoadmapPage() {
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
           </div>
-          <h3 className="font-semibold text-neutral-800 text-base">Acesso Restrito</h3>
-          <p className="text-neutral-400 text-xs font-semibold leading-relaxed max-w-xs mt-2">
+          <h3 className="text-sm font-semibold text-neutral-800">Acesso Restrito</h3>
+          <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-xs mt-2">
             Apenas administradores podem visualizar o roadmap de desenvolvimento.
           </p>
           <button
@@ -238,7 +238,7 @@ export default function DevRoadmapPage() {
             </div>
             <h1 className="text-lg font-bold text-neutral-900 tracking-tight">Dev Roadmap</h1>
           </div>
-          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5 ml-11">
+          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
             Roadmap e tarefas de desenvolvimento
           </p>
         </div>

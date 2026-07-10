@@ -13,10 +13,9 @@ function getTrustedOrigins(): string[] {
   const origins = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://meucrm.com.br",
-    "https://api.meucrm.com.br",
-    "http://meucrm.com.br",
-    "http://api.meucrm.com.br",
+    "https://corretop.vercel.app",
+    "https://venacorseguros.com",
+    "https://www.venacorseguros.com",
   ];
   if (process.env.VERCEL_URL) {
     origins.push(`https://${process.env.VERCEL_URL}`);

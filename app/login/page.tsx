@@ -62,14 +62,14 @@ export default function CRMLogin() {
         {/* Logo and header */}
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <span className="text-3xl font-extrabold tracking-tight text-neutral-900">
+            <span className="text-3xl font-bold tracking-tight text-neutral-900">
               Corre<span className="text-[#3b2dff]">top</span>
             </span>
           </div>
-          <h1 className="text-xl font-extrabold text-neutral-900 tracking-tight">
+          <h1 className="text-lg font-bold text-neutral-900 tracking-tight">
             Painel CRM
           </h1>
-          <p className="text-xs text-neutral-400 font-semibold mt-1">
+          <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
             Entre com suas credenciais de acesso
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function CRMLogin() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-[11px] font-medium text-neutral-450 uppercase tracking-wider mb-2">
+              <label htmlFor="email" className="block text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 E-mail
               </label>
               <input
@@ -104,13 +104,13 @@ export default function CRMLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="exemplo@venacorseguros.com"
-                className="w-full px-4 py-3 rounded-2xl border border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-sm font-semibold outline-none transition-all placeholder:text-neutral-300"
+                className="w-full px-4 py-3 rounded-2xl border border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-xs font-normal outline-none transition-all placeholder:text-neutral-300"
                 disabled={isLoading}
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-[11px] font-medium text-neutral-450 uppercase tracking-wider mb-2">
+              <label htmlFor="password" className="block text-[9px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 Senha
               </label>
               <input
@@ -119,8 +119,8 @@ export default function CRMLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="�¢�¢�¢�¢�¢�¢�¢�¢"
-                className="w-full px-4 py-3 rounded-2xl border border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-sm font-semibold outline-none transition-all placeholder:text-neutral-300"
+                placeholder="••••••••"
+                className="w-full px-4 py-3 rounded-2xl border border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-xs font-normal outline-none transition-all placeholder:text-neutral-300"
                 disabled={isLoading}
               />
             </div>
@@ -128,7 +128,7 @@ export default function CRMLogin() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-neutral-200 disabled:text-neutral-400 text-white font-extrabold text-xs py-3.5 rounded-2xl shadow-sm transition-all cursor-pointer select-none active:scale-[0.98] flex items-center justify-center gap-2"
+              className="w-full bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-neutral-200 disabled:text-neutral-400 text-white font-bold text-xs py-3.5 rounded-2xl shadow-sm transition-all cursor-pointer select-none active:scale-[0.98] flex items-center justify-center gap-2"
             >
               {isLoading ? (
                 <>

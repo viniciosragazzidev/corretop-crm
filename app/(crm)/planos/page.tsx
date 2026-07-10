@@ -424,9 +424,9 @@ export default function PlanosPage() {
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
           </div>
-          <h3 className="font-semibold text-neutral-800 text-base">Acesso Restrito</h3>
-          <p className="text-neutral-400 text-xs font-semibold leading-relaxed max-w-xs mt-2">
-            Apenas administradores da Venacor possuem permissão para configurar tabelas de planos e matrizes de preços.
+          <h3 className="text-sm font-semibold text-neutral-800">Acesso Restrito</h3>
+          <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-xs mt-2">
+            Apenas administradores do Corretop possuem permissão para configurar tabelas de planos e matrizes de preços.
           </p>
           <button
             onClick={() => router.push("/resume")}
@@ -444,10 +444,10 @@ export default function PlanosPage() {
 
       {/* Header */}
       <div className="space-y-1">
-        <h2 className="text-base lg:text-lg font-bold text-neutral-800 tracking-tight">
+        <h1 className="text-lg font-bold text-neutral-900 tracking-tight">
           Criação e Gerenciamento de Planos
-        </h2>
-        <p className="text-neutral-400 text-[11px] lg:text-xs font-normal leading-relaxed">
+        </h1>
+        <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">
           Centralize a matriz de tabelas de preços, carências ANS e rede credenciada por operadora.
         </p>
       </div>
@@ -609,8 +609,8 @@ export default function PlanosPage() {
                   <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 mb-4">
                     <HugeiconsIcon icon={ClipboardListIcon} className="size-5 text-neutral-400" />
                   </div>
-                  <h4 className="font-semibold text-neutral-800 text-xs">Nenhuma Categoria Selecionada</h4>
-                  <p className="text-neutral-400 text-[10px] font-normal leading-relaxed max-w-xs mt-1">
+                  <h4 className="text-sm font-semibold text-neutral-800">Nenhuma Categoria Selecionada</h4>
+                  <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-xs mt-1">
                     Selecione uma categoria de plano acima ou crie uma nova para iniciar as configurações técnicas e tabelas de valores.
                   </p>
                 </div>
@@ -1162,11 +1162,11 @@ export default function PlanosPage() {
               {/* Header */}
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-base font-semibold text-neutral-800 tracking-tight">
+                  <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">
                     Cadastrar Nova Operadora
                   </h3>
                   <p className="text-[10px] text-neutral-450 font-semibold mt-1">
-                    Adicione uma nova marca operadora à corretora Venacor.
+                    Adicione uma nova marca operadora ao Corretop.
                   </p>
                 </div>
                 <button
