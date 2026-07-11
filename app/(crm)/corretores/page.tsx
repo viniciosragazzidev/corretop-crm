@@ -474,7 +474,7 @@ export default function CorretoresPage() {
             <form onSubmit={handleCreateCorretor} className="space-y-4">
 
               {/* Nome Completo */}
-              <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+              <div className={`t-input-wrap space-y-1.5 text-left${error ? ' is-error' : ''}`}>
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome Completo</label>
                 <input
                   type="text"
@@ -487,7 +487,7 @@ export default function CorretoresPage() {
               </div>
 
               {/* E-mail Corporativo */}
-              <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+              <div className={`t-input-wrap space-y-1.5 text-left${error ? ' is-error' : ''}`}>
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
                 <input
                   type="email"
@@ -500,7 +500,7 @@ export default function CorretoresPage() {
               </div>
 
               {/* Senha Inicial */}
-              <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+              <div className={`t-input-wrap space-y-1.5 text-left${error ? ' is-error' : ''}`}>
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Senha Inicial</label>
                 <input
                   type="password"
@@ -513,7 +513,7 @@ export default function CorretoresPage() {
               </div>
 
               {/* Permissão */}
-              <div className="space-y-1 text-left">
+              <div className="space-y-1.5 text-left">
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nível de Permissão</label>
                 <div className="relative">
                   <select

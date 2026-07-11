@@ -186,7 +186,7 @@ export function AddClientSheet({
               <span className="text-[8px] font-bold text-neutral-400 uppercase tracking-[0.15em]">
                 Contato
               </span>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <Label htmlFor="nome" className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
                   Nome completo
                 </Label>
@@ -198,7 +198,7 @@ export function AddClientSheet({
                   className="h-9 rounded-xl border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-xs font-semibold outline-none transition-all placeholder:text-neutral-300"
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <Label htmlFor="whatsapp" className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
                   WhatsApp
                 </Label>
@@ -217,7 +217,7 @@ export function AddClientSheet({
               <span className="text-[8px] font-bold text-neutral-400 uppercase tracking-[0.15em]">
                 Perfil
               </span>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <Label className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
                   Tipo de contratação
                 </Label>
@@ -238,7 +238,7 @@ export function AddClientSheet({
                   ))}
                 </div>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <Label className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
                   Operadora
                 </Label>
@@ -267,7 +267,7 @@ export function AddClientSheet({
                   {idades.filter((i) => i.trim()).length} {idades.filter((i) => i.trim()).length === 1 ? "vida" : "vidas"}
                 </span>
               </div>
-              <motion.div layout className="space-y-2">
+              <motion.div layout className="space-y-2.5">
                 <AnimatePresence initial={false}>
                   {idades.map((idade, index) => (
                     <motion.div

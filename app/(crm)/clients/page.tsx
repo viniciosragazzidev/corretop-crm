@@ -15,7 +15,7 @@ import {
 } from "./actions";
 import { AddClientSheet } from "./add-client-sheet";
 
-// �€�€�€ Constants �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
+// €€€ Constants €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€
 const PAGE_SIZE_OPTIONS = [10, 20, 50];
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; dot: string }> = {
@@ -25,7 +25,7 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; dot: string 
   "Venda Concluída": { label: "Concluída", color: "bg-emerald-50 text-emerald-700 border-emerald-200", dot: "bg-emerald-500" },
 };
 
-// �€�€�€ Helpers �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
+// €€€ Helpers €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€
 function getRequiredDocuments(perfil: string) {
   const isEmpresarial =
     perfil.toLowerCase().includes("empresa") ||
@@ -62,7 +62,7 @@ function getInitials(name: string) {
     : name.slice(0, 2).toUpperCase();
 }
 
-// �€�€�€ Status Badge �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
+// €€€ Status Badge €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€
 function StatusBadge({ status }: { status: string }) {
   const cfg = STATUS_CONFIG[status] ?? { label: status, color: "bg-neutral-100 text-neutral-600 border-neutral-200", dot: "bg-neutral-400" };
   return (
@@ -73,7 +73,7 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-// �€�€�€ Pagination Bar �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
+// €€€ Pagination Bar €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€
 function PaginationBar({
   total, page, pageSize, onPage, onPageSize,
 }: {
@@ -110,7 +110,7 @@ function PaginationBar({
           </Button>
         ))}
         <span className="ml-2 text-neutral-400">
-          {start}�“{end} de <span className="font-medium text-neutral-600">{total}</span>
+          {start}“{end} de <span className="font-medium text-neutral-600">{total}</span>
         </span>
       </div>
 
@@ -125,7 +125,7 @@ function PaginationBar({
         </Button>
         {pages.map((p, i) =>
           p === "..." ? (
-            <span key={`ellipsis-${i}`} className="px-2 text-[10px] font-bold text-neutral-400">�¦</span>
+            <span key={`ellipsis-${i}`} className="px-2 text-[10px] font-bold text-neutral-400">¦</span>
           ) : (
             <Button
               key={p}
@@ -150,7 +150,7 @@ function PaginationBar({
   );
 }
 
-// �€�€�€ Docs Drawer �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
+// €€€ Docs Drawer €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€
 function DocsDrawer({
   client,
   onClose,
@@ -184,7 +184,7 @@ function DocsDrawer({
             <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">Checklist de Documentação</h3>
             <p className="text-[10px] text-neutral-400 font-normal mt-1">Marque os documentos recebidos do cliente.</p>
           </div>
-           <Button variant="outline" size="icon-xs" onClick={onClose}>
+          <Button variant="outline" size="icon-xs" onClick={onClose}>
             <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
           </Button>
         </div>
@@ -273,7 +273,7 @@ function DocsDrawer({
   );
 }
 
-// �€�€�€ Main Page Component �€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€�€
+// €€€ Main Page Component €€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€
 export default function ClientsPage() {
   const router = useRouter();
   const { data: session, isPending } = useSession();
@@ -289,14 +289,14 @@ export default function ClientsPage() {
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  // Filter / Sort / Pagination �” Leads
+  // Filter / Sort / Pagination ” Leads
   const [leadsSearch, setLeadsSearch] = useState("");
   const [leadsStatusF, setLeadsStatusF] = useState("todos");
   const [leadsSort, setLeadsSort] = useState<"id_desc" | "nome_asc">("id_desc");
   const [leadsPage, setLeadsPage] = useState(1);
   const [leadsPageSize, setLeadsPageSize] = useState(10);
 
-  // Filter / Sort / Pagination �” Clients
+  // Filter / Sort / Pagination ” Clients
   const [clientSearch, setClientSearch] = useState("");
   const [clientStatusF, setClientStatusF] = useState("todos");
   const [clientSort, setClientSort] = useState<"id_desc" | "nome_asc">("id_desc");
@@ -312,7 +312,7 @@ export default function ClientsPage() {
 
   const isUserAdmin = session && (session.user as any).role === "ADMIN";
 
-  // �€�€ Fetch �€�€
+  // €€ Fetch €€
   useEffect(() => {
     if (isPending) return;
     if (!session) { router.push("/login"); return; }
@@ -331,7 +331,7 @@ export default function ClientsPage() {
     fetchClients();
   }, [session, isPending, router]);
 
-  // �€�€ Actions �€�€
+  // €€ Actions €€
   const handleStartAttendance = (clientId: number) => {
     setError(null);
     const claimed = leadsList.find(l => l.id === clientId);
@@ -382,7 +382,7 @@ export default function ClientsPage() {
     setTimeout(() => setSuccessMsg(null), 2500);
   };
 
-  // �€�€ Filtering + Sorting + Pagination �€�€
+  // €€ Filtering + Sorting + Pagination €€
   const processedLeads = useMemo(() => {
     let list = [...leadsList];
     if (leadsSearch.trim()) {
@@ -420,7 +420,7 @@ export default function ClientsPage() {
   const paginatedLeads = processedLeads.slice((leadsPage - 1) * leadsPageSize, leadsPage * leadsPageSize);
   const paginatedClients = processedClients.slice((clientPage - 1) * clientPageSize, clientPage * clientPageSize);
 
-  // �€�€ Loading skeleton �€�€
+  // €€ Loading skeleton €€
   if (isPending || isLoading) {
     return (
       <div className="p-6 lg:p-8 space-y-6 bg-white min-h-screen">
@@ -446,7 +446,7 @@ export default function ClientsPage() {
   return (
     <div className="p-6 lg:p-8 space-y-6 select-none text-left bg-white">
 
-      {/* �€�€ Header �€�€ */}
+      {/* €€ Header €€ */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div className="space-y-1">
           <h1 className="text-lg font-bold text-neutral-900 tracking-tight">Pipeline Comercial</h1>
@@ -481,7 +481,7 @@ export default function ClientsPage() {
         </div>
       </div>
 
-      {/* �€�€ Notifications �€�€ */}
+      {/* €€ Notifications €€ */}
       <AnimatePresence>
         {error && (
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
@@ -525,7 +525,7 @@ export default function ClientsPage() {
         })}
       </div>
 
-      {/* �€�€ Table Content �€�€ */}
+      {/* €€ Table Content €€ */}
       <AnimatePresence mode="wait">
         {activeTab === "leads" ? (
           <motion.div key="leads-table" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}
@@ -804,7 +804,7 @@ export default function ClientsPage() {
                                 {client.corretorNome.split(" ")[0]}
                               </span>
                             ) : (
-                              <span className="text-[9px] text-neutral-300 font-bold">�”</span>
+                              <span className="text-[9px] text-neutral-300 font-bold">”</span>
                             )}
                           </td>
                         )}

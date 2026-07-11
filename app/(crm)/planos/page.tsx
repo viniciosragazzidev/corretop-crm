@@ -689,7 +689,7 @@ export default function PlanosPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               {/* Nome da Categoria */}
-                              <div className="space-y-1 text-left">
+                              <div className="space-y-1.5 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome da Categoria</label>
                                 <input
                                   type="text"
@@ -702,7 +702,7 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Tipo de Contratacao Toggle Switch */}
-                              <div className="space-y-2 text-left">
+                              <div className="space-y-2.5 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Tipo de Contratação</label>
                                 <div className="flex items-center gap-3">
                                   <span className={`text-[10px] font-medium transition-colors ${tipoContratacao === "ADESAO" ? "text-neutral-900 font-semibold" : "text-neutral-400"}`}>Adesão (CPF)</span>
@@ -723,7 +723,7 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Segmentacao Dropdown */}
-                              <div className="space-y-1 text-left">
+                              <div className="space-y-1.5 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Tipo de Plano (Segmentação)</label>
                                 <div className="relative">
                                   <select
@@ -742,7 +742,7 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Coparticipacao Toggle Switch */}
-                              <div className="space-y-2 text-left">
+                              <div className="space-y-2.5 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Coparticipação</label>
                                 <div className="flex items-center gap-3">
                                   <span className={`text-[10px] font-medium transition-colors ${!coparticipacao ? "text-neutral-900 font-semibold" : "text-neutral-400"}`}>Não</span>
@@ -763,7 +763,7 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Abrangência */}
-                              <div className="space-y-1 text-left">
+                              <div className="space-y-1.5 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Abrangência Geográfica</label>
                                 <div className="relative">
                                   <select
@@ -781,7 +781,7 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Cidades Atendidas Tags */}
-                              <div className="space-y-1 text-left">
+                              <div className="space-y-1.5 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Cidades Atendidas (separadas por vírgula)</label>
                                 <input
                                   type="text"
@@ -795,7 +795,7 @@ export default function PlanosPage() {
                             </div>
 
                             {/* Rede de Beneficios */}
-                            <div className="space-y-1 text-left">
+                            <div className="space-y-1.5 text-left">
                               <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Rede de Benefícios Extras / Vantagens</label>
                               <textarea
                                 value={beneficios}
@@ -851,7 +851,7 @@ export default function PlanosPage() {
 
                                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
                                   {/* 0-18 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">0 a 18 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -867,7 +867,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 19-23 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">19 a 23 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -883,7 +883,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 24-28 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">24 a 28 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -899,7 +899,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 29-33 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">29 a 33 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -915,7 +915,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 34-38 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">34 a 38 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -931,7 +931,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 39-43 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">39 a 43 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -947,7 +947,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 44-48 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">44 a 48 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -963,7 +963,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 49-53 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">49 a 53 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -979,7 +979,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 54-58 */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">54 a 58 anos</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -995,7 +995,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* 59mais */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">59 anos ou +</label>
                                     <div className="relative">
                                       <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
@@ -1020,7 +1020,7 @@ export default function PlanosPage() {
 
                                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                                   {/* Urgência */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Urgência (Horas)</label>
                                     <input
                                       type="number"
@@ -1032,7 +1032,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* Consultas */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Consultas (Dias)</label>
                                     <input
                                       type="number"
@@ -1044,7 +1044,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* Exames */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Exames (Dias)</label>
                                     <input
                                       type="number"
@@ -1056,7 +1056,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* Alta Complexidade */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Alta Complex. (Dias)</label>
                                     <input
                                       type="number"
@@ -1068,7 +1068,7 @@ export default function PlanosPage() {
                                   </div>
 
                                   {/* Doenças Preexistentes */}
-                                  <div className="space-y-1 text-left">
+                                  <div className="space-y-1.5 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Preexistências (Dias)</label>
                                     <input
                                       type="number"
@@ -1161,7 +1161,7 @@ export default function PlanosPage() {
               <form onSubmit={handleCreateBrand} className="space-y-4">
 
                 {/* Nome da Operadora */}
-                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+                <div className={`t-input-wrap space-y-1.5 text-left${error ? ' is-error' : ''}`}>
                   <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome da Marca</label>
                   <input
                     type="text"
@@ -1174,7 +1174,7 @@ export default function PlanosPage() {
                 </div>
 
                 {/* Logo URL */}
-                <div className="space-y-1 text-left">
+                <div className="space-y-1.5 text-left">
                   <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Caminho / URL do Logotipo</label>
                   <input
                     type="text"
