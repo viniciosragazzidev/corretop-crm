@@ -8,6 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import {
+  Dialog,
+  DialogPopup,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogPanel,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import {
   getCorretoresAction,
   createCorretorAction,
   updateCorretorStatusAction,
@@ -265,12 +275,12 @@ export default function CorretoresPage() {
               <div className="flex items-center gap-4 shrink-0">
                 <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-2xl py-2.5 px-4 shadow-[0_1px_2px_rgba(0,0,0,0.01)] flex items-center gap-3.5">
                   <div className="flex flex-col">
-                    <span className="text-[9px] font-medium text-neutral-400 uppercase tracking-wider">Ativos</span>
+                    <span className="text-[9px] font-semibold text-neutral-400 uppercase tracking-wider">Ativos</span>
                     <span className="text-sm font-semibold text-slate-700">{activeBrokersCount}</span>
                   </div>
                   <div className="w-px h-6 bg-neutral-100" />
                   <div className="flex flex-col">
-                    <span className="text-[9px] font-medium text-neutral-400 uppercase tracking-wider">Online</span>
+                    <span className="text-[9px] font-semibold text-neutral-400 uppercase tracking-wider">Online</span>
                     <span className="text-sm font-semibold text-emerald-600">{onlineBrokersCount}</span>
                   </div>
                 </div>
@@ -287,7 +297,7 @@ export default function CorretoresPage() {
 
             {/* Error Message */}
             {error && (
-              <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-semibold flex items-center gap-2 max-w-2xl">
+              <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-normal flex items-center gap-2 max-w-2xl">
                 <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
@@ -313,7 +323,7 @@ export default function CorretoresPage() {
               <div className="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-neutral-100 bg-neutral-50/40 text-[10px] font-medium text-neutral-400 uppercase tracking-wider">
+                    <tr className="border-b border-neutral-100 bg-neutral-50/40 text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
                       <th className="py-3.5 px-6">Nome / E-mail</th>
                       <th className="py-3.5 px-4 text-center">Permissão</th>
                       <th className="py-3.5 px-4 text-center">Status</th>
@@ -353,11 +363,11 @@ export default function CorretoresPage() {
                             {/* Center Left: Role Badge */}
                             <td className="py-4 px-4 text-center align-middle">
                               {corretor.role === "ADMIN" ? (
-                                <Badge className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-100">
+                                <Badge className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-100">
                                   Administrador
                                 </Badge>
                               ) : (
-                                <Badge className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wider bg-neutral-50 text-neutral-600 border border-neutral-200">
+                                <Badge className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider bg-neutral-50 text-neutral-600 border border-neutral-200">
                                   Corretor
                                 </Badge>
                               )}
@@ -452,125 +462,105 @@ export default function CorretoresPage() {
       </AnimatePresence>
 
       {/* Creation Modal Overlay */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Modal backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-neutral-900 cursor-pointer"
-            />
-            {/* Modal Box */}
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="bg-white rounded-3xl border border-neutral-200/60 p-6 md:p-8 w-full max-w-md shadow-lg relative z-10 space-y-5"
-            >
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">
-                    Cadastrar Novo Corretor
-                  </h3>
-                  <p className="text-xs font-normal text-neutral-400 mt-1">
-                    Insira as credenciais básicas para habilitar o acesso ao CRM.
-                  </p>
-                </div>
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="p-1.5 rounded-xl border border-neutral-200 text-neutral-400 hover:text-neutral-600 cursor-pointer"
-                >
-                  <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-                </button>
+      {/* Creation Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogPopup showCloseButton={false}>
+          <DialogHeader>
+            <DialogTitle>Cadastrar Novo Corretor</DialogTitle>
+            <DialogDescription>
+              Insira as credenciais básicas para habilitar o acesso ao CRM.
+            </DialogDescription>
+          </DialogHeader>
+
+          <DialogPanel>
+            <form onSubmit={handleCreateCorretor} className="space-y-4">
+
+              {/* Nome Completo */}
+              <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome Completo</label>
+                <input
+                  type="text"
+                  required
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  placeholder="Ex: Gabriel Vasconcelos"
+                  className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
+                />
               </div>
 
-              {/* Registration Form */}
-              <form onSubmit={handleCreateCorretor} className="space-y-4">
+              {/* E-mail Corporativo */}
+              <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
+                <input
+                  type="email"
+                  required
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  placeholder="exemplo@venacorseguros.com"
+                  className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
+                />
+              </div>
 
-                {/* Nome Completo */}
-                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
-                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Nome Completo</label>
-                  <input
-                    type="text"
-                    required
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    placeholder="Ex: Gabriel Vasconcelos"
-                    className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
-                  />
-                </div>
+              {/* Senha Inicial */}
+              <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
+                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Senha Inicial</label>
+                <input
+                  type="password"
+                  required
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="Mínimo 6 caracteres"
+                  className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
+                />
+              </div>
 
-                {/* E-mail Corporativo */}
-                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
-                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
-                  <input
-                    type="email"
-                    required
-                    value={newEmail}
-                    onChange={(e) => setNewEmail(e.target.value)}
-                    placeholder="exemplo@venacorseguros.com"
-                    className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
-                  />
-                </div>
-
-                {/* Senha Inicial */}
-                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
-                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Senha Inicial</label>
-                  <input
-                    type="password"
-                    required
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="Mínimo 6 caracteres"
-                    className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
-                  />
-                </div>
-
-                {/* Permissão */}
-                <div className="space-y-1 text-left">
-                  <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Nível de Permissão</label>
-                  <div className="relative">
-                    <select
-                      value={newRole}
-                      onChange={(e) => setNewRole(e.target.value as any)}
-                      className="w-full pl-3.5 pr-8 py-1 rounded-xl border border-slate-200 bg-white text-slate-900 outline-none text-xs font-normal appearance-none cursor-pointer transition-all duration-200 shadow-none focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 h-8.5"
-                    >
-                      <option value="CORRETOR">Corretor (Visualização de Aguardando)</option>
-                      <option value="ADMIN">Administrador (Controle Total + Abas)</option>
-                    </select>
-                    <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                    </div>
+              {/* Permissão */}
+              <div className="space-y-1 text-left">
+                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nível de Permissão</label>
+                <div className="relative">
+                  <select
+                    value={newRole}
+                    onChange={(e) => setNewRole(e.target.value as any)}
+                    className="w-full pl-3.5 pr-8 py-1 rounded-xl border border-slate-200 bg-white text-slate-900 outline-none text-xs font-normal appearance-none cursor-pointer transition-all duration-200 shadow-none focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 h-8.5"
+                  >
+                    <option value="CORRETOR">Corretor (Visualização de Aguardando)</option>
+                    <option value="ADMIN">Administrador (Controle Total + Abas)</option>
+                  </select>
+                  <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                   </div>
                 </div>
+              </div>
 
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || isPendingAction}
-                  className="w-full py-2.5 mt-4 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-slate-100 disabled:text-slate-400 text-white font-semibold text-xs shadow-none transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5 h-8.5 border-transparent"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin size-4 text-slate-400" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>
-                      <span>Cadastrando...</span>
-                    </>
-                  ) : (
-                    <span>Cadastrar Corretor</span>
-                  )}
-                </button>
-              </form>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-normal flex items-center gap-2">
+                  <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  <span>{error}</span>
+                </div>
+              )}
+            </form>
+          </DialogPanel>
+
+          <DialogFooter>
+            <DialogClose render={<Button variant="ghost" size="sm" />}>
+              Cancelar
+            </DialogClose>
+            <Button
+              type="submit"
+              size="sm"
+              disabled={isSubmitting || isPendingAction}
+              onClick={handleCreateCorretor}
+              className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold"
+            >
+              {isSubmitting ? "Cadastrando..." : "Cadastrar Corretor"}
+            </Button>
+          </DialogFooter>
+        </DialogPopup>
+      </Dialog>
     </div>
   );
 }

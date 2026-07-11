@@ -92,7 +92,7 @@ export default function CRMLogin() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -4, scale: 0.98 }}
                   transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-semibold flex items-center gap-2"
+                  className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-normal flex items-center gap-2"
                 >
                   <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <circle cx="12" cy="12" r="10" />
@@ -109,7 +109,7 @@ export default function CRMLogin() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.35, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <label htmlFor="email" className="block text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="email" className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 E-mail
               </label>
               <input
@@ -129,7 +129,7 @@ export default function CRMLogin() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.35, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <label htmlFor="password" className="block text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="password" className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 Senha
               </label>
               <input
@@ -193,7 +193,7 @@ export default function CRMLogin() {
           transition={{ duration: 0.4, delay: 0.6 }}
           className="text-center mt-6"
         >
-          <p className="text-[11px] font-medium text-neutral-400 uppercase tracking-wider">
+          <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
             Exclusivo para administradores e corretores autorizados.
           </p>
         </motion.div>

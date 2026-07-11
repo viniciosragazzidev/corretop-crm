@@ -107,10 +107,10 @@ function WebhookUrlCard({ integration }: { integration: Integration }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider">URL do Webhook</span>
+        <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">URL do Webhook</span>
       </div>
       <div className="flex items-center gap-2">
-        <div className="flex-1 flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-neutral-50/50 font-mono text-[11px] text-neutral-600 truncate h-9">
+        <div className="flex-1 flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-neutral-50/50 font-mono text-xs text-neutral-600 truncate h-9">
           <HugeiconsIcon icon={Link01Icon} className="size-3.5 text-neutral-400 shrink-0" />
           <span className="truncate">{webhookUrl}</span>
         </div>
@@ -157,10 +157,10 @@ function IntegrationCard({ integration }: { integration: Integration }) {
 
       {/* Payload example */}
       <div className="space-y-2">
-        <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider">Campos do Payload</span>
+        <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Campos do Payload</span>
         <div className="bg-neutral-50/50 rounded-xl border border-neutral-100 p-3 space-y-1.5">
           {integration.fields.map((f, i) => (
-            <div key={i} className="flex items-center justify-between text-[11px]">
+            <div key={i} className="flex items-center justify-between text-xs">
               <span className="font-mono text-neutral-500">{f.label}</span>
               <span className="text-neutral-300 font-mono">ex: {f.example}</span>
             </div>
@@ -258,7 +258,7 @@ export default function SettingsPage() {
               <div className="text-xs text-neutral-600 leading-relaxed">
                 <strong className="font-semibold text-neutral-800">Webhook Gateway ativo.</strong>{' '}
                 Todos os leads recebidos via webhook são inseridos automaticamente na fila com status{' '}
-                <span className="inline-flex items-center px-1.5 py-0.5 rounded-full bg-violet-50 text-violet-700 border border-violet-200 text-[9px] font-medium uppercase tracking-wider">
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded-full bg-violet-50 text-violet-700 border border-violet-200 text-[9px] font-semibold uppercase tracking-wider">
                   Aguardando
                 </span>
                 {' '}e ficam visíveis imediatamente para os corretores no pipeline comercial.
@@ -278,7 +278,7 @@ export default function SettingsPage() {
               <p className="text-xs text-neutral-400 font-normal leading-relaxed">
                 Se você usa outra plataforma de tráfego pago, basta enviar um POST para a URL abaixo com qualquer payload JSON contendo <code className="text-[10px] font-mono bg-neutral-100 px-1 py-0.5 rounded">nome</code>, <code className="text-[10px] font-mono bg-neutral-100 px-1 py-0.5 rounded">whatsapp</code> e opcionalmente <code className="text-[10px] font-mono bg-neutral-100 px-1 py-0.5 rounded">perfil_interesse</code>.
               </p>
-              <div className="flex items-center gap-2 text-[11px] text-neutral-500 font-mono bg-white rounded-xl border border-neutral-200 px-3.5 py-2 h-9">
+              <div className="flex items-center gap-2 text-xs text-neutral-500 font-mono bg-white rounded-xl border border-neutral-200 px-3.5 py-2 h-9">
                 <HugeiconsIcon icon={Link01Icon} className="size-3.5 text-neutral-400 shrink-0" />
                 <span className="truncate">{WEBHOOK_BASE}?token=SEU_TOKEN</span>
               </div>

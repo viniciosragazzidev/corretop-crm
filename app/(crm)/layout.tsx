@@ -121,7 +121,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100/50 cursor-pointer transition-colors">
             <div className="flex flex-col text-left">
               <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Espaço</span>
-              <span className="text-xs font-bold text-neutral-850">Corretop CRM</span>
+              <span className="text-xs font-semibold text-neutral-850">Corretop CRM</span>
             </div>
             <HugeiconsIcon icon={ArrowDown01Icon} className="size-4 text-neutral-400" />
           </div>
@@ -132,7 +132,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           <nav className="space-y-6 text-left">
             {navGroups.map((group) => (
               <div key={group.title} className="space-y-1.5">
-                <span className="px-4 text-[9px] font-semibold uppercase tracking-widest text-neutral-400 select-none block">
+                <span className="px-4 text-[9px] font-semibold uppercase tracking-wider text-neutral-400 select-none block">
                   {group.title}
                 </span>
                 <div className="space-y-0.5">
@@ -169,8 +169,8 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         <div className="px-4 pb-4">
           <div className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-amber-50/40 border border-amber-200/30">
             <div className="flex flex-col text-left">
-              <span className="text-[10px] font-bold text-amber-700">Modo Demonstração</span>
-              <span className="text-[8px] font-medium text-amber-500 uppercase tracking-wider">
+              <span className="text-[10px] font-semibold text-amber-700">Modo Demonstração</span>
+              <span className="text-[9px] font-semibold text-amber-500 uppercase tracking-wider">
                 {isDemoMode ? 'Ativado' : 'Desativado'}
               </span>
             </div>
@@ -193,7 +193,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                 {userInitials}
               </div>
               <div className="flex flex-col min-w-0 text-left">
-                <span className="text-xs font-semibold text-neutral-800 truncate">
+                <span className="text-xs font-normal text-neutral-800 truncate">
                   {session?.user?.name || 'Corretor'}
                 </span>
                 <span className="text-[9px] font-normal text-neutral-400 uppercase tracking-wider">
@@ -243,7 +243,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-3">
             <h1 className="text-lg font-bold text-neutral-900 tracking-tight">{getPageLabel()}</h1>
             <div className="h-4 w-px bg-slate-200" />
-            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest">Painel / CRM</span>
+            <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Painel / CRM</span>
           </div>
 
           <div className="flex items-center gap-6">
@@ -337,7 +337,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                 <nav className="space-y-6">
                   {navGroups.map((group) => (
                     <div key={group.title} className="space-y-1.5">
-                      <span className="px-3 text-[9px] font-semibold uppercase tracking-widest text-neutral-400">
+                      <span className="px-3 text-[9px] font-semibold uppercase tracking-wider text-neutral-400">
                         {group.title}
                       </span>
                       <div className="space-y-1">
@@ -366,8 +366,8 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               <div className="pt-4 border-t border-slate-100 mb-4">
                 <div className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-amber-50/40 border border-amber-200/30">
                   <div className="flex flex-col text-left">
-                    <span className="text-[10px] font-bold text-amber-700">Modo Demonstração</span>
-                    <span className="text-[8px] font-medium text-amber-500 uppercase tracking-wider">
+                    <span className="text-[10px] font-semibold text-amber-700">Modo Demonstração</span>
+                    <span className="text-[9px] font-semibold text-amber-500 uppercase tracking-wider">
                       {isDemoMode ? 'Ativado' : 'Desativado'}
                     </span>
                   </div>

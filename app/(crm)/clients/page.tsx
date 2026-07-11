@@ -66,7 +66,7 @@ function getInitials(name: string) {
 function StatusBadge({ status }: { status: string }) {
   const cfg = STATUS_CONFIG[status] ?? { label: status, color: "bg-neutral-100 text-neutral-600 border-neutral-200", dot: "bg-neutral-400" };
   return (
-    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-medium uppercase tracking-wider ${cfg.color}`}>
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-semibold uppercase tracking-wider ${cfg.color}`}>
       <span className={`size-1.5 rounded-full ${cfg.dot}`} />
       {cfg.label}
     </span>
@@ -97,7 +97,7 @@ function PaginationBar({
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-neutral-100 px-1">
-            <div className="flex items-center gap-2 text-[11px] font-medium text-neutral-400">
+      <div className="flex items-center gap-2 text-xs font-medium text-neutral-400">
         <span>Linhas por página:</span>
         {PAGE_SIZE_OPTIONS.map((s) => (
           <Button
@@ -212,12 +212,12 @@ function DocsDrawer({
           </div>
           <div className="grid grid-cols-2 gap-3 pt-1">
             <div>
-              <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest block">Perfil</span>
-              <span className="text-[10px] font-medium text-neutral-600 mt-0.5 block">{client.perfil}</span>
+              <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">Perfil</span>
+              <span className="text-[10px] font-semibold text-neutral-600 mt-0.5 block">{client.perfil}</span>
             </div>
             <div>
-              <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest block">Vidas</span>
-              <span className="text-[10px] font-medium text-neutral-600 mt-0.5 block">{client.idades}</span>
+              <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">Vidas</span>
+              <span className="text-[10px] font-semibold text-neutral-600 mt-0.5 block">{client.idades}</span>
             </div>
           </div>
         </div>
@@ -225,8 +225,8 @@ function DocsDrawer({
         {/* Progress bar */}
         <div className="space-y-1.5">
           <div className="flex justify-between items-center">
-            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest">Progresso da Documentação</span>
-            <span className="text-[10px] font-medium text-neutral-600">{collected}/{docs.length}</span>
+            <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Progresso da Documentação</span>
+            <span className="text-[10px] font-semibold text-neutral-600">{collected}/{docs.length}</span>
           </div>
           <div className="h-1.5 bg-neutral-100 rounded-full overflow-hidden">
             <motion.div
@@ -240,7 +240,7 @@ function DocsDrawer({
 
         {/* Documents checklist */}
         <div className="space-y-2 flex-1">
-          <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-widest block">Documentos Necessários</span>
+          <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">Documentos Necessários</span>
           {docs.map((doc) => {
             const key = `${client.id}-${doc.key}`;
             const done = collectedDocs[key] || false;
@@ -484,8 +484,8 @@ export default function ClientsPage() {
             { label: "Concluídas", value: clientsList.filter(c => c.status === "Venda Concluída").length, accent: "#10b981" },
           ].map(kpi => (
             <div key={kpi.label} className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-xl px-3 py-2 shadow-2xs text-center min-w-[64px]">
-              <p className="text-[18px] font-extrabold leading-none" style={{ color: kpi.accent }}>{kpi.value}</p>
-              <p className="text-[9px] font-medium text-neutral-400 uppercase tracking-wider mt-0.5">{kpi.label}</p>
+              <p className="text-2xl font-bold tabular-nums leading-none" style={{ color: kpi.accent }}>{kpi.value}</p>
+              <p className="text-[9px] font-semibold text-neutral-400 uppercase tracking-wider mt-0.5">{kpi.label}</p>
             </div>
           ))}
         </div>
@@ -495,14 +495,14 @@ export default function ClientsPage() {
       <AnimatePresence>
         {error && (
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-semibold flex items-center gap-2">
+            className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-normal flex items-center gap-2">
             <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
             {error}
           </motion.div>
         )}
         {successMsg && (
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-xl text-xs font-semibold flex items-center gap-2">
+            className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-xl text-xs font-normal flex items-center gap-2">
             <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
             {successMsg}
           </motion.div>
@@ -552,12 +552,12 @@ export default function ClientsPage() {
                   placeholder="Buscar leads..."
                   value={leadsSearch}
                   onChange={e => { setLeadsSearch(e.target.value); setLeadsPage(1); }}
-                  className="w-full pl-8 pr-3 py-1 rounded-xl border border-slate-200/50 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all h-8.5 text-neutral-700 placeholder:text-neutral-400"
+                  className=""
                 />
               </div>
               {/* Sort */}
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider shrink-0">Ordenar:</span>
+                <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider shrink-0">Ordenar:</span>
                 {[{ val: "id_desc", lbl: "Mais Recente" }, { val: "nome_asc", lbl: "Nome A-Z" }].map(o => (
                   <Button key={o.val} variant={leadsSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setLeadsSort(o.val as any)}
                     className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${leadsSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
@@ -565,7 +565,7 @@ export default function ClientsPage() {
                 ))}
               </div>
               {/* Total */}
-              <span className="text-[11px] font-medium text-neutral-400 ml-auto">{processedLeads.length} resultado{processedLeads.length !== 1 ? "s" : ""}</span>
+              <span className="text-xs font-medium text-neutral-400 ml-auto">{processedLeads.length} resultado{processedLeads.length !== 1 ? "s" : ""}</span>
             </div>
 
             {/* Table */}
@@ -574,7 +574,7 @@ export default function ClientsPage() {
                 <thead>
                   <tr className="border-b border-neutral-100">
                     {["Cliente", "WhatsApp", "Perfil", "Vidas / Idades", "Entrada", "Ações"].map(h => (
-                      <th key={h} className="text-left px-5 py-3 text-[10px] font-medium text-neutral-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
+                      <th key={h} className="text-left px-5 py-3 text-[10px] font-semibold text-neutral-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -603,7 +603,7 @@ export default function ClientsPage() {
                         {/* Nome */}
                         <td className="px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <div className="size-8 rounded-xl bg-[#3b2dff]/8 border border-[#3b2dff]/10 text-[#3b2dff] font-extrabold text-[10px] flex items-center justify-center shrink-0">
+                            <div className="size-8 rounded-xl bg-[#3b2dff]/8 border border-[#3b2dff]/10 text-[#3b2dff] font-bold text-[10px] flex items-center justify-center shrink-0">
                               {getInitials(lead.nome)}
                             </div>
                             <span className="font-semibold text-neutral-800 text-xs truncate max-w-[160px]">{lead.nome}</span>
@@ -619,7 +619,7 @@ export default function ClientsPage() {
                         </td>
                         {/* Perfil */}
                         <td className="px-5 py-3.5">
-                          <span className="text-[9px] font-medium uppercase tracking-wider text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-lg">{lead.perfil}</span>
+                          <span className="text-[9px] font-semibold uppercase tracking-wider text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-lg">{lead.perfil}</span>
                         </td>
                         {/* Idades */}
                         <td className="px-5 py-3.5">
@@ -638,7 +638,7 @@ export default function ClientsPage() {
                             <motion.button
                               whileTap={{ scale: 0.97 }}
                               onClick={() => handleStartAttendance(lead.id)}
-                              className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap"
+                              className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap"
                             >
                               <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><line x1="19" y1="8" x2="19" y2="14" /><line x1="16" y1="11" x2="22" y2="11" /></svg>
                               Assumir
@@ -704,13 +704,13 @@ export default function ClientsPage() {
               </div>
               {/* Sort */}
               <div className="flex items-center gap-1.5 ml-auto">
-                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider">Ordem:</span>
+                <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Ordem:</span>
                 {[{ val: "id_desc", lbl: "Recente" }, { val: "nome_asc", lbl: "A-Z" }].map(o => (
                   <Button key={o.val} variant={clientSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setClientSort(o.val as any)}
                     className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${clientSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
                       }`}>{o.lbl}</Button>
                 ))}
-                <span className="text-[11px] font-medium text-neutral-400 ml-2">{processedClients.length}</span>
+                <span className="text-xs font-medium text-neutral-400 ml-2">{processedClients.length}</span>
               </div>
             </div>
 
@@ -724,7 +724,7 @@ export default function ClientsPage() {
                       ...(isUserAdmin ? ["Corretor"] : []),
                       "Ações"
                     ].map(h => (
-                      <th key={h} className="text-left px-5 py-3 text-[10px] font-medium text-neutral-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
+                      <th key={h} className="text-left px-5 py-3 text-[10px] font-semibold text-neutral-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -753,7 +753,7 @@ export default function ClientsPage() {
                         {/* Nome */}
                         <td className="px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <div className={`size-8 rounded-xl font-extrabold text-[10px] flex items-center justify-center shrink-0 border ${client.status === "Venda Concluída"
+                            <div className={`size-8 rounded-xl font-bold text-[10px] flex items-center justify-center shrink-0 border ${client.status === "Venda Concluída"
                               ? "bg-emerald-50 border-emerald-200 text-emerald-700"
                               : client.status === "Proposta Enviada"
                                 ? "bg-amber-50 border-amber-200 text-amber-700"
@@ -773,7 +773,7 @@ export default function ClientsPage() {
                         </td>
                         {/* Perfil */}
                         <td className="px-5 py-3.5">
-                          <span className="text-[9px] font-medium uppercase tracking-wider text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-lg">{client.perfil}</span>
+                          <span className="text-[9px] font-semibold uppercase tracking-wider text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-lg">{client.perfil}</span>
                         </td>
                         {/* Vidas */}
                         <td className="px-5 py-3.5">
@@ -792,7 +792,7 @@ export default function ClientsPage() {
                             <select
                               value={client.status}
                               onChange={e => handleStatusChange(client.id, e.target.value as any)}
-                              className={`pl-6 pr-6 py-1 rounded-full border text-[9px] font-medium uppercase tracking-wider appearance-none cursor-pointer outline-none transition-all ${client.status === "Em Atendimento"
+                              className={`pl-6 pr-6 py-1 rounded-full border text-[9px] font-semibold uppercase tracking-wider appearance-none cursor-pointer outline-none transition-all ${client.status === "Em Atendimento"
                                 ? "bg-blue-50 text-blue-700 border-blue-200"
                                 : client.status === "Proposta Enviada"
                                   ? "bg-amber-50 text-amber-700 border-amber-200"
@@ -810,7 +810,7 @@ export default function ClientsPage() {
                         {isUserAdmin && (
                           <td className="px-5 py-3.5">
                             {client.corretorNome ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-neutral-100 text-neutral-600 text-[9px] font-extrabold">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-neutral-100 text-neutral-600 text-[9px] font-bold">
                                 <span className="size-1.5 rounded-full bg-neutral-400" />
                                 {client.corretorNome.split(" ")[0]}
                               </span>

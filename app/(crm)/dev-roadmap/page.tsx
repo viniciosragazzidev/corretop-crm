@@ -252,7 +252,7 @@ export default function DevRoadmapPage() {
       </div>
 
       <div className="flex items-center gap-2">
-        <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-400">Ordenar por:</span>
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400">Ordenar por:</span>
         {(["created_at", "priority", "status"] as const).map(key => (
           <button
             key={key}
@@ -276,7 +276,7 @@ export default function DevRoadmapPage() {
                 <div className={`px-2.5 py-0.5 rounded-lg text-[10px] font-bold border ${STATUS_STYLES[statusKey]}`}>
                   {STATUS_LABELS[statusKey]}
                 </div>
-                <span className="text-[11px] font-semibold text-neutral-400">{statusTasks.length} tarefa(s)</span>
+                <span className="text-xs font-semibold text-neutral-400">{statusTasks.length} tarefa(s)</span>
               </div>
               <div className="space-y-2">
                 {statusTasks.length === 0 ? (
@@ -300,7 +300,7 @@ export default function DevRoadmapPage() {
                               {new Date(task.created_at).toLocaleDateString("pt-BR")}
                             </span>
                           </div>
-                          <h3 className="text-sm font-bold text-neutral-900 leading-snug">{task.title}</h3>
+                          <h3 className="text-sm font-semibold text-neutral-900 leading-snug">{task.title}</h3>
                           {task.description && (
                             <p className="text-xs text-neutral-500 font-medium mt-1 leading-relaxed line-clamp-2">{task.description}</p>
                           )}
@@ -408,7 +408,7 @@ function TaskFormModal({
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="t-input-wrap">
-        <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
+        <label className="block text-[10px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
           Título *
         </label>
             <input
@@ -421,7 +421,7 @@ function TaskFormModal({
             />
           </div>
           <div>
-        <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
+        <label className="block text-[10px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
           Descrição
         </label>
             <textarea
@@ -433,7 +433,7 @@ function TaskFormModal({
             />
           </div>
           <div>
-        <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
+        <label className="block text-[10px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
           Prioridade
         </label>
             <div className="flex gap-2">

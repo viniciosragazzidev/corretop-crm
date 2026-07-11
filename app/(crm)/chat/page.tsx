@@ -246,7 +246,7 @@ export default function ChatPage() {
         <div className="px-5 pt-6 pb-4 border-b border-slate-100/70">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-lg font-semibold text-neutral-900 tracking-tight">Conversas</h2>
+              <h2 className="text-lg font-bold text-neutral-900 tracking-tight">Conversas</h2>
               {isAdmin && (
                 <span className="text-xs font-normal text-neutral-400 mt-0.5 block">
                   Visão administrador — todos os atendimentos
@@ -316,7 +316,7 @@ export default function ChatPage() {
                 >
                   {/* Avatar */}
                   <div className="relative shrink-0">
-                    <div className="size-10 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200/60 flex items-center justify-center text-[11px] font-bold text-neutral-600">
+                    <div className="size-10 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200/60 flex items-center justify-center text-xs font-bold text-neutral-600">
                       {chat.clientInitials}
                     </div>
                     <StatusDot status={chat.status} />
@@ -344,7 +344,7 @@ export default function ChatPage() {
                     )}
 
                     <div className="flex items-center justify-between gap-2 mt-0.5">
-                      <span className={`text-[11px] truncate ${chat.unread > 0 ? 'font-medium text-neutral-600' : 'font-normal text-neutral-400'}`}>
+                      <span className={`text-xs truncate ${chat.unread > 0 ? 'font-medium text-neutral-600' : 'font-normal text-neutral-400'}`}>
                         {chat.status === 'waiting' && chat.lastMessage === 'Digitando...'
                           ? <span className="italic text-emerald-500">Digitando...</span>
                           : chat.lastMessage
@@ -403,7 +403,7 @@ export default function ChatPage() {
 
               {/* Name + info */}
               <div className="flex flex-col flex-1 min-w-0 text-left">
-                <span className="text-sm font-bold text-neutral-900 truncate">{selectedChat.clientName}</span>
+                <span className="text-sm font-semibold text-neutral-900 truncate">{selectedChat.clientName}</span>
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-normal text-neutral-400 truncate">
                     {selectedChat.status === 'active' ? 'Online' :
@@ -421,7 +421,7 @@ export default function ChatPage() {
               {/* Admin badge: quem está atendendo */}
               {isAdmin && (
                 <Badge className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#3b2dff]/5 border border-[#3b2dff]/12 shrink-0 text-inherit hover:bg-[#3b2dff]/5">
-                  <div className="size-5 rounded-full bg-[#3b2dff] text-white flex items-center justify-center text-[8px] font-bold shrink-0">
+                  <div className="size-5 rounded-full bg-[#3b2dff] text-white flex items-center justify-center text-[9px] font-bold shrink-0">
                     {selectedChat.brokerInitials}
                   </div>
                   <span className="text-[10px] font-semibold text-[#3b2dff] hidden sm:block">{selectedChat.brokerName}</span>
@@ -455,7 +455,7 @@ export default function ChatPage() {
                   >
                     {/* Client avatar (only if not user) */}
                     {!isUser && (
-                      <div className="size-6 rounded-full bg-slate-200 border border-slate-200 flex items-center justify-center text-[8px] font-bold text-neutral-600 shrink-0 mr-2 mt-1">
+                      <div className="size-6 rounded-full bg-slate-200 border border-slate-200 flex items-center justify-center text-[9px] font-bold text-neutral-600 shrink-0 mr-2 mt-1">
                         {selectedChat.clientInitials}
                       </div>
                     )}
@@ -488,7 +488,7 @@ export default function ChatPage() {
               <div className="px-5 py-4 border-t border-slate-100 bg-white flex items-center gap-3">
                 <div className="flex-1 flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#3b2dff]/5 border border-[#3b2dff]/12">
                   <HugeiconsIcon icon={CheckmarkCircle01Icon} className="size-4 text-[#3b2dff] shrink-0" />
-                  <span className="text-[11px] font-normal text-[#3b2dff]/70">
+                  <span className="text-xs font-normal text-[#3b2dff]/70">
                     Modo monitoramento — somente leitura.
                     <span className="font-semibold"> {selectedChat.brokerName}</span> está atendendo.
                   </span>
