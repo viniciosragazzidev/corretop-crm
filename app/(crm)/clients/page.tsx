@@ -513,7 +513,7 @@ export default function ClientsPage() {
       <div className="flex gap-1 bg-neutral-100/50 p-1 rounded-xl w-fit">
         {(["leads", "clients"] as const).map(tab => {
           const count = tab === "leads" ? leadsList.length : clientsList.length;
-          const label = tab === "leads" ? "Fila de Leads" : "Carteira de Clientes";
+          const label = tab === "leads" ? "Leads" : "Clientes";
           const active = activeTab === tab;
           return (
             <Button
@@ -521,7 +521,7 @@ export default function ClientsPage() {
               variant="ghost"
               size="sm"
               onClick={() => { setActiveTab(tab); setError(null); }}
-              className={`px-4 py-2 rounded-lg text-xs transition-all cursor-pointer flex items-center gap-1.5 ${active ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
+              className={`px-3 py-1.5 rounded-lg text-[11px] transition-all cursor-pointer flex items-center gap-1.5 ${active ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
                 }`}
             >
               {label}
