@@ -417,7 +417,7 @@ export default function PlanosPage() {
   if (session && !isUserAdmin) {
     return (
       <div className="p-6 lg:p-8 flex flex-col items-center justify-center h-[70vh] bg-white select-none">
-          <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
+        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
           <div className="size-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 shadow-3xs mb-4">
             <svg className="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -619,26 +619,22 @@ export default function PlanosPage() {
                   {/* Sub-Abas Nav */}
                   <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-3 flex items-center justify-between gap-4 shadow-none">
                     <div className="t-tabs flex gap-1 bg-neutral-100/50 p-1 rounded-xl">
-                      <Button
-                        variant="ghost"
-                        size="sm"
+                      <button
+                        role="tab"
+                        aria-selected={activeTab === "categories"}
                         onClick={() => {
                           setActiveTab("categories");
                           setError(null);
                         }}
-                        aria-selected={activeTab === "categories"}
-                        className={`t-tab px-3 py-1.5 rounded-lg text-[11px] transition-all relative cursor-pointer ${activeTab === "categories" ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
-                          }`}
+                        className={`t-tab px-3 py-1.5 rounded-lg text-[11px] cursor-pointer inline-flex items-center gap-1.5 ${activeTab === "categories" ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"}`}
                       >
-                        <span className="inline-flex items-center gap-1.5">
-                          <HugeiconsIcon icon={ClipboardListIcon} className="size-3.5" />
-                          Dados da Categoria
-                        </span>
-                      </Button>
+                        <HugeiconsIcon icon={ClipboardListIcon} className="size-3.5" />
+                        Dados da Categoria
+                      </button>
 
-                      <Button
-                        variant="ghost"
-                        size="sm"
+                      <button
+                        role="tab"
+                        aria-selected={activeTab === "pricing"}
                         onClick={() => {
                           if (selectedPlanoId === null) {
                             setError("Salve os dados da categoria primeiro para habilitar a precificação.");
@@ -647,15 +643,11 @@ export default function PlanosPage() {
                           setActiveTab("pricing");
                           setError(null);
                         }}
-                        aria-selected={activeTab === "pricing"}
-                        className={`t-tab px-3 py-1.5 rounded-lg text-[11px] transition-all relative cursor-pointer ${selectedPlanoId === null ? "opacity-50 cursor-not-allowed" : ""} ${activeTab === "pricing" ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
-                          }`}
+                        className={`t-tab px-3 py-1.5 rounded-lg text-[11px] cursor-pointer inline-flex items-center gap-1.5 ${selectedPlanoId === null ? "opacity-50 cursor-not-allowed" : ""} ${activeTab === "pricing" ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"}`}
                       >
-                        <span className="inline-flex items-center gap-1.5">
-                          <HugeiconsIcon icon={Table01Icon} className="size-3.5" />
-                          Tabelas de Preços & Carências
-                        </span>
-                      </Button>
+                        <HugeiconsIcon icon={Table01Icon} className="size-3.5" />
+                        Tabelas de Preços & Carências
+                      </button>
                     </div>
 
                     <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider select-none">
@@ -852,275 +844,275 @@ export default function PlanosPage() {
                           {selectedPlanoId !== null && (
                             <>
                               {/* Bloco B: Prices Grid */}
-                                  <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
-                            <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block text-left">
-                              Matriz Dinâmica de Valores (Faixas ANS)
-                            </span>
+                              <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
+                                <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block text-left">
+                                  Matriz Dinâmica de Valores (Faixas ANS)
+                                </span>
 
                                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-                              {/* 0-18 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">0 a 18 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa0a18}
-                                    onChange={(e) => setFaixa0a18(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
+                                  {/* 0-18 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">0 a 18 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa0a18}
+                                        onChange={(e) => setFaixa0a18(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 19-23 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">19 a 23 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa19a23}
+                                        onChange={(e) => setFaixa19a23(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 24-28 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">24 a 28 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa24a28}
+                                        onChange={(e) => setFaixa24a28(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 29-33 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">29 a 33 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa29a33}
+                                        onChange={(e) => setFaixa29a33(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 34-38 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">34 a 38 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa34a38}
+                                        onChange={(e) => setFaixa34a38(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 39-43 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">39 a 43 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa39a43}
+                                        onChange={(e) => setFaixa39a43(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 44-48 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">44 a 48 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa44a48}
+                                        onChange={(e) => setFaixa44a48(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 49-53 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">49 a 53 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa49a53}
+                                        onChange={(e) => setFaixa49a53(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 54-58 */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">54 a 58 anos</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa54a58}
+                                        onChange={(e) => setFaixa54a58(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
+
+                                  {/* 59mais */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">59 anos ou +</label>
+                                    <div className="relative">
+                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
+                                      <input
+                                        type="number"
+                                        step="0.01"
+                                        required
+                                        value={faixa59mais}
+                                        onChange={(e) => setFaixa59mais(e.target.value)}
+                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                      />
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
 
-                              {/* 19-23 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">19 a 23 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa19a23}
-                                    onChange={(e) => setFaixa19a23(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
+                              {/* Bloco C: Carencias */}
+                              <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
+                                <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">
+                                  Bloco C: Carências Regulamentares (Prazos de Recuo)
+                                </span>
+
+                                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                  {/* Urgência */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Urgência (Horas)</label>
+                                    <input
+                                      type="number"
+                                      required
+                                      value={carenciaUrgencia}
+                                      onChange={(e) => setCarenciaUrgencia(Number(e.target.value))}
+                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                    />
+                                  </div>
+
+                                  {/* Consultas */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Consultas (Dias)</label>
+                                    <input
+                                      type="number"
+                                      required
+                                      value={carenciaConsultas}
+                                      onChange={(e) => setCarenciaConsultas(Number(e.target.value))}
+                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                    />
+                                  </div>
+
+                                  {/* Exames */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Exames (Dias)</label>
+                                    <input
+                                      type="number"
+                                      required
+                                      value={carenciaExamesSimples}
+                                      onChange={(e) => setCarenciaExamesSimples(Number(e.target.value))}
+                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                    />
+                                  </div>
+
+                                  {/* Alta Complexidade */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Alta Complex. (Dias)</label>
+                                    <input
+                                      type="number"
+                                      required
+                                      value={carenciaAltaComplexidade}
+                                      onChange={(e) => setCarenciaAltaComplexidade(Number(e.target.value))}
+                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                    />
+                                  </div>
+
+                                  {/* Doenças Preexistentes */}
+                                  <div className="space-y-1 text-left">
+                                    <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Preexistências (Dias)</label>
+                                    <input
+                                      type="number"
+                                      required
+                                      value={carenciaPreexistencias}
+                                      onChange={(e) => setCarenciaPreexistencias(Number(e.target.value))}
+                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                    />
+                                  </div>
                                 </div>
                               </div>
 
-                              {/* 24-28 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">24 a 28 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa24a28}
-                                    onChange={(e) => setFaixa24a28(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
+                              {/* Submit Actions Button */}
+                              <div className="flex justify-end pt-2">
+                                <motion.button
+                                  type="submit"
+                                  whileTap={{ scale: 0.98 }}
+                                  disabled={isSavingPricing}
+                                  className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-6 py-3.5 rounded-2xl shadow-3xs hover:shadow-[#3b2dff]/10 disabled:bg-slate-100 disabled:text-slate-400 transition-all cursor-pointer flex items-center gap-2 select-none"
+                                >
+                                  {isSavingPricing ? (
+                                    <>
+                                      <svg className="animate-spin size-4 text-white" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                      </svg>
+                                      <span>Salvando Matriz...</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                                      <span>Salvar Alterações da Tabela</span>
+                                    </>
+                                  )}
+                                </motion.button>
                               </div>
-
-                              {/* 29-33 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">29 a 33 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa29a33}
-                                    onChange={(e) => setFaixa29a33(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-
-                              {/* 34-38 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">34 a 38 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa34a38}
-                                    onChange={(e) => setFaixa34a38(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-
-                              {/* 39-43 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">39 a 43 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa39a43}
-                                    onChange={(e) => setFaixa39a43(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-
-                              {/* 44-48 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">44 a 48 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa44a48}
-                                    onChange={(e) => setFaixa44a48(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-
-                              {/* 49-53 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">49 a 53 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa49a53}
-                                    onChange={(e) => setFaixa49a53(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-
-                              {/* 54-58 */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">54 a 58 anos</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa54a58}
-                                    onChange={(e) => setFaixa54a58(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-
-                              {/* 59mais */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">59 anos ou +</label>
-                                <div className="relative">
-                                  <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                  <input
-                                    type="number"
-                                    step="0.01"
-                                    required
-                                    value={faixa59mais}
-                                    onChange={(e) => setFaixa59mais(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Bloco C: Carencias */}
-                                  <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
-                            <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">
-                              Bloco C: Carências Regulamentares (Prazos de Recuo)
-                            </span>
-
-                            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                              {/* Urgência */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Urgência (Horas)</label>
-                                <input
-                                  type="number"
-                                  required
-                                  value={carenciaUrgencia}
-                                  onChange={(e) => setCarenciaUrgencia(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
-                                />
-                              </div>
-
-                              {/* Consultas */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Consultas (Dias)</label>
-                                <input
-                                  type="number"
-                                  required
-                                  value={carenciaConsultas}
-                                  onChange={(e) => setCarenciaConsultas(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
-                                />
-                              </div>
-
-                              {/* Exames */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Exames (Dias)</label>
-                                <input
-                                  type="number"
-                                  required
-                                  value={carenciaExamesSimples}
-                                  onChange={(e) => setCarenciaExamesSimples(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
-                                />
-                              </div>
-
-                              {/* Alta Complexidade */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Alta Complex. (Dias)</label>
-                                <input
-                                  type="number"
-                                  required
-                                  value={carenciaAltaComplexidade}
-                                  onChange={(e) => setCarenciaAltaComplexidade(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
-                                />
-                              </div>
-
-                              {/* Doenças Preexistentes */}
-                              <div className="space-y-1 text-left">
-                                <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Preexistências (Dias)</label>
-                                <input
-                                  type="number"
-                                  required
-                                  value={carenciaPreexistencias}
-                                  onChange={(e) => setCarenciaPreexistencias(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
-                                />
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Submit Actions Button */}
-                          <div className="flex justify-end pt-2">
-                            <motion.button
-                              type="submit"
-                              whileTap={{ scale: 0.98 }}
-                              disabled={isSavingPricing}
-                              className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-6 py-3.5 rounded-2xl shadow-3xs hover:shadow-[#3b2dff]/10 disabled:bg-slate-100 disabled:text-slate-400 transition-all cursor-pointer flex items-center gap-2 select-none"
-                            >
-                              {isSavingPricing ? (
-                                <>
-                                  <svg className="animate-spin size-4 text-white" fill="none" viewBox="0 0 24 24">
-                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                                  </svg>
-                                  <span>Salvando Matriz...</span>
-                                </>
-                              ) : (
-                                <>
-                                  <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                                  <span>Salvar Alterações da Tabela</span>
-                                </>
-                              )}
-                            </motion.button>
-                          </div>
-                        </>
-                      )}
-                    </form>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </>
-          )}
+                            </>
+                          )}
+                        </form>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -1153,9 +1145,9 @@ export default function PlanosPage() {
                   <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">
                     Cadastrar Nova Operadora
                   </h3>
-          <p className="text-xs font-normal text-neutral-400 mt-1">
-            Adicione uma nova marca operadora ao Corretop.
-          </p>
+                  <p className="text-xs font-normal text-neutral-400 mt-1">
+                    Adicione uma nova marca operadora ao Corretop.
+                  </p>
                 </div>
                 <button
                   onClick={() => setIsOpModalOpen(false)}
