@@ -407,7 +407,7 @@ function TaskFormModal({
           {mode === "create" ? "Nova Tarefa" : "Editar Tarefa"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+          <div className="t-input-wrap">
         <label className="block text-[10px] font-medium uppercase tracking-wider text-neutral-400 mb-1.5">
           Título *
         </label>
@@ -416,7 +416,7 @@ function TaskFormModal({
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="Ex: Implementar módulo de relatórios"
-              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all placeholder:text-neutral-400 h-8.5"
+              className="t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all placeholder:text-neutral-400 h-8.5"
               required
             />
           </div>
@@ -429,7 +429,7 @@ function TaskFormModal({
               onChange={e => setDescription(e.target.value)}
               placeholder="Descreva a tarefa em detalhes..."
               rows={3}
-              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all placeholder:text-neutral-400 resize-none"
+              className="t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all placeholder:text-neutral-400 resize-none"
             />
           </div>
           <div>

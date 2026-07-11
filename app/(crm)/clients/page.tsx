@@ -434,11 +434,11 @@ export default function ClientsPage() {
   if (isPending || isLoading) {
     return (
       <div className="p-6 lg:p-8 space-y-6 bg-white min-h-screen">
-        <div className="space-y-2 animate-pulse">
-          <div className="h-7 bg-neutral-200 rounded-lg w-56" />
+        <div className="t-skel is-pulsing space-y-2">
+          <div className="t-skel-skeleton is-pulsing h-7 bg-neutral-200 rounded-lg w-56" />
           <div className="h-4 bg-neutral-200 rounded w-80" />
         </div>
-        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 overflow-hidden animate-pulse">
+        <div className="t-skel is-pulsing bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 overflow-hidden">
           <div className="h-12 bg-neutral-100 border-b border-neutral-200" />
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="h-14 border-b border-neutral-100 flex items-center px-6 gap-4">

@@ -221,26 +221,20 @@ export default function CorretoresPage() {
     <div className="p-6 lg:p-8 space-y-6 select-none text-left flex flex-col h-full bg-white">
 
       {/* Sub-navigation tabs */}
-      <div className="flex border-b border-neutral-200/60 pb-1.5 w-full gap-5">
+      <div className="t-tabs flex border-b border-neutral-200/60 pb-1.5 w-full gap-5">
         {subTabs.map((tab) => {
           const isActive = activeSubTab === tab;
           return (
             <button
               key={tab}
               onClick={() => setActiveSubTab(tab)}
-              className={`pb-2.5 text-xs transition-all relative cursor-pointer ${isActive
+              aria-selected={isActive}
+              className={`t-tab pb-2.5 text-xs transition-all relative cursor-pointer ${isActive
                 ? "text-neutral-900 font-semibold"
                 : "text-neutral-400 hover:text-neutral-600 font-normal"
                 }`}
             >
               {tab}
-              {isActive && (
-                <motion.div
-                  layoutId="corretoresSubTabUnderline"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3b2dff]"
-                  transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                />
-              )}
             </button>
           );
         })}
@@ -498,7 +492,7 @@ export default function CorretoresPage() {
               <form onSubmit={handleCreateCorretor} className="space-y-4">
 
                 {/* Nome Completo */}
-                <div className="space-y-1 text-left">
+                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
                   <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Nome Completo</label>
                   <input
                     type="text"
@@ -506,12 +500,12 @@ export default function CorretoresPage() {
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                     placeholder="Ex: Gabriel Vasconcelos"
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
+                    className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
                   />
                 </div>
 
                 {/* E-mail Corporativo */}
-                <div className="space-y-1 text-left">
+                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
                   <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
                   <input
                     type="email"
@@ -519,12 +513,12 @@ export default function CorretoresPage() {
                     value={newEmail}
                     onChange={(e) => setNewEmail(e.target.value)}
                     placeholder="exemplo@venacorseguros.com"
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
+                    className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
                   />
                 </div>
 
                 {/* Senha Inicial */}
-                <div className="space-y-1 text-left">
+                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
                   <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Senha Inicial</label>
                   <input
                     type="password"
@@ -532,7 +526,7 @@ export default function CorretoresPage() {
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Mínimo 6 caracteres"
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
+                    className={`t-input w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
                   />
                 </div>
 

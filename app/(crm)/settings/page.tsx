@@ -194,24 +194,18 @@ export default function SettingsPage() {
     <div className="p-6 lg:p-8 space-y-6 select-none text-left flex flex-col h-full bg-white">
 
       {/* Sub-navigation tabs */}
-      <div className="flex border-b border-neutral-200/60 pb-1.5 w-full gap-5">
+      <div className="t-tabs flex border-b border-neutral-200/60 pb-1.5 w-full gap-5">
         {subTabs.map(tab => {
           const isActive = activeSubTab === tab;
           return (
             <button
               key={tab}
               onClick={() => setActiveSubTab(tab)}
-              className={`pb-2.5 text-xs transition-all relative cursor-pointer ${isActive ? 'text-neutral-900 font-semibold' : 'text-neutral-400 hover:text-neutral-600 font-normal'
+              aria-selected={isActive}
+              className={`t-tab pb-2.5 text-xs transition-all relative cursor-pointer ${isActive ? 'text-neutral-900 font-semibold' : 'text-neutral-400 hover:text-neutral-600 font-normal'
                 }`}
             >
               {tab}
-              {isActive && (
-                <motion.div
-                  layoutId="settingsSubTabUnderline"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3b2dff]"
-                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                />
-              )}
             </button>
           );
         })}

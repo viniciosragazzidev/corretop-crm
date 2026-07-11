@@ -618,7 +618,7 @@ export default function PlanosPage() {
                 <>
                   {/* Sub-Abas Nav */}
                   <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-3 flex items-center justify-between gap-4 shadow-none">
-                    <div className="flex gap-4">
+                    <div className="t-tabs flex gap-4">
                       <Button
                         variant="ghost"
                         size="sm"
@@ -626,20 +626,14 @@ export default function PlanosPage() {
                           setActiveTab("categories");
                           setError(null);
                         }}
-                        className={`pb-1 text-xs transition-all relative cursor-pointer border-transparent bg-transparent hover:bg-transparent ${activeTab === "categories" ? "text-neutral-900 font-semibold" : "text-neutral-400 hover:text-neutral-700 font-normal"
+                        aria-selected={activeTab === "categories"}
+                        className={`t-tab pb-1 text-xs transition-all relative cursor-pointer border-transparent bg-transparent hover:bg-transparent ${activeTab === "categories" ? "text-neutral-900 font-semibold" : "text-neutral-400 hover:text-neutral-700 font-normal"
                           }`}
                       >
                         <span className="inline-flex items-center gap-1.5">
                           <HugeiconsIcon icon={ClipboardListIcon} className="size-3.5" />
                           Dados da Categoria
                         </span>
-                        {activeTab === "categories" && (
-                          <motion.div
-                            layoutId="planosSubTabUnderline"
-                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3b2dff]"
-                            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                          />
-                        )}
                       </Button>
 
                       <Button
@@ -653,20 +647,14 @@ export default function PlanosPage() {
                           setActiveTab("pricing");
                           setError(null);
                         }}
-                        className={`pb-1 text-xs transition-all relative cursor-pointer border-transparent bg-transparent hover:bg-transparent ${selectedPlanoId === null ? "opacity-50 cursor-not-allowed" : ""} ${activeTab === "pricing" ? "text-neutral-900 font-semibold" : "text-neutral-400 hover:text-neutral-700 font-normal"
+                        aria-selected={activeTab === "pricing"}
+                        className={`t-tab pb-1 text-xs transition-all relative cursor-pointer border-transparent bg-transparent hover:bg-transparent ${selectedPlanoId === null ? "opacity-50 cursor-not-allowed" : ""} ${activeTab === "pricing" ? "text-neutral-900 font-semibold" : "text-neutral-400 hover:text-neutral-700 font-normal"
                           }`}
                       >
                         <span className="inline-flex items-center gap-1.5">
                           <HugeiconsIcon icon={Table01Icon} className="size-3.5" />
                           Tabelas de Preços & Carências
                         </span>
-                        {activeTab === "pricing" && selectedPlanoId !== null && (
-                          <motion.div
-                            layoutId="planosSubTabUnderline"
-                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3b2dff]"
-                            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                          />
-                        )}
                       </Button>
                     </div>
 
@@ -1181,7 +1169,7 @@ export default function PlanosPage() {
               <form onSubmit={handleCreateBrand} className="space-y-4">
 
                 {/* Nome da Operadora */}
-                <div className="space-y-1 text-left">
+                <div className={`t-input-wrap space-y-1 text-left${error ? ' is-error' : ''}`}>
                   <label className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Nome da Marca</label>
                   <input
                     type="text"
@@ -1189,7 +1177,7 @@ export default function PlanosPage() {
                     value={newOpNome}
                     onChange={(e) => setNewOpNome(e.target.value)}
                     placeholder="Ex: SulAmérica Saúde"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
+                    className={`t-input w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5${error ? ' is-shaking' : ''}`}
                   />
                 </div>
 
@@ -1201,7 +1189,7 @@ export default function PlanosPage() {
                     value={newOpLogoUrl}
                     onChange={(e) => setNewOpLogoUrl(e.target.value)}
                     placeholder="Ex: /logos/sulamerica.svg"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
+                    className="t-input w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
                   />
                 </div>
 
