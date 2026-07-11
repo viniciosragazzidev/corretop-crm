@@ -650,7 +650,7 @@ export default function ResumePage() {
                   </CardTitle>
                 </div>
                 <CardAction>
-                  <Button variant="ghost" size="sm" className="text-muted-foreground gap-1">
+                   <Button variant="ghost" size="sm">
                     Todos
                     <HugeiconsIcon icon={ArrowRight01Icon} className="size-3.5" />
                   </Button>

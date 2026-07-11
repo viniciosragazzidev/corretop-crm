@@ -363,11 +363,11 @@ export default function CorretoresPage() {
                             {/* Center Left: Role Badge */}
                             <td className="py-4 px-4 text-center align-middle">
                               {corretor.role === "ADMIN" ? (
-                                <Badge className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-100">
+                                <Badge variant="info" size="sm">
                                   Administrador
                                 </Badge>
                               ) : (
-                                <Badge className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider bg-neutral-50 text-neutral-600 border border-neutral-200">
+                                <Badge variant="outline" size="sm">
                                   Corretor
                                 </Badge>
                               )}

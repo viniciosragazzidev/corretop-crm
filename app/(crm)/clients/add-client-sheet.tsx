@@ -243,12 +243,12 @@ export function AddClientSheet({
                   Operadora
                 </Label>
                 <Select value={operadora} onValueChange={(v) => setOperadora(v ?? "")}>
-                  <SelectTrigger className="w-full h-9 rounded-xl border-neutral-200 bg-neutral-50/30 focus:bg-white focus:border-[#3b2dff] text-xs font-semibold outline-none transition-all">
+                  <SelectTrigger size="sm">
                     <SelectValue placeholder="Selecione a operadora" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl border-neutral-200">
+                  <SelectContent>
                     {OPERADORAS.map((op) => (
-                      <SelectItem key={op} value={op} className="text-xs font-semibold rounded-lg">
+                      <SelectItem key={op} value={op}>
                         {op}
                       </SelectItem>
                     ))}

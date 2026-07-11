@@ -105,10 +105,6 @@ function PaginationBar({
             variant={pageSize === s ? 'default' : 'outline'}
             size="xs"
             onClick={() => { onPageSize(s); onPage(1); }}
-            className={`px-2.5 py-0.5 rounded-lg border text-[10px] font-semibold cursor-pointer transition-colors ${pageSize === s
-              ? "bg-[#3b2dff] text-white border-[#3b2dff]"
-              : "border-neutral-200 text-neutral-500 hover:border-[#3b2dff]"
-              }`}
           >
             {s}
           </Button>
@@ -124,7 +120,6 @@ function PaginationBar({
           size="icon-xs"
           onClick={() => onPage(page - 1)}
           disabled={page === 1}
-          className="p-1.5 rounded-lg border border-neutral-200 text-neutral-500 hover:border-neutral-400 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-all"
         >
           <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m15 18-6-6 6-6" /></svg>
         </Button>
@@ -137,10 +132,6 @@ function PaginationBar({
               variant={page === p ? 'default' : 'outline'}
               size="icon-xs"
               onClick={() => onPage(p as number)}
-              className={`size-7 rounded-lg border text-[10px] font-semibold cursor-pointer transition-colors ${page === p
-                ? "bg-[#3b2dff] text-white border-[#3b2dff]"
-                : "border-neutral-200 text-neutral-600 hover:border-neutral-400"
-                }`}
             >
               {p}
             </Button>
@@ -151,7 +142,6 @@ function PaginationBar({
           size="icon-xs"
           onClick={() => onPage(page + 1)}
           disabled={page === totalPages}
-          className="p-1.5 rounded-lg border border-neutral-200 text-neutral-500 hover:border-neutral-400 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-all"
         >
           <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m9 18 6-6-6-6" /></svg>
         </Button>
@@ -194,7 +184,7 @@ function DocsDrawer({
             <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">Checklist de Documentação</h3>
             <p className="text-[10px] text-neutral-400 font-normal mt-1">Marque os documentos recebidos do cliente.</p>
           </div>
-          <Button variant="ghost" size="icon-xs" onClick={onClose} className="p-1.5 rounded-xl border border-neutral-200 text-neutral-400 hover:text-neutral-700 cursor-pointer">
+           <Button variant="outline" size="icon-xs" onClick={onClose}>
             <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
           </Button>
         </div>
@@ -276,7 +266,7 @@ function DocsDrawer({
             <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
             Chamar no WhatsApp
           </a>
-          <Button variant="outline" size="sm" onClick={onClose} className="px-4 py-3 rounded-2xl border border-neutral-200 text-neutral-500 hover:bg-neutral-50 font-semibold text-xs cursor-pointer h-9">Fechar</Button>
+          <Button variant="outline" size="sm" onClick={onClose}>Fechar</Button>
         </div>
       </motion.div>
     </div>
@@ -509,29 +499,28 @@ export default function ClientsPage() {
         )}
       </AnimatePresence>
 
-      {/* �€�€ Tabs �€�€ */}
-      <div className="flex gap-1 bg-neutral-100/50 p-1 rounded-xl w-fit">
+      {/* Tabs */}
+      <div className="t-tabs flex gap-1 bg-neutral-100/50 p-1 rounded-xl w-fit">
         {(["leads", "clients"] as const).map(tab => {
           const count = tab === "leads" ? leadsList.length : clientsList.length;
           const label = tab === "leads" ? "Leads" : "Clientes";
           const active = activeTab === tab;
           return (
-            <Button
+            <button
               key={tab}
-              variant="ghost"
-              size="sm"
+              role="tab"
+              aria-selected={active}
               onClick={() => { setActiveTab(tab); setError(null); }}
-              className={`px-3 py-1.5 rounded-lg text-[11px] transition-all cursor-pointer flex items-center gap-1.5 ${active ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
-                }`}
+              className={`t-tab px-3 py-1.5 rounded-lg text-[11px] cursor-pointer flex items-center gap-1.5 ${active ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"}`}
             >
               {label}
               <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${active
-                ? (tab === "leads" ? "bg-[#3b2dff] text-white font-semibold" : "bg-neutral-800 text-white font-semibold")
+                ? (tab === "leads" ? "bg-primary text-primary-foreground font-semibold" : "bg-neutral-800 text-white font-semibold")
                 : "bg-neutral-200 text-neutral-500 font-normal"
                 }`}>
                 {count}
               </span>
-            </Button>
+            </button>
           );
         })}
       </div>
@@ -552,16 +541,16 @@ export default function ClientsPage() {
                   placeholder="Buscar leads..."
                   value={leadsSearch}
                   onChange={e => { setLeadsSearch(e.target.value); setLeadsPage(1); }}
-                  className=""
+                  size="sm"
                 />
               </div>
               {/* Sort */}
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider shrink-0">Ordenar:</span>
                 {[{ val: "id_desc", lbl: "Mais Recente" }, { val: "nome_asc", lbl: "Nome A-Z" }].map(o => (
-                  <Button key={o.val} variant={leadsSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setLeadsSort(o.val as any)}
-                    className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${leadsSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
-                      }`}>{o.lbl}</Button>
+                  <Button key={o.val} variant={leadsSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setLeadsSort(o.val as any)}>
+                    {o.lbl}
+                  </Button>
                 ))}
               </div>
               {/* Total */}
@@ -686,7 +675,7 @@ export default function ClientsPage() {
                   placeholder="Buscar clientes..."
                   value={clientSearch}
                   onChange={e => { setClientSearch(e.target.value); setClientPage(1); }}
-                  className="w-full pl-8 pr-3 py-1 rounded-xl border border-slate-200/50 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all h-8.5 text-neutral-700 placeholder:text-neutral-400"
+                  size="sm"
                 />
               </div>
               {/* Status filter */}
@@ -697,18 +686,18 @@ export default function ClientsPage() {
                   { val: "Proposta Enviada", lbl: "Proposta" },
                   { val: "Venda Concluída", lbl: "Concluída" },
                 ].map(f => (
-                  <Button key={f.val} variant={clientStatusF === f.val ? 'default' : 'outline'} size="xs" onClick={() => { setClientStatusF(f.val); setClientPage(1); }}
-                    className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${clientStatusF === f.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
-                      }`}>{f.lbl}</Button>
+                  <Button key={f.val} variant={clientStatusF === f.val ? 'default' : 'outline'} size="xs" onClick={() => { setClientStatusF(f.val); setClientPage(1); }}>
+                    {f.lbl}
+                  </Button>
                 ))}
               </div>
               {/* Sort */}
               <div className="flex items-center gap-1.5 ml-auto">
                 <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">Ordem:</span>
                 {[{ val: "id_desc", lbl: "Recente" }, { val: "nome_asc", lbl: "A-Z" }].map(o => (
-                  <Button key={o.val} variant={clientSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setClientSort(o.val as any)}
-                    className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${clientSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
-                      }`}>{o.lbl}</Button>
+                  <Button key={o.val} variant={clientSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setClientSort(o.val as any)}>
+                    {o.lbl}
+                  </Button>
                 ))}
                 <span className="text-xs font-medium text-neutral-400 ml-2">{processedClients.length}</span>
               </div>

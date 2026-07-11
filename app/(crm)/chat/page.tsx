@@ -255,9 +255,9 @@ export default function ChatPage() {
             </div>
             <div className="flex items-center gap-1">
               {visibleChats.filter(c => c.unread > 0).length > 0 && (
-                <Badge className="px-2 py-0.5 rounded-full bg-[#3b2dff] text-white text-[10px] font-bold border-transparent">
+                <span className="inline-flex items-center justify-center rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold text-primary-foreground">
                   {visibleChats.filter(c => c.unread > 0).reduce((sum, c) => sum + c.unread, 0)}
-                </Badge>
+                </span>
               )}
             </div>
           </div>
@@ -337,9 +337,9 @@ export default function ChatPage() {
                     {/* Admin: mostra qual corretor está atendendo */}
                     {isAdmin && (
                       <div className="flex items-center gap-1 mt-0.5 mb-0.5">
-                        <Badge className="text-[9px] font-semibold text-[#3b2dff]/70 bg-[#3b2dff]/8 border border-[#3b2dff]/15 px-1.5 py-px rounded-md truncate">
+                        <span className="inline-flex items-center rounded-md border border-primary/15 bg-primary/8 px-1.5 py-px text-[9px] font-semibold text-primary/70 truncate">
                           {chat.brokerName}
-                        </Badge>
+                        </span>
                       </div>
                     )}
 
@@ -351,9 +351,9 @@ export default function ChatPage() {
                         }
                       </span>
                       {chat.unread > 0 && (
-                        <Badge className="size-5 rounded-full bg-[#3b2dff] text-white text-[9px] font-bold flex items-center justify-center shrink-0 p-0 border-transparent">
+                        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary p-0 text-[9px] font-bold text-primary-foreground">
                           {chat.unread}
-                        </Badge>
+                        </span>
                       )}
                     </div>
 
@@ -420,15 +420,15 @@ export default function ChatPage() {
 
               {/* Admin badge: quem está atendendo */}
               {isAdmin && (
-                <Badge className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#3b2dff]/5 border border-[#3b2dff]/12 shrink-0 text-inherit hover:bg-[#3b2dff]/5">
-                  <div className="size-5 rounded-full bg-[#3b2dff] text-white flex items-center justify-center text-[9px] font-bold shrink-0">
+                <span className="inline-flex items-center gap-1.5 rounded-xl border border-primary/12 bg-primary/5 px-2.5 py-1.5 shrink-0 hover:bg-primary/5 transition-colors">
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-primary-foreground">
                     {selectedChat.brokerInitials}
-                  </div>
-                  <span className="text-[10px] font-semibold text-[#3b2dff] hidden sm:block">{selectedChat.brokerName}</span>
-                </Badge>
+                  </span>
+                  <span className="text-[10px] font-semibold text-primary hidden sm:block">{selectedChat.brokerName}</span>
+                </span>
               )}
 
-              <Button variant="ghost" size="icon-sm" className="p-1.5 rounded-lg hover:bg-slate-100 text-neutral-400 transition-colors cursor-pointer shrink-0">
+              <Button variant="ghost" size="icon-sm">
                 <HugeiconsIcon icon={MoreHorizontalIcon} className="size-4.5" />
               </Button>
             </div>
@@ -497,7 +497,7 @@ export default function ChatPage() {
             ) : (
               <div className="px-5 py-4 border-t border-slate-100 bg-white shrink-0">
                 <div className="flex items-end gap-3">
-                  <Button variant="ghost" size="icon" className="p-2 rounded-xl hover:bg-slate-100 text-neutral-400 transition-colors cursor-pointer shrink-0">
+                  <Button variant="ghost" size="icon">
                     <HugeiconsIcon icon={AttachmentIcon} className="size-4.5" />
                   </Button>
                   <div className="flex-1 relative">
