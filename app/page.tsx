@@ -61,7 +61,7 @@ export default function CRMLandingPage() {
               🎯
             </div>
             <h3 className="text-lg font-bold text-slate-950 mb-2">Funil de Leads</h3>
-            <p className="text-slate-450 text-xs font-medium leading-relaxed">
+            <p className="text-slate-400 text-xs font-normal leading-relaxed">
               Distribua leads qualificados entre seus corretores e acompanhe o progresso de cada atendimento com facilidade.
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function CRMLandingPage() {
               📊
             </div>
             <h3 className="text-lg font-bold text-slate-950 mb-2">Desempenho da Equipe</h3>
-            <p className="text-slate-450 text-xs font-medium leading-relaxed">
+            <p className="text-slate-400 text-xs font-normal leading-relaxed">
               Monitore o fechamento de propostas, produtividade de corretores e ganho mensal detalhado por períodos.
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function CRMLandingPage() {
               💬
             </div>
             <h3 className="text-lg font-bold text-slate-950 mb-2">Central de Conversas</h3>
-            <p className="text-slate-450 text-xs font-medium leading-relaxed">
+            <p className="text-slate-400 text-xs font-normal leading-relaxed">
               Mantenha o histórico de mensagens, propostas enviadas e dados dos segurados sempre organizados.
             </p>
           </div>

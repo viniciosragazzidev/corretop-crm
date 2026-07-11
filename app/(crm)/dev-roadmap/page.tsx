@@ -165,7 +165,7 @@ export default function DevRoadmapPage() {
 
   if (isPending || isLoading) {
     return (
-      <div className="p-6 lg:p-8 space-y-6 text-left select-none h-full bg-white">
+      <div className="p-6 lg:p-8 space-y-6 text-left select-none h-full bg-white flex flex-col">
         <div className="flex items-center justify-between animate-pulse">
           <div className="space-y-2">
             <div className="h-7 w-48 bg-slate-100 rounded-lg" />
@@ -185,7 +185,7 @@ export default function DevRoadmapPage() {
   if (session && !isUserAdmin) {
     return (
       <div className="p-6 lg:p-8 flex flex-col items-center justify-center h-[70vh] bg-white select-none">
-        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md py-12">
+          <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
           <div className="size-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 shadow-3xs mb-4">
             <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -198,7 +198,7 @@ export default function DevRoadmapPage() {
           </p>
           <button
             onClick={() => router.push("/resume")}
-            className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-bold text-[10px] px-5 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.97] select-none"
+            className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-3xs transition-all cursor-pointer active:scale-[0.98] select-none"
           >
             Voltar para o Painel
           </button>
@@ -210,7 +210,7 @@ export default function DevRoadmapPage() {
   return (
     <div className="p-6 lg:p-8 space-y-6 select-none text-left flex flex-col h-full bg-white">
       {error && (
-        <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-bold flex items-center gap-2">
+        <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-semibold flex items-center gap-2">
           <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
@@ -221,7 +221,7 @@ export default function DevRoadmapPage() {
       )}
 
       {successMessage && (
-        <div className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-xl text-xs font-bold flex items-center gap-2">
+        <div className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-xl text-xs font-semibold flex items-center gap-2">
           <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
             <polyline points="22 4 12 14.01 9 11.01" />
@@ -244,7 +244,7 @@ export default function DevRoadmapPage() {
         </div>
         <button
           onClick={() => { setError(null); setIsCreateModalOpen(true); }}
-          className="flex items-center gap-1.5 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-bold text-[10px] px-4 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.97] select-none"
+          className="flex items-center gap-1.5 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98] select-none"
         >
           <HugeiconsIcon icon={AddCircleIcon} className="size-3.5" />
           <span>Nova Tarefa</span>
@@ -257,7 +257,7 @@ export default function DevRoadmapPage() {
           <button
             key={key}
             onClick={() => setSortBy(key)}
-            className={`text-[10px] font-bold px-3 py-1 rounded-lg border transition-all cursor-pointer select-none ${sortBy === key
+            className={`text-[10px] font-semibold px-3 py-1 rounded-lg border transition-all cursor-pointer select-none ${sortBy === key
               ? 'bg-[#3b2dff]/5 text-[#3b2dff] border-[#3b2dff]/15'
               : 'bg-transparent text-neutral-400 border-transparent hover:text-neutral-600'
               }`}
@@ -395,15 +395,15 @@ function TaskFormModal({
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
     >
-      <div className="absolute inset-0 bg-neutral-900/30" onClick={onClose} />
+      <div className="absolute inset-0 bg-neutral-900 cursor-pointer" onClick={onClose} />
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 10 }}
         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="relative bg-white rounded-3xl border border-slate-200 shadow-xl p-6 w-full max-w-lg"
+        className="relative bg-white rounded-3xl border border-neutral-200/60 shadow-lg p-6 w-full max-w-md"
       >
-        <h2 className="text-base font-bold text-neutral-900 mb-4">
+        <h2 className="text-sm font-semibold text-neutral-800 mb-4">
           {mode === "create" ? "Nova Tarefa" : "Editar Tarefa"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -416,7 +416,7 @@ function TaskFormModal({
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="Ex: Implementar módulo de relatórios"
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-sm font-medium outline-none transition-all placeholder:text-neutral-300"
+              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all placeholder:text-neutral-400 h-8.5"
               required
             />
           </div>
@@ -429,7 +429,7 @@ function TaskFormModal({
               onChange={e => setDescription(e.target.value)}
               placeholder="Descreva a tarefa em detalhes..."
               rows={3}
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-sm font-medium outline-none transition-all placeholder:text-neutral-300 resize-none"
+              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all placeholder:text-neutral-400 resize-none"
             />
           </div>
           <div>
@@ -456,14 +456,14 @@ function TaskFormModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 py-2.5 rounded-xl border border-slate-200 text-neutral-500 hover:text-neutral-700 text-[10px] font-bold transition-all cursor-pointer"
+              className="flex-1 py-2.5 rounded-xl border border-slate-200 text-neutral-500 hover:text-neutral-700 text-xs font-semibold transition-all cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={isSubmitting || !title.trim()}
-              className="flex-1 py-2.5 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-neutral-200 disabled:text-neutral-400 text-white text-[10px] font-bold transition-all cursor-pointer select-none active:scale-[0.98]"
+              className="flex-1 py-2.5 rounded-xl bg-[#3b2dff] hover:bg-[#2d20e0] disabled:bg-slate-100 disabled:text-slate-400 text-white text-xs font-semibold transition-all cursor-pointer select-none active:scale-[0.98]"
             >
               {isSubmitting ? "Salvando..." : mode === "create" ? "Criar Tarefa" : "Salvar Alterações"}
             </button>

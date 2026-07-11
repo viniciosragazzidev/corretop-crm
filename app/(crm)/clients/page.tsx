@@ -207,7 +207,7 @@ function DocsDrawer({
             </div>
             <div>
               <p className="font-semibold text-neutral-800 text-sm">{client.nome}</p>
-              <p className="text-[10px] font-bold text-neutral-450">{formatPhone(client.whatsapp)}</p>
+              <p className="text-[10px] font-bold text-neutral-400">{formatPhone(client.whatsapp)}</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-1">
@@ -433,7 +433,7 @@ export default function ClientsPage() {
   // �€�€ Loading skeleton �€�€
   if (isPending || isLoading) {
     return (
-      <div className="p-6 lg:p-10 space-y-6 bg-[#fafafa] min-h-screen">
+      <div className="p-6 lg:p-8 space-y-6 bg-white min-h-screen">
         <div className="space-y-2 animate-pulse">
           <div className="h-7 bg-neutral-200 rounded-lg w-56" />
           <div className="h-4 bg-neutral-200 rounded w-80" />
@@ -495,14 +495,14 @@ export default function ClientsPage() {
       <AnimatePresence>
         {error && (
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="p-3 bg-red-50 border border-red-100 text-red-700 rounded-xl text-xs font-bold flex items-center gap-2">
+            className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-semibold flex items-center gap-2">
             <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
             {error}
           </motion.div>
         )}
         {successMsg && (
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded-xl text-xs font-bold flex items-center gap-2">
+            className="p-3 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-xl text-xs font-semibold flex items-center gap-2">
             <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
             {successMsg}
           </motion.div>
@@ -557,7 +557,7 @@ export default function ClientsPage() {
               </div>
               {/* Sort */}
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest shrink-0">Ordenar:</span>
+                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider shrink-0">Ordenar:</span>
                 {[{ val: "id_desc", lbl: "Mais Recente" }, { val: "nome_asc", lbl: "Nome A-Z" }].map(o => (
                   <Button key={o.val} variant={leadsSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setLeadsSort(o.val as any)}
                     className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${leadsSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"
@@ -704,7 +704,7 @@ export default function ClientsPage() {
               </div>
               {/* Sort */}
               <div className="flex items-center gap-1.5 ml-auto">
-                <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest">Ordem:</span>
+                <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider">Ordem:</span>
                 {[{ val: "id_desc", lbl: "Recente" }, { val: "nome_asc", lbl: "A-Z" }].map(o => (
                   <Button key={o.val} variant={clientSort === o.val ? 'default' : 'outline'} size="xs" onClick={() => setClientSort(o.val as any)}
                     className={`px-3 py-1.5 rounded-lg border text-[10px] cursor-pointer transition-all ${clientSort === o.val ? "bg-[#3b2dff] text-white border-[#3b2dff] font-semibold" : "border-neutral-200 text-neutral-500 hover:border-neutral-300 font-normal"

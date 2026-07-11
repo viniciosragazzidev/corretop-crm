@@ -193,7 +193,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                 {userInitials}
               </div>
               <div className="flex flex-col min-w-0 text-left">
-                <span className="text-xs font-semibold text-neutral-850 truncate">
+                <span className="text-xs font-semibold text-neutral-800 truncate">
                   {session?.user?.name || 'Corretor'}
                 </span>
                 <span className="text-[9px] font-normal text-neutral-400 uppercase tracking-wider">
@@ -211,7 +211,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             </button>
           </div>
 
-          <div className="mt-3 text-[9px] text-neutral-350 text-center font-normal">
+          <div className="mt-3 text-[9px] text-neutral-400 text-center font-normal">
             Corretop © 2026
           </div>
         </div>
@@ -224,7 +224,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         <header className="md:hidden h-14 bg-white border-b border-slate-200/50 px-4 flex items-center justify-between sticky top-0 z-30 shrink-0">
           <button
             onClick={() => setMobileMenuOpen(prev => !prev)}
-            className="p-2 rounded-xl border border-slate-200 text-neutral-550 hover:text-neutral-800 cursor-pointer"
+            className="p-2 rounded-xl border border-slate-200 text-neutral-500 hover:text-neutral-800 cursor-pointer"
           >
             <HugeiconsIcon icon={Menu01Icon} className="size-5" />
           </button>
@@ -261,13 +261,13 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-3 text-neutral-400">
               <Link
                 href="/chat"
-                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors relative"
+                  className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-none transition-colors relative"
               >
                 <HugeiconsIcon icon={BubbleChatIcon} className="size-4.5" />
               </Link>
 
               <button
-                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors relative"
+                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-none transition-colors relative"
               >
                 <HugeiconsIcon icon={BellIcon} className="size-4.5" />
                 <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[#3b2dff]" />
@@ -275,7 +275,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
 
               <Link
                 href="/settings"
-                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.015)] transition-colors"
+                className="p-2 rounded-xl border border-slate-200/60 bg-white hover:bg-slate-50 hover:text-neutral-700 cursor-pointer shadow-none transition-colors"
               >
                 <HugeiconsIcon icon={Settings02Icon} className="size-4.5" />
               </Link>
@@ -337,7 +337,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                 <nav className="space-y-6">
                   {navGroups.map((group) => (
                     <div key={group.title} className="space-y-1.5">
-                      <span className="px-3 text-[9px] font-semibold uppercase tracking-wider text-neutral-450">
+                      <span className="px-3 text-[9px] font-semibold uppercase tracking-widest text-neutral-400">
                         {group.title}
                       </span>
                       <div className="space-y-1">

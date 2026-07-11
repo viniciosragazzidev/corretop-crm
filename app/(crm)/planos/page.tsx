@@ -417,7 +417,7 @@ export default function PlanosPage() {
   if (session && !isUserAdmin) {
     return (
       <div className="p-6 lg:p-8 flex flex-col items-center justify-center h-[70vh] bg-white select-none">
-        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md py-12">
+          <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
           <div className="size-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 shadow-3xs mb-4">
             <svg className="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -458,7 +458,7 @@ export default function PlanosPage() {
         {/* Left Column: Operadoras Navigation & Creation (35%) */}
         <div className="lg:col-span-3 space-y-4">
           <div className="flex justify-between items-center pl-1">
-            <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest">
+            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider">
               Operadoras
             </span>
 
@@ -527,7 +527,7 @@ export default function PlanosPage() {
 
                   <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] uppercase tracking-wider ${isSelected
                     ? "bg-[#3b2dff] text-white font-semibold"
-                    : "bg-neutral-50 text-neutral-450 border border-neutral-200/50 font-normal"
+                    : "bg-neutral-50 text-neutral-400 border border-neutral-200/50 font-normal"
                     }`}>
                     {op.planosCount || 0} planos
                   </span>
@@ -549,7 +549,7 @@ export default function PlanosPage() {
               className="space-y-6"
             >
               {/* Category Selector Box (Fixo no topo da área direita) */}
-              <div className="bg-[#f8f9fa73]/40 border border-slate-100 rounded-3xl p-5 space-y-4 shadow-none">
+              <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-5 space-y-4 shadow-none">
                 <div className="flex justify-between items-center pb-3 border-b border-neutral-100/50">
                   <div className="text-left">
                     <h3 className="font-semibold text-neutral-800 text-sm tracking-tight">Categorias de Planos</h3>
@@ -605,7 +605,7 @@ export default function PlanosPage() {
 
               {/* Empty state when no category is selected and we are not creating */}
               {selectedPlanoId === null && !isCreatingCategory ? (
-                <div className="bg-[#f8f9fa73]/40 border border-slate-100 rounded-3xl p-8 flex flex-col items-center justify-center text-center py-16 shadow-none">
+                <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center py-16 shadow-none">
                   <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 mb-4">
                     <HugeiconsIcon icon={ClipboardListIcon} className="size-5 text-neutral-400" />
                   </div>
@@ -617,7 +617,7 @@ export default function PlanosPage() {
               ) : (
                 <>
                   {/* Sub-Abas Nav */}
-                  <div className="bg-[#f8f9fa73]/40 border border-slate-100 rounded-3xl p-3 flex items-center justify-between gap-4 shadow-none">
+                  <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-3 flex items-center justify-between gap-4 shadow-none">
                     <div className="flex gap-4">
                       <Button
                         variant="ghost"
@@ -670,7 +670,7 @@ export default function PlanosPage() {
                       </Button>
                     </div>
 
-                    <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider select-none">
+                    <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider select-none">
                       {selectedPlanoId !== null ? `Editando: ${planoNome}` : "Novo Produto"}
                     </span>
                   </div>
@@ -701,7 +701,7 @@ export default function PlanosPage() {
                         className="space-y-6"
                       >
                         {/* Form Bloco A: Category Metadata Setup */}
-                        <div className="bg-[#f8f9fa73]/40 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-6 shadow-none">
+                        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-6 shadow-none">
                           <form onSubmit={handleSaveCategory} className="space-y-5">
                             <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider">
                               {selectedPlanoId !== null ? "Editar Categoria Técnica" : "Cadastrar Nova Categoria Técnica"}
@@ -832,7 +832,7 @@ export default function PlanosPage() {
                                 type="submit"
                                 whileTap={{ scale: 0.98 }}
                                 disabled={isSavingCategory}
-                                className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-2xl shadow-none disabled:bg-slate-105 disabled:text-slate-400 transition-all cursor-pointer flex items-center gap-1.5"
+                                className="bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-2xl shadow-none disabled:bg-slate-100 disabled:text-slate-400 transition-all cursor-pointer flex items-center gap-1.5"
                               >
                                 {isSavingCategory ? (
                                   <>
@@ -864,8 +864,8 @@ export default function PlanosPage() {
                           {selectedPlanoId !== null && (
                             <>
                               {/* Bloco B: Prices Grid */}
-                              <div className="bg-[#f8f9fa73]/40 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
-                            <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest block text-left">
+                                  <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
+                            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider block text-left">
                               Matriz Dinâmica de Valores (Faixas ANS)
                             </span>
 
@@ -881,7 +881,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa0a18}
                                     onChange={(e) => setFaixa0a18(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -897,7 +897,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa19a23}
                                     onChange={(e) => setFaixa19a23(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -913,7 +913,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa24a28}
                                     onChange={(e) => setFaixa24a28(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -929,7 +929,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa29a33}
                                     onChange={(e) => setFaixa29a33(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -945,7 +945,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa34a38}
                                     onChange={(e) => setFaixa34a38(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -961,7 +961,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa39a43}
                                     onChange={(e) => setFaixa39a43(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -977,7 +977,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa44a48}
                                     onChange={(e) => setFaixa44a48(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -993,7 +993,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa49a53}
                                     onChange={(e) => setFaixa49a53(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -1009,7 +1009,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa54a58}
                                     onChange={(e) => setFaixa54a58(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -1025,7 +1025,7 @@ export default function PlanosPage() {
                                     required
                                     value={faixa59mais}
                                     onChange={(e) => setFaixa59mais(e.target.value)}
-                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-normal shadow-none"
+                                    className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
                                   />
                                 </div>
                               </div>
@@ -1033,8 +1033,8 @@ export default function PlanosPage() {
                           </div>
 
                           {/* Bloco C: Carencias */}
-                          <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-2xs">
-                            <span className="text-[11px] font-medium text-neutral-400 uppercase tracking-widest block">
+                                  <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-6 md:p-8 space-y-5 shadow-none">
+                            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wider block">
                               Bloco C: Carências Regulamentares (Prazos de Recuo)
                             </span>
 
@@ -1047,7 +1047,7 @@ export default function PlanosPage() {
                                   required
                                   value={carenciaUrgencia}
                                   onChange={(e) => setCarenciaUrgencia(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold shadow-3xs"
+                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
                                 />
                               </div>
 
@@ -1059,7 +1059,7 @@ export default function PlanosPage() {
                                   required
                                   value={carenciaConsultas}
                                   onChange={(e) => setCarenciaConsultas(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold shadow-3xs"
+                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
                                 />
                               </div>
 
@@ -1071,7 +1071,7 @@ export default function PlanosPage() {
                                   required
                                   value={carenciaExamesSimples}
                                   onChange={(e) => setCarenciaExamesSimples(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold shadow-3xs"
+                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
                                 />
                               </div>
 
@@ -1083,7 +1083,7 @@ export default function PlanosPage() {
                                   required
                                   value={carenciaAltaComplexidade}
                                   onChange={(e) => setCarenciaAltaComplexidade(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold shadow-3xs"
+                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
                                 />
                               </div>
 
@@ -1095,7 +1095,7 @@ export default function PlanosPage() {
                                   required
                                   value={carenciaPreexistencias}
                                   onChange={(e) => setCarenciaPreexistencias(Number(e.target.value))}
-                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold shadow-3xs"
+                                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
                                 />
                               </div>
                             </div>
@@ -1165,7 +1165,7 @@ export default function PlanosPage() {
                   <h3 className="text-sm font-semibold text-neutral-800 tracking-tight">
                     Cadastrar Nova Operadora
                   </h3>
-          <p className="text-xs text-neutral-450 font-normal mt-1">
+          <p className="text-xs font-normal text-neutral-400 mt-1">
             Adicione uma nova marca operadora ao Corretop.
           </p>
                 </div>
@@ -1189,7 +1189,7 @@ export default function PlanosPage() {
                     value={newOpNome}
                     onChange={(e) => setNewOpNome(e.target.value)}
                     placeholder="Ex: SulAmérica Saúde"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
                   />
                 </div>
 
@@ -1201,7 +1201,7 @@ export default function PlanosPage() {
                     value={newOpLogoUrl}
                     onChange={(e) => setNewOpLogoUrl(e.target.value)}
                     placeholder="Ex: /logos/sulamerica.svg"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 dark:bg-white dark:text-slate-900 focus:border-[#3b2dff] focus:ring-4 focus:ring-[#3b2dff]/5 outline-none text-xs font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-2xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
                   />
                 </div>
 

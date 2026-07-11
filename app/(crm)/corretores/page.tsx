@@ -172,14 +172,14 @@ export default function CorretoresPage() {
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="flex justify-between items-center py-3 border-b border-neutral-100 last:border-0">
               <div className="flex items-center gap-3 w-1/3">
-                <div className="size-8 rounded-full bg-neutral-150 shrink-0" />
+                <div className="size-8 rounded-full bg-neutral-100 shrink-0" />
                 <div className="space-y-2 w-full">
-                  <div className="h-3 bg-neutral-150 rounded w-2/3" />
+                  <div className="h-3 bg-neutral-100 rounded w-2/3" />
                   <div className="h-2.5 bg-neutral-100 rounded w-1/2" />
                 </div>
               </div>
               <div className="h-3.5 bg-neutral-100 rounded w-20" />
-              <div className="h-6 bg-neutral-150 rounded-xl w-24" />
+                  <div className="h-6 bg-neutral-100 rounded-xl w-24" />
               <div className="h-8 bg-neutral-100 rounded-lg w-8" />
             </div>
           ))}
@@ -192,7 +192,7 @@ export default function CorretoresPage() {
   if (session && !isUserAdmin) {
     return (
       <div className="p-6 lg:p-8 flex flex-col items-center justify-center h-[70vh] bg-white select-none">
-        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-[0_4px_20px_rgba(0,0,0,0.015)] py-12">
+          <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
           <div className="size-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 shadow-3xs mb-4">
             <svg className="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -203,12 +203,12 @@ export default function CorretoresPage() {
           <p className="text-xs font-normal text-neutral-400 leading-relaxed max-w-xs mt-2">
             Apenas administradores da Venacor possuem permissões para visualizar e gerenciar a equipe de corretores.
           </p>
-          <Button
+          <button
             onClick={() => router.push("/resume")}
-            className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-3xs transition-all cursor-pointer select-none active:scale-[0.98] h-10 border-transparent"
+            className="mt-6 bg-[#3b2dff] hover:bg-[#2d20e0] text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-3xs transition-all cursor-pointer select-none active:scale-[0.98]"
           >
             Voltar para o Painel
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -293,7 +293,7 @@ export default function CorretoresPage() {
 
             {/* Error Message */}
             {error && (
-              <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-bold flex items-center gap-2 max-w-2xl">
+              <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-semibold flex items-center gap-2 max-w-2xl">
                 <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
@@ -315,7 +315,7 @@ export default function CorretoresPage() {
             </div>
 
             {/* Minimalist List Container */}
-            <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.005)] overflow-hidden">
+            <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-5 shadow-none overflow-hidden">
               <div className="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
@@ -350,7 +350,7 @@ export default function CorretoresPage() {
                                 <span className="font-semibold text-neutral-800 text-xs tracking-tight truncate max-w-[180px] sm:max-w-xs">
                                   {corretor.name} {isSelf && <span className="text-[10px] font-semibold text-[#3b2dff] bg-[#3b2dff]/5 px-1.5 py-0.5 rounded-md ml-1 select-none">VOCÊ</span>}
                                 </span>
-                                <span className="text-[10px] font-semibold text-neutral-450 truncate max-w-[180px] sm:max-w-xs mt-0.5">
+                                <span className="text-[10px] font-semibold text-neutral-400 truncate max-w-[180px] sm:max-w-xs mt-0.5">
                                   {corretor.email}
                                 </span>
                               </div>
@@ -426,8 +426,8 @@ export default function CorretoresPage() {
 
             {/* Empty State */}
             {filteredCorretores.length === 0 && (
-              <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md mx-auto shadow-[0_1px_2px_rgba(0,0,0,0.01)] py-16 mt-8">
-                <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 shadow-3xs mb-4">
+              <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md mx-auto shadow-none py-16 mt-8">
+                <div className="size-12 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center justify-center text-neutral-400 shadow-none mb-4">
                   <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
                 </div>
                 <h3 className="text-sm font-semibold text-neutral-800">Nenhum Corretor Cadastrado</h3>
@@ -444,7 +444,7 @@ export default function CorretoresPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-xl mx-auto shadow-[0_1px_2px_rgba(0,0,0,0.01)] py-16 mt-4"
+            className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-xl mx-auto shadow-none py-16 mt-4"
           >
             <div className="size-12 rounded-2xl bg-[#3b2dff]/5 border border-[#3b2dff]/10 flex items-center justify-center text-[#3b2dff] shadow-3xs">
               <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>

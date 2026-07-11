@@ -246,7 +246,7 @@ export default function ChatPage() {
         <div className="px-5 pt-6 pb-4 border-b border-slate-100/70">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-lg font-bold text-neutral-900 tracking-tight">Conversas</h2>
+              <h2 className="text-lg font-semibold text-neutral-900 tracking-tight">Conversas</h2>
               {isAdmin && (
                 <span className="text-xs font-normal text-neutral-400 mt-0.5 block">
                   Visão administrador — todos os atendimentos
@@ -411,7 +411,7 @@ export default function ChatPage() {
                   </span>
                   {selectedChat.product && (
                     <>
-                      <span className="text-neutral-250 text-[10px]">•</span>
+                      <span className="text-neutral-300 text-[10px]">•</span>
                       <span className="text-[10px] font-normal text-neutral-400 truncate">{selectedChat.product}</span>
                     </>
                   )}
@@ -434,12 +434,12 @@ export default function ChatPage() {
             </div>
 
             {/* Messages */}
-            <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-5 py-5 space-y-3 bg-[#f8f9fa73]">
+            <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-5 py-5 space-y-3 bg-[#f8f9fa73]/40">
 
               {/* Date divider */}
               <div className="flex items-center gap-3 my-2">
                 <div className="flex-1 h-px bg-slate-200/60" />
-                <span className="text-[9px] font-semibold text-neutral-400 uppercase tracking-widest px-2">Hoje</span>
+                        <span className="text-[9px] font-semibold text-neutral-400 uppercase tracking-wider px-2">Hoje</span>
                 <div className="flex-1 h-px bg-slate-200/60" />
               </div>
 
@@ -468,11 +468,11 @@ export default function ChatPage() {
                         {msg.text}
                       </div>
                       <div className={`flex items-center gap-1 mt-1 ${isUser ? 'flex-row-reverse' : ''}`}>
-                        <span className="text-[9px] font-normal text-neutral-350">{msg.time}</span>
+                        <span className="text-[9px] font-normal text-neutral-400">{msg.time}</span>
                         {isUser && msg.status && (
                           <HugeiconsIcon
                             icon={msg.status === 'read' ? CheckmarkCircle01Icon : Tick02Icon}
-                            className={`size-3 ${msg.status === 'read' ? 'text-[#3b2dff]' : 'text-neutral-350'}`}
+                            className={`size-3 ${msg.status === 'read' ? 'text-[#3b2dff]' : 'text-neutral-400'}`}
                           />
                         )}
                       </div>
@@ -520,8 +520,8 @@ export default function ChatPage() {
                     onClick={handleSend}
                     disabled={!newMessage.trim()}
                     className={`p-2.5 rounded-xl transition-all cursor-pointer shrink-0 ${newMessage.trim()
-                        ? 'bg-[#3b2dff] text-white hover:bg-[#2f23e0] shadow-sm'
-                        : 'bg-slate-100 text-neutral-350 cursor-not-allowed border-transparent'
+                        ? 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-sm'
+                        : 'bg-slate-100 text-neutral-400 cursor-not-allowed border-transparent'
                       }`}
                   >
                     <HugeiconsIcon icon={MailSend01Icon} className="size-4.5" />
@@ -537,12 +537,12 @@ export default function ChatPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="hidden md:flex flex-1 flex-col items-center justify-center bg-[#f8f9fa73] text-center p-8"
+            className="hidden md:flex flex-1 flex-col items-center justify-center bg-[#f8f9fa73]/40 text-center p-8"
           >
             <div className="size-14 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4">
               <HugeiconsIcon icon={BubbleChatIcon} className="size-7 text-neutral-300" />
             </div>
-            <h3 className="text-sm font-bold text-neutral-700">Selecione uma conversa</h3>
+            <h3 className="text-sm font-semibold text-neutral-800">Selecione uma conversa</h3>
             <p className="text-xs font-normal text-neutral-400 mt-1 max-w-xs leading-relaxed">
               {isAdmin
                 ? 'Escolha um atendimento para monitorar em tempo real.'
