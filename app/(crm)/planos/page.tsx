@@ -618,7 +618,7 @@ export default function PlanosPage() {
                 <>
                   {/* Sub-Abas Nav */}
                   <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-3 flex items-center justify-between gap-4 shadow-none">
-                    <div className="t-tabs flex gap-4">
+                    <div className="t-tabs flex gap-1 bg-neutral-100/50 p-1 rounded-xl">
                       <Button
                         variant="ghost"
                         size="sm"
@@ -627,7 +627,7 @@ export default function PlanosPage() {
                           setError(null);
                         }}
                         aria-selected={activeTab === "categories"}
-                        className={`t-tab pb-1 text-xs transition-all relative cursor-pointer border-transparent bg-transparent hover:bg-transparent ${activeTab === "categories" ? "text-neutral-900 font-semibold" : "text-neutral-400 hover:text-neutral-700 font-normal"
+                        className={`t-tab px-3 py-1.5 rounded-lg text-[11px] transition-all relative cursor-pointer ${activeTab === "categories" ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
                           }`}
                       >
                         <span className="inline-flex items-center gap-1.5">
@@ -648,7 +648,7 @@ export default function PlanosPage() {
                           setError(null);
                         }}
                         aria-selected={activeTab === "pricing"}
-                        className={`t-tab pb-1 text-xs transition-all relative cursor-pointer border-transparent bg-transparent hover:bg-transparent ${selectedPlanoId === null ? "opacity-50 cursor-not-allowed" : ""} ${activeTab === "pricing" ? "text-neutral-900 font-semibold" : "text-neutral-400 hover:text-neutral-700 font-normal"
+                        className={`t-tab px-3 py-1.5 rounded-lg text-[11px] transition-all relative cursor-pointer ${selectedPlanoId === null ? "opacity-50 cursor-not-allowed" : ""} ${activeTab === "pricing" ? "bg-white text-neutral-900 shadow-sm font-semibold" : "text-neutral-500 hover:text-neutral-700 font-normal"
                           }`}
                       >
                         <span className="inline-flex items-center gap-1.5">
