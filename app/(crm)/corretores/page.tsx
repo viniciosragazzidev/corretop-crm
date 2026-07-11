@@ -183,13 +183,13 @@ export default function CorretoresPage() {
             <div key={i} className="flex justify-between items-center py-3 border-b border-neutral-100 last:border-0">
               <div className="flex items-center gap-3 w-1/3">
                 <div className="size-8 rounded-full bg-neutral-100 shrink-0" />
-                <div className="space-y-2 w-full">
+                <div className="space-y-4 w-full">
                   <div className="h-3 bg-neutral-100 rounded w-2/3" />
                   <div className="h-2.5 bg-neutral-100 rounded w-1/2" />
                 </div>
               </div>
               <div className="h-3.5 bg-neutral-100 rounded w-20" />
-                  <div className="h-6 bg-neutral-100 rounded-xl w-24" />
+              <div className="h-6 bg-neutral-100 rounded-xl w-24" />
               <div className="h-8 bg-neutral-100 rounded-lg w-8" />
             </div>
           ))}
@@ -202,7 +202,7 @@ export default function CorretoresPage() {
   if (session && !isUserAdmin) {
     return (
       <div className="p-6 lg:p-8 flex flex-col items-center justify-center h-[70vh] bg-white select-none">
-          <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
+        <div className="bg-[#f8f9fa73]/40 border border-slate-200/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center max-w-md shadow-none py-12">
           <div className="size-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 shadow-3xs mb-4">
             <svg className="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -308,10 +308,10 @@ export default function CorretoresPage() {
             <div className="w-full max-w-md relative">
               <Input
                 type="text"
-                placeholder="Buscar por nome ou e-mail..."
+                placeholder="Buscar nome ou e-mail..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-3 py-1 rounded-xl border border-slate-200/50 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal outline-none transition-all shadow-none h-8.5 text-neutral-700 placeholder:text-neutral-400"
+                className="pl-5"
               />
               <svg className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
             </div>
@@ -474,7 +474,7 @@ export default function CorretoresPage() {
             <form onSubmit={handleCreateCorretor} className="space-y-4">
 
               {/* Nome Completo */}
-              <div className={`t-input-wrap space-y-2 text-left${error ? ' is-error' : ''}`}>
+              <div className={`t-input-wrap space-y-4 text-left${error ? ' is-error' : ''}`}>
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome Completo</label>
                 <input
                   type="text"
@@ -487,7 +487,7 @@ export default function CorretoresPage() {
               </div>
 
               {/* E-mail Corporativo */}
-              <div className={`t-input-wrap space-y-2 text-left${error ? ' is-error' : ''}`}>
+              <div className={`t-input-wrap space-y-4 text-left${error ? ' is-error' : ''}`}>
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">E-mail Corporativo</label>
                 <input
                   type="email"
@@ -500,7 +500,7 @@ export default function CorretoresPage() {
               </div>
 
               {/* Senha Inicial */}
-              <div className={`t-input-wrap space-y-2 text-left${error ? ' is-error' : ''}`}>
+              <div className={`t-input-wrap space-y-4 text-left${error ? ' is-error' : ''}`}>
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Senha Inicial</label>
                 <input
                   type="password"
@@ -513,7 +513,7 @@ export default function CorretoresPage() {
               </div>
 
               {/* Permissão */}
-              <div className="space-y-2 text-left">
+              <div className="space-y-4 text-left">
                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nível de Permissão</label>
                 <div className="relative">
                   <select

@@ -229,7 +229,7 @@ function DocsDrawer({
         </div>
 
         {/* Documents checklist */}
-        <div className="space-y-2 flex-1">
+        <div className="space-y-4 flex-1">
           <span className="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">Documentos Necessários</span>
           {docs.map((doc) => {
             const key = `${client.id}-${doc.key}`;

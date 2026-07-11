@@ -7,6 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ClipboardListIcon, Table01Icon } from "@hugeicons/core-free-icons";
 import {
@@ -565,7 +572,7 @@ export default function PlanosPage() {
                       setActiveTab("categories");
                       setError(null);
                     }}
-                    className={`px-3 py-1.5 rounded-xl border text-[9px] font-semibold uppercase tracking-wider border-dashed cursor-pointer transition-all ${selectedPlanoId === null && isCreatingCategory
+                    className={`  rounded-xl border text-[8px] font-semibold uppercase tracking-wider border-dashed cursor-pointer transition-all ${selectedPlanoId === null && isCreatingCategory
                       ? "bg-[#3b2dff]/5 text-[#3b2dff] border-[#3b2dff]"
                       : "border-neutral-200 text-neutral-500 hover:bg-neutral-50"
                       }`}
@@ -689,15 +696,15 @@ export default function PlanosPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               {/* Nome da Categoria */}
-                              <div className="space-y-2 text-left">
+                              <div className="space-y-4 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome da Categoria</label>
-                                <input
+                                <Input
                                   type="text"
                                   required
                                   value={planoNome}
                                   onChange={(e) => setPlanoNome(e.target.value)}
                                   placeholder="Ex: Smart PME I, Ideal Adesão"
-                                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
+                                  size="sm"
                                 />
                               </div>
 
@@ -723,22 +730,18 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Segmentacao Dropdown */}
-                              <div className="space-y-2 text-left">
+                              <div className="space-y-4 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Tipo de Plano (Segmentação)</label>
-                                <div className="relative">
-                                  <select
-                                    value={segmentacao}
-                                    onChange={(e) => setSegmentacao(e.target.value as any)}
-                                    className="w-full pl-3.5 pr-8 py-1 rounded-xl border border-slate-200 bg-white text-slate-900 outline-none text-xs font-normal appearance-none cursor-pointer transition-all duration-200 shadow-none focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 h-8.5"
-                                  >
-                                    <option value="GLOBAL">Ambulatorial + Hospitalar + Obstetrícia (Global)</option>
-                                    <option value="AMBULATORIAL">Apenas Ambulatorial</option>
-                                    <option value="HOSPITALAR">Apenas Hospitalar</option>
-                                  </select>
-                                  <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                                  </div>
-                                </div>
+                                <Select value={segmentacao} onValueChange={(v) => setSegmentacao(v as any)}>
+                                  <SelectTrigger size="sm">
+                                    <SelectValue placeholder="Selecione" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="GLOBAL">Ambulatorial + Hospitalar + Obstetrícia (Global)</SelectItem>
+                                    <SelectItem value="AMBULATORIAL">Apenas Ambulatorial</SelectItem>
+                                    <SelectItem value="HOSPITALAR">Apenas Hospitalar</SelectItem>
+                                  </SelectContent>
+                                </Select>
                               </div>
 
                               {/* Coparticipacao Toggle Switch */}
@@ -763,39 +766,34 @@ export default function PlanosPage() {
                               </div>
 
                               {/* Abrangência */}
-                              <div className="space-y-2 text-left">
+                              <div className="space-y-4 text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Abrangência Geográfica</label>
-                                <div className="relative">
-                                  <select
-                                    value={abrangencia}
-                                    onChange={(e) => setAbrangencia(e.target.value as any)}
-                                    className="w-full pl-3.5 pr-8 py-1 rounded-xl border border-slate-200 bg-white text-slate-900 outline-none text-xs font-normal appearance-none cursor-pointer transition-all duration-200 shadow-none focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 h-8.5"
-                                  >
-                                    <option value="REGIONAL">Regional (Cidades Específicas)</option>
-                                    <option value="NACIONAL">Nacional (Todo o Brasil)</option>
-                                  </select>
-                                  <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                                  </div>
-                                </div>
+                                <Select value={abrangencia} onValueChange={(v) => setAbrangencia(v as any)}>
+                                  <SelectTrigger size="sm">
+                                    <SelectValue placeholder="Selecione" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="REGIONAL">Regional (Cidades Específicas)</SelectItem>
+                                    <SelectItem value="NACIONAL">Nacional (Todo o Brasil)</SelectItem>
+                                  </SelectContent>
+                                </Select>
                               </div>
 
                               {/* Cidades Atendidas Tags */}
-                              <div className="space-y-2 text-left">
+                              <div className="space-y-4 flex flex-col  text-left">
                                 <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Cidades Atendidas (separadas por vírgula)</label>
-                                <input
+                                <Input
                                   type="text"
                                   value={cidades}
                                   onChange={(e) => setCidades(e.target.value)}
                                   placeholder="Ex: Rio de Janeiro, Niterói, Duque de Caxias"
-                                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 shadow-none h-8.5"
                                 />
                               </div>
 
                             </div>
 
                             {/* Rede de Beneficios */}
-                            <div className="space-y-2 text-left">
+                            <div className="space-y-4 text-left">
                               <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Rede de Benefícios Extras / Vantagens</label>
                               <textarea
                                 value={beneficios}
@@ -851,161 +849,171 @@ export default function PlanosPage() {
 
                                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
                                   {/* 0-18 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">0 a 18 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa0a18}
                                         onChange={(e) => setFaixa0a18(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 19-23 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">19 a 23 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa19a23}
                                         onChange={(e) => setFaixa19a23(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 24-28 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">24 a 28 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa24a28}
                                         onChange={(e) => setFaixa24a28(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 29-33 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">29 a 33 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa29a33}
                                         onChange={(e) => setFaixa29a33(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 34-38 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">34 a 38 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa34a38}
                                         onChange={(e) => setFaixa34a38(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 39-43 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">39 a 43 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa39a43}
                                         onChange={(e) => setFaixa39a43(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 44-48 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">44 a 48 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa44a48}
                                         onChange={(e) => setFaixa44a48(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 49-53 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">49 a 53 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa49a53}
                                         onChange={(e) => setFaixa49a53(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 54-58 */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">54 a 58 anos</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa54a58}
                                         onChange={(e) => setFaixa54a58(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
 
                                   {/* 59mais */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">59 anos ou +</label>
                                     <div className="relative">
-                                      <span className="absolute left-3 top-2.5 text-xs font-bold text-neutral-400">R$</span>
-                                      <input
+                                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-neutral-400 z-10 pointer-events-none">R$</span>
+                                      <Input
                                         type="number"
                                         step="0.01"
                                         required
                                         value={faixa59mais}
                                         onChange={(e) => setFaixa59mais(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none"
+                                        nativeInput
+                                        className="[&_input]:pl-8 [&_input]:py-2"
                                       />
                                     </div>
                                   </div>
@@ -1020,62 +1028,67 @@ export default function PlanosPage() {
 
                                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                                   {/* Urgência */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Urgência (Horas)</label>
-                                    <input
+                                    <Input
                                       type="number"
                                       required
                                       value={carenciaUrgencia}
                                       onChange={(e) => setCarenciaUrgencia(Number(e.target.value))}
-                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                      nativeInput
+                                      size="sm"
                                     />
                                   </div>
 
                                   {/* Consultas */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Consultas (Dias)</label>
-                                    <input
+                                    <Input
                                       type="number"
                                       required
                                       value={carenciaConsultas}
                                       onChange={(e) => setCarenciaConsultas(Number(e.target.value))}
-                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                      nativeInput
+                                      size="sm"
                                     />
                                   </div>
 
                                   {/* Exames */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Exames (Dias)</label>
-                                    <input
+                                    <Input
                                       type="number"
                                       required
                                       value={carenciaExamesSimples}
                                       onChange={(e) => setCarenciaExamesSimples(Number(e.target.value))}
-                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                      nativeInput
+                                      size="sm"
                                     />
                                   </div>
 
                                   {/* Alta Complexidade */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Alta Complex. (Dias)</label>
-                                    <input
+                                    <Input
                                       type="number"
                                       required
                                       value={carenciaAltaComplexidade}
                                       onChange={(e) => setCarenciaAltaComplexidade(Number(e.target.value))}
-                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                      nativeInput
+                                      size="sm"
                                     />
                                   </div>
 
                                   {/* Doenças Preexistentes */}
-                                  <div className="space-y-2 text-left">
+                                  <div className="space-y-4 text-left">
                                     <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Preexistências (Dias)</label>
-                                    <input
+                                    <Input
                                       type="number"
                                       required
                                       value={carenciaPreexistencias}
                                       onChange={(e) => setCarenciaPreexistencias(Number(e.target.value))}
-                                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 outline-none text-xs font-normal shadow-none h-8.5"
+                                      nativeInput
+                                      size="sm"
                                     />
                                   </div>
                                 </div>
@@ -1161,7 +1174,7 @@ export default function PlanosPage() {
               <form onSubmit={handleCreateBrand} className="space-y-4">
 
                 {/* Nome da Operadora */}
-                <div className={`t-input-wrap space-y-2 text-left${error ? ' is-error' : ''}`}>
+                <div className={`t-input-wrap space-y-4 text-left${error ? ' is-error' : ''}`}>
                   <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Nome da Marca</label>
                   <input
                     type="text"
@@ -1174,7 +1187,7 @@ export default function PlanosPage() {
                 </div>
 
                 {/* Logo URL */}
-                <div className="space-y-2 text-left">
+                <div className="space-y-4 text-left">
                   <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Caminho / URL do Logotipo</label>
                   <input
                     type="text"

@@ -269,7 +269,7 @@ export default function ChatPage() {
               placeholder="Buscar conversa ou cliente..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full pl-8 pr-3 py-1 rounded-xl border border-slate-200/50 bg-white focus:border-[#3b2dff]/30 focus:ring-1 focus:ring-[#3b2dff]/10 text-xs font-normal text-neutral-700 placeholder:text-neutral-400 outline-none transition-all h-8.5"
+              className="pr-3 pl-5"
             />
           </div>
 
@@ -282,8 +282,8 @@ export default function ChatPage() {
                 size="xs"
                 onClick={() => setFilter(tab.key)}
                 className={`px-3 py-1 rounded-lg text-[10px] whitespace-nowrap transition-all cursor-pointer shrink-0 border-transparent ${filter === tab.key
-                    ? 'bg-[#3b2dff] text-white hover:bg-[#3b2dff] font-semibold shadow-none'
-                    : 'bg-slate-100/60 text-neutral-500 hover:bg-slate-100 font-normal shadow-none'
+                  ? 'bg-[#3b2dff] text-white hover:bg-[#3b2dff] font-semibold shadow-none'
+                  : 'bg-slate-100/60 text-neutral-500 hover:bg-slate-100 font-normal shadow-none'
                   }`}
               >
                 {tab.label}
@@ -321,7 +321,7 @@ export default function ChatPage() {
                     </div>
                     <StatusDot status={chat.status} />
                     <span className={`absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-white ${chat.status === 'active' ? 'bg-emerald-500' :
-                        chat.status === 'waiting' ? 'bg-amber-400' : 'bg-slate-300'
+                      chat.status === 'waiting' ? 'bg-amber-400' : 'bg-slate-300'
                       }`} />
                   </div>
 
@@ -397,7 +397,7 @@ export default function ChatPage() {
                   {selectedChat.clientInitials}
                 </div>
                 <span className={`absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-white ${selectedChat.status === 'active' ? 'bg-emerald-500' :
-                    selectedChat.status === 'waiting' ? 'bg-amber-400' : 'bg-slate-300'
+                  selectedChat.status === 'waiting' ? 'bg-amber-400' : 'bg-slate-300'
                   }`} />
               </div>
 
@@ -439,7 +439,7 @@ export default function ChatPage() {
               {/* Date divider */}
               <div className="flex items-center gap-3 my-2">
                 <div className="flex-1 h-px bg-slate-200/60" />
-                        <span className="text-[9px] font-semibold text-neutral-400 uppercase tracking-wider px-2">Hoje</span>
+                <span className="text-[9px] font-semibold text-neutral-400 uppercase tracking-wider px-2">Hoje</span>
                 <div className="flex-1 h-px bg-slate-200/60" />
               </div>
 
@@ -462,8 +462,8 @@ export default function ChatPage() {
 
                     <div className={`max-w-[72%] sm:max-w-[60%] flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
                       <div className={`px-3.5 py-2.5 rounded-2xl text-xs font-normal leading-relaxed shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${isUser
-                          ? 'bg-[#3b2dff] text-white rounded-br-sm'
-                          : 'bg-white text-neutral-800 border border-slate-100/80 rounded-bl-sm'
+                        ? 'bg-[#3b2dff] text-white rounded-br-sm'
+                        : 'bg-white text-neutral-800 border border-slate-100/80 rounded-bl-sm'
                         }`}>
                         {msg.text}
                       </div>
@@ -520,8 +520,8 @@ export default function ChatPage() {
                     onClick={handleSend}
                     disabled={!newMessage.trim()}
                     className={`p-2.5 rounded-xl transition-all cursor-pointer shrink-0 ${newMessage.trim()
-                        ? 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-sm'
-                        : 'bg-slate-100 text-neutral-400 cursor-not-allowed border-transparent'
+                      ? 'bg-[#3b2dff] text-white hover:bg-[#2d20e0] shadow-sm'
+                      : 'bg-slate-100 text-neutral-400 cursor-not-allowed border-transparent'
                       }`}
                   >
                     <HugeiconsIcon icon={MailSend01Icon} className="size-4.5" />
